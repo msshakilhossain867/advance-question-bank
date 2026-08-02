@@ -1,0 +1,108 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="128dp"
+    android:height="128dp"
+    android:viewportWidth="128"
+    android:viewportHeight="128">
+
+    <!-- Left Confetti -->
+    <path
+        android:fillColor="#FF5252"
+        android:pathData="M18,28l4,-4 4,4 -4,4z"/>
+
+    <path
+        android:fillColor="#42A5F5"
+        android:pathData="M30,18l3,6 -6,0z"/>
+
+    <!-- Trophy Cup -->
+    <path
+        android:fillColor="#FFC83D"
+        android:pathData="
+            M42,22
+            L86,22
+            C86,42 80,56 70,64
+            L70,78
+            L82,84
+            L82,92
+            L46,92
+            L46,84
+            L58,78
+            L58,64
+            C48,56 42,42 42,22Z"/>
+
+    <!-- Handles -->
+    <path
+        android:fillColor="#F2B632"
+        android:pathData="
+            M42,28
+            C26,30 26,52 42,54
+            L42,48
+            C34,46 34,36 42,34Z"/>
+
+    <path
+        android:fillColor="#F2B632"
+        android:pathData="
+            M86,28
+            C102,30 102,52 86,54
+            L86,48
+            C94,46 94,36 86,34Z"/>
+
+    <!-- Star -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+            M64,36
+            L67,43
+            L75,44
+            L69,49
+            L71,57
+            L64,53
+            L57,57
+            L59,49
+            L53,44
+            L61,43Z"/>
+
+    <!-- Stopwatch -->
+    <path
+        android:fillColor="#4FC3F7"
+        android:pathData="
+            M88,62
+            A18,18 0 1,1 87.9,62"/>
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+            M88,68
+            L88,54
+            L95,61
+            Z"/>
+
+    <path
+        android:fillColor="#1976D2"
+        android:pathData="
+            M84,40
+            L92,40
+            L92,46
+            L84,46Z"/>
+
+    <path
+        android:fillColor="#1976D2"
+        android:pathData="
+            M94,44
+            L98,48
+            L94,52
+            L90,48Z"/>
+
+    <!-- Right Confetti -->
+    <path
+        android:fillColor="#66BB6A"
+        android:pathData="M108,20l5,5 -5,5 -5,-5z"/>
+
+    <path
+        android:fillColor="#AB47BC"
+        android:pathData="M104,88l3,6 -6,0z"/>
+
+    <path
+        android:fillColor="#FFA726"
+        android:pathData="M18,94l6,3 -3,6 -6,-3z"/>
+
+</vector>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#33FFFFFF"> <!-- ক্লিকে সাদা হালকা তরঙ্গ (Ripple) আসবে -->
+    <item>
+        <shape android:shape="rectangle">
+            <!-- মডার্ন প্রাইমারি পার্পল গ্র্যাডিয়েন্ট -->
+            <gradient
+                android:angle="45"
+                android:endColor="#512DA8"
+                android:startColor="#673AB7" />
+            <corners android:radius="25dp" /> <!-- সুন্দর রাউন্ড শেপ -->
+        </shape>
+    </item>
+</ripple>

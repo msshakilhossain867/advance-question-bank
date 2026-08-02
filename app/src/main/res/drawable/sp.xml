@@ -1,0 +1,67 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="200dp"
+    android:layout_width="200dp"
+    android:height="200dp"
+    android:layout_height="200dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <!-- 📘 বইয়ের বেজ (Dark Blue Shade) -->
+    <path
+        android:pathData="M 60,330 C 150,350 240,370 256,410 C 272,370 362,350 452,330 L 452,380 C 362,400 272,420 256,450 C 240,420 150,400 60,380 Z"
+        android:fillColor="#0D47A1" />
+
+    <!-- 📖 বাম ধারের সাদা পাতা -->
+    <path
+        android:pathData="M 246,395 C 225,365 140,345 70,320 L 75,260 C 145,285 215,310 246,370 Z"
+        android:fillColor="#FFFFFF" />
+
+    <!-- 📖 ডান ধারের সাদা পাতা -->
+    <path
+        android:pathData="M 266,395 C 287,365 372,345 442,320 L 437,260 C 367,285 297,310 266,370 Z"
+        android:fillColor="#F0F4F8" />
+
+    <!-- 🎓 গ্র্যাজুয়েশন ক্যাপের ব্যান্ড (নিচের গোল অংশ) -->
+    <path
+        android:pathData="M 190,200 L 190,240 C 190,260 322,260 322,240 L 322,200 Z"
+        android:fillColor="#1565C0" />
+
+    <!-- 🎓 গ্র্যাজুয়েশন ক্যাপের মাথার টুপি (Diamond Top) -->
+    <path
+        android:pathData="M 256,110 L 420,160 L 256,210 L 92,160 Z"
+        android:fillColor="#1E88E5" />
+
+    <!-- 🎓 ক্যাপের উপরিভাগের বর্ডার হাইলাইট -->
+    <path
+        android:pathData="M 256,120 L 400,160 L 256,200 L 112,160 Z"
+        android:fillColor="#2196F3" />
+
+    <!-- 🧵 সোনালী ফিতে (Tassel - বাম দিক) -->
+    <path
+        android:pathData="M 256,160 C 200,170 170,180 160,210"
+        android:strokeColor="#FFC107"
+        android:strokeWidth="6"
+        android:strokeLineCap="round" />
+
+    <path
+        android:pathData="M 152,210 L 168,210 L 164,250 L 156,250 Z"
+        android:fillColor="#FFB300" />
+
+    <!-- 🧵 রুপালী ফিতে (Tassel - ডান দিক) -->
+    <path
+        android:pathData="M 256,160 C 310,170 340,180 350,210"
+        android:strokeColor="#CFD8DC"
+        android:strokeWidth="5"
+        android:strokeLineCap="round" />
+
+    <path
+        android:pathData="M 344,210 L 356,210 L 354,245 L 346,245 Z"
+        android:fillColor="#B0BEC5" />
+
+    <!-- 🔘 সেন্ট্রাল বাটোন -->
+    <path
+        android:pathData="M 256,160 m -8,0 a 8,8 0 1,0 16,0 a 8,8 0 1,0 -16,0"
+        android:fillColor="#0D47A1" />
+
+</vector>

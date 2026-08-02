@@ -1,0 +1,23 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- প্রথম স্লাইডার (উপরের লাইন ও সার্কেল) -->
+    <path
+        android:pathData="M3,8h4M13,8h8M10,8m-3,0a3,3 0 1,0 6,0a3,3 0 1,0 -6,0"
+        android:strokeColor="#1E3A8A"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"/>
+
+    <!-- দ্বিতীয় স্লাইডার (নিচের লাইন ও সার্কেল) -->
+    <path
+        android:pathData="M3,16h8M17,16h4M14,16m-3,0a3,3 0 1,0 6,0a3,3 0 1,0 -6,0"
+        android:strokeColor="#1E3A8A"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"/>
+
+</vector>

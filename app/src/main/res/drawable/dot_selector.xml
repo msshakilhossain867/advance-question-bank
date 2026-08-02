@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ১. Active (Selected) Dot -->
+    <item android:state_selected="true">
+        <shape android:shape="oval">
+            <size android:width="10dp" android:height="10dp"/>
+            <solid android:color="#0D47A1"/> <!-- অ্যাক্টিভ কালার -->
+        </shape>
+    </item>
+
+    <!-- ২. Inactive (Normal) Dot -->
+    <item>
+        <shape android:shape="oval">
+            <size android:width="8dp" android:height="8dp"/>
+            <solid android:color="#CCCCCC"/> <!-- ইন-অ্যাক্টিভ কালার -->
+        </shape>
+    </item>
+
+</selector>

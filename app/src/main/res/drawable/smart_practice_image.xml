@@ -1,0 +1,59 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="128dp"
+    android:height="128dp"
+    android:viewportWidth="128"
+    android:viewportHeight="128">
+
+    <!-- Shadow -->
+    <path
+        android:fillColor="#E6EAF0"
+        android:pathData="M20,110 A44,6 0 1,0 108,110 A44,6 0 1,0 20,110"/>
+
+    <!-- Outer Blue Circle -->
+    <path
+        android:fillColor="#1E63D6"
+        android:pathData="M64,20
+                          A44,44 0 1,1 64,108
+                          A44,44 0 1,1 64,20"/>
+
+    <!-- White Ring -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M64,32
+                          A32,32 0 1,1 64,96
+                          A32,32 0 1,1 64,32"/>
+
+    <!-- Middle Blue -->
+    <path
+        android:fillColor="#1E63D6"
+        android:pathData="M64,44
+                          A20,20 0 1,1 64,84
+                          A20,20 0 1,1 64,44"/>
+
+    <!-- Bullseye -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M64,56
+                          A8,8 0 1,1 64,72
+                          A8,8 0 1,1 64,56"/>
+
+    <!-- Arrow Shaft -->
+    <path
+        android:fillColor="#202020"
+        android:pathData="M64,64 L96,32 L99,35 L67,67 Z"/>
+
+    <!-- Arrow Head -->
+    <path
+        android:fillColor="#202020"
+        android:pathData="M96,32 L103,29 L100,39 Z"/>
+
+    <!-- Yellow Feathers -->
+    <path
+        android:fillColor="#FFC83D"
+        android:pathData="M96,32 L108,20 L110,30 L101,36 Z"/>
+
+    <path
+        android:fillColor="#FFC83D"
+        android:pathData="M96,32 L108,44 L98,44 L93,38 Z"/>
+
+</vector>

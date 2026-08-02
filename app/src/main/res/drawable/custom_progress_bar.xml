@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- ব্যাকগ্রাউন্ড ট্র্যাক -->
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="10dp" />
+            <solid android:color="#E0E0E0" />
+        </shape>
+    </item>
+    <!-- লোডিং প্রোগ্রেস কালার -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="10dp" />
+                <solid android:color="#196DD9" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>
