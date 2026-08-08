@@ -5,15 +5,19 @@ plugins {
 android {
     namespace 'com.example.questionbank_practiceexam'
     compileSdk {
-        version = release(36) {
+        version = release(37) {
             minorApiLevel = 1
         }
+    }
+
+    viewBinding {
+        enabled = true
     }
 
     defaultConfig {
         applicationId "com.example.questionbank_practiceexam"
         minSdk 24
-        targetSdk 36
+        targetSdk 37
         versionCode 1
         versionName "1.0"
 
@@ -30,6 +34,36 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res',
+                    'src/main/res/layouts/main',
+                    'src/main/res/layouts/home',
+                    'src/main/res/layouts/exam',
+                    'src/main/res/layouts/mock',
+                    'src/main/res/layouts/options',
+                    'src/main/res/layouts/onboardings',
+
+
+                    // Drawable ফোল্ডার লিংক:
+                    'src/main/res/drawables/home',
+                    'src/main/res/drawables/exam',
+                    'src/main/res/drawables/mock',
+                    'src/main/res/drawables/options',
+                    'src/main/res/drawables/onboardings',
+                    'src/main/res/drawables/main'
+            ]
+        }
+    }
+
+
 }
 
 dependencies {

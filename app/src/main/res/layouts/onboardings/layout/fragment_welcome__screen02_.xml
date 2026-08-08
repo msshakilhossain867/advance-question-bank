@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:padding="20dp"
-    tools:context=".Activity.Activity_Wecome_Screen">
+    tools:context=".presentation.onboarding.Activity_Wecome_Screen">
 
     <TextView
         android:id="@+id/txtSkip"

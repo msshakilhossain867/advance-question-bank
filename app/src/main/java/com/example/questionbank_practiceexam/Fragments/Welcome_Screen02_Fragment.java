@@ -15,7 +15,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.questionbank_practiceexam.Activity.MainActivity;
+import com.example.questionbank_practiceexam.presentation.main.MainActivity;
 import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.utils.SharePreferenceManager;
 import com.example.questionbank_practiceexam.utils.Utils;

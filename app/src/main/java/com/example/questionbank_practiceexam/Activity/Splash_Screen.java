@@ -10,7 +10,6 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -20,6 +19,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.questionbank_practiceexam.R;
+import com.example.questionbank_practiceexam.presentation.main.MainActivity;
+import com.example.questionbank_practiceexam.presentation.onboarding.Activity_Wecome_Screen;
 import com.example.questionbank_practiceexam.utils.SharePreferenceManager;
 
 //static import

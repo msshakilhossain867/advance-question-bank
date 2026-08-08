@@ -1,7 +1,5 @@
 package com.example.questionbank_practiceexam.Fragments;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,12 +11,11 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.questionbank_practiceexam.Activity.MainActivity;
+import com.example.questionbank_practiceexam.presentation.main.MainActivity;
 import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.utils.SharePreferenceManager;
 import com.example.questionbank_practiceexam.utils.Utils;

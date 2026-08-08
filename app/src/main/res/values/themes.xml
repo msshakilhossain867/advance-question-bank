@@ -6,6 +6,12 @@
     </style>
 
 
+    <style name="CustomActiveIndicator">
+        <!-- ব্যাকগ্রাউন্ড কালারের জন্য android:color বা colorTint ব্যবহার করুন -->
+        <item name="android:color">@color/nav_selected_color</item>
+    </style>
+
+
 
     <style name="Theme.QuestionBankPracticeExam" parent="Base.Theme.QuestionBankPracticeExam" />
 
