@@ -50,6 +50,11 @@ android {
                     'src/main/res/layouts/mock',
                     'src/main/res/layouts/options',
                     'src/main/res/layouts/onboardings',
+                    'src/main/res/layouts/years',
+                    'src/main/res/layouts/units',
+                    'src/main/res/layouts/subjects',
+                    'src/main/res/layouts/questions',
+                    'src/main/res/layouts/unlist',
 
 
                     // Drawable ফোল্ডার লিংক:
@@ -58,7 +63,13 @@ android {
                     'src/main/res/drawables/mock',
                     'src/main/res/drawables/options',
                     'src/main/res/drawables/onboardings',
-                    'src/main/res/drawables/main'
+                    'src/main/res/drawables/main',
+                    'src/main/res/drawables/years',
+                    'src/main/res/drawables/units',
+                    'src/main/res/drawables/shares',
+                    'src/main/res/drawables/subjects',
+                    'src/main/res/drawables/questions',
+                    'src/main/res/drawables/unlist'
             ]
         }
     }
@@ -67,6 +78,7 @@ android {
 }
 
 dependencies {
+    implementation libs.activity.ktx
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity

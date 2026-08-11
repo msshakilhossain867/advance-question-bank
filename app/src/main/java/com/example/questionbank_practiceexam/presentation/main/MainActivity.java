@@ -12,13 +12,17 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.questionbank_practiceexam.R;
+import com.example.questionbank_practiceexam.data.local.db.DatabaseHelper;
 import com.example.questionbank_practiceexam.databinding.ActivityMainBinding;
 import com.example.questionbank_practiceexam.presentation.home.HomeFragment;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
+    DatabaseHelper dbHelper;
 
 
     @Override
@@ -32,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+        // ডেটাবেজ প্রসেস
+        dbHelper = new DatabaseHelper(this);
+        try {
+            dbHelper.createDatabase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         // ডিফল্টভাবে HomeFragment লোড হবে

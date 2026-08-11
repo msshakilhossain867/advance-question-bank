@@ -16,7 +16,7 @@ import java.io.OutputStream;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "bcs_offline.db";
+    private static final String DATABASE_NAME = "du_question_bank.db";
     private static final int DATABASE_VERSION = 2;
 
     private static String DATABASE_PATH = "";
@@ -279,7 +279,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         try {
 
-            mInput = mContext.getAssets().open("bcs_offline.enc");
+            mInput = mContext.getAssets().open("du_question_bank.enc");
 
             File databaseDirectory = new File(DATABASE_PATH);
 

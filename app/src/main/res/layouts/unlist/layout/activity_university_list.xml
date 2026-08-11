@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.unlist.UniversityListActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        android:background="#FAFBFD"
+
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+
+        <!-- Toolbar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <!-- Back Button -->
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:padding="9dp"
+
+                android:src="@drawable/ic_arrow_back"
+                app:tint="#1858A8"
+
+                android:contentDescription="Back" />
+
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+
+                android:layout_marginStart="8dp"
+
+                android:text="Choose University"
+                android:textColor="#164F9B"
+
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <!-- Search -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="10dp"
+
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="9dp"
+            app:cardElevation="1dp"
+            app:strokeColor="#E8EBEF"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp">
+
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+
+                    android:src="@drawable/ic_search"
+                    app:tint="#7A8491"
+
+                    android:contentDescription="@null" />
+
+
+                <EditText
+                    android:id="@+id/searchEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    android:layout_weight="1"
+
+                    android:layout_marginStart="8dp"
+
+                    android:background="@null"
+
+                    android:hint="Search university..."
+                    android:textColor="#222222"
+                    android:textColorHint="#8A929D"
+
+                    android:textSize="12sp"
+
+                    android:singleLine="true"
+                    android:inputType="text"
+                    android:padding="0dp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- University List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/universityRecyclerView"
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+
+            android:layout_weight="1"
+
+            android:clipToPadding="false"
+
+            android:paddingBottom="16dp"
+
+            android:overScrollMode="never" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
