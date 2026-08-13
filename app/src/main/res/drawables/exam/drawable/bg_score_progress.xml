@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Gray background ring -->
+    <item
+        android:id="@android:id/background"
+        android:top="8dp"
+        android:bottom="8dp"
+        android:left="8dp"
+        android:right="8dp">
+
+        <shape android:shape="ring"
+            android:innerRadiusRatio="3.0"
+            android:thicknessRatio="0.18"
+            android:useLevel="false">
+
+            <solid android:color="#EEF0F2" />
+
+        </shape>
+
+    </item>
+
+
+    <!-- Green progress ring -->
+    <item
+        android:id="@android:id/progress"
+        android:top="8dp"
+        android:bottom="8dp"
+        android:left="8dp"
+        android:right="8dp">
+
+        <rotate
+            android:fromDegrees="-90"
+            android:toDegrees="270">
+
+            <shape
+                android:shape="ring"
+                android:innerRadiusRatio="3.0"
+                android:thicknessRatio="0.18"
+                android:useLevel="true">
+
+                <solid android:color="#3DBA82" />
+
+            </shape>
+
+        </rotate>
+
+    </item>
+
+</layer-list>

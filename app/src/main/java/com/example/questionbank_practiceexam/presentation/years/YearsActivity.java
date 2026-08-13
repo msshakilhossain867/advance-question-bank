@@ -26,6 +26,8 @@ public class YearsActivity extends AppCompatActivity {
     private AcademicYearAdapter academicYearAdapter;
 
     private YearRepository yearRepository;
+    private String mode;
+
 
     // Selected University
     private int universityId;
@@ -83,6 +85,9 @@ public class YearsActivity extends AppCompatActivity {
         universityName = getIntent().getStringExtra(
                 "university_name"
         );
+
+         mode = getIntent().getStringExtra("mode");
+
 
         // ============================================================
         // VALIDATE UNIVERSITY
@@ -193,6 +198,11 @@ public class YearsActivity extends AppCompatActivity {
                             intent.putExtra(
                                     "university_name",
                                     universityName
+                            );
+
+                            intent.putExtra(
+                                    "mode",
+                                    mode
                             );
 
                             startActivity(intent);

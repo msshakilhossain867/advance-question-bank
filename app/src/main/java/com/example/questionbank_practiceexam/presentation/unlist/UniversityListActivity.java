@@ -24,6 +24,7 @@ public class UniversityListActivity extends AppCompatActivity {
    private ActivityUniversityListBinding binding;
 
     private UniversityRepository universityRepository;
+    private String mode;
     private UniversityAdapter universityAdapter;
 
     private List<University> universityList =
@@ -42,6 +43,9 @@ public class UniversityListActivity extends AppCompatActivity {
         );
 
         setContentView(binding.getRoot());
+
+
+         mode = getIntent().getStringExtra("mode");
 
         // ============================================================
         // REPOSITORY
@@ -135,6 +139,11 @@ public class UniversityListActivity extends AppCompatActivity {
                     intent.putExtra(
                             "university_name",
                             universityName
+                    );
+
+                    intent.putExtra(
+                            "mode",
+                            mode
                     );
 
                     startActivity(intent);

@@ -49,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
 
         // ডিফল্টভাবে HomeFragment লোড হবে
         if (savedInstanceState == null) {
-            loadFragment(new HomeFragment());
+
+            loadFragment(
+                    new HomeFragment()
+            );
         }
 
         // Navigation Selection Listener

@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.questionbank_practiceexam.presentation.exam.PracticeSetActivity;
 import com.example.questionbank_practiceexam.presentation.subjects.SubjectsActivity;
 import com.example.questionbank_practiceexam.data.local.entity.Unit;
 import com.example.questionbank_practiceexam.data.local.repository.UnitRepository;
@@ -25,6 +26,7 @@ public class UnitsActivity extends AppCompatActivity {
     private ActivityUnitsBinding binding;
     private UnitRepository unitRepository;
     private UnitAdapter unitAdapter;
+    private String mode;
 
     private int yearId;
     private String yearTitle;
@@ -73,6 +75,9 @@ public class UnitsActivity extends AppCompatActivity {
         yearTitle = getIntent().getStringExtra(
                 "year_title"
         );
+         mode = getIntent().getStringExtra("mode");
+
+
 
         if (yearId == -1) {
 
@@ -133,33 +138,71 @@ public class UnitsActivity extends AppCompatActivity {
                     String unitName =
                             unit.getUnitName();
 
-                    Intent intent =
-                            new Intent(
-                                    UnitsActivity.this,
-                                   SubjectsActivity.class
-                            );
 
-                    intent.putExtra(
-                            "unit_id",
-                            unitId
-                    );
+                    if ("practice".equals(mode)) {
 
-                    intent.putExtra(
-                            "unit_name",
-                            unitName
-                    );
+                        Intent intent =
+                                new Intent(
+                                        UnitsActivity.this,
+                                        PracticeSetActivity.class
+                                );
 
-                    intent.putExtra(
-                            "year_id",
-                            yearId
-                    );
+                        intent.putExtra(
+                                "unit_id",
+                                unitId
+                        );
 
-                    intent.putExtra(
-                            "year_title",
-                            yearTitle
-                    );
+                        intent.putExtra(
+                                "unit_name",
+                                unitName
+                        );
 
-                    startActivity(intent);
+                        intent.putExtra(
+                                "year_id",
+                                yearId
+                        );
+
+                        intent.putExtra(
+                                "year_title",
+                                yearTitle
+                        );
+
+                        startActivity(intent);
+
+                    }else {
+
+                        Intent intent =
+                                new Intent(
+                                        UnitsActivity.this,
+                                        SubjectsActivity.class
+                                );
+
+                        intent.putExtra(
+                                "unit_id",
+                                unitId
+                        );
+
+                        intent.putExtra(
+                                "unit_name",
+                                unitName
+                        );
+
+                        intent.putExtra(
+                                "year_id",
+                                yearId
+                        );
+
+                        intent.putExtra(
+                                "year_title",
+                                yearTitle
+                        );
+
+                        startActivity(intent);
+
+                    }
+
+
+
                 }
         );
 

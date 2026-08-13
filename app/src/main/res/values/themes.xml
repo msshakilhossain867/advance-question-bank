@@ -10,6 +10,20 @@
         <!-- ব্যাকগ্রাউন্ড কালারের জন্য android:color বা colorTint ব্যবহার করুন -->
         <item name="android:color">@color/nav_selected_color</item>
     </style>
+<!--
+    <style name="PracticeCountButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/practice_count_text</item>
+        <item name="android:background">@drawable/bg_practice_count</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>-->
+
 
 
 
