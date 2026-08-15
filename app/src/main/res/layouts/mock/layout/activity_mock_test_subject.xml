@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.mocktest.MockTestSubjectActivity">
+
+
+
+    <LinearLayout
+
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        android:background="#F8F9FC">
+
+
+        <!-- Toolbar -->
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+
+            android:background="#5B4DE0"
+
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="@android:color/white"
+
+            app:title="Mock Test"
+            app:titleTextColor="@android:color/white"
+
+            app:elevation="0dp" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+
+            android:fillViewport="true"
+            android:overScrollMode="never">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical"
+
+                android:padding="16dp">
+
+
+                <!-- Subject Header -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+
+                        android:src="@drawable/ic_filter_list"
+                        android:contentDescription="@null"
+                        app:tint="#57517D" />
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Subject Selection"
+
+                            android:textColor="#222222"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Choose subjects for your mock test"
+
+                            android:textColor="#777777"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <!-- Mandatory -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="20dp"
+
+                    android:text="Required Subjects"
+
+                    android:textColor="#222222"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="2dp"
+
+                    android:text="These subjects are mandatory"
+
+                    android:textColor="#888888"
+                    android:textSize="9sp" />
+
+
+                <!-- Mandatory Recycler -->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/mandatorySubjectRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="8dp"
+
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never" />
+
+
+                <!-- Choose One -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="20dp"
+
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="1"
+
+                        android:text="Choose One"
+
+                        android:textColor="#222222"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/choiceStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Select 1"
+
+                        android:textColor="#5B4DE0"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="2dp"
+
+                    android:text="Select only one subject"
+
+                    android:textColor="#888888"
+                    android:textSize="9sp" />
+
+
+                <!-- Choice Recycler -->
+
+                <!-- Choice Groups Container -->
+
+                <LinearLayout
+                    android:id="@+id/choiceGroupContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical" />
+
+
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/reviewStartButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+
+                    android:layout_marginTop="12dp"
+
+                    android:text="Review &amp; Start"
+                    android:textAllCaps="false"
+
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+
+                    android:backgroundTint="#5B4DE0"
+
+                    app:cornerRadius="9dp" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

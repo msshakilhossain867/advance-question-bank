@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:width="64dp"
+    android:height="64dp"
+
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+
+    <!-- Cup -->
+
+    <path
+        android:fillColor="#FFC43D"
+        android:pathData="
+        M20,12
+        L44,12
+        L42,31
+        Q41,39 32,42
+        Q23,39 22,31
+        Z" />
+
+
+    <!-- Left Handle -->
+
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#F3B52E"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+
+        android:pathData="
+        M21,17
+        L15,17
+        Q10,17 11,23
+        Q12,31 21,31" />
+
+
+    <!-- Right Handle -->
+
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#F3B52E"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+
+        android:pathData="
+        M43,17
+        L49,17
+        Q54,17 53,23
+        Q52,31 43,31" />
+
+
+    <!-- Stem -->
+
+    <path
+        android:fillColor="#F3B52E"
+        android:pathData="
+        M29,39
+        L35,39
+        L35,49
+        L29,49
+        Z" />
+
+
+    <!-- Base -->
+
+    <path
+        android:fillColor="#4C477D"
+        android:pathData="
+        M23,48
+        L41,48
+        L45,53
+        L19,53
+        Z" />
+
+
+    <!-- Cup Highlight -->
+
+    <path
+        android:fillColor="#FFE078"
+        android:pathData="
+        M25,15
+        L29,15
+        L29,30
+        Q29,34 32,36
+        Q26,34 25,28
+        Z" />
+
+</vector>

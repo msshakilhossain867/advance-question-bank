@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="1dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Question Number -->
+
+        <TextView
+            android:id="@+id/questionNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="প্রশ্ন ১"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:textColor="#6254E8"/>
+
+
+        <!-- Question -->
+
+        <TextView
+            android:id="@+id/questionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Question"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#20242C"/>
+
+
+        <!-- A -->
+
+        <TextView
+            android:id="@+id/optionAText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="A. Option"
+            android:textSize="14sp"
+            android:textColor="#454A55"
+            android:padding="10dp"
+            android:background="#F4F5F8"/>
+
+
+        <!-- B -->
+
+        <TextView
+            android:id="@+id/optionBText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="B. Option"
+            android:textSize="14sp"
+            android:textColor="#454A55"
+            android:padding="10dp"
+            android:background="#F4F5F8"/>
+
+
+        <!-- C -->
+
+        <TextView
+            android:id="@+id/optionCText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="C. Option"
+            android:textSize="14sp"
+            android:textColor="#454A55"
+            android:padding="10dp"
+            android:background="#F4F5F8"/>
+
+
+        <!-- D -->
+
+        <TextView
+            android:id="@+id/optionDText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="D. Option"
+            android:textSize="14sp"
+            android:textColor="#454A55"
+            android:padding="10dp"
+            android:background="#F4F5F8"/>
+
+
+        <!-- Status -->
+
+        <TextView
+            android:id="@+id/resultStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="সঠিক উত্তর ✓"
+            android:textStyle="bold"
+            android:textSize="14sp"/>
+
+
+        <!-- User Answer -->
+
+        <TextView
+            android:id="@+id/selectedAnswerText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="আপনার উত্তর: A"
+            android:textSize="14sp"
+            android:textColor="#454A55"/>
+
+
+        <!-- Correct Answer -->
+
+        <TextView
+            android:id="@+id/correctAnswerText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="সঠিক উত্তর: B"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#1B9A52"/>
+
+
+        <!-- Explanation -->
+
+        <LinearLayout
+            android:id="@+id/explanationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="#F4F1FF">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ব্যাখ্যা"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="#6254E8"/>
+
+            <TextView
+                android:id="@+id/explanationText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="14sp"
+                android:textColor="#454A55"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

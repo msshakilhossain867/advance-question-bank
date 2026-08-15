@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- Clipboard body -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#4B477E"
+        android:strokeWidth="5"
+        android:strokeLineJoin="round"
+        android:pathData="
+            M25,16
+            L71,16
+            Q75,16 75,21
+            L75,73
+            Q75,78 70,78
+            L25,78
+            Q20,78 20,73
+            L20,21
+            Q20,16 25,16 Z" />
+
+    <!-- Clipboard top clip -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#4B477E"
+        android:strokeWidth="5"
+        android:pathData="
+            M37,18
+            L37,12
+            Q37,8 41,8
+            L55,8
+            Q59,8 59,12
+            L59,18
+            Z" />
+
+    <!-- Clip center -->
+    <path
+        android:fillColor="#4B477E"
+        android:pathData="
+            M43,10
+            L53,10
+            Q55,10 55,12
+            Q55,14 53,14
+            L43,14
+            Q41,14 41,12
+            Q41,10 43,10 Z" />
+
+    <!-- Check 1 -->
+    <path
+        android:fillColor="#9A4DE8"
+        android:pathData="
+            M28,30
+            L32,34
+            L39,26
+            L42,29
+            L32,40
+            L25,33
+            Z" />
+
+    <!-- Line 1 -->
+    <path
+        android:fillColor="#B7B7C8"
+        android:pathData="
+            M47,29
+            L67,29
+            Q69,29 69,31
+            Q69,33 67,33
+            L47,33
+            Q45,33 45,31
+            Q45,29 47,29 Z" />
+
+    <!-- Check 2 -->
+    <path
+        android:fillColor="#9A4DE8"
+        android:pathData="
+            M28,45
+            L32,49
+            L39,41
+            L42,44
+            L32,55
+            L25,48
+            Z" />
+
+    <!-- Line 2 -->
+    <path
+        android:fillColor="#B7B7C8"
+        android:pathData="
+            M47,44
+            L67,44
+            Q69,44 69,46
+            Q69,48 67,48
+            L47,48
+            Q45,48 45,46
+            Q45,44 47,44 Z" />
+
+    <!-- Check 3 -->
+    <path
+        android:fillColor="#7181A8"
+        android:pathData="
+            M28,60
+            L32,64
+            L39,56
+            L42,59
+            L32,70
+            L25,63
+            Z" />
+
+    <!-- Line 3 -->
+    <path
+        android:fillColor="#B7B7C8"
+        android:pathData="
+            M47,59
+            L67,59
+            Q69,59 69,61
+            Q69,63 67,63
+            L47,63
+            Q45,63 45,61
+            Q45,59 47,59 Z" />
+
+    <!-- Clock outer -->
+    <path
+        android:fillColor="#8A35D6"
+        android:pathData="
+            M68,45
+            A22,22 0,1 0,68,89
+            A22,22 0,0 0,68,45 Z" />
+
+    <!-- Clock highlight -->
+    <path
+        android:fillColor="#9C4BE5"
+        android:pathData="
+            M68,47
+            A20,20 0,1 0,68,87
+            A20,20 0,0 0,68,47 Z" />
+
+    <!-- Clock hand vertical -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+            M66,55
+            Q66,53 68,53
+            Q70,53 70,55
+            L70,66
+            L76,70
+            Q78,71 77,73
+            Q76,75 74,74
+            L67,69
+            Q66,68 66,66
+            Z" />
+
+</vector>

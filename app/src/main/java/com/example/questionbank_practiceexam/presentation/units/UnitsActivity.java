@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.questionbank_practiceexam.presentation.mocktest.MockTestSubjectActivity;
 import com.example.questionbank_practiceexam.presentation.exam.PracticeSetActivity;
 import com.example.questionbank_practiceexam.presentation.subjects.SubjectsActivity;
 import com.example.questionbank_practiceexam.data.local.entity.Unit;
@@ -141,63 +142,15 @@ public class UnitsActivity extends AppCompatActivity {
 
                     if ("practice".equals(mode)) {
 
-                        Intent intent =
-                                new Intent(
-                                        UnitsActivity.this,
-                                        PracticeSetActivity.class
-                                );
+                    moveToNext(PracticeSetActivity.class,unitId,unitName);
 
-                        intent.putExtra(
-                                "unit_id",
-                                unitId
-                        );
+                    } else if ("mock_test".equals(mode)) {
 
-                        intent.putExtra(
-                                "unit_name",
-                                unitName
-                        );
+                    moveToNext(MockTestSubjectActivity.class,unitId,unitName);
 
-                        intent.putExtra(
-                                "year_id",
-                                yearId
-                        );
 
-                        intent.putExtra(
-                                "year_title",
-                                yearTitle
-                        );
-
-                        startActivity(intent);
-
-                    }else {
-
-                        Intent intent =
-                                new Intent(
-                                        UnitsActivity.this,
-                                        SubjectsActivity.class
-                                );
-
-                        intent.putExtra(
-                                "unit_id",
-                                unitId
-                        );
-
-                        intent.putExtra(
-                                "unit_name",
-                                unitName
-                        );
-
-                        intent.putExtra(
-                                "year_id",
-                                yearId
-                        );
-
-                        intent.putExtra(
-                                "year_title",
-                                yearTitle
-                        );
-
-                        startActivity(intent);
+                    } else {
+                        moveToNext(SubjectsActivity.class,unitId,unitName);
 
                     }
 
@@ -213,6 +166,41 @@ public class UnitsActivity extends AppCompatActivity {
         binding.unitRecyclerView.setAdapter(
                 unitAdapter
         );
+    }
+
+
+
+    private void moveToNext(Class<?> activityClass, int unitId, String unitName){
+
+        Intent intent =
+                new Intent(
+                        UnitsActivity.this,
+                        activityClass
+                );
+
+        intent.putExtra(
+                "unit_id",
+                unitId
+        );
+
+        intent.putExtra(
+                "unit_name",
+                unitName
+        );
+
+        intent.putExtra(
+                "year_id",
+                yearId
+        );
+
+        intent.putExtra(
+                "year_title",
+                yearTitle
+        );
+
+        startActivity(intent);
+
+
     }
 
     // ============================================================

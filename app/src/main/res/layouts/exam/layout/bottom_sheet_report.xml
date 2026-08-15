@@ -26,7 +26,7 @@
 
         android:layout_marginBottom="16dp"
 
-        android:background="@drawable/bg_bottom_sheet_handle" />
+        android:background="@drawable/bg_bottom_sheet_handlee" />
 
 
     <!-- Title -->

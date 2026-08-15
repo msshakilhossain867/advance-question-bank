@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical"
+
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="12dp"
+
+    android:background="@drawable/bg_question_bottom_sheet">
+
+
+    <!-- Top Handle -->
+
+    <View
+        android:layout_width="38dp"
+        android:layout_height="4dp"
+
+        android:layout_gravity="center_horizontal"
+
+        android:layout_marginBottom="8dp"
+
+        android:background="@drawable/bg_bottom_sheet_handlee" />
+
+
+    <!-- Title -->
+
+    <TextView
+        android:id="@+id/questionListTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="প্রশ্ন লিস্ট"
+
+        android:textColor="#25255A"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+
+
+    <!-- Legend -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+
+        android:layout_marginTop="4dp">
+
+
+        <!-- Answered -->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:gravity="center_vertical">
+
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+
+                android:background="@drawable/bg_status_answered" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="4dp"
+
+                android:text="উত্তর দেওয়া"
+                android:textColor="#666666"
+                android:textSize="7sp" />
+
+        </LinearLayout>
+
+
+        <!-- Skipped -->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:gravity="center_vertical">
+
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+
+                android:background="@drawable/bg_status_skipped" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="4dp"
+
+                android:text="রিভিউ"
+                android:textColor="#666666"
+                android:textSize="7sp" />
+
+        </LinearLayout>
+
+
+        <!-- Unanswered -->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:gravity="center_vertical">
+
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+
+                android:background="@drawable/bg_status_unanswered" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="4dp"
+
+                android:text="উত্তর নেই"
+                android:textColor="#666666"
+                android:textSize="7sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!-- Question Grid -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/questionGridRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="3dp"
+
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+
+        android:paddingTop="2dp"
+        android:paddingBottom="4dp" />
+
+
+    <!-- Close -->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/closeQuestionListButton"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+
+        android:layout_marginTop="3dp"
+
+        android:text="বন্ধ করুন"
+        android:textAllCaps="false"
+
+        android:textColor="#5144D0"
+        android:textSize="8sp"
+        android:textStyle="bold"
+
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+
+        android:padding="0dp"
+
+        android:backgroundTint="#F5F3FF"
+
+        app:cornerRadius="7dp" />
+
+</LinearLayout>

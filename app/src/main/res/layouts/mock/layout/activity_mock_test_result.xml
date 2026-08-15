@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.mocktest.MockTestResultActivity">
+
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        android:background="#F8F9FC">
+
+
+        <!-- ================= TOOLBAR ================= -->
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+
+            android:background="#28218F"
+
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="@android:color/white"
+
+            app:title="পরীক্ষার রেজাল্ট"
+            app:titleTextColor="@android:color/white"
+
+            app:menu="@menu/result_menu"
+
+            app:elevation="0dp" />
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+
+            android:layout_weight="1"
+
+            android:fillViewport="true"
+
+            android:overScrollMode="never">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical"
+
+                android:gravity="center_horizontal"
+
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingTop="14dp"
+                android:paddingBottom="18dp">
+
+
+                <!-- ================= TROPHY ================= -->
+
+                <ImageView
+                    android:id="@+id/resultTrophy"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+
+                    android:src="@drawable/ic_trophy_result"
+
+                    android:contentDescription="@null" />
+
+
+                <!-- Congratulations -->
+
+                <TextView
+                    android:id="@+id/congratulationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="2dp"
+
+                    android:text="অভিনন্দন! 🎉"
+
+                    android:textColor="#262262"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/resultMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="2dp"
+
+                    android:text="আপনি পরীক্ষা সম্পন্ন করেছেন।"
+
+                    android:textColor="#777777"
+                    android:textSize="9sp" />
+
+
+                <!-- ================= SCORE RING ================= -->
+
+                <FrameLayout
+                    android:layout_width="126dp"
+                    android:layout_height="126dp"
+
+                    android:layout_marginTop="10dp">
+
+
+                    <!-- Ring -->
+
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/scoreProgress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_gravity="center"
+
+                        android:indeterminate="false"
+
+                        app:indicatorSize="116dp"
+                        app:trackThickness="5dp"
+
+                        app:trackColor="#E7E6F4"
+                        app:indicatorColor="#4F3FD0"
+
+                       />
+
+
+                    <!-- Score Text -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:gravity="center"
+
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="প্রাপ্ত নম্বর"
+
+                            android:textColor="#777777"
+                            android:textSize="8sp" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:gravity="center_vertical">
+
+
+                            <TextView
+                                android:id="@+id/scoreText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="78.50"
+
+                                android:textColor="#171717"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/scoreTotalText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginStart="3dp"
+
+                                android:text="/100"
+
+                                android:textColor="#444444"
+                                android:textSize="9sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+
+                <!-- ================= STATISTICS ================= -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+
+                    android:layout_marginTop="8dp"
+
+                    android:orientation="horizontal"
+
+                    android:gravity="center">
+
+
+                    <!-- Correct -->
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="1"
+
+                        android:gravity="center"
+
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="সঠিক উত্তর"
+
+                            android:textColor="#888888"
+                            android:textSize="8sp" />
+
+
+                        <TextView
+                            android:id="@+id/correctText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="4dp"
+
+                            android:text="86"
+
+                            android:textColor="#20A66A"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+
+                    <!-- Wrong -->
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="1"
+
+                        android:gravity="center"
+
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="ভুল উত্তর"
+
+                            android:textColor="#888888"
+                            android:textSize="8sp" />
+
+
+                        <TextView
+                            android:id="@+id/wrongText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="4dp"
+
+                            android:text="12"
+
+                            android:textColor="#F05A5A"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+
+                    <!-- Negative -->
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="1"
+
+                        android:gravity="center"
+
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="নেগেটিভ মার্ক"
+
+                            android:textColor="#888888"
+                            android:textSize="8sp" />
+
+
+                        <TextView
+                            android:id="@+id/negativeMarkText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="4dp"
+
+                            android:text="-3.00"
+
+                            android:textColor="#F05A5A"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+
+                    <!-- Total -->
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="1"
+
+                        android:gravity="center"
+
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="মোট প্রশ্ন"
+
+                            android:textColor="#888888"
+                            android:textSize="8sp" />
+
+
+                        <TextView
+                            android:id="@+id/totalQuestionText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="4dp"
+
+                            android:text="98/100"
+
+                            android:textColor="#333333"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <!-- ================= BUTTONS ================= -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+
+                    <!-- Home -->
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/homeButton"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_weight="1"
+
+                        android:text="⌂  হোমে ফিরুন"
+                        android:textAllCaps="false"
+                        android:textColor="#5144D0"
+                        android:textSize="8sp"
+                        android:textStyle="bold"
+
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:padding="0dp"
+
+                        android:backgroundTint="#F0EEFF"
+
+                        app:cornerRadius="7dp" />
+
+
+                    <Space
+                        android:layout_width="6dp"
+                        android:layout_height="1dp" />
+
+
+                    <!-- Check Answers -->
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/checkAnswersButton"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_weight="1"
+
+                        android:text="✓  উত্তর যাচাই করুন"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="8sp"
+                        android:textStyle="bold"
+
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:padding="0dp"
+
+                        android:backgroundTint="#5B4DE0"
+
+                        app:cornerRadius="7dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

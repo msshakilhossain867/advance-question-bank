@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="18dp"
+    android:background="@drawable/bg_submit_dialog">
+
+    <!-- =====================================================
+         TITLE
+         ===================================================== -->
+
+    <TextView
+        android:id="@+id/submitDialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="পরীক্ষা জমা দিবেন?"
+        android:textColor="#202047"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif" />
+
+
+    <!-- =====================================================
+         ICON
+         ===================================================== -->
+
+    <ImageView
+        android:id="@+id/submitDialogIcon"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/bg_explanation"
+        android:contentDescription="@null" />
+
+
+    <!-- =====================================================
+         MESSAGE
+         ===================================================== -->
+
+    <TextView
+        android:id="@+id/submitDialogMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingExtra="3dp"
+        android:text="সময় শেষ করার আগে আপনি চাইলে&#10;আপনার পরীক্ষা জমা দিতে পারেন।&#10;একবার জমা দিলে আর পরিবর্তন করা যাবে না।"
+        android:textColor="#555555"
+        android:textSize="13sp" />
+
+
+    <!-- =====================================================
+         SUBMIT
+         ===================================================== -->
+
+    <TextView
+        android:id="@+id/confirmSubmitButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="হ্যাঁ, জমা দিন"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:background="@drawable/bg_submit_red_button" />
+
+
+    <!-- =====================================================
+         CONTINUE
+         ===================================================== -->
+
+    <TextView
+        android:id="@+id/cancelSubmitButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="7dp"
+        android:gravity="center"
+        android:text="না, আমি এখনো করছি"
+        android:textColor="#4C58A8"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:background="@drawable/bg_submit_cancel_button" />
+
+</LinearLayout>

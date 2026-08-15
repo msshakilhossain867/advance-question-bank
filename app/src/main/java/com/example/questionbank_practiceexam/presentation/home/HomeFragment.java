@@ -147,6 +147,20 @@ private void setupClickListeners() {
     });
 
 
+    binding.mockTestCard.setOnClickListener(v -> {
+
+        Intent intent = new Intent(
+                requireContext(),
+                UniversityListActivity.class
+        );
+        intent.putExtra("mode", "mock_test");
+
+        startActivity(intent);
+    });
+
+
+
+
     binding.nextVersityList.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {

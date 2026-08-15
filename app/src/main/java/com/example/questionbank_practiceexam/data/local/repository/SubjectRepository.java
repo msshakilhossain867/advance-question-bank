@@ -154,6 +154,85 @@ public class SubjectRepository {
     }
 
     // ============================================================
+// GET MANDATORY SUBJECTS BY UNIT
+// ============================================================
+
+    public List<Subject> getSubjectsByUnitForMockTest(int unitId) {
+
+        open();
+
+        List<Subject> subjects = new ArrayList<>();
+
+        Cursor cursor = db.query(
+                "subjects",
+                new String[]{
+                        "id",
+                        "unit_id",
+                        "name",
+                        "icon_url",
+                        "mandatory",
+                        "choice_group"
+                },
+                "unit_id = ?",
+                new String[]{
+                        String.valueOf(unitId)
+                },
+                null,
+                null,
+                "id ASC"
+        );
+
+        try {
+
+            if (cursor != null && cursor.moveToFirst()) {
+
+                do {
+
+                    subjects.add(
+                            new Subject(
+                                    cursor.getInt(
+                                            cursor.getColumnIndexOrThrow("id")
+                                    ),
+
+                                    cursor.getInt(
+                                            cursor.getColumnIndexOrThrow("unit_id")
+                                    ),
+
+                                    cursor.getString(
+                                            cursor.getColumnIndexOrThrow("name")
+                                    ),
+
+                                    cursor.getString(
+                                            cursor.getColumnIndexOrThrow("icon_url")
+                                    ),
+
+                                    cursor.getInt(
+                                            cursor.getColumnIndexOrThrow("mandatory")
+                                    ) == 1,
+
+                                    cursor.getInt(
+                                            cursor.getColumnIndexOrThrow("choice_group")
+                                    )
+                            )
+                    );
+
+                } while (cursor.moveToNext());
+            }
+
+        } finally {
+
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        return subjects;
+    }
+
+
+
+
+    // ============================================================
     // CLOSE DATABASE
     // ============================================================
 
