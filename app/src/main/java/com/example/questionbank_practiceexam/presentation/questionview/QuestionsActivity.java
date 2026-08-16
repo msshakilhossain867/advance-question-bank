@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.data.local.entity.Question;
+import com.example.questionbank_practiceexam.data.local.repository.BookmarkRepository;
 import com.example.questionbank_practiceexam.data.local.repository.QuestionRepository;
 import com.example.questionbank_practiceexam.databinding.ActivityQuestionsBinding;
 
@@ -22,6 +23,8 @@ public class QuestionsActivity extends AppCompatActivity {
 
     private ActivityQuestionsBinding binding;
     private QuestionRepository questionRepository;
+    private static final String LOCAL_USER_ID = "";
+    private BookmarkRepository bookmarkRepository;
 
     private List<Question> questionList;
 
@@ -83,6 +86,11 @@ public class QuestionsActivity extends AppCompatActivity {
                 getApplicationContext()
         );
 
+
+        bookmarkRepository = new BookmarkRepository(
+                getApplicationContext()
+        );
+
         // ========================================================
         // LOAD QUESTIONS
         // ========================================================
@@ -138,6 +146,8 @@ public class QuestionsActivity extends AppCompatActivity {
 
         Question question =
                 questionList.get(currentPosition);
+
+        updateBookmarkButton(question.getId());
 
         // ========================================================
         // QUESTION NUMBER
@@ -462,12 +472,84 @@ public class QuestionsActivity extends AppCompatActivity {
 
         binding.bookmarkButton.setOnClickListener(v -> {
 
-            Toast.makeText(
-                    this,
-                    "Bookmark feature coming next",
-                    Toast.LENGTH_SHORT
-            ).show();
+
+            if (questionList == null ||
+                    questionList.isEmpty()) {
+                return;
+            }
+
+            Question question =
+                    questionList.get(currentPosition);
+
+            int questionId =
+                    question.getId();
+
+            boolean bookmarked =
+                    bookmarkRepository.toggleBookmark(
+                            questionId
+                    );
+
+            updateBookmarkButton(
+                    questionId
+            );
+
+            if (bookmarked) {
+
+                Toast.makeText(
+                        this,
+                        "প্রশ্নটি Bookmark করা হয়েছে",
+                        Toast.LENGTH_SHORT
+                ).show();
+
+            } else {
+
+                Toast.makeText(
+                        this,
+                        "Bookmark থেকে সরানো হয়েছে",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+
         });
+    }
+
+
+
+    private void updateBookmarkButton(
+            int questionId
+    ) {
+
+        if (bookmarkRepository == null) {
+            return;
+        }
+
+        boolean bookmarked =
+                bookmarkRepository.isBookmarked(
+                        questionId
+                );
+
+        if (bookmarked) {
+
+            // Filled bookmark icon
+            binding.bookmarkButton.setImageResource(
+                    R.drawable.ic_bookmark_filled
+            );
+
+            binding.bookmarkButton.setContentDescription(
+                    "Bookmark করা আছে"
+            );
+
+        } else {
+
+            // Outline bookmark icon
+            binding.bookmarkButton.setImageResource(
+                    R.drawable.ic_bookmark_border
+            );
+
+            binding.bookmarkButton.setContentDescription(
+                    "Bookmark করুন"
+            );
+        }
     }
 
     // ============================================================
@@ -524,6 +606,13 @@ public class QuestionsActivity extends AppCompatActivity {
             questionRepository.close();
 
             questionRepository = null;
+        }
+
+        if (bookmarkRepository != null) {
+
+            bookmarkRepository.close();
+
+            bookmarkRepository = null;
         }
 
         binding = null;

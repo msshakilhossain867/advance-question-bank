@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.questionbank_practiceexam.presentation.bookmarks.BookmarkActivity;
 import com.example.questionbank_practiceexam.presentation.unlist.UniversityListActivity;
 import com.example.questionbank_practiceexam.data.local.entity.University;
 import com.example.questionbank_practiceexam.data.local.repository.UniversityRepository;
@@ -156,6 +157,13 @@ private void setupClickListeners() {
         intent.putExtra("mode", "mock_test");
 
         startActivity(intent);
+    });
+
+
+    binding.bookmarkCard.setOnClickListener(v -> {
+
+           Intent intent=new Intent(requireActivity(),BookmarkActivity.class);
+           startActivity(intent);
     });
 
 

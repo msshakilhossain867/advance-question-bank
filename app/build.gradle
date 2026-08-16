@@ -55,6 +55,7 @@ android {
                     'src/main/res/layouts/subjects',
                     'src/main/res/layouts/questions',
                     'src/main/res/layouts/unlist',
+                    'src/main/res/layouts/bookmarks',
 
 
                     // Drawable ফোল্ডার লিংক:
@@ -69,7 +70,8 @@ android {
                     'src/main/res/drawables/shares',
                     'src/main/res/drawables/subjects',
                     'src/main/res/drawables/questions',
-                    'src/main/res/drawables/unlist'
+                    'src/main/res/drawables/unlist',
+                    'src/main/res/drawables/bookmarks'
             ]
         }
     }

@@ -86,6 +86,10 @@
             android:name=".presentation.mocktest.MockTestAnswerReviewActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.bookmarks.BookmarkActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
