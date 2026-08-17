@@ -328,6 +328,79 @@ public class BookmarkRepository {
         }
     }
 
+    public int getTodayBookmarkCount() {
+
+        Cursor cursor = null;
+
+        try {
+
+            cursor = database.rawQuery(
+                    "SELECT COUNT(*) " +
+                            "FROM bookmarks " +
+                            "WHERE user_id = ? " +
+                            "AND date(created_at / 1000, 'unixepoch', 'localtime') = date('now', 'localtime')",
+
+                    new String[]{
+                            USER_ID
+                    }
+            );
+
+            if (cursor.moveToFirst()) {
+
+                return cursor.getInt(0);
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        } finally {
+
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        return 0;
+    }
+
+    public long getLatestBookmarkTime() {
+
+        Cursor cursor = null;
+
+        try {
+
+            cursor = database.rawQuery(
+                    "SELECT created_at " +
+                            "FROM bookmarks " +
+                            "WHERE user_id = ? " +
+                            "ORDER BY created_at DESC " +
+                            "LIMIT 1",
+
+                    new String[]{
+                            USER_ID
+                    }
+            );
+
+            if (cursor.moveToFirst()) {
+
+                return cursor.getLong(0);
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        } finally {
+
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        return 0;
+    }
+
 
     // ============================================================
     // CLOSE

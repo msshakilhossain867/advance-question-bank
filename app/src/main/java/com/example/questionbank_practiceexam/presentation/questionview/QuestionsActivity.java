@@ -6,14 +6,17 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.data.local.entity.Question;
 import com.example.questionbank_practiceexam.data.local.repository.BookmarkRepository;
 import com.example.questionbank_practiceexam.data.local.repository.QuestionRepository;
+import com.example.questionbank_practiceexam.data.local.repository.ReadingProgressRepository;
+import com.example.questionbank_practiceexam.data.local.repository.RecentLearningRepository;
+import com.example.questionbank_practiceexam.data.local.repository.StudyTimeRepository;
 import com.example.questionbank_practiceexam.databinding.ActivityQuestionsBinding;
-
 
 import org.json.JSONObject;
 
@@ -22,16 +25,29 @@ import java.util.List;
 public class QuestionsActivity extends AppCompatActivity {
 
     private ActivityQuestionsBinding binding;
+
     private QuestionRepository questionRepository;
-    private static final String LOCAL_USER_ID = "";
+
+
     private BookmarkRepository bookmarkRepository;
+    private RecentLearningRepository recentLearningRepository;
+
+    // ============================================================
+    // READING PROGRESS
+    // ============================================================
+
+    private ReadingProgressRepository readingProgressRepository;
+
 
     private List<Question> questionList;
 
     private int currentPosition = 0;
 
     private int subjectId;
+
     private String subjectName;
+    private long readingStartTime = 0L;
+
 
     // ============================================================
     // ON CREATE
@@ -39,32 +55,42 @@ public class QuestionsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         EdgeToEdge.enable(this);
+
 
         // ========================================================
         // VIEW BINDING
         // ========================================================
 
-        binding = ActivityQuestionsBinding.inflate(
-                getLayoutInflater()
+        binding =
+                ActivityQuestionsBinding.inflate(
+                        getLayoutInflater()
+                );
+
+        setContentView(
+                binding.getRoot()
         );
 
-        setContentView(binding.getRoot());
 
         // ========================================================
         // GET INTENT DATA
         // ========================================================
 
-        subjectId = getIntent().getIntExtra(
-                "subject_id",
-                -1
-        );
+        subjectId =
+                getIntent().getIntExtra(
+                        "subject_id",
+                        -1
+                );
 
-        subjectName = getIntent().getStringExtra(
-                "subject_name"
-        );
+
+        subjectName =
+                getIntent().getStringExtra(
+                        "subject_name"
+                );
+
 
         if (subjectId == -1) {
 
@@ -75,21 +101,52 @@ public class QuestionsActivity extends AppCompatActivity {
             ).show();
 
             finish();
+
             return;
         }
 
+
         // ========================================================
-        // REPOSITORY
+        // QUESTION REPOSITORY
         // ========================================================
 
-        questionRepository = new QuestionRepository(
-                getApplicationContext()
-        );
+        questionRepository =
+                new QuestionRepository(
+                        getApplicationContext()
+                );
 
 
-        bookmarkRepository = new BookmarkRepository(
-                getApplicationContext()
-        );
+
+
+
+        // ========================================================
+        // BOOKMARK REPOSITORY
+        // ========================================================
+
+        bookmarkRepository =
+                new BookmarkRepository(
+                        getApplicationContext()
+                );
+
+
+        // ========================================================
+        // READING PROGRESS REPOSITORY
+        // ========================================================
+
+        readingProgressRepository =
+                new ReadingProgressRepository(
+                        getApplicationContext()
+                );
+
+        recentLearningRepository =
+                new RecentLearningRepository(this);
+
+        readingStartTime =
+                System.currentTimeMillis();
+
+
+
+
 
         // ========================================================
         // LOAD QUESTIONS
@@ -97,12 +154,30 @@ public class QuestionsActivity extends AppCompatActivity {
 
         loadQuestions();
 
+
         // ========================================================
         // BUTTONS
         // ========================================================
 
         setupButtons();
+
+
+        getOnBackPressedDispatcher().addCallback(
+                this,
+                new OnBackPressedCallback(true) {
+
+                    @Override
+                    public void handleOnBackPressed() {
+
+                        // এখানে তোমার back logic
+                        saveRecentLearning();
+
+                        finish();
+                    }
+                }
+        );
     }
+
 
     // ============================================================
     // LOAD QUESTIONS
@@ -115,6 +190,7 @@ public class QuestionsActivity extends AppCompatActivity {
                         subjectId
                 );
 
+
         if (questionList == null ||
                 questionList.isEmpty()) {
 
@@ -125,13 +201,149 @@ public class QuestionsActivity extends AppCompatActivity {
             ).show();
 
             finish();
+
             return;
         }
 
-        currentPosition = 0;
+// ========================================================
+        // RESUME POSITION
+        // ========================================================
+
+        int savedPosition =
+                getIntent().getIntExtra(
+                        "content_position",
+                        0
+                );
+
+
+        // Position valid কিনা check
+        if (savedPosition >= 0 &&
+                savedPosition < questionList.size()) {
+
+            currentPosition =
+                    savedPosition;
+
+        } else {
+
+            currentPosition = 0;
+        }
+
 
         showQuestion();
     }
+
+    private void saveReadingStudyTime() {
+
+        if (readingStartTime <= 0) {
+            return;
+        }
+
+        long completedAt =
+                System.currentTimeMillis();
+
+        long durationSeconds =
+                (completedAt - readingStartTime)
+                        / 1000;
+
+        if (durationSeconds <= 0) {
+            readingStartTime = 0L;
+            return;
+        }
+
+        StudyTimeRepository repository =
+                new StudyTimeRepository(this);
+
+        repository.saveStudySession(
+                "READING",
+                0,
+                durationSeconds,
+                readingStartTime,
+                completedAt
+        );
+
+        repository.close();
+
+        readingStartTime = 0L;
+    }
+
+    // ============================================================
+// SAVE RECENT LEARNING
+// ============================================================
+
+    private void saveRecentLearning() {
+
+        if (recentLearningRepository == null ||
+                questionList == null ||
+                questionList.isEmpty()) {
+
+            return;
+        }
+
+
+        Question question =
+                questionList.get(
+                        currentPosition
+                );
+
+
+        // ========================================================
+        // CHAPTER / TOPIC NAME
+        // ========================================================
+
+        String chapterName =
+                question.getYearTag();
+
+
+        if (chapterName == null ||
+                chapterName.trim().isEmpty()) {
+
+            chapterName =
+                    "Practice Questions";
+        }
+
+
+        // ========================================================
+        // PROGRESS
+        // ========================================================
+
+        int progressPercent = 0;
+
+
+        if (questionList.size() > 0) {
+
+            progressPercent =
+                    (int) (
+                            ((currentPosition + 1)
+                                    * 100.0)
+                                    / questionList.size()
+                    );
+        }
+
+
+        // ========================================================
+        // SAVE
+        // ========================================================
+
+        recentLearningRepository.saveRecentLearning(
+
+                subjectId,
+
+                subjectName == null
+                        ? "Questions"
+                        : subjectName,
+
+                0,
+
+                chapterName,
+
+                currentPosition,
+
+                progressPercent
+        );
+    }
+
+
+
 
     // ============================================================
     // SHOW CURRENT QUESTION
@@ -141,13 +353,38 @@ public class QuestionsActivity extends AppCompatActivity {
 
         if (questionList == null ||
                 questionList.isEmpty()) {
+
             return;
         }
 
-        Question question =
-                questionList.get(currentPosition);
 
-        updateBookmarkButton(question.getId());
+        Question question =
+                questionList.get(
+                        currentPosition
+                );
+        saveRecentLearning();
+
+
+        // ========================================================
+        // MARK QUESTION AS READ
+        // ========================================================
+
+        if (readingProgressRepository != null) {
+
+            readingProgressRepository.markQuestionAsRead(
+                    question.getId()
+            );
+        }
+
+
+        // ========================================================
+        // UPDATE BOOKMARK
+        // ========================================================
+
+        updateBookmarkButton(
+                question.getId()
+        );
+
 
         // ========================================================
         // QUESTION NUMBER
@@ -158,6 +395,7 @@ public class QuestionsActivity extends AppCompatActivity {
                         + " / "
                         + questionList.size()
         );
+
 
         // ========================================================
         // SUBJECT
@@ -177,12 +415,15 @@ public class QuestionsActivity extends AppCompatActivity {
             );
         }
 
+
         // ========================================================
         // YEAR / TOPIC
         // ========================================================
 
         if (question.getYearTag() != null &&
-                !question.getYearTag().trim().isEmpty()) {
+                !question.getYearTag()
+                        .trim()
+                        .isEmpty()) {
 
             binding.topicText.setText(
                     question.getYearTag()
@@ -195,6 +436,7 @@ public class QuestionsActivity extends AppCompatActivity {
             );
         }
 
+
         // ========================================================
         // QUESTION TEXT
         // ========================================================
@@ -203,11 +445,15 @@ public class QuestionsActivity extends AppCompatActivity {
                 question.getQuestionText()
         );
 
+
         // ========================================================
         // OPTIONS
         // ========================================================
 
-        setOptions(question);
+        setOptions(
+                question
+        );
+
 
         // ========================================================
         // RESET OPTIONS
@@ -215,20 +461,24 @@ public class QuestionsActivity extends AppCompatActivity {
 
         resetOptions();
 
+
         // ========================================================
-        // AUTO SELECT CORRECT ANSWER
+        // SHOW CORRECT ANSWER
         // ========================================================
 
         showCorrectAnswer(
                 question.getCorrectOption()
         );
 
+
         // ========================================================
         // EXPLANATION
         // ========================================================
 
         if (question.getExplanation() != null &&
-                !question.getExplanation().trim().isEmpty()) {
+                !question.getExplanation()
+                        .trim()
+                        .isEmpty()) {
 
             binding.explanationText.setText(
                     question.getExplanation()
@@ -245,18 +495,22 @@ public class QuestionsActivity extends AppCompatActivity {
             );
         }
 
+
         // ========================================================
-        // NAVIGATION BUTTONS
+        // NAVIGATION
         // ========================================================
 
         updateNavigationButtons();
     }
 
+
     // ============================================================
     // SET OPTIONS FROM JSON
     // ============================================================
 
-    private void setOptions(Question question) {
+    private void setOptions(
+            Question question
+    ) {
 
         try {
 
@@ -265,20 +519,36 @@ public class QuestionsActivity extends AppCompatActivity {
                             question.getOptions()
                     );
 
+
             binding.option1.setText(
-                    "A. " + options.optString("a")
+                    "A. " +
+                            options.optString(
+                                    "a"
+                            )
             );
+
 
             binding.option2.setText(
-                    "B. " + options.optString("b")
+                    "B. " +
+                            options.optString(
+                                    "b"
+                            )
             );
+
 
             binding.option3.setText(
-                    "C. " + options.optString("c")
+                    "C. " +
+                            options.optString(
+                                    "c"
+                            )
             );
 
+
             binding.option4.setText(
-                    "D. " + options.optString("d")
+                    "D. " +
+                            options.optString(
+                                    "d"
+                            )
             );
 
         } catch (Exception e) {
@@ -290,11 +560,10 @@ public class QuestionsActivity extends AppCompatActivity {
         }
     }
 
+
     // ============================================================
     // RESET OPTIONS
     // ============================================================
-
-
 
     private void resetOptions() {
 
@@ -314,25 +583,43 @@ public class QuestionsActivity extends AppCompatActivity {
                 R.drawable.bg_option_normal
         );
 
+
         binding.option1.setTextColor(
-                Color.rgb(34, 34, 34)
+                Color.rgb(
+                        34,
+                        34,
+                        34
+                )
         );
 
         binding.option2.setTextColor(
-                Color.rgb(34, 34, 34)
+                Color.rgb(
+                        34,
+                        34,
+                        34
+                )
         );
 
         binding.option3.setTextColor(
-                Color.rgb(34, 34, 34)
+                Color.rgb(
+                        34,
+                        34,
+                        34
+                )
         );
 
         binding.option4.setTextColor(
-                Color.rgb(34, 34, 34)
+                Color.rgb(
+                        34,
+                        34,
+                        34
+                )
         );
     }
 
+
     // ============================================================
-    // AUTO SELECT CORRECT ANSWER
+    // SHOW CORRECT ANSWER
     // ============================================================
 
     private void showCorrectAnswer(
@@ -340,10 +627,16 @@ public class QuestionsActivity extends AppCompatActivity {
     ) {
 
         if (correctOption == null) {
+
             return;
         }
 
-        switch (correctOption.trim().toLowerCase()) {
+
+        switch (
+                correctOption
+                        .trim()
+                        .toLowerCase()
+        ) {
 
             case "a":
 
@@ -352,7 +645,11 @@ public class QuestionsActivity extends AppCompatActivity {
                 );
 
                 binding.option1.setTextColor(
-                        Color.rgb(35, 131, 71)
+                        Color.rgb(
+                                35,
+                                131,
+                                71
+                        )
                 );
 
                 binding.option1.setTypeface(
@@ -362,6 +659,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
                 break;
 
+
             case "b":
 
                 binding.option2.setBackgroundResource(
@@ -369,7 +667,11 @@ public class QuestionsActivity extends AppCompatActivity {
                 );
 
                 binding.option2.setTextColor(
-                        Color.rgb(35, 131, 71)
+                        Color.rgb(
+                                35,
+                                131,
+                                71
+                        )
                 );
 
                 binding.option2.setTypeface(
@@ -379,6 +681,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
                 break;
 
+
             case "c":
 
                 binding.option3.setBackgroundResource(
@@ -386,7 +689,11 @@ public class QuestionsActivity extends AppCompatActivity {
                 );
 
                 binding.option3.setTextColor(
-                        Color.rgb(35, 131, 71)
+                        Color.rgb(
+                                35,
+                                131,
+                                71
+                        )
                 );
 
                 binding.option3.setTypeface(
@@ -396,6 +703,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
                 break;
 
+
             case "d":
 
                 binding.option4.setBackgroundResource(
@@ -403,7 +711,11 @@ public class QuestionsActivity extends AppCompatActivity {
                 );
 
                 binding.option4.setTextColor(
-                        Color.rgb(35, 131, 71)
+                        Color.rgb(
+                                35,
+                                131,
+                                71
+                        )
                 );
 
                 binding.option4.setTypeface(
@@ -415,6 +727,7 @@ public class QuestionsActivity extends AppCompatActivity {
         }
     }
 
+
     // ============================================================
     // BUTTONS
     // ============================================================
@@ -425,112 +738,134 @@ public class QuestionsActivity extends AppCompatActivity {
         // BACK
         // ========================================================
 
-        binding.backButton.setOnClickListener(v ->
-                finish()
+        binding.backButton.setOnClickListener(
+                v -> finish()
         );
+
 
         // ========================================================
         // PREVIOUS
         // ========================================================
 
-        binding.previousButton.setOnClickListener(v -> {
+        binding.previousButton.setOnClickListener(
+                v -> {
 
-            if (currentPosition > 0) {
+                    if (currentPosition > 0) {
 
-                currentPosition--;
+                        currentPosition--;
 
-                showQuestion();
-            }
-        });
+                        showQuestion();
+                    }
+                }
+        );
+
 
         // ========================================================
         // NEXT
         // ========================================================
 
-        binding.nextButton.setOnClickListener(v -> {
+        binding.nextButton.setOnClickListener(
+                v -> {
 
-            if (currentPosition <
-                    questionList.size() - 1) {
+                    if (currentPosition <
+                            questionList.size() - 1) {
 
-                currentPosition++;
+                        currentPosition++;
 
-                showQuestion();
+                        showQuestion();
 
-            } else {
+                    } else {
+                        saveReadingStudyTime();
+                        saveReadingStudyTime();
 
-                Toast.makeText(
-                        this,
-                        "All questions completed",
-                        Toast.LENGTH_SHORT
-                ).show();
-            }
-        });
+                        Toast.makeText(
+                                this,
+                                "All questions completed",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
+                }
+        );
+
 
         // ========================================================
         // BOOKMARK
         // ========================================================
 
-        binding.bookmarkButton.setOnClickListener(v -> {
+        binding.bookmarkButton.setOnClickListener(
+                v -> {
+
+                    if (questionList == null ||
+                            questionList.isEmpty()) {
+
+                        return;
+                    }
 
 
-            if (questionList == null ||
-                    questionList.isEmpty()) {
-                return;
-            }
+                    Question question =
+                            questionList.get(
+                                    currentPosition
+                            );
 
-            Question question =
-                    questionList.get(currentPosition);
 
-            int questionId =
-                    question.getId();
+                    int questionId =
+                            question.getId();
 
-            boolean bookmarked =
-                    bookmarkRepository.toggleBookmark(
+
+                    boolean bookmarked =
+                            bookmarkRepository.toggleBookmark(
+                                    questionId
+                            );
+
+
+                    updateBookmarkButton(
                             questionId
                     );
 
-            updateBookmarkButton(
-                    questionId
-            );
 
-            if (bookmarked) {
+                    if (bookmarked) {
 
-                Toast.makeText(
-                        this,
-                        "প্রশ্নটি Bookmark করা হয়েছে",
-                        Toast.LENGTH_SHORT
-                ).show();
+                        Toast.makeText(
+                                this,
+                                "প্রশ্নটি Bookmark করা হয়েছে",
+                                Toast.LENGTH_SHORT
+                        ).show();
 
-            } else {
+                    } else {
 
-                Toast.makeText(
-                        this,
-                        "Bookmark থেকে সরানো হয়েছে",
-                        Toast.LENGTH_SHORT
-                ).show();
-            }
-
-        });
+                        Toast.makeText(
+                                this,
+                                "Bookmark থেকে সরানো হয়েছে",
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
+                }
+        );
     }
 
 
+    // ============================================================
+    // UPDATE BOOKMARK BUTTON
+    // ============================================================
 
     private void updateBookmarkButton(
             int questionId
     ) {
 
         if (bookmarkRepository == null) {
+
             return;
         }
+
 
         boolean bookmarked =
                 bookmarkRepository.isBookmarked(
                         questionId
                 );
 
+
         if (bookmarked) {
 
-            // Filled bookmark icon
             binding.bookmarkButton.setImageResource(
                     R.drawable.ic_bookmark_filled
             );
@@ -541,7 +876,6 @@ public class QuestionsActivity extends AppCompatActivity {
 
         } else {
 
-            // Outline bookmark icon
             binding.bookmarkButton.setImageResource(
                     R.drawable.ic_bookmark_border
             );
@@ -551,6 +885,7 @@ public class QuestionsActivity extends AppCompatActivity {
             );
         }
     }
+
 
     // ============================================================
     // NAVIGATION BUTTON STATE
@@ -564,14 +899,25 @@ public class QuestionsActivity extends AppCompatActivity {
 
         if (currentPosition == 0) {
 
-            binding.previousButton.setEnabled(false);
-            binding.previousButton.setAlpha(0.5f);
+            binding.previousButton.setEnabled(
+                    false
+            );
+
+            binding.previousButton.setAlpha(
+                    0.5f
+            );
 
         } else {
 
-            binding.previousButton.setEnabled(true);
-            binding.previousButton.setAlpha(1f);
+            binding.previousButton.setEnabled(
+                    true
+            );
+
+            binding.previousButton.setAlpha(
+                    1f
+            );
         }
+
 
         // ========================================================
         // NEXT
@@ -584,6 +930,7 @@ public class QuestionsActivity extends AppCompatActivity {
                     "Finish"
             );
 
+
         } else {
 
             binding.nextButton.setText(
@@ -591,6 +938,7 @@ public class QuestionsActivity extends AppCompatActivity {
             );
         }
     }
+
 
     // ============================================================
     // DESTROY
@@ -600,6 +948,13 @@ public class QuestionsActivity extends AppCompatActivity {
     protected void onDestroy() {
 
         super.onDestroy();
+        saveReadingStudyTime();
+        saveRecentLearning();
+
+
+        // ========================================================
+        // QUESTION REPOSITORY
+        // ========================================================
 
         if (questionRepository != null) {
 
@@ -608,12 +963,30 @@ public class QuestionsActivity extends AppCompatActivity {
             questionRepository = null;
         }
 
+
+        // ========================================================
+        // BOOKMARK REPOSITORY
+        // ========================================================
+
         if (bookmarkRepository != null) {
 
             bookmarkRepository.close();
 
             bookmarkRepository = null;
         }
+
+
+        // ========================================================
+        // READING PROGRESS REPOSITORY
+        // ========================================================
+
+        if (readingProgressRepository != null) {
+
+            readingProgressRepository.close();
+
+            readingProgressRepository = null;
+        }
+
 
         binding = null;
     }

@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.questionbank_practiceexam.data.local.repository.MockTestResultRepository;
 import com.example.questionbank_practiceexam.databinding.ActivityMockTestResultBinding;
 import com.example.questionbank_practiceexam.presentation.main.MainActivity;
 
@@ -87,6 +88,8 @@ public class MockTestResultActivity
         // ========================================================
 
         readResultData();
+
+        saveMockTestResult();
 
 
         // ========================================================
@@ -511,6 +514,73 @@ public class MockTestResultActivity
         startActivity(
                 intent
         );
+    }
+
+
+    private void saveMockTestResult() {
+
+        MockTestResultRepository repository =
+                new MockTestResultRepository(
+                        getApplicationContext()
+                );
+
+        int attemptedCount =
+                correctCount + wrongCount;
+
+        double negativeMark =
+                wrongCount * 0.25;
+
+        double successRate = 0;
+
+        if (totalQuestions > 0) {
+
+            successRate =
+                    (correctCount * 100.0)
+                            / totalQuestions;
+        }
+
+        String subjectIds = "";
+
+        if (selectedSubjectIds != null &&
+                selectedSubjectIds.length > 0) {
+
+            StringBuilder builder =
+                    new StringBuilder();
+
+            for (int i = 0;
+                 i < selectedSubjectIds.length;
+                 i++) {
+
+                if (i > 0) {
+                    builder.append(",");
+                }
+
+                builder.append(
+                        selectedSubjectIds[i]
+                );
+            }
+
+            subjectIds =
+                    builder.toString();
+        }
+
+        repository.saveResult(
+                unitId,
+                yearId,
+                unitName,
+                yearTitle,
+                totalQuestions,
+                correctCount,
+                wrongCount,
+                skippedCount,
+                attemptedCount,
+                totalMark,
+                negativeMark,
+                successRate,
+                subjectIds
+        );
+
+        repository.close();
     }
 
 

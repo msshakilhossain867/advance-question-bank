@@ -23,6 +23,7 @@ import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.data.local.db.DatabaseHelper;
 import com.example.questionbank_practiceexam.data.local.entity.Question;
 import com.example.questionbank_practiceexam.data.local.repository.QuestionRepository;
+import com.example.questionbank_practiceexam.data.local.repository.StudyTimeRepository;
 import com.example.questionbank_practiceexam.databinding.ActivityMockTestQuestionBinding;
 import com.example.questionbank_practiceexam.databinding.BottomSheetQuestionListBinding;
 import com.example.questionbank_practiceexam.databinding.ItemQuestionNumberBinding;
@@ -110,6 +111,7 @@ public class MockTestQuestionActivity
     private String yearTitle = "";
 
     private int[] selectedSubjectIds;
+    private long mockTestStartTime = 0L;
 
 
     // ============================================================
@@ -275,6 +277,9 @@ public class MockTestQuestionActivity
 
         database =
                 databaseHelper.openDatabase();
+
+        mockTestStartTime =
+                System.currentTimeMillis();
 
 
         // ========================================================
@@ -555,29 +560,6 @@ public class MockTestQuestionActivity
 
         showQuestion();
     }
-
-
-    // ============================================================
-    // TOP QUESTION NUMBERS
-    // ============================================================
-
-//    private void setupTopQuestionNumbers() {
-//
-//        binding.questionNumberRecycler
-//                .setLayoutManager(
-//                        new LinearLayoutManager(
-//                                this,
-//                                LinearLayoutManager.HORIZONTAL,
-//                                false
-//                        )
-//                );
-//
-//
-//        binding.questionNumberRecycler
-//                .setAdapter(
-//                        new TopQuestionNumberAdapter()
-//                );
-//    }
 
 
 
@@ -1795,93 +1777,7 @@ public class MockTestQuestionActivity
     // TOP QUESTION NUMBER ADAPTER
     // ============================================================
 
-   /* private class TopQuestionNumberAdapter
-            extends RecyclerView.Adapter<
-            TopQuestionNumberAdapter.ViewHolder> {
 
-
-        @NonNull
-        @Override
-        public ViewHolder onCreateViewHolder(
-                @NonNull ViewGroup parent,
-                int viewType
-        ) {
-
-            ItemQuestionNumberBinding itemBinding =
-                    ItemQuestionNumberBinding.inflate(
-                            LayoutInflater.from(
-                                    parent.getContext()
-                            ),
-                            parent,
-                            false
-                    );
-
-
-            return new ViewHolder(
-                    itemBinding
-            );
-        }
-
-
-        @Override
-        public void onBindViewHolder(
-                @NonNull ViewHolder holder,
-                int position
-        ) {
-
-            holder.binding.questionNumberText
-                    .setText(
-                            String.valueOf(
-                                    position + 1
-                            )
-                    );
-
-
-            applyQuestionNumberState(
-                    holder.binding,
-                    position
-            );
-
-
-            holder.binding.questionNumberCard
-                    .setOnClickListener(
-                            v -> {
-
-                                currentPosition =
-                                        position;
-
-                                showQuestion();
-                            }
-                    );
-        }
-
-
-        @Override
-        public int getItemCount() {
-
-            return questionList.size();
-        }
-
-
-        class ViewHolder
-                extends RecyclerView.ViewHolder {
-
-            ItemQuestionNumberBinding binding;
-
-
-            ViewHolder(
-                    ItemQuestionNumberBinding binding
-            ) {
-
-                super(
-                        binding.getRoot()
-                );
-
-                this.binding =
-                        binding;
-            }
-        }
-    }*/
 
 
     private class TopQuestionNumberAdapter
@@ -2749,11 +2645,10 @@ public class MockTestQuestionActivity
             submitMockTestFinal();
         }
     }
-
-
     private void submitMockTestFinal() {
 
         stopTestTimer();
+        saveMockTestStudyTime();
 
         int total = questionList.size();
 
@@ -3015,6 +2910,39 @@ public class MockTestQuestionActivity
 
         finish();
     }
+
+
+    private void saveMockTestStudyTime() {
+
+        if (mockTestStartTime <= 0) {
+            return;
+        }
+
+        long completedAt =
+                System.currentTimeMillis();
+
+        long durationSeconds =
+                (completedAt - mockTestStartTime)
+                        / 1000;
+
+        StudyTimeRepository repository =
+                new StudyTimeRepository(this);
+
+        repository.saveStudySession(
+                "MOCK_TEST",
+                0,
+                durationSeconds,
+                mockTestStartTime,
+                completedAt
+        );
+
+        repository.close();
+
+        mockTestStartTime = 0L;
+    }
+
+
+
 
   /*  private void submitMockTestFinal() {
 
@@ -3385,6 +3313,7 @@ public class MockTestQuestionActivity
     protected void onDestroy() {
 
         stopTestTimer();
+        saveMockTestStudyTime();
 
 
         if (questionRepository != null) {

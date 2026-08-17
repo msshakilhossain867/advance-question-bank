@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.questionbank_practiceexam.presentation.report.ProgressFragment;
 import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.data.local.db.DatabaseHelper;
 import com.example.questionbank_practiceexam.databinding.ActivityMainBinding;
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new HomeFragment();
                 } else if (itemId == R.id.nav_graph) {
                    // selectedFragment = new GraphFragment();
-                    selectedFragment = new HomeFragment();
+                    selectedFragment = new ProgressFragment();
                 } else if (itemId == R.id.nav_wronglist) {
                    // selectedFragment = new WronglistFragment();
                     selectedFragment = new HomeFragment();

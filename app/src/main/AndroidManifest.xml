@@ -90,6 +90,10 @@
             android:name=".presentation.bookmarks.BookmarkActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.report.ProgressReportActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

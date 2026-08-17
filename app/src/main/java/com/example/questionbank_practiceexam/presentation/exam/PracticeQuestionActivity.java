@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.data.local.entity.Question;
 import com.example.questionbank_practiceexam.data.local.repository.QuestionRepository;
+import com.example.questionbank_practiceexam.data.local.repository.StudyTimeRepository;
 import com.example.questionbank_practiceexam.databinding.ActivityPracticeQuestionBinding;
 import com.example.questionbank_practiceexam.databinding.BottomSheetReportBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -133,6 +134,8 @@ public class PracticeQuestionActivity extends AppCompatActivity {
     private static final String REPORT_EMAIL =
             "yourmail@gmail.com";
 
+    private long practiceStartTime = 0L;
+
 
     // ============================================================
     // ON CREATE
@@ -188,6 +191,9 @@ public class PracticeQuestionActivity extends AppCompatActivity {
                 getIntent().getIntArrayExtra(
                         "subject_ids"
                 );
+
+        practiceStartTime =
+                System.currentTimeMillis();
 
 
         // ========================================================
@@ -386,6 +392,36 @@ public class PracticeQuestionActivity extends AppCompatActivity {
 
 
         showQuestion();
+    }
+
+
+    private void savePracticeStudyTime() {
+
+        if (practiceStartTime <= 0) {
+            return;
+        }
+
+        long completedAt =
+                System.currentTimeMillis();
+
+        long durationSeconds =
+                (completedAt - practiceStartTime)
+                        / 1000;
+
+        StudyTimeRepository repository =
+                new StudyTimeRepository(this);
+
+        repository.saveStudySession(
+                "PRACTICE",
+                0,
+                durationSeconds,
+                practiceStartTime,
+                completedAt
+        );
+
+        repository.close();
+
+        practiceStartTime = 0L;
     }
 
 
@@ -1306,6 +1342,7 @@ public class PracticeQuestionActivity extends AppCompatActivity {
     private void finishPractice() {
 
         stopPracticeTimer();
+        savePracticeStudyTime();
 
 
         int totalQuestions =
@@ -2085,6 +2122,7 @@ public class PracticeQuestionActivity extends AppCompatActivity {
     protected void onDestroy() {
 
         stopPracticeTimer();
+        savePracticeStudyTime();
 
 
         super.onDestroy();

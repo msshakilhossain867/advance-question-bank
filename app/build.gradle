@@ -56,6 +56,7 @@ android {
                     'src/main/res/layouts/questions',
                     'src/main/res/layouts/unlist',
                     'src/main/res/layouts/bookmarks',
+                    'src/main/res/layouts/report',
 
 
                     // Drawable ফোল্ডার লিংক:
@@ -71,7 +72,8 @@ android {
                     'src/main/res/drawables/subjects',
                     'src/main/res/drawables/questions',
                     'src/main/res/drawables/unlist',
-                    'src/main/res/drawables/bookmarks'
+                    'src/main/res/drawables/bookmarks',
+                    'src/main/res/drawables/report'
             ]
         }
     }
@@ -88,4 +90,6 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
 }

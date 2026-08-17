@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.questionbank_practiceexam.R;
+import com.example.questionbank_practiceexam.data.local.repository.PracticeResultRepository;
 import com.example.questionbank_practiceexam.databinding.ActivityPracticeResultBinding;
 import com.example.questionbank_practiceexam.presentation.adapters.SubjectPerformanceAdapter;
 import com.example.questionbank_practiceexam.presentation.main.MainActivity;
@@ -67,6 +68,8 @@ public class PracticeResultActivity extends AppCompatActivity {
         // ========================================================
 
         getResultData();
+
+        savePracticeResult();
 
         // ========================================================
         // TOOLBAR
@@ -197,6 +200,68 @@ public class PracticeResultActivity extends AppCompatActivity {
                             + wrongCount
                             + skippedCount;
         }
+    }
+
+
+
+    private void savePracticeResult() {
+
+        PracticeResultRepository repository =
+                new PracticeResultRepository(
+                        getApplicationContext()
+                );
+
+        String subjectData = "";
+
+        try {
+
+            org.json.JSONArray array =
+                    new org.json.JSONArray();
+
+            for (int i = 0; i < subjectNames.size(); i++) {
+
+                org.json.JSONObject object =
+                        new org.json.JSONObject();
+
+                object.put(
+                        "subject_name",
+                        subjectNames.get(i)
+                );
+
+                object.put(
+                        "correct",
+                        i < subjectCorrect.size()
+                                ? subjectCorrect.get(i)
+                                : 0
+                );
+
+                object.put(
+                        "total",
+                        i < subjectTotal.size()
+                                ? subjectTotal.get(i)
+                                : 0
+                );
+
+                array.put(object);
+            }
+
+            subjectData =
+                    array.toString();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        repository.saveResult(
+                totalQuestions,
+                correctCount,
+                wrongCount,
+                skippedCount,
+                subjectData
+        );
+
+        repository.close();
     }
 
 
