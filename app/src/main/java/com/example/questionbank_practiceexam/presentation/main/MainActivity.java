@@ -1,5 +1,7 @@
 package com.example.questionbank_practiceexam.presentation.main;
 
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -11,6 +13,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.questionbank_practiceexam.Activity.DailyMissionFragment;
+import com.example.questionbank_practiceexam.Activity.SettingsFragment;
+import com.example.questionbank_practiceexam.domain.DailyMissionNotificationScheduler;
 import com.example.questionbank_practiceexam.presentation.report.ProgressFragment;
 import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.data.local.db.DatabaseHelper;
@@ -56,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             );
         }
 
+
         // Navigation Selection Listener
         binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -70,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new ProgressFragment();
                 } else if (itemId == R.id.nav_wronglist) {
                    // selectedFragment = new WronglistFragment();
-                    selectedFragment = new HomeFragment();
+                    selectedFragment = new DailyMissionFragment();
                 } else if (itemId == R.id.nav_setting) {
                    // selectedFragment = new SettingFragment();
-                    selectedFragment = new HomeFragment();
+                    selectedFragment = new SettingsFragment();
                 }
 
                 if (selectedFragment != null) {

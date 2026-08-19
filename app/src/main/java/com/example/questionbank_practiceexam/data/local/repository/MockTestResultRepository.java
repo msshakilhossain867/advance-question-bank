@@ -941,6 +941,43 @@ public class MockTestResultRepository {
                 )
         );
     }
+    public int getTodayCorrect() {
+
+        Cursor cursor = null;
+
+        try {
+
+            cursor = database.rawQuery(
+
+                    "SELECT COALESCE(SUM(correct_count), 0) " +
+                            "FROM mock_test_results " +
+                            "WHERE user_id = ? " +
+                            "AND date(completed_at / 1000, " +
+                            "'unixepoch', 'localtime') = date('now', 'localtime')",
+
+                    new String[]{
+                            USER_ID
+                    }
+            );
+
+            if (cursor.moveToFirst()) {
+
+                return cursor.getInt(0);
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        } finally {
+
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        return 0;
+    }
 
 
     // ============================================================

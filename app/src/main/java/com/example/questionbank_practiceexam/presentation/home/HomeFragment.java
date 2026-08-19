@@ -1,15 +1,28 @@
 package com.example.questionbank_practiceexam.presentation.home;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.questionbank_practiceexam.R;
+import com.example.questionbank_practiceexam.data.local.entity.NotificationPrefs;
+import com.example.questionbank_practiceexam.data.local.repository.DailyMissionRepository;
+import com.example.questionbank_practiceexam.domain.DailyMissionNotificationScheduler;
+import com.example.questionbank_practiceexam.presentation.adapters.NotificationAdapter;
 import com.example.questionbank_practiceexam.presentation.report.ProgressReportActivity;
 import com.example.questionbank_practiceexam.data.local.entity.University;
 import com.example.questionbank_practiceexam.data.local.repository.BookmarkRepository;
@@ -25,6 +38,7 @@ import com.example.questionbank_practiceexam.presentation.questionview.Questions
 import com.example.questionbank_practiceexam.presentation.unlist.UniversityListActivity;
 import com.example.questionbank_practiceexam.presentation.years.YearsActivity;
 
+import java.util.List;
 import java.util.Locale;
 
 
@@ -33,6 +47,8 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     private UniversityRepository universityRepository;
+    private DailyMissionRepository dailyMissionRepository;
+    private static final int NOTIFICATION_PERMISSION_REQUEST_CODE = 2001;
 
 
     // ============================================================
@@ -79,6 +95,27 @@ public class HomeFragment extends Fragment {
         // --------------------------------------------------------
         // Load Home Data
         // --------------------------------------------------------
+        dailyMissionRepository =
+                new DailyMissionRepository(
+                        requireContext()
+                );
+
+
+        // ============================================================
+        // DAILY MISSION NOTIFICATION
+        // ============================================================
+
+
+
+
+        // ============================================================
+        // NOTIFICATION PERMISSION - ANDROID 13+
+        // ============================================================
+
+
+setupDailyMissionNotification() ;
+
+        updateDailyMissionStatus();
 
         loadUniversity();
         loadTodayProgress();
@@ -94,6 +131,7 @@ public class HomeFragment extends Fragment {
         // --------------------------------------------------------
 
         setupClickListeners();
+        updateNotificationDot();
     }
 
 
@@ -229,6 +267,52 @@ public class HomeFragment extends Fragment {
     }
 
 
+
+
+
+
+    private void setupDailyMissionNotification() {
+
+        // ============================================================
+        // ANDROID 13+
+        // ============================================================
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+
+            if (
+                    requireContext().checkSelfPermission(
+                            android.Manifest.permission.POST_NOTIFICATIONS
+                    )
+                            != PackageManager.PERMISSION_GRANTED
+            ) {
+
+                requestPermissions(
+                        new String[]{
+                                android.Manifest.permission.POST_NOTIFICATIONS
+                        },
+                        NOTIFICATION_PERMISSION_REQUEST_CODE
+                );
+
+                // Permission না পাওয়া পর্যন্ত
+                // scheduler চালাবো না
+
+                return;
+            }
+        }
+
+
+        // ============================================================
+        // ANDROID 12 OR BELOW
+        // OR PERMISSION ALREADY GRANTED
+        // ============================================================
+
+        DailyMissionNotificationScheduler.schedule(
+                requireContext()
+                        .getApplicationContext()
+        );
+    }
+
+
     // ============================================================
     // LOAD TARGET UNIVERSITY
     // ============================================================
@@ -308,6 +392,96 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
     }
+    private void updateDailyMissionStatus() {
+
+        if (binding == null) {
+            return;
+        }
+
+
+        if (dailyMissionRepository == null) {
+
+            dailyMissionRepository =
+                    new DailyMissionRepository(
+                            requireContext()
+                    );
+        }
+
+
+        // ============================================================
+        // GET TODAY'S MISSION DATA
+        // ============================================================
+
+        int completed =
+                dailyMissionRepository
+                        .getCompletedMissionCount();
+
+
+        int total =
+                dailyMissionRepository
+                        .getTotalMissionCount();
+
+
+        // ============================================================
+        // CALCULATE PERCENTAGE
+        // ============================================================
+
+        int percentage = 0;
+
+
+        if (total > 0) {
+
+            percentage =
+                    (completed * 100) / total;
+        }
+
+
+        // ============================================================
+        // UPDATE UI
+        // ============================================================
+
+        binding.dailyMissionProgressBar.setProgress(
+                percentage
+        );
+
+
+        binding.dailyMissionPercentText.setText(
+                percentage + "%"
+        );
+
+
+        binding.dailyMissionProgressText.setText(
+                completed
+                        + " of "
+                        + total
+                        + " missions completed"
+        );
+
+
+        // ============================================================
+        // ALL COMPLETED
+        // ============================================================
+
+        if (
+                total > 0
+                        && completed == total
+        ) {
+
+            binding.dailyMissionCompletedText.setVisibility(
+                    View.VISIBLE
+            );
+
+            binding.dailyMissionProgressText.setText(
+                    "Great job! Today's goal is complete."
+            );
+
+        } else {
+
+            binding.dailyMissionCompletedText.setVisibility(
+                    View.GONE
+            );
+        }
+    }
 
 
     // ============================================================
@@ -339,6 +513,8 @@ public class HomeFragment extends Fragment {
              * পরে NotificationActivity / Dialog
              * এখানে connect করতে পারবে।
              */
+
+            showNotificationDialog();
         });
 
 
@@ -478,6 +654,211 @@ public class HomeFragment extends Fragment {
              * করবে।
              */
         });
+    }
+
+
+    private void showNotificationDialog() {
+
+        Dialog dialog =
+                new Dialog(requireContext());
+
+
+        dialog.requestWindowFeature(
+                Window.FEATURE_NO_TITLE
+        );
+
+
+        dialog.setContentView(
+                R.layout.dialog_notifications
+        );
+
+
+        if (dialog.getWindow() != null) {
+
+            dialog.getWindow()
+                    .setBackgroundDrawableResource(
+                            android.R.color.transparent
+                    );
+
+            dialog.getWindow()
+                    .setLayout(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT
+                    );
+        }
+
+
+        RecyclerView recyclerView =
+                dialog.findViewById(
+                        R.id.notificationRecyclerView
+                );
+
+
+        TextView emptyText =
+                dialog.findViewById(
+                        R.id.emptyNotificationText
+                );
+
+
+        TextView markAllRead =
+                dialog.findViewById(
+                        R.id.markAllReadText
+                );
+
+
+        NotificationPrefs prefs =
+                new NotificationPrefs(
+                        requireContext()
+                );
+
+
+        List<NotificationPrefs.NotificationItem> list =
+                prefs.getNotifications();
+
+
+        // ============================================================
+        // EMPTY
+        // ============================================================
+
+        if (list.isEmpty()) {
+
+            emptyText.setVisibility(
+                    View.VISIBLE
+            );
+
+            recyclerView.setVisibility(
+                    View.GONE
+            );
+
+        } else {
+
+            emptyText.setVisibility(
+                    View.GONE
+            );
+
+            recyclerView.setVisibility(
+                    View.VISIBLE
+            );
+        }
+
+
+        // ============================================================
+        // RECYCLER
+        // ============================================================
+
+        NotificationAdapter adapter =
+                new NotificationAdapter(
+                        list,
+                        notificationId -> {
+
+                            prefs.markAsRead(
+                                    notificationId
+                            );
+
+
+                            // Reload dialog
+                            List<NotificationPrefs.NotificationItem>
+                                    updatedList =
+                                    prefs.getNotifications();
+
+
+                            NotificationAdapter newAdapter =
+                                    new NotificationAdapter(
+                                            updatedList,
+                                            id -> {
+
+                                                prefs.markAsRead(
+                                                        id
+                                                );
+
+                                                showNotificationDialog();
+
+                                            }
+                                    );
+
+
+                            recyclerView.setAdapter(
+                                    newAdapter
+                            );
+
+
+                            updateNotificationDot();
+                        }
+                );
+
+
+        recyclerView.setLayoutManager(
+                new LinearLayoutManager(
+                        requireContext()
+                )
+        );
+
+
+        recyclerView.setAdapter(
+                adapter
+        );
+
+
+        // ============================================================
+        // MARK ALL READ
+        // ============================================================
+
+        markAllRead.setOnClickListener(v -> {
+
+            prefs.markAllAsRead();
+
+
+            dialog.dismiss();
+
+
+            updateNotificationDot();
+        });
+
+
+        dialog.setOnDismissListener(
+                d -> updateNotificationDot()
+        );
+
+
+        dialog.show();
+
+
+        if (dialog.getWindow() != null) {
+
+            dialog.getWindow()
+                    .setLayout(
+                            (int) (
+                                    getResources()
+                                            .getDisplayMetrics()
+                                            .widthPixels
+                                            * 0.94
+                            ),
+                            ViewGroup.LayoutParams.WRAP_CONTENT
+                    );
+        }
+    }
+
+
+    private void updateNotificationDot() {
+
+        NotificationPrefs prefs =
+                new NotificationPrefs(
+                        requireContext()
+                );
+
+
+        if (prefs.hasUnreadNotifications()) {
+
+            binding.notificationUnreadDot.setVisibility(
+                    View.VISIBLE
+            );
+
+        } else {
+
+            binding.notificationUnreadDot.setVisibility(
+                    View.GONE
+            );
+        }
     }
 
 
@@ -783,6 +1164,41 @@ public class HomeFragment extends Fragment {
         repository.close();
     }
 
+    @Override
+    public void onRequestPermissionsResult(
+            int requestCode,
+            @NonNull String[] permissions,
+            @NonNull int[] grantResults
+    ) {
+        super.onRequestPermissionsResult(
+                requestCode,
+                permissions,
+                grantResults
+        );
+
+        if (
+                requestCode ==
+                        NOTIFICATION_PERMISSION_REQUEST_CODE
+        ) {
+
+            if (
+                    grantResults.length > 0
+                            &&
+                            grantResults[0] ==
+                                    PackageManager.PERMISSION_GRANTED
+            ) {
+
+                // Permission পাওয়া গেছে
+                // এখন scheduler চালু হবে
+
+                DailyMissionNotificationScheduler.schedule(
+                        requireContext()
+                                .getApplicationContext()
+                );
+            }
+        }
+    }
+
 
     // ============================================================
     // ON RESUME
@@ -806,6 +1222,10 @@ public class HomeFragment extends Fragment {
             practiceRecent();
             todayBookmarkList();
             recentMockTest();
+            updateNotificationDot();
+             loadRecentLearning();
+
+            updateDailyMissionStatus();
         }
     }
 
@@ -825,6 +1245,13 @@ public class HomeFragment extends Fragment {
             universityRepository.close();
 
             universityRepository = null;
+        }
+
+        if (dailyMissionRepository != null) {
+
+            dailyMissionRepository.close();
+
+            dailyMissionRepository = null;
         }
 
 

@@ -14,7 +14,7 @@
     <item
         android:id="@+id/nav_wronglist"
         android:icon="@drawable/ic_wrong_list"
-        android:title="Wronglist" />
+        android:title="Mission" />
 
     <item
         android:id="@+id/nav_setting"
