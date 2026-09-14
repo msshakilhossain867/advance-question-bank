@@ -1,4 +1,4 @@
-package com.example.questionbank_practiceexam.helpers;
+ package com.example.questionbank_practiceexam.helpers;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -97,6 +97,7 @@ public class LatexRenderer {
                 WebView.OVER_SCROLL_NEVER
         );
 
+        // Initially invisible to avoid showing incomplete MathJax.
         webView.setAlpha(0.01f);
 
 
@@ -104,14 +105,17 @@ public class LatexRenderer {
         // TEXT STYLE
         // ========================================================
 
-        String safeColor = textColor;
+        String safeColor =
+                textColor == null
+                        ? "#222222"
+                        : textColor;
 
         String fontWeight =
                 bold ? "700" : "400";
 
 
         // ========================================================
-        // OPTION STYLE
+        // CONTENT STYLE
         // ========================================================
 
         String contentStyle;
@@ -119,20 +123,29 @@ public class LatexRenderer {
         if (optionStyle) {
 
             contentStyle =
-                    "display:flex;" +
-                            "align-items:center;" +
-                            "min-height:48px;" +
+                    "display:block;" +
                             "width:100%;" +
+                            "min-height:48px;" +
                             "box-sizing:border-box;" +
-                            "padding:0 16px;" +
+                            "padding:4px 12px;" +
                             "font-family:Arial,sans-serif;" +
-                            "line-height:1.4;";
+                            "line-height:1.45;" +
+                            "overflow:visible;" +
+                            "word-wrap:break-word;" +
+                            "overflow-wrap:anywhere;" +
+                            "white-space:normal;";
 
         } else {
 
             contentStyle =
-                    "width:100%;" +
-                            "box-sizing:border-box;";
+                    "display:block;" +
+                            "width:100%;" +
+                            "box-sizing:border-box;" +
+                            "padding:0;" +
+                            "overflow:visible;" +
+                            "word-wrap:break-word;" +
+                            "overflow-wrap:anywhere;" +
+                            "white-space:normal;";
         }
 
 
@@ -244,22 +257,26 @@ public class LatexRenderer {
 
                         "<style>" +
 
-                        "html,body{" +
+                        "*{" +
+                        "box-sizing:border-box;" +
+                        "}" +
 
+
+                        "html{" +
                         "margin:0;" +
-
                         "padding:0;" +
-
                         "width:100%;" +
-
                         "background:transparent;" +
-
-                        "overflow:hidden;" +
-
+                        "overflow:visible;" +
                         "}" +
 
 
                         "body{" +
+                        "margin:0;" +
+                        "padding:0;" +
+                        "width:100%;" +
+                        "background:transparent;" +
+                        "overflow:visible;" +
 
                         "font-family:sans-serif;" +
 
@@ -279,8 +296,9 @@ public class LatexRenderer {
 
                         "word-wrap:break-word;" +
 
-                        "overflow-wrap:break-word;" +
+                        "overflow-wrap:anywhere;" +
 
+                        "white-space:normal;" +
                         "}" +
 
 
@@ -291,9 +309,28 @@ public class LatexRenderer {
                         "}" +
 
 
+                        // =================================================
+                        // MATHJAX DISPLAY
+                        // =================================================
+
                         ".MathJax_Display{" +
 
-                        "margin:4px 0 !important;" +
+                        "display:block !important;" +
+
+                        "margin:0 !important;" +
+
+                        "padding:0 !important;" +
+
+                        "max-width:100% !important;" +
+
+                        "overflow:visible !important;" +
+
+                        "}" +
+
+
+                        ".MathJax{" +
+
+                        "max-width:100%;" +
 
                         "}" +
 
@@ -322,10 +359,17 @@ public class LatexRenderer {
 
                         "<script>" +
 
+
+                        // =================================================
+                        // LOAD CONTENT
+                        // =================================================
+
                         "function loadContent(){" +
 
                         "var element=" +
                         "document.getElementById('content');" +
+
+                        "if(!element) return;" +
 
                         "element.innerHTML=" +
                         jsText +
@@ -346,6 +390,12 @@ public class LatexRenderer {
 
                         "sendHeight();" +
 
+                        "setTimeout(sendHeight,150);" +
+
+                        "setTimeout(sendHeight,400);" +
+
+                        "setTimeout(sendHeight,800);" +
+
                         "}" +
 
                         "]);" +
@@ -359,33 +409,66 @@ public class LatexRenderer {
                         "}" +
 
 
+                        // =================================================
+                        // EXACT CONTENT HEIGHT
+                        // =================================================
+
                         "function sendHeight(){" +
 
                         "setTimeout(function(){" +
 
-                        "var height=" +
+                        "var element=" +
+                        "document.getElementById('content');" +
 
+                        "if(!element) return;" +
+
+
+                        "var contentHeight=" +
+                        "element.scrollHeight;" +
+
+                        "var bodyHeight=" +
                         "document.body.scrollHeight;" +
 
-                        "if(height<20){" +
+                        "var htmlHeight=" +
+                        "document.documentElement.scrollHeight;" +
 
-                        "height=20;" +
+
+                        "var height=Math.ceil(Math.max(" +
+
+                        "contentHeight," +
+
+                        "bodyHeight," +
+
+                        "htmlHeight" +
+
+                        "));" +
+
+
+                        "if(height<1){" +
+
+                        "height=1;" +
 
                         "}" +
+
 
                         "window.localInterface." +
                         "onRenderComplete(height);" +
 
-                        "},100);" +
+                        "},50);" +
 
                         "}" +
 
+
+                        // =================================================
+                        // PAGE LOAD
+                        // =================================================
 
                         "window.onload=function(){" +
 
                         "loadContent();" +
 
                         "};" +
+
 
                         "</script>" +
 
@@ -414,25 +497,30 @@ public class LatexRenderer {
 
                             if (params != null) {
 
-                                int density =
-                                        (int) webView.getResources()
+                                float density =
+                                        webView.getResources()
                                                 .getDisplayMetrics()
                                                 .density;
 
-                                int maxHeight =
-                                        (int) (
-                                                1000 * density
-                                        );
+
+                                // =================================================
+                                // CSS PX -> ANDROID PX
+                                // =================================================
 
                                 int newHeight =
-                                        (int) (
+                                        (int) Math.ceil(
                                                 height * density
                                         );
+
+
+                                // =================================================
+                                // OPTION MINIMUM HEIGHT
+                                // =================================================
 
                                 if (optionStyle) {
 
                                     int minimumHeight =
-                                            (int) (
+                                            (int) Math.ceil(
                                                     48 * density
                                             );
 
@@ -443,11 +531,10 @@ public class LatexRenderer {
                                             );
                                 }
 
-                                newHeight =
-                                        Math.min(
-                                                newHeight,
-                                                maxHeight
-                                        );
+
+                                // =================================================
+                                // NO EXTRA SPACE
+                                // =================================================
 
                                 params.height =
                                         newHeight;
@@ -455,8 +542,14 @@ public class LatexRenderer {
                                 webView.setLayoutParams(
                                         params
                                 );
+
+                                webView.requestLayout();
                             }
 
+
+                            // =================================================
+                            // SHOW WEBVIEW
+                            // =================================================
 
                             if (webView.getAlpha() < 1f) {
 
@@ -492,6 +585,62 @@ public class LatexRenderer {
                                 view,
                                 url
                         );
+
+
+                        // =================================================
+                        // FIRST HEIGHT CHECK
+                        // =================================================
+
+                        view.postDelayed(
+                                () -> {
+
+                                    view.evaluateJavascript(
+                                            "sendHeight();",
+                                            null
+                                    );
+
+                                },
+                                150
+                        );
+
+
+                        // =================================================
+                        // SECOND HEIGHT CHECK
+                        // =================================================
+
+                        view.postDelayed(
+                                () -> {
+
+                                    view.evaluateJavascript(
+                                            "sendHeight();",
+                                            null
+                                    );
+
+                                },
+                                500
+                        );
+
+
+                        // =================================================
+                        // FINAL HEIGHT CHECK
+                        // =================================================
+
+                        view.postDelayed(
+                                () -> {
+
+                                    view.evaluateJavascript(
+                                            "sendHeight();",
+                                            null
+                                    );
+
+                                },
+                                1000
+                        );
+
+
+                        // =================================================
+                        // SHOW WEBVIEW
+                        // =================================================
 
                         view.postDelayed(
                                 () -> {
@@ -625,33 +774,100 @@ public class LatexRenderer {
         }
 
 
+        String safeColor =
+                color == null
+                        ? "#222222"
+                        : color;
+
+
         String weight =
                 bold ? "700" : "400";
 
 
         String script =
-                "javascript:(function(){" +
 
-                        "var e=document.getElementById('content');" +
+                "(function(){" +
 
-                        "if(e){" +
+                        "var e=" +
+                        "document.getElementById('content');" +
+
+                        "if(!e) return 1;" +
 
                         "e.style.color='" +
-                        color +
+                        safeColor +
                         "';" +
 
                         "e.style.fontWeight='" +
                         weight +
                         "';" +
 
-                        "}" +
+
+                        "var h=Math.max(" +
+
+                        "e.scrollHeight," +
+
+                        "document.body.scrollHeight," +
+
+                        "document.documentElement.scrollHeight" +
+
+                        ");" +
+
+                        "return Math.ceil(h);" +
 
                         "})()";
 
 
         webView.evaluateJavascript(
                 script,
-                null
+                value -> {
+
+                    try {
+
+                        String cleanValue =
+                                value.replace(
+                                        "\"",
+                                        ""
+                                );
+
+
+                        int cssHeight =
+                                Integer.parseInt(
+                                        cleanValue
+                                );
+
+
+                        float density =
+                                webView.getResources()
+                                        .getDisplayMetrics()
+                                        .density;
+
+
+                        int height =
+                                (int) Math.ceil(
+                                        cssHeight * density
+                                );
+
+
+                        ViewGroup.LayoutParams params =
+                                webView.getLayoutParams();
+
+
+                        if (params != null) {
+
+                            params.height =
+                                    height;
+
+                            webView.setLayoutParams(
+                                    params
+                            );
+
+                            webView.requestLayout();
+                        }
+
+                    } catch (Exception ignored) {
+
+                    }
+                }
         );
     }
 
@@ -720,9 +936,12 @@ public class LatexRenderer {
             return;
         }
 
+
         webView.stopLoading();
 
-        webView.loadUrl("about:blank");
+        webView.loadUrl(
+                "about:blank"
+        );
 
         webView.clearHistory();
 
@@ -731,3 +950,4 @@ public class LatexRenderer {
         webView.destroy();
     }
 }
+
