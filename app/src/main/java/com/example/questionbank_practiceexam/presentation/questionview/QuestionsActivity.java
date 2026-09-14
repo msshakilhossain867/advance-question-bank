@@ -1,8 +1,8 @@
 package com.example.questionbank_practiceexam.presentation.questionview;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -17,27 +17,39 @@ import com.example.questionbank_practiceexam.data.local.repository.ReadingProgre
 import com.example.questionbank_practiceexam.data.local.repository.RecentLearningRepository;
 import com.example.questionbank_practiceexam.data.local.repository.StudyTimeRepository;
 import com.example.questionbank_practiceexam.databinding.ActivityQuestionsBinding;
+import com.example.questionbank_practiceexam.helpers.LatexRenderer;
 
 import org.json.JSONObject;
 
 import java.util.List;
 
+
 public class QuestionsActivity extends AppCompatActivity {
+
+
+    // ============================================================
+    // VIEW BINDING
+    // ============================================================
 
     private ActivityQuestionsBinding binding;
 
+
+    // ============================================================
+    // REPOSITORIES
+    // ============================================================
+
     private QuestionRepository questionRepository;
 
-
     private BookmarkRepository bookmarkRepository;
-    private RecentLearningRepository recentLearningRepository;
-
-    // ============================================================
-    // READING PROGRESS
-    // ============================================================
 
     private ReadingProgressRepository readingProgressRepository;
 
+    private RecentLearningRepository recentLearningRepository;
+
+
+    // ============================================================
+    // QUESTIONS
+    // ============================================================
 
     private List<Question> questionList;
 
@@ -46,6 +58,12 @@ public class QuestionsActivity extends AppCompatActivity {
     private int subjectId;
 
     private String subjectName;
+
+
+    // ============================================================
+    // READING TIME
+    // ============================================================
+
     private long readingStartTime = 0L;
 
 
@@ -54,9 +72,14 @@ public class QuestionsActivity extends AppCompatActivity {
     // ============================================================
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(
+            Bundle savedInstanceState
+    ) {
 
-        super.onCreate(savedInstanceState);
+        super.onCreate(
+                savedInstanceState
+        );
+
 
         EdgeToEdge.enable(this);
 
@@ -69,6 +92,7 @@ public class QuestionsActivity extends AppCompatActivity {
                 ActivityQuestionsBinding.inflate(
                         getLayoutInflater()
                 );
+
 
         setContentView(
                 binding.getRoot()
@@ -116,9 +140,6 @@ public class QuestionsActivity extends AppCompatActivity {
                 );
 
 
-
-
-
         // ========================================================
         // BOOKMARK REPOSITORY
         // ========================================================
@@ -130,7 +151,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
 
         // ========================================================
-        // READING PROGRESS REPOSITORY
+        // READING PROGRESS
         // ========================================================
 
         readingProgressRepository =
@@ -138,14 +159,19 @@ public class QuestionsActivity extends AppCompatActivity {
                         getApplicationContext()
                 );
 
+
+        // ========================================================
+        // RECENT LEARNING
+        // ========================================================
+
         recentLearningRepository =
-                new RecentLearningRepository(this);
+                new RecentLearningRepository(
+                        this
+                );
+
 
         readingStartTime =
                 System.currentTimeMillis();
-
-
-
 
 
         // ========================================================
@@ -162,20 +188,24 @@ public class QuestionsActivity extends AppCompatActivity {
         setupButtons();
 
 
-        getOnBackPressedDispatcher().addCallback(
-                this,
-                new OnBackPressedCallback(true) {
+        // ========================================================
+        // BACK BUTTON
+        // ========================================================
 
-                    @Override
-                    public void handleOnBackPressed() {
+        getOnBackPressedDispatcher()
+                .addCallback(
+                        this,
+                        new OnBackPressedCallback(true) {
 
-                        // এখানে তোমার back logic
-                        saveRecentLearning();
+                            @Override
+                            public void handleOnBackPressed() {
 
-                        finish();
-                    }
-                }
-        );
+                                saveRecentLearning();
+
+                                finish();
+                            }
+                        }
+                );
     }
 
 
@@ -186,13 +216,16 @@ public class QuestionsActivity extends AppCompatActivity {
     private void loadQuestions() {
 
         questionList =
-                questionRepository.getQuestionsBySubject(
-                        subjectId
-                );
+                questionRepository
+                        .getQuestionsBySubject(
+                                subjectId
+                        );
 
 
-        if (questionList == null ||
-                questionList.isEmpty()) {
+        if (
+                questionList == null ||
+                        questionList.isEmpty()
+        ) {
 
             Toast.makeText(
                     this,
@@ -205,7 +238,8 @@ public class QuestionsActivity extends AppCompatActivity {
             return;
         }
 
-// ========================================================
+
+        // ========================================================
         // RESUME POSITION
         // ========================================================
 
@@ -216,9 +250,10 @@ public class QuestionsActivity extends AppCompatActivity {
                 );
 
 
-        // Position valid কিনা check
-        if (savedPosition >= 0 &&
-                savedPosition < questionList.size()) {
+        if (
+                savedPosition >= 0 &&
+                        savedPosition < questionList.size()
+        ) {
 
             currentPosition =
                     savedPosition;
@@ -232,26 +267,42 @@ public class QuestionsActivity extends AppCompatActivity {
         showQuestion();
     }
 
+
+    // ============================================================
+    // SAVE READING STUDY TIME
+    // ============================================================
+
     private void saveReadingStudyTime() {
 
         if (readingStartTime <= 0) {
             return;
         }
 
+
         long completedAt =
                 System.currentTimeMillis();
 
+
         long durationSeconds =
-                (completedAt - readingStartTime)
-                        / 1000;
+                (
+                        completedAt -
+                                readingStartTime
+                ) / 1000;
+
 
         if (durationSeconds <= 0) {
+
             readingStartTime = 0L;
+
             return;
         }
 
+
         StudyTimeRepository repository =
-                new StudyTimeRepository(this);
+                new StudyTimeRepository(
+                        this
+                );
+
 
         repository.saveStudySession(
                 "READING",
@@ -261,20 +312,25 @@ public class QuestionsActivity extends AppCompatActivity {
                 completedAt
         );
 
+
         repository.close();
+
 
         readingStartTime = 0L;
     }
 
+
     // ============================================================
-// SAVE RECENT LEARNING
-// ============================================================
+    // SAVE RECENT LEARNING
+    // ============================================================
 
     private void saveRecentLearning() {
 
-        if (recentLearningRepository == null ||
-                questionList == null ||
-                questionList.isEmpty()) {
+        if (
+                recentLearningRepository == null ||
+                        questionList == null ||
+                        questionList.isEmpty()
+        ) {
 
             return;
         }
@@ -287,15 +343,17 @@ public class QuestionsActivity extends AppCompatActivity {
 
 
         // ========================================================
-        // CHAPTER / TOPIC NAME
+        // CHAPTER / TOPIC
         // ========================================================
 
         String chapterName =
                 question.getYearTag();
 
 
-        if (chapterName == null ||
-                chapterName.trim().isEmpty()) {
+        if (
+                chapterName == null ||
+                        chapterName.trim().isEmpty()
+        ) {
 
             chapterName =
                     "Practice Questions";
@@ -313,8 +371,10 @@ public class QuestionsActivity extends AppCompatActivity {
 
             progressPercent =
                     (int) (
-                            ((currentPosition + 1)
-                                    * 100.0)
+                            (
+                                    (currentPosition + 1)
+                                            * 100.0
+                            )
                                     / questionList.size()
                     );
         }
@@ -343,16 +403,16 @@ public class QuestionsActivity extends AppCompatActivity {
     }
 
 
-
-
     // ============================================================
     // SHOW CURRENT QUESTION
     // ============================================================
 
     private void showQuestion() {
 
-        if (questionList == null ||
-                questionList.isEmpty()) {
+        if (
+                questionList == null ||
+                        questionList.isEmpty()
+        ) {
 
             return;
         }
@@ -362,6 +422,8 @@ public class QuestionsActivity extends AppCompatActivity {
                 questionList.get(
                         currentPosition
                 );
+
+
         saveRecentLearning();
 
 
@@ -369,16 +431,19 @@ public class QuestionsActivity extends AppCompatActivity {
         // MARK QUESTION AS READ
         // ========================================================
 
-        if (readingProgressRepository != null) {
+        if (
+                readingProgressRepository != null
+        ) {
 
-            readingProgressRepository.markQuestionAsRead(
-                    question.getId()
-            );
+            readingProgressRepository
+                    .markQuestionAsRead(
+                            question.getId()
+                    );
         }
 
 
         // ========================================================
-        // UPDATE BOOKMARK
+        // BOOKMARK
         // ========================================================
 
         updateBookmarkButton(
@@ -401,8 +466,10 @@ public class QuestionsActivity extends AppCompatActivity {
         // SUBJECT
         // ========================================================
 
-        if (subjectName != null &&
-                !subjectName.trim().isEmpty()) {
+        if (
+                subjectName != null &&
+                        !subjectName.trim().isEmpty()
+        ) {
 
             binding.subjectText.setText(
                     subjectName
@@ -420,10 +487,12 @@ public class QuestionsActivity extends AppCompatActivity {
         // YEAR / TOPIC
         // ========================================================
 
-        if (question.getYearTag() != null &&
-                !question.getYearTag()
-                        .trim()
-                        .isEmpty()) {
+        if (
+                question.getYearTag() != null &&
+                        !question.getYearTag()
+                                .trim()
+                                .isEmpty()
+        ) {
 
             binding.topicText.setText(
                     question.getYearTag()
@@ -438,10 +507,11 @@ public class QuestionsActivity extends AppCompatActivity {
 
 
         // ========================================================
-        // QUESTION TEXT
+        // QUESTION
         // ========================================================
 
-        binding.questionText.setText(
+        LatexRenderer.renderQuestion(
+                binding.questionText,
                 question.getQuestionText()
         );
 
@@ -456,18 +526,19 @@ public class QuestionsActivity extends AppCompatActivity {
 
 
         // ========================================================
-        // RESET OPTIONS
+        // RESET OPTION STYLE
         // ========================================================
 
         resetOptions();
 
 
         // ========================================================
-        // SHOW CORRECT ANSWER
+        // CORRECT ANSWER
         // ========================================================
 
         showCorrectAnswer(
-                question.getCorrectOption()
+                question.getCorrectOption(),
+                question
         );
 
 
@@ -475,24 +546,30 @@ public class QuestionsActivity extends AppCompatActivity {
         // EXPLANATION
         // ========================================================
 
-        if (question.getExplanation() != null &&
-                !question.getExplanation()
-                        .trim()
-                        .isEmpty()) {
+        if (
+                question.getExplanation() != null &&
+                        !question.getExplanation()
+                                .trim()
+                                .isEmpty()
+        ) {
 
-            binding.explanationText.setText(
+            LatexRenderer.renderExplanation(
+                    binding.explanationText,
                     question.getExplanation()
             );
 
-            binding.explanationLayout.setVisibility(
-                    View.VISIBLE
-            );
+
+            binding.explanationLayout
+                    .setVisibility(
+                            View.VISIBLE
+                    );
 
         } else {
 
-            binding.explanationLayout.setVisibility(
-                    View.GONE
-            );
+            binding.explanationLayout
+                    .setVisibility(
+                            View.GONE
+                    );
         }
 
 
@@ -505,58 +582,61 @@ public class QuestionsActivity extends AppCompatActivity {
 
 
     // ============================================================
-    // SET OPTIONS FROM JSON
+    // SET OPTIONS
     // ============================================================
 
-    private void setOptions(
-            Question question
-    ) {
+    private void setOptions(Question question) {
 
         try {
 
             JSONObject options =
-                    new JSONObject(
-                            question.getOptions()
-                    );
+                    new JSONObject(question.getOptions());
 
-
-            binding.option1.setText(
-                    "A. " +
-                            options.optString(
-                                    "a"
-                            )
+            LatexRenderer.renderOption(
+                    binding.option1,
+                    "A.&nbsp;&nbsp;" +
+                            options.optString("a", "")
             );
 
-
-            binding.option2.setText(
-                    "B. " +
-                            options.optString(
-                                    "b"
-                            )
+            LatexRenderer.renderOption(
+                    binding.option2,
+                    "B.&nbsp;&nbsp;" +
+                            options.optString("b", "")
             );
 
-
-            binding.option3.setText(
-                    "C. " +
-                            options.optString(
-                                    "c"
-                            )
+            LatexRenderer.renderOption(
+                    binding.option3,
+                    "C.&nbsp;&nbsp;" +
+                            options.optString("c", "")
             );
 
-
-            binding.option4.setText(
-                    "D. " +
-                            options.optString(
-                                    "d"
-                            )
+            LatexRenderer.renderOption(
+                    binding.option4,
+                    "D.&nbsp;&nbsp;" +
+                            options.optString("d", "")
             );
 
         } catch (Exception e) {
 
-            binding.option1.setText("A.");
-            binding.option2.setText("B.");
-            binding.option3.setText("C.");
-            binding.option4.setText("D.");
+            LatexRenderer.renderOption(
+                    binding.option1,
+                    "A."
+            );
+
+            LatexRenderer.renderOption(
+                    binding.option2,
+                    "B."
+            );
+
+            LatexRenderer.renderOption(
+                    binding.option3,
+                    "C."
+            );
+
+            LatexRenderer.renderOption(
+                    binding.option4,
+                    "D."
+            );
         }
     }
 
@@ -582,39 +662,6 @@ public class QuestionsActivity extends AppCompatActivity {
         binding.option4.setBackgroundResource(
                 R.drawable.bg_option_normal
         );
-
-
-        binding.option1.setTextColor(
-                Color.rgb(
-                        34,
-                        34,
-                        34
-                )
-        );
-
-        binding.option2.setTextColor(
-                Color.rgb(
-                        34,
-                        34,
-                        34
-                )
-        );
-
-        binding.option3.setTextColor(
-                Color.rgb(
-                        34,
-                        34,
-                        34
-                )
-        );
-
-        binding.option4.setTextColor(
-                Color.rgb(
-                        34,
-                        34,
-                        34
-                )
-        );
     }
 
 
@@ -623,107 +670,90 @@ public class QuestionsActivity extends AppCompatActivity {
     // ============================================================
 
     private void showCorrectAnswer(
-            String correctOption
+            String correctOption,
+            Question question
     ) {
 
         if (correctOption == null) {
-
             return;
         }
 
-
-        switch (
+        String correct =
                 correctOption
                         .trim()
-                        .toLowerCase()
-        ) {
+                        .toLowerCase();
 
-            case "a":
+        try {
 
-                binding.option1.setBackgroundResource(
-                        R.drawable.bg_option_correct
-                );
+            JSONObject options =
+                    new JSONObject(
+                            question.getOptions()
+                    );
 
-                binding.option1.setTextColor(
-                        Color.rgb(
-                                35,
-                                131,
-                                71
-                        )
-                );
+            switch (correct) {
 
-                binding.option1.setTypeface(
-                        binding.option1.getTypeface(),
-                        android.graphics.Typeface.BOLD
-                );
+                case "a":
 
-                break;
+                    binding.option1.setBackgroundResource(
+                            R.drawable.bg_option_correct
+                    );
 
+                    LatexRenderer.renderCorrectOption(
+                            binding.option1,
+                            "A.&nbsp;&nbsp;" +
+                                    options.optString("a", "")
+                    );
 
-            case "b":
-
-                binding.option2.setBackgroundResource(
-                        R.drawable.bg_option_correct
-                );
-
-                binding.option2.setTextColor(
-                        Color.rgb(
-                                35,
-                                131,
-                                71
-                        )
-                );
-
-                binding.option2.setTypeface(
-                        binding.option2.getTypeface(),
-                        android.graphics.Typeface.BOLD
-                );
-
-                break;
+                    break;
 
 
-            case "c":
+                case "b":
 
-                binding.option3.setBackgroundResource(
-                        R.drawable.bg_option_correct
-                );
+                    binding.option2.setBackgroundResource(
+                            R.drawable.bg_option_correct
+                    );
 
-                binding.option3.setTextColor(
-                        Color.rgb(
-                                35,
-                                131,
-                                71
-                        )
-                );
+                    LatexRenderer.renderCorrectOption(
+                            binding.option2,
+                            "B.&nbsp;&nbsp;" +
+                                    options.optString("b", "")
+                    );
 
-                binding.option3.setTypeface(
-                        binding.option3.getTypeface(),
-                        android.graphics.Typeface.BOLD
-                );
-
-                break;
+                    break;
 
 
-            case "d":
+                case "c":
 
-                binding.option4.setBackgroundResource(
-                        R.drawable.bg_option_correct
-                );
+                    binding.option3.setBackgroundResource(
+                            R.drawable.bg_option_correct
+                    );
 
-                binding.option4.setTextColor(
-                        Color.rgb(
-                                35,
-                                131,
-                                71
-                        )
-                );
+                    LatexRenderer.renderCorrectOption(
+                            binding.option3,
+                            "C.&nbsp;&nbsp;" +
+                                    options.optString("c", "")
+                    );
 
-                binding.option4.setTypeface(
-                        binding.option4.getTypeface(),
-                        android.graphics.Typeface.BOLD
-                );
+                    break;
 
-                break;
+
+                case "d":
+
+                    binding.option4.setBackgroundResource(
+                            R.drawable.bg_option_correct
+                    );
+
+                    LatexRenderer.renderCorrectOption(
+                            binding.option4,
+                            "D.&nbsp;&nbsp;" +
+                                    options.optString("d", "")
+                    );
+
+                    break;
+            }
+
+        } catch (Exception e) {
+            // JSON parse error
         }
     }
 
@@ -734,12 +764,18 @@ public class QuestionsActivity extends AppCompatActivity {
 
     private void setupButtons() {
 
+
         // ========================================================
         // BACK
         // ========================================================
 
         binding.backButton.setOnClickListener(
-                v -> finish()
+                v -> {
+
+                    saveRecentLearning();
+
+                    finish();
+                }
         );
 
 
@@ -750,7 +786,9 @@ public class QuestionsActivity extends AppCompatActivity {
         binding.previousButton.setOnClickListener(
                 v -> {
 
-                    if (currentPosition > 0) {
+                    if (
+                            currentPosition > 0
+                    ) {
 
                         currentPosition--;
 
@@ -767,16 +805,19 @@ public class QuestionsActivity extends AppCompatActivity {
         binding.nextButton.setOnClickListener(
                 v -> {
 
-                    if (currentPosition <
-                            questionList.size() - 1) {
+                    if (
+                            currentPosition <
+                                    questionList.size() - 1
+                    ) {
 
                         currentPosition++;
 
                         showQuestion();
 
                     } else {
+
                         saveReadingStudyTime();
-                        saveReadingStudyTime();
+
 
                         Toast.makeText(
                                 this,
@@ -795,8 +836,10 @@ public class QuestionsActivity extends AppCompatActivity {
         binding.bookmarkButton.setOnClickListener(
                 v -> {
 
-                    if (questionList == null ||
-                            questionList.isEmpty()) {
+                    if (
+                            questionList == null ||
+                                    questionList.isEmpty()
+                    ) {
 
                         return;
                     }
@@ -813,9 +856,10 @@ public class QuestionsActivity extends AppCompatActivity {
 
 
                     boolean bookmarked =
-                            bookmarkRepository.toggleBookmark(
-                                    questionId
-                            );
+                            bookmarkRepository
+                                    .toggleBookmark(
+                                            questionId
+                                    );
 
 
                     updateBookmarkButton(
@@ -852,37 +896,46 @@ public class QuestionsActivity extends AppCompatActivity {
             int questionId
     ) {
 
-        if (bookmarkRepository == null) {
+        if (
+                bookmarkRepository == null
+        ) {
 
             return;
         }
 
 
         boolean bookmarked =
-                bookmarkRepository.isBookmarked(
-                        questionId
-                );
+                bookmarkRepository
+                        .isBookmarked(
+                                questionId
+                        );
 
 
         if (bookmarked) {
 
-            binding.bookmarkButton.setImageResource(
-                    R.drawable.ic_bookmark_filled
-            );
+            binding.bookmarkButton
+                    .setImageResource(
+                            R.drawable.ic_bookmark_filled
+                    );
 
-            binding.bookmarkButton.setContentDescription(
-                    "Bookmark করা আছে"
-            );
+
+            binding.bookmarkButton
+                    .setContentDescription(
+                            "Bookmark করা আছে"
+                    );
 
         } else {
 
-            binding.bookmarkButton.setImageResource(
-                    R.drawable.ic_bookmark_border
-            );
+            binding.bookmarkButton
+                    .setImageResource(
+                            R.drawable.ic_bookmark_border
+                    );
 
-            binding.bookmarkButton.setContentDescription(
-                    "Bookmark করুন"
-            );
+
+            binding.bookmarkButton
+                    .setContentDescription(
+                            "Bookmark করুন"
+                    );
         }
     }
 
@@ -893,15 +946,19 @@ public class QuestionsActivity extends AppCompatActivity {
 
     private void updateNavigationButtons() {
 
+
         // ========================================================
         // PREVIOUS
         // ========================================================
 
-        if (currentPosition == 0) {
+        if (
+                currentPosition == 0
+        ) {
 
             binding.previousButton.setEnabled(
                     false
             );
+
 
             binding.previousButton.setAlpha(
                     0.5f
@@ -913,6 +970,7 @@ public class QuestionsActivity extends AppCompatActivity {
                     true
             );
 
+
             binding.previousButton.setAlpha(
                     1f
             );
@@ -923,13 +981,14 @@ public class QuestionsActivity extends AppCompatActivity {
         // NEXT
         // ========================================================
 
-        if (currentPosition ==
-                questionList.size() - 1) {
+        if (
+                currentPosition ==
+                        questionList.size() - 1
+        ) {
 
             binding.nextButton.setText(
                     "Finish"
             );
-
 
         } else {
 
@@ -947,16 +1006,54 @@ public class QuestionsActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
 
-        super.onDestroy();
+        // ========================================================
+        // SAVE DATA
+        // ========================================================
+
         saveReadingStudyTime();
+
         saveRecentLearning();
+
+
+        // ========================================================
+        // DESTROY WEBVIEWS
+        // ========================================================
+
+        if (binding != null) {
+
+            LatexRenderer.destroy(
+                    binding.questionText
+            );
+
+            LatexRenderer.destroy(
+                    binding.option1
+            );
+
+            LatexRenderer.destroy(
+                    binding.option2
+            );
+
+            LatexRenderer.destroy(
+                    binding.option3
+            );
+
+            LatexRenderer.destroy(
+                    binding.option4
+            );
+
+            LatexRenderer.destroy(
+                    binding.explanationText
+            );
+        }
 
 
         // ========================================================
         // QUESTION REPOSITORY
         // ========================================================
 
-        if (questionRepository != null) {
+        if (
+                questionRepository != null
+        ) {
 
             questionRepository.close();
 
@@ -968,7 +1065,9 @@ public class QuestionsActivity extends AppCompatActivity {
         // BOOKMARK REPOSITORY
         // ========================================================
 
-        if (bookmarkRepository != null) {
+        if (
+                bookmarkRepository != null
+        ) {
 
             bookmarkRepository.close();
 
@@ -977,15 +1076,24 @@ public class QuestionsActivity extends AppCompatActivity {
 
 
         // ========================================================
-        // READING PROGRESS REPOSITORY
+        // READING PROGRESS
         // ========================================================
 
-        if (readingProgressRepository != null) {
+        if (
+                readingProgressRepository != null
+        ) {
 
             readingProgressRepository.close();
 
             readingProgressRepository = null;
         }
+
+
+        // ========================================================
+        // SUPER
+        // ========================================================
+
+        super.onDestroy();
 
 
         binding = null;

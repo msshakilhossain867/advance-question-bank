@@ -91,77 +91,59 @@
 
 
                 <!-- Question -->
-                <TextView
+                <WebView
                     android:id="@+id/questionText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="What is the unit of velocity?"
-                    android:textColor="#151515"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
                     android:layout_marginTop="12dp"
-                    android:layout_marginBottom="14dp" />
+                    android:layout_marginBottom="14dp"
+                    android:background="@android:color/transparent"
+                    android:overScrollMode="never"
+                    android:scrollbars="none" />
 
 
                 <!-- Option 1 -->
-                <TextView
+                <WebView
                     android:id="@+id/option1"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="m/s"
-                    android:textColor="#222222"
-                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/bg_option_normal"
-                    android:layout_marginBottom="8dp" />
+                    android:overScrollMode="never"
+                    android:scrollbars="none" />
 
 
                 <!-- Option 2 -->
-                <TextView
+                <WebView
                     android:id="@+id/option2"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="km/h"
-                    android:textColor="#222222"
-                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/bg_option_normal"
-                    android:layout_marginBottom="8dp" />
+                    android:overScrollMode="never"
+                    android:scrollbars="none" />
 
 
                 <!-- Correct Option -->
-                <TextView
+                <WebView
                     android:id="@+id/option3"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="m/s²"
-                    android:textColor="#238347"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/bg_option_correct"
-                    android:layout_marginBottom="8dp" />
+                    android:overScrollMode="never"
+                    android:scrollbars="none" />
 
 
                 <!-- Option 4 -->
-                <TextView
+                <WebView
                     android:id="@+id/option4"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="km/s"
-                    android:textColor="#222222"
-                    android:textSize="14sp"
+                    android:layout_marginBottom="18dp"
                     android:background="@drawable/bg_option_normal"
-                    android:layout_marginBottom="18dp" />
+                    android:overScrollMode="never"
+                    android:scrollbars="none" />
 
 
                 <!-- Explanation -->
@@ -171,7 +153,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="14dp"
-                    android:background="@drawable/ic_ex">
+                    android:background="@drawable/ic_ex"
+                    tools:ignore="WebViewLayout">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -181,15 +164,14 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <WebView
                         android:id="@+id/explanationText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Velocity-এর SI unit হলো meter per second (m/s)।"
-                        android:textColor="#444444"
-                        android:textSize="13sp"
-                        android:lineSpacingExtra="3dp"
-                        android:layout_marginTop="6dp" />
+                        android:layout_marginTop="6dp"
+                        android:background="@android:color/transparent"
+                        android:overScrollMode="never"
+                        android:scrollbars="none" />
 
                 </LinearLayout>
 
