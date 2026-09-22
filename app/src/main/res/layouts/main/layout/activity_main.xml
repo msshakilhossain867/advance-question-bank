@@ -2,11 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
-    tools:context=".presentation.main.MainActivity"
-    android:background="#F8FAFC">
+    android:background="@color/screen_background"
+    tools:context=".presentation.main.MainActivity">
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -21,12 +21,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/nav_background"
-    app:itemIconTint="@color/bottom_nav_color"
-    app:itemTextColor="@color/bottom_nav_color"
-    app:labelVisibilityMode="labeled"
-    app:elevation="8dp"
-    app:menu="@menu/bottom_nav_menu" />
-
+        app:elevation="@dimen/_8sdp"
+        app:itemIconTint="@color/bottom_nav_color"
+        app:itemTextColor="@color/bottom_nav_color"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
 
 
 </RelativeLayout>

@@ -92,5 +92,7 @@ dependencies {
     androidTestImplementation libs.espresso.core
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation "androidx.work:work-runtime:2.10.1"
+    implementation 'com.intuit.ssp:ssp-android:1.1.1'
+    implementation 'com.intuit.sdp:sdp-android:1.1.1'
 
 }

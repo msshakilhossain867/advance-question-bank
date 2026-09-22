@@ -8,6 +8,11 @@
     <!-- Unselected Item Color (Dark Gray) -->
     <color name="nav_unselected_color">#555555</color>
 
-    <!-- Background Color -->
+
+    <color name="screen_background">#F8FAFC</color>
     <color name="nav_background">#FFFFFF</color>
+
+    <!-- Bottom Nav Item Colors (Light Mode) -->
+    <color name="bottom_nav_normal">#64748B</color>
+    <color name="bottom_nav_active">#2563EB</color>
 </resources>

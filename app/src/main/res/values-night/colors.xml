@@ -7,7 +7,10 @@
 
     <!-- Unselected Item Color (Dark Gray) -->
     <color name="nav_unselected_color">#555555</color>
+    <color name="screen_background">#0F172A</color> <!-- Deep Slate Navy -->
+    <color name="nav_background">#1E293B</color>    <!-- Lighter Navy Surface -->
 
-    <!-- Background Color -->
-    <color name="nav_background">#FFFFFF</color>
+    <!-- Bottom Nav Item Colors (Dark Mode) -->
+    <color name="bottom_nav_normal">#94A3B8</color>
+    <color name="bottom_nav_active">#38BDF8</color>
 </resources>
