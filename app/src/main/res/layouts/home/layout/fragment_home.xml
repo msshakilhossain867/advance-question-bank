@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:context=".presentation.home.HomeFragment"
     android:layout_height="match_parent"
-    android:background="#F8FAFC">
+    android:background="@color/screen_background"
+    tools:context=".presentation.home.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -16,94 +16,82 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="@dimen/_11sdp">
 
             <!-- 🔹 ১. টপ হেডার (User Greeting & Notification) -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                >
 
                 <ImageView
                     android:id="@+id/btnMenu"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
                     android:layout_centerVertical="true"
                     android:src="@drawable/navigation_ion"
-                    app:tint="#1A1A1A" />
+                    app:tint="@color/home_text_primary" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/_16sdp"
                     android:layout_toEndOf="@id/btnMenu"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hello, Shadin 👋"
-                        android:textColor="#1A1A1A"
-                        android:textSize="18sp"
+                        android:text="Hello, Learner 👋"
+                        android:textColor="@color/home_text_primary"
+                        android:textSize="@dimen/_13ssp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Good Morning!"
-                        android:textColor="#7A869A"
-                        android:textSize="13sp" />
+                        android:textColor="@color/home_text_secondary"
+                        android:textSize="@dimen/_9ssp" />
                 </LinearLayout>
-
 
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    >
+                    android:layout_centerVertical="true">
 
                     <ImageView
                         android:id="@+id/btnNotification"
-                        android:layout_width="44dp"
-                        android:layout_height="44dp"
-                        android:padding="10dp"
-                        android:src="@drawable/notification"/>
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/notification"
+                        app:tint="@color/home_text_primary" />
 
                     <View
                         android:id="@+id/notificationUnreadDot"
-                        android:layout_width="9dp"
-                        android:layout_height="9dp"
+                        android:layout_width="@dimen/_9sdp"
+                        android:layout_height="@dimen/_9sdp"
                         android:layout_gravity="top|end"
-                        android:layout_marginTop="7dp"
-                        android:layout_marginEnd="7dp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
                         android:background="@drawable/bg_unread_dot"
-                        android:visibility="gone"/>
+                        android:visibility="gone" />
 
                 </FrameLayout>
 
-
             </RelativeLayout>
 
-            <!-- 🔹 ২. সার্চ বার -->
-            <!-- ========================================================= -->
-            <!-- DAILY MISSION STATUS -->
-            <!-- Search Bar replaced -->
-            <!-- ========================================================= -->
-
+            <!-- 🔹 ২. Daily Mission Status -->
             <LinearLayout
                 android:id="@+id/dailyMissionStatusCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:background="@drawable/bg_white_card"
                 android:orientation="vertical"
-                android:padding="15dp"
-                android:background="@drawable/bg_white_card">
-
-
-                <!-- ===================================================== -->
-                <!-- HEADER -->
-                <!-- ===================================================== -->
+                android:padding="@dimen/_9sdp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -111,111 +99,91 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-
-                    <!-- ICON -->
-
                     <TextView
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:background="@drawable/bg_mission_icon_circle"
                         android:gravity="center"
                         android:text="🔥"
-                        android:textSize="22sp"
-                        android:background="@drawable/bg_mission_icon_circle"/>
-
-
-                    <!-- TITLE -->
+                        android:textSize="@dimen/_22ssp" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:layout_weight="1"
-                        android:layout_marginStart="10dp"
                         android:orientation="vertical">
-
 
                         <TextView
                             android:id="@+id/dailyMissionTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Today's Mission"
-                            android:textColor="#1A1A1A"
-                            android:textSize="16sp"
-                            android:textStyle="bold"/>
-
+                            android:textColor="@color/home_card_title"
+                            android:textSize="@dimen/_13ssp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/dailyMissionProgressText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
+                            android:layout_marginTop="@dimen/_3sdp"
                             android:text="0 of 3 missions completed"
-                            android:textColor="#7A869A"
-                            android:textSize="12sp"/>
+                            android:textColor="@color/home_card_subtitle"
+                            android:textSize="@dimen/_11ssp" />
 
                     </LinearLayout>
-
-
-                    <!-- PERCENT -->
 
                     <TextView
                         android:id="@+id/dailyMissionPercentText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0%"
-                        android:textColor="#196DD9"
-                        android:textSize="15sp"
-                        android:textStyle="bold"/>
+                        android:textColor="@color/onboarding_action"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
-
-
-                <!-- ===================================================== -->
-                <!-- PROGRESS BAR -->
-                <!-- ===================================================== -->
 
                 <ProgressBar
                     android:id="@+id/dailyMissionProgressBar"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="7dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_height="@dimen/_7sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
                     android:max="100"
-                    android:progress="0"/>
-
-
-                <!-- ===================================================== -->
-                <!-- MISSION STATUS -->
-                <!-- ===================================================== -->
+                    android:progress="0" />
 
                 <TextView
                     android:id="@+id/dailyMissionCompletedText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="@dimen/_9sdp"
                     android:gravity="center"
                     android:text="🎉 All Missions Completed!"
                     android:textColor="#2E7D32"
-                    android:textSize="13sp"
+                    android:textSize="@dimen/_13ssp"
                     android:textStyle="bold"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
             </LinearLayout>
 
             <!-- 🔹 ৩. হিরো ব্যানার -->
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:visibility="visible"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="@dimen/_140sdp"
+                android:layout_marginTop="@dimen/_14sdp"
                 android:background="@drawable/bg_banner_gradient"
-                android:padding="20dp">
+                android:padding="@dimen/_16sdp">
 
                 <TextView
                     android:id="@+id/txtBannerTitle"
-                    android:layout_width="180dp"
+                    android:layout_width="@dimen/_150sdp"
                     android:layout_height="wrap_content"
                     android:text="Stay Consistent,\nAchieve Your\nDream University."
                     android:textColor="#FFFFFF"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/_13ssp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -224,18 +192,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#FFC107"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="@dimen/_11sdp"
+                    android:paddingVertical="@dimen/_8sdp"
                     android:text="Start Practice  ➔"
                     android:textColor="#0B2B68"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/_11ssp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="@dimen/_115sdp"
+                    android:layout_height="@dimen/_115sdp"
                     android:src="@drawable/motivation_banner_image"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -246,14 +214,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp">
+                android:layout_marginTop="@dimen/_20sdp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Continue Learning"
-                    android:textColor="#1A1A1A"
-                    android:textSize="16sp"
+                    android:textColor="@color/home_text_primary"
+                    android:textSize="@dimen/_13ssp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -261,29 +229,31 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text="View All"
-                    android:textColor="#196DD9"
+                    android:textColor="@color/onboarding_action"
+                    android:textSize="@dimen/_11ssp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
             <!-- Continue Card -->
             <LinearLayout
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="@dimen/_9sdp"
                 android:background="@drawable/bg_white_card"
                 android:gravity="center_vertical"
-                android:padding="16dp">
+                android:padding="@dimen/_11sdp">
 
                 <ImageView
                     android:id="@+id/ivRecentSubjectIcon"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="@dimen/_45sdp"
+                    android:layout_height="@dimen/_45sdp"
                     android:src="@drawable/physics_subject_icon" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/_14sdp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -292,8 +262,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Physics"
-                        android:textColor="#1A1A1A"
-                        android:textSize="15sp"
+                        android:textColor="@color/home_card_title"
+                        android:textSize="@dimen/_13ssp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -301,13 +271,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Chapter 4: Motion"
-                        android:textColor="#7A869A"
-                        android:textSize="12sp" />
+                        android:textColor="@color/home_card_subtitle"
+                        android:textSize="@dimen/_9ssp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="@dimen/_4sdp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
@@ -315,7 +285,7 @@
                             android:id="@+id/recentProgressBar"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="0dp"
-                            android:layout_height="6dp"
+                            android:layout_height="@dimen/_5sdp"
                             android:layout_weight="1"
                             android:max="100"
                             android:progress="0"
@@ -325,10 +295,10 @@
                             android:id="@+id/tvRecentProgress"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
+                            android:layout_marginStart="@dimen/_8sdp"
                             android:text="0%"
-                            android:textColor="#5A6B82"
-                            android:textSize="12sp"
+                            android:textColor="@color/home_card_subtitle"
+                            android:textSize="@dimen/_11ssp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -339,15 +309,16 @@
                     android:id="@+id/tvResumeReading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:background="#F0F4FE"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="8dp"
-                    android:text="Resume"
-                    android:textColor="#196DD9"
-                    android:textStyle="bold"
+                    android:layout_marginStart="@dimen/_9sdp"
+                    android:background="@drawable/bg_resume_button"
                     android:clickable="true"
-                    android:focusable="true" />
+                    android:focusable="true"
+                    android:paddingHorizontal="@dimen/_11sdp"
+                    android:paddingVertical="@dimen/_7sdp"
+                    android:text="Resume"
+                    android:textColor="@color/onboarding_action"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -355,19 +326,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="@dimen/_16sdp"
                 android:text="Quick Actions"
-                android:textColor="#1A1A1A"
-                android:textSize="16sp"
+                android:textColor="@color/home_text_primary"
+                android:textSize="@dimen/_13ssp"
                 android:textStyle="bold" />
 
             <!-- Quick Actions Grid/Row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:visibility="visible"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:orientation="horizontal"
+                android:visibility="visible"
                 android:weightSum="5">
 
                 <!-- 1. Read Questions -->
@@ -380,18 +351,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
                         android:src="@drawable/quick_action_read_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="@dimen/_6sdp"
                         android:gravity="center"
                         android:text="Read\nQuestions"
-                        android:textColor="#1A1A1A"
-                        android:textSize="11sp" />
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:textColor="@color/home_text_primary"
+                        android:textSize="@dimen/_9ssp" />
                 </LinearLayout>
 
                 <!-- 2. Practice MCQ -->
@@ -404,18 +377,18 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="61dp"
+                        android:layout_height="@dimen/_45sdp"
                         android:src="@drawable/quick_action_practice_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="@dimen/_6sdp"
                         android:gravity="center"
                         android:text="Practice\nMCQ"
-                        android:textColor="#1A1A1A"
-                        android:textSize="11sp" />
+                        android:textColor="@color/home_text_primary"
+                        android:textSize="@dimen/_9ssp" />
                 </LinearLayout>
 
                 <!-- 3. Mock Test -->
@@ -428,18 +401,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
                         android:src="@drawable/quick_action_mock_test_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="@dimen/_6sdp"
                         android:gravity="center"
+                        android:maxLines="2"
+                        android:ellipsize="end"
                         android:text="Mock Test\nExam"
-                        android:textColor="#1A1A1A"
-                        android:textSize="11sp" />
+                        android:textColor="@color/home_text_primary"
+                        android:textSize="@dimen/_9ssp" />
                 </LinearLayout>
 
                 <!-- 4. Bookmarks -->
@@ -452,18 +427,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
                         android:src="@drawable/quick_action_book_mark_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="@dimen/_6sdp"
                         android:gravity="center"
+                        android:maxLines="2"
+                        android:ellipsize="end"
                         android:text="Bookmarks\nSaved"
-                        android:textColor="#1A1A1A"
-                        android:textSize="11sp" />
+                        android:textColor="@color/home_text_primary"
+                        android:textSize="@dimen/_9ssp" />
                 </LinearLayout>
 
                 <!-- 5. Progress Report -->
@@ -476,18 +453,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="@dimen/_45sdp"
+                        android:layout_height="@dimen/_45sdp"
                         android:src="@drawable/quick_action_progress_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="@dimen/_6sdp"
                         android:gravity="center"
+                        android:maxLines="2"
+                        android:ellipsize="end"
                         android:text="Progress\nReport"
-                        android:textColor="#1A1A1A"
-                        android:textSize="11sp" />
+                        android:textColor="@color/home_text_primary"
+                        android:textSize="@dimen/_9ssp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -495,15 +474,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:layout_marginTop="24dp">
+                android:layout_marginTop="@dimen/_16sdp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Target Universities"
-                    android:textColor="#1A1A1A"
-                    android:textSize="16sp"
+                    android:textColor="@color/home_text_primary"
+                    android:textSize="@dimen/_13ssp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -512,17 +490,17 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text="View All"
-                    android:textColor="#196DD9"
+                    android:textColor="@color/onboarding_action"
+                    android:textSize="@dimen/_11ssp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
-            <!-- বিশ্ববিদ্যালয়গুলোর হরিজন্টাল লিস্ট (Horizontal Scroll) -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:layout_marginTop="12dp"
-                android:scrollbars="none">
+                android:layout_marginTop="@dimen/_11sdp"
+                android:scrollbars="none"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -537,17 +515,17 @@
                         android:background="@drawable/bg_white_card"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:padding="16dp">
+                        android:padding="@dimen/_11sdp">
 
                         <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
+                            android:layout_width="@dimen/_45sdp"
+                            android:layout_height="@dimen/_45sdp"
                             android:src="@drawable/du_icon" />
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
+                            android:layout_marginStart="@dimen/_14sdp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
@@ -556,35 +534,33 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Dhaka University"
-                                android:textColor="#1A1A1A"
-                                android:textSize="16sp"
+                                android:textColor="@color/home_card_title"
+                                android:textSize="@dimen/_13ssp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/un_shortName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
+                                android:layout_marginTop="@dimen/_2sdp"
                                 android:text="Target: DU A Unit"
-                                android:textColor="#7A869A"
-                                android:textSize="13sp" />
+                                android:textColor="@color/home_card_subtitle"
+                                android:textSize="@dimen/_11ssp" />
                         </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="#F0F4FE"
-                            android:paddingHorizontal="14dp"
-                            android:paddingVertical="6dp"
+                            android:background="@drawable/bg_resume_button"
+                            android:paddingHorizontal="@dimen/_11sdp"
+                            android:paddingVertical="@dimen/_6sdp"
+                            android:layout_marginStart="@dimen/_6sdp"
                             android:text="Selected"
-                            android:textColor="#196DD9"
-                            android:textSize="12sp"
+                            android:textColor="@color/onboarding_action"
+                            android:textSize="@dimen/_11ssp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
-
-
-
 
                 </LinearLayout>
             </HorizontalScrollView>
@@ -593,20 +569,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="@dimen/_16sdp"
                 android:text="Today's Study Overview"
-                android:textColor="#1A1A1A"
-                android:textSize="16sp"
-                android:visibility="visible"
-                android:textStyle="bold" />
+                android:textColor="@color/home_text_primary"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold"
+                android:visibility="visible" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="@dimen/_11sdp"
                 android:background="@drawable/bg_white_card"
                 android:orientation="horizontal"
-                android:padding="16dp"
+                android:padding="@dimen/_11sdp"
                 android:visibility="visible"
                 android:weightSum="4">
 
@@ -617,27 +593,27 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
+
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/studytime_icon"
-                        />
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
+                        android:src="@drawable/studytime_icon" />
 
                     <TextView
                         android:id="@+id/studyTimeText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2h 15m"
-                        android:textColor="#1A1A1A"
-                        android:textSize="15sp"
+                        android:textColor="@color/home_card_title"
+                        android:textSize="@dimen/_13ssp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Study Time"
-                        android:textColor="#7A869A"
-                        android:textSize="11sp" />
+                        android:textColor="@color/home_card_subtitle"
+                        android:textSize="@dimen/_10ssp" />
                 </LinearLayout>
 
                 <!-- Questions Solved -->
@@ -649,26 +625,25 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/question_solve"
-                        />
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
+                        android:src="@drawable/question_solve" />
 
                     <TextView
                         android:id="@+id/solvedText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="120"
-                        android:textColor="#1A1A1A"
-                        android:textSize="15sp"
+                        android:textColor="@color/home_card_title"
+                        android:textSize="@dimen/_13ssp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Solved"
-                        android:textColor="#7A869A"
-                        android:textSize="11sp" />
+                        android:textColor="@color/home_card_subtitle"
+                        android:textSize="@dimen/_10ssp" />
                 </LinearLayout>
 
                 <!-- Accuracy -->
@@ -680,26 +655,25 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/accuracy_icon"
-                        />
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
+                        android:src="@drawable/accuracy_icon" />
 
                     <TextView
                         android:id="@+id/accuracyText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="10%"
-                        android:textColor="#1A1A1A"
-                        android:textSize="15sp"
+                        android:textColor="@color/home_card_title"
+                        android:textSize="@dimen/_13ssp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Accuracy"
-                        android:textColor="#7A869A"
-                        android:textSize="11sp" />
+                        android:textColor="@color/home_card_subtitle"
+                        android:textSize="@dimen/_10ssp" />
                 </LinearLayout>
 
                 <!-- Mock Tests -->
@@ -711,44 +685,42 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/mock_test_progress_icon"
-                        />
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
+                        android:src="@drawable/mock_test_progress_icon" />
 
                     <TextView
                         android:id="@+id/mockTestsText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="10"
-                        android:textColor="#1A1A1A"
-                        android:textSize="15sp"
+                        android:textColor="@color/home_card_title"
+                        android:textSize="@dimen/_13ssp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Mock Tests"
-                        android:textColor="#7A869A"
-                        android:textSize="11sp" />
+                        android:textColor="@color/home_card_subtitle"
+                        android:textSize="@dimen/_10ssp" />
                 </LinearLayout>
             </LinearLayout>
 
-
-
+            <!-- 🔹 Recent Activity Section Header -->
 
             <!-- 🔹 Recent Activity Section Header -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp">
+                android:layout_marginTop="@dimen/_16sdp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Recent Activity"
-                    android:textColor="#1A1A1A"
-                    android:textSize="16sp"
+                    android:textColor="@color/home_text_primary"
+                    android:textSize="@dimen/_13ssp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -757,7 +729,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text="View All"
-                    android:textColor="#196DD9"
+                    android:textColor="@color/onboarding_action"
+                    android:textSize="@dimen/_11ssp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -766,24 +739,23 @@
                 android:id="@+id/recentActivityContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:orientation="vertical">
 
                 <!-- 1. Item: Physics Practice Test -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     android:background="@drawable/bg_white_card"
                     android:gravity="center_vertical"
-                    android:padding="14dp">
+                    android:padding="@dimen/_11sdp">
 
                     <FrameLayout
-                        android:layout_width="44dp"
-                        android:layout_height="44dp"
+                        android:layout_width="@dimen/_44sdp"
+                        android:layout_height="@dimen/_44sdp"
                         android:background="@drawable/bg_white_card">
 
-                        <!-- সবুজ আইকন ব্যাকগ্রাউন্ড বা কাস্টম ব্যাকগ্রাউন্ড -->
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -793,7 +765,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginStart="@dimen/_12sdp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -802,18 +774,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Practice Test"
-                            android:textColor="#1A1A1A"
-                            android:textSize="14sp"
+                            android:textColor="@color/home_card_title"
+                            android:textSize="@dimen/_13ssp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tvPracticeSummary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginTop="@dimen/_2sdp"
                             android:text="20 Questions • 85% Accuracy"
-                            android:textColor="#7A869A"
-                            android:textSize="12sp" />
+                            android:textColor="@color/home_card_subtitle"
+                            android:textSize="@dimen/_11ssp" />
                     </LinearLayout>
 
                     <TextView
@@ -821,22 +793,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="—"
-                        android:textColor="#9AA6AC"
-                        android:textSize="11sp" />
+                        android:textColor="@color/home_card_subtitle"
+                        android:textSize="@dimen/_10ssp" />
                 </LinearLayout>
 
                 <!-- 2. Item: Bookmarked Questions -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     android:background="@drawable/bg_white_card"
                     android:gravity="center_vertical"
-                    android:padding="14dp">
+                    android:padding="@dimen/_11sdp">
 
                     <FrameLayout
-                        android:layout_width="44dp"
-                        android:layout_height="44dp"
+                        android:layout_width="@dimen/_44sdp"
+                        android:layout_height="@dimen/_44sdp"
                         android:background="@drawable/bg_white_card">
 
                         <ImageView
@@ -848,7 +820,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginStart="@dimen/_12sdp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -857,18 +829,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Bookmarked Questions"
-                            android:textColor="#1A1A1A"
-                            android:textSize="14sp"
+                            android:textColor="@color/home_card_title"
+                            android:textSize="@dimen/_13ssp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tvBookmarkSummary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginTop="@dimen/_2sdp"
                             android:text="0 New Questions Today"
-                            android:textColor="#7A869A"
-                            android:textSize="12sp" />
+                            android:textColor="@color/home_card_subtitle"
+                            android:textSize="@dimen/_11ssp" />
 
                     </LinearLayout>
 
@@ -877,22 +849,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="—"
-                        android:textColor="#9AA6AC"
-                        android:textSize="11sp" />
+                        android:textColor="@color/home_card_subtitle"
+                        android:textSize="@dimen/_10ssp" />
                 </LinearLayout>
 
                 <!-- 3. Item: DU A Unit Mock Test -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
+                    android:layout_marginBottom="@dimen/_24sdp"
                     android:background="@drawable/bg_white_card"
                     android:gravity="center_vertical"
-                    android:padding="14dp">
+                    android:padding="@dimen/_11sdp">
 
                     <FrameLayout
-                        android:layout_width="44dp"
-                        android:layout_height="44dp"
+                        android:layout_width="@dimen/_44sdp"
+                        android:layout_height="@dimen/_44sdp"
                         android:background="@drawable/bg_white_card">
 
                         <ImageView
@@ -904,7 +876,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginStart="@dimen/_12sdp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -913,18 +885,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Mock Test"
-                            android:textColor="#1A1A1A"
-                            android:textSize="14sp"
+                            android:textColor="@color/home_card_title"
+                            android:textSize="@dimen/_13ssp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tvMockTestSummary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginTop="@dimen/_2sdp"
                             android:text="No Mock Test Taken"
-                            android:textColor="#7A869A"
-                            android:textSize="12sp" />
+                            android:textColor="@color/home_card_subtitle"
+                            android:textSize="@dimen/_11ssp" />
 
                     </LinearLayout>
 
@@ -933,13 +905,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="—"
-                        android:textColor="#9AA6AC"
-                        android:textSize="11sp" />
+                        android:textColor="@color/home_card_subtitle"
+                        android:textSize="@dimen/_10ssp" />
                 </LinearLayout>
 
             </LinearLayout>
-
-
 
 
         </LinearLayout>

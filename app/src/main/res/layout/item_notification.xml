@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:padding="15dp"
-    android:layout_marginBottom="8dp"
+    android:padding="@dimen/_15sdp"
+    android:layout_marginBottom="@dimen/_8sdp"
     android:background="@drawable/bg_white_card">
 
     <!-- Unread Dot -->
-
     <View
         android:id="@+id/unreadDot"
-        android:layout_width="8dp"
-        android:layout_height="8dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="@dimen/_8sdp"
+        android:layout_height="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
         android:background="@drawable/bg_unread_dot"/>
 
-
     <!-- Content -->
-
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -33,42 +29,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Daily Mission Reminder"
-            android:textSize="15sp"
+            android:textSize="@dimen/_15ssp"
             android:textStyle="bold"
-            android:textColor="#1A1A1A"/>
-
+            android:textColor="@color/home_card_title"/>
 
         <TextView
             android:id="@+id/notificationMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:text="Complete today's missions."
-            android:textSize="13sp"
-            android:textColor="#687386"/>
-
+            android:textSize="@dimen/_13ssp"
+            android:textColor="@color/home_card_subtitle"/>
 
         <TextView
             android:id="@+id/notificationTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="@dimen/_6sdp"
             android:text="17 Aug, 05:00 PM"
-            android:textSize="11sp"
-            android:textColor="#9AA6AC"/>
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/home_card_subtitle"/>
 
     </LinearLayout>
 
-
-    <!-- Read -->
-
+    <!-- Read Indicator/Icon -->
     <TextView
         android:id="@+id/readIcon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
         android:gravity="center"
         android:text="✓"
-        android:textSize="18sp"
+        android:textSize="@dimen/_18ssp"
         android:textStyle="bold"
         android:textColor="#2E7D32"
         android:visibility="gone"/>
