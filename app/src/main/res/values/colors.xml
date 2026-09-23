@@ -15,4 +15,8 @@
     <!-- Bottom Nav Item Colors (Light Mode) -->
     <color name="bottom_nav_normal">#64748B</color>
     <color name="bottom_nav_active">#2563EB</color>
+
+    <color name="onboarding_title">#1A1A1A</color>
+    <color name="onboarding_subtitle">#666565</color>
+    <color name="onboarding_action">#2563EB</color>
 </resources>
