@@ -1,6 +1,7 @@
 package com.example.questionbank_practiceexam.presentation.questionview;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Toast;
@@ -416,237 +417,214 @@ public class QuestionsActivity extends AppCompatActivity {
     // SHOW CURRENT QUESTION
     // ============================================================
 
+    // ============================================================
+    // SHOW CURRENT QUESTION
+    // ============================================================
+
     private void showQuestion() {
 
-        if (
-                questionList == null ||
-                        questionList.isEmpty()
-        ) {
-
+        if (questionList == null || questionList.isEmpty()) {
             return;
         }
 
+        // নতুন প্রশ্ন আসার সাথে সাথে স্ক্রিন একদম উপরে (0,0) পজিশনে নিয়ে যাওয়া
+        if (binding.nestedScrollView != null) {
+            binding.nestedScrollView.scrollTo(0, 0);
+        }
 
-        Question question =
-                questionList.get(
-                        currentPosition
-                );
-
+        Question question = questionList.get(currentPosition);
 
         saveRecentLearning();
 
-
-        // ========================================================
-        // MARK QUESTION AS READ
-        // ========================================================
-
-        if (
-                readingProgressRepository != null
-        ) {
-
-            readingProgressRepository
-                    .markQuestionAsRead(
-                            question.getId()
-                    );
+        if (readingProgressRepository != null) {
+            readingProgressRepository.markQuestionAsRead(question.getId());
         }
 
-
-        // ========================================================
-        // BOOKMARK
-        // ========================================================
-
-        updateBookmarkButton(
-                question.getId()
-        );
-
-
-        // ========================================================
-        // QUESTION NUMBER
-        // ========================================================
+        updateBookmarkButton(question.getId());
 
         binding.questionNumber.setText(
-                (currentPosition + 1)
-                        + " / "
-                        + questionList.size()
+                (currentPosition + 1) + " / " + questionList.size()
         );
 
-
-        // ========================================================
-        // SUBJECT
-        // ========================================================
-
-        if (
-                subjectName != null &&
-                        !subjectName.trim().isEmpty()
-        ) {
-
-            binding.subjectText.setText(
-                    subjectName
-            );
-
+        if (subjectName != null && !subjectName.trim().isEmpty()) {
+            binding.subjectText.setText(subjectName);
         } else {
-
-            binding.subjectText.setText(
-                    "Question"
-            );
+            binding.subjectText.setText("Question");
         }
 
-
-        // ========================================================
-        // YEAR / TOPIC
-        // ========================================================
-
-        if (
-                question.getYearTag() != null &&
-                        !question.getYearTag()
-                                .trim()
-                                .isEmpty()
-        ) {
-
-            binding.topicText.setText(
-                    question.getYearTag()
-            );
-
+        if (question.getYearTag() != null && !question.getYearTag().trim().isEmpty()) {
+            binding.topicText.setText(question.getYearTag());
         } else {
-
-            binding.topicText.setText(
-                    "Practice Question"
-            );
+            binding.topicText.setText("Practice Question");
         }
 
-
         // ========================================================
-        // QUESTION
+        // QUESTION (TextView vs WebView Check with Clean Text)
         // ========================================================
+        String rawQText = question.getQuestionText();
+        String cleanQText = LatexRenderer.getCleanText(rawQText); // জেসন রিমুভ করার জন্য
+        String qImg = question.getQuestionImage();
+        boolean hasQImage = (qImg != null && !qImg.trim().isEmpty());
 
-        LatexRenderer.renderQuestion(
-                binding.questionText,
-                question.getQuestionText()
-        );
-
+        if (!hasQImage && !LatexRenderer.containsLaTeXOrHtml(rawQText)) {
+            // সাধারণ টেক্সট (সুপার ফাস্ট TextView, কোনো JSON দেখাবে না)
+            binding.questionText.setVisibility(View.GONE);
+            binding.questionTv.setVisibility(View.VISIBLE);
+            binding.questionTv.setText(cleanQText);
+        } else {
+            // লেটেক্স বা ইমেজ থাকলে WebView (এখানে rawQText যাবে যাতে লেটেক্স রেন্ডার হয়)
+            binding.questionTv.setVisibility(View.GONE);
+            binding.questionText.setVisibility(View.VISIBLE);
+            LatexRenderer.renderQuestion(binding.questionText, rawQText, qImg);
+        }
 
         // ========================================================
         // OPTIONS
         // ========================================================
-
-        setOptions(
-                question
-        );
-
+        setOptions(question);
 
         // ========================================================
-        // RESET OPTION STYLE
+        // CORRECT ANSWER & EXPLANATION
         // ========================================================
-
-        resetOptions();
-
-
-        // ========================================================
-        // CORRECT ANSWER
-        // ========================================================
-
-        showCorrectAnswer(
-                question.getCorrectOption(),
-                question
-        );
-
-
-        // ========================================================
-        // EXPLANATION
-        // ========================================================
-
-        if (
-                question.getExplanation() != null &&
-                        !question.getExplanation()
-                                .trim()
-                                .isEmpty()
-        ) {
-
-            LatexRenderer.renderExplanation(
-                    binding.explanationText,
-                    question.getExplanation()
-            );
-
-
-            binding.explanationLayout
-                    .setVisibility(
-                            View.VISIBLE
-                    );
-
+        String correctOptStr = question.getCorrectOption() != null ? question.getCorrectOption().trim().toUpperCase() : "";
+        if (!correctOptStr.isEmpty()) {
+            binding.correctAnswer.setText("সঠিক উত্তর: অপশন " + correctOptStr);
+            binding.correctAnswer.setVisibility(View.VISIBLE);
         } else {
-
-            binding.explanationLayout
-                    .setVisibility(
-                            View.GONE
-                    );
+            binding.correctAnswer.setVisibility(View.GONE);
         }
 
+        String rawExplanation = question.getExplanation();
+        String cleanExplanation = LatexRenderer.getCleanText(rawExplanation);
+        boolean hasExplanationText = cleanExplanation != null && !cleanExplanation.trim().isEmpty();
+        boolean hasExplanationImage = question.getExplanationImage() != null && !question.getExplanationImage().trim().isEmpty();
 
-        // ========================================================
-        // NAVIGATION
-        // ========================================================
+        if (hasExplanationText || hasExplanationImage) {
+            LatexRenderer.renderExplanation(
+                    binding.explanationText,
+                    rawExplanation,
+                    question.getExplanationImage()
+            );
+            binding.explanationLayout.setVisibility(View.VISIBLE);
+        } else {
+            binding.explanationLayout.setVisibility(View.GONE);
+        }
 
         updateNavigationButtons();
     }
 
 
     // ============================================================
-    // SET OPTIONS
+    // SET OPTIONS (Text + Option Images support via JSON)
     // ============================================================
 
+    // ============================================================
+// SET OPTIONS (Text + Option Images support)
+// ============================================================
     private void setOptions(Question question) {
-
         try {
+            JSONObject options = new JSONObject(question.getOptions());
+            String optImgJson = question.getOptionImages();
+            JSONObject optionImages = null;
+            String singleOptImage = null;
 
-            JSONObject options =
-                    new JSONObject(question.getOptions());
+            if (optImgJson != null && !optImgJson.trim().isEmpty()) {
+                optImgJson = optImgJson.trim();
+                if (optImgJson.startsWith("{")) {
+                    try {
+                        optionImages = new JSONObject(optImgJson);
+                    } catch (Exception ignored) {}
+                } else {
+                    singleOptImage = optImgJson;
+                }
+            }
 
-            LatexRenderer.renderOption(
-                    binding.option1,
-                    "A.&nbsp;&nbsp;" +
-                            options.optString("a", "")
+            String correctOption = question.getCorrectOption() != null ? question.getCorrectOption().trim().toLowerCase() : "";
+
+            // অপশনগুলোর র ম্যাথোড থেকে JSON ক্লিন করে টেক্সট বের করা
+            String optA = LatexRenderer.getCleanText(options.optString("a", ""));
+            String optB = LatexRenderer.getCleanText(options.optString("b", ""));
+            String optC = LatexRenderer.getCleanText(options.optString("c", ""));
+            String optD = LatexRenderer.getCleanText(options.optString("d", ""));
+
+            // অপশন এ (A)
+            bindSingleOption(
+                    binding.option1, binding.option1Tv,
+                    optA,
+                    options.optString("a", ""), // র টেক্সট WebView এর জন্য
+                    optionImages != null ? optionImages.optString("a", null) : singleOptImage,
+                    "a".equals(correctOption), "A. "
             );
 
-            LatexRenderer.renderOption(
-                    binding.option2,
-                    "B.&nbsp;&nbsp;" +
-                            options.optString("b", "")
+            // অপশন বি (B)
+            bindSingleOption(
+                    binding.option2, binding.option2Tv,
+                    optB,
+                    options.optString("b", ""),
+                    optionImages != null ? optionImages.optString("b", null) : null,
+                    "b".equals(correctOption), "B. "
             );
 
-            LatexRenderer.renderOption(
-                    binding.option3,
-                    "C.&nbsp;&nbsp;" +
-                            options.optString("c", "")
+            // অপশন সি (C)
+            bindSingleOption(
+                    binding.option3, binding.option3Tv,
+                    optC,
+                    options.optString("c", ""),
+                    optionImages != null ? optionImages.optString("c", null) : null,
+                    "c".equals(correctOption), "C. "
             );
 
-            LatexRenderer.renderOption(
-                    binding.option4,
-                    "D.&nbsp;&nbsp;" +
-                            options.optString("d", "")
+            // অপশন ডি (D)
+            bindSingleOption(
+                    binding.option4, binding.option4Tv,
+                    optD,
+                    options.optString("d", ""),
+                    optionImages != null ? optionImages.optString("d", null) : null,
+                    "d".equals(correctOption), "D. "
             );
 
         } catch (Exception e) {
-
-            LatexRenderer.renderOption(
-                    binding.option1,
-                    "A."
-            );
-
-            LatexRenderer.renderOption(
-                    binding.option2,
-                    "B."
-            );
-
-            LatexRenderer.renderOption(
-                    binding.option3,
-                    "C."
-            );
-
-            LatexRenderer.renderOption(
-                    binding.option4,
-                    "D."
-            );
+            // ফால்ব্যাক
+            binding.option1Tv.setVisibility(View.VISIBLE);
+            binding.option1Tv.setText("A. ");
+            binding.option1.setVisibility(View.GONE);
         }
+    }
+
+    private void bindSingleOption(WebView webView, android.widget.TextView textView, String cleanText, String rawText, String imagePath, boolean isCorrect, String prefix) {
+        boolean hasImg = (imagePath != null && !imagePath.trim().isEmpty());
+        boolean hasLatex = LatexRenderer.containsLaTeXOrHtml(rawText);
+        String formattedCleanText = prefix + cleanText;
+        String formattedRawText = prefix + rawText;
+
+        // ব্যাকগ্রাউন্ড সেট করা
+        int bgRes = isCorrect ? R.drawable.bg_option_correct : R.drawable.bg_option_normal;
+        webView.setBackgroundResource(bgRes);
+        textView.setBackgroundResource(bgRes);
+
+        if (!hasImg && !hasLatex) {
+            // সাধারণ টেক্সট (সুপার ফাস্ট TextView)
+            webView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
+            textView.setText(formattedCleanText);
+        } else {
+            // লেটেক্স বা ইমেজ থাকলে WebView
+            textView.setVisibility(View.GONE);
+            webView.setVisibility(View.VISIBLE);
+            if (isCorrect) {
+                LatexRenderer.renderCorrectOption(webView, formattedRawText, imagePath);
+            } else {
+                LatexRenderer.renderOption(webView, formattedRawText, imagePath);
+            }
+        }
+    }
+    // অপশন লেটার যুক্ত করার ছোট হেল্পার (যদি আপনার আগের মতো A., B. দেখাতে চান)
+    private String getOptionPrefix(WebView webView) {
+        if (webView == binding.option1) return "A.&nbsp;&nbsp;";
+        if (webView == binding.option2) return "B.&nbsp;&nbsp;";
+        if (webView == binding.option3) return "C.&nbsp;&nbsp;";
+        if (webView == binding.option4) return "D.&nbsp;&nbsp;";
+        return "";
     }
 
 
@@ -654,117 +632,22 @@ public class QuestionsActivity extends AppCompatActivity {
     // RESET OPTIONS
     // ============================================================
 
-    private void resetOptions() {
 
-        binding.option1.setBackgroundResource(
-                R.drawable.bg_option_normal
-        );
-
-        binding.option2.setBackgroundResource(
-                R.drawable.bg_option_normal
-        );
-
-        binding.option3.setBackgroundResource(
-                R.drawable.bg_option_normal
-        );
-
-        binding.option4.setBackgroundResource(
-                R.drawable.bg_option_normal
-        );
-    }
 
 
     // ============================================================
     // SHOW CORRECT ANSWER
     // ============================================================
 
-    private void showCorrectAnswer(
-            String correctOption,
-            Question question
-    ) {
+    // ============================================================
+// SHOW CORRECT ANSWER (Updated with Image Support)
+// ============================================================
 
-        if (correctOption == null) {
-            return;
-        }
-
-        String correct =
-                correctOption
-                        .trim()
-                        .toLowerCase();
-
-        try {
-
-            JSONObject options =
-                    new JSONObject(
-                            question.getOptions()
-                    );
-
-            switch (correct) {
-
-                case "a":
-
-                    binding.option1.setBackgroundResource(
-                            R.drawable.bg_option_correct
-                    );
-
-                    LatexRenderer.renderCorrectOption(
-                            binding.option1,
-                            "A.&nbsp;&nbsp;" +
-                                    options.optString("a", "")
-                    );
-
-                    break;
+    // ============================================================
+// SHOW CORRECT ANSWER (Updated with Image Support)
+// ============================================================
 
 
-                case "b":
-
-                    binding.option2.setBackgroundResource(
-                            R.drawable.bg_option_correct
-                    );
-
-                    LatexRenderer.renderCorrectOption(
-                            binding.option2,
-                            "B.&nbsp;&nbsp;" +
-                                    options.optString("b", "")
-                    );
-
-                    break;
-
-
-                case "c":
-
-                    binding.option3.setBackgroundResource(
-                            R.drawable.bg_option_correct
-                    );
-
-                    LatexRenderer.renderCorrectOption(
-                            binding.option3,
-                            "C.&nbsp;&nbsp;" +
-                                    options.optString("c", "")
-                    );
-
-                    break;
-
-
-                case "d":
-
-                    binding.option4.setBackgroundResource(
-                            R.drawable.bg_option_correct
-                    );
-
-                    LatexRenderer.renderCorrectOption(
-                            binding.option4,
-                            "D.&nbsp;&nbsp;" +
-                                    options.optString("d", "")
-                    );
-
-                    break;
-            }
-
-        } catch (Exception e) {
-            // JSON parse error
-        }
-    }
 
 
     // ============================================================

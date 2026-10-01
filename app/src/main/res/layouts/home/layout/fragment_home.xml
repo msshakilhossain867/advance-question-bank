@@ -149,7 +149,8 @@
                     android:id="@+id/dailyMissionProgressBar"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_7sdp"
+                    android:layout_height="@dimen/_5sdp"
+                    android:progressDrawable="@drawable/custom_progress"
                     android:layout_marginTop="@dimen/_12sdp"
                     android:max="100"
                     android:progress="0" />
@@ -228,7 +229,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:text="View All"
+                    android:text="Let's Go"
                     android:textColor="@color/onboarding_action"
                     android:textSize="@dimen/_11ssp"
                     android:textStyle="bold" />

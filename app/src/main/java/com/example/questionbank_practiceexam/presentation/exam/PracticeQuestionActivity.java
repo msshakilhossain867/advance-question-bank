@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -18,6 +19,7 @@ import com.example.questionbank_practiceexam.data.local.repository.QuestionRepos
 import com.example.questionbank_practiceexam.data.local.repository.StudyTimeRepository;
 import com.example.questionbank_practiceexam.databinding.ActivityPracticeQuestionBinding;
 import com.example.questionbank_practiceexam.databinding.BottomSheetReportBinding;
+import com.example.questionbank_practiceexam.helpers.LatexRenderer;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.json.JSONObject;
@@ -484,81 +486,47 @@ public class PracticeQuestionActivity extends AppCompatActivity {
     // ============================================================
 
     private void showQuestion() {
-
-        if (questionList == null ||
-                questionList.isEmpty()) {
-
+        if (questionList == null || questionList.isEmpty()) {
             return;
         }
 
-
-        Question question =
-                questionList.get(
-                        currentPosition
-                );
-
-
-        // ========================================================
-        // RESET ANSWER STATE
-        // ========================================================
+        Question question = questionList.get(currentPosition);
 
         answered = false;
-
         selectedOption = null;
 
-
-        // ========================================================
-        // QUESTION NUMBER
-        // ========================================================
-
         binding.questionNumber.setText(
-                (currentPosition + 1)
-                        + " / "
-                        + questionList.size()
+                (currentPosition + 1) + " / " + questionList.size()
         );
 
-
         // ========================================================
-        // QUESTION
+        // QUESTION (TextView vs WebView Check with Image Support)
         // ========================================================
+        String rawQText = question.getQuestionText();
+        String cleanQText = LatexRenderer.getCleanText(rawQText);
+        String qImg = question.getQuestionImage();
+        boolean hasQImage = (qImg != null && !qImg.trim().isEmpty());
 
-        binding.questionText.setText(
-                question.getQuestionText()
-        );
+        if (!hasQImage && !LatexRenderer.containsLaTeXOrHtml(rawQText)) {
+            // Sdaharon texthole TextView
+            binding.questionWebView.setVisibility(View.GONE);
+            binding.questionText.setVisibility(View.VISIBLE);
+            binding.questionText.setText(cleanQText);
+        } else {
+            // Latex ba Image thakle WebView
+            binding.questionText.setVisibility(View.GONE);
+            binding.questionWebView.setVisibility(View.VISIBLE);
+            LatexRenderer.renderQuestion(binding.questionWebView, rawQText, qImg);
+        }
 
-
-        // ========================================================
         // OPTIONS
-        // ========================================================
-
-        setOptions(
-                question
-        );
-
-
-        // ========================================================
-        // RESET OPTION UI
-        // ========================================================
+        setOptions(question);
 
         resetOptions();
 
+        setNextButtonEnabled(false);
 
-        // ========================================================
-        // NEXT DISABLED
-        // ========================================================
-
-        setNextButtonEnabled(
-                false
-        );
-
-
-        // ========================================================
-        // EXPLANATION HIDDEN
-        // ========================================================
-
-        binding.explanationLayout.setVisibility(
-                View.GONE
-        );
+        binding.explanationLayout.setVisibility(View.GONE);
     }
 
 
@@ -566,47 +534,108 @@ public class PracticeQuestionActivity extends AppCompatActivity {
     // SET OPTIONS
     // ============================================================
 
-    private void setOptions(
-            Question question
-    ) {
-
+    private void setOptions(Question question) {
         try {
+            JSONObject options = new JSONObject(question.getOptions());
+            String optImgJson = question.getOptionImages();
+            JSONObject optionImages = null;
+            String singleOptImage = null;
 
-            JSONObject options =
-                    new JSONObject(
-                            question.getOptions()
-                    );
+            if (optImgJson != null && !optImgJson.trim().isEmpty()) {
+                optImgJson = optImgJson.trim();
+                if (optImgJson.startsWith("{")) {
+                    try {
+                        optionImages = new JSONObject(optImgJson);
+                    } catch (Exception ignored) {}
+                } else {
+                    singleOptImage = optImgJson;
+                }
+            }
 
+            String optA = LatexRenderer.getCleanText(options.optString("a", ""));
+            String optB = LatexRenderer.getCleanText(options.optString("b", ""));
+            String optC = LatexRenderer.getCleanText(options.optString("c", ""));
+            String optD = LatexRenderer.getCleanText(options.optString("d", ""));
 
-            binding.optionAText.setText(
-                    options.optString("a")
+            // Option A (প্রফিক্স উঠিয়ে "" দেওয়া হয়েছে)
+            bindSingleOption(
+                    binding.optionAWebView, binding.optionAText,
+                    optA, options.optString("a", ""),
+                    optionImages != null ? optionImages.optString("a", null) : singleOptImage,
+                    ""
             );
 
-
-            binding.optionBText.setText(
-                    options.optString("b")
+            // Option B
+            bindSingleOption(
+                    binding.optionBWebView, binding.optionBText,
+                    optB, options.optString("b", ""),
+                    optionImages != null ? optionImages.optString("b", null) : null,
+                    ""
             );
 
-
-            binding.optionCText.setText(
-                    options.optString("c")
+            // Option C
+            bindSingleOption(
+                    binding.optionCWebView, binding.optionCText,
+                    optC, options.optString("c", ""),
+                    optionImages != null ? optionImages.optString("c", null) : null,
+                    ""
             );
 
-
-            binding.optionDText.setText(
-                    options.optString("d")
+            // Option D
+            bindSingleOption(
+                    binding.optionDWebView, binding.optionDText,
+                    optD, options.optString("d", ""),
+                    optionImages != null ? optionImages.optString("d", null) : null,
+                    ""
             );
-
 
         } catch (Exception e) {
-
             binding.optionAText.setText("");
-
             binding.optionBText.setText("");
-
             binding.optionCText.setText("");
-
             binding.optionDText.setText("");
+        }
+    }
+
+    private void bindSingleOption(WebView webView, android.widget.TextView textView, String cleanText, String rawText, String imagePath, String prefix) {
+        boolean hasImg = (imagePath != null && !imagePath.trim().isEmpty());
+        boolean hasLatex = LatexRenderer.containsLaTeXOrHtml(rawText);
+        String formattedCleanText = prefix + cleanText;
+        String formattedRawText = prefix + rawText;
+
+        if (!hasImg && !hasLatex) {
+            webView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
+            textView.setText(formattedCleanText);
+        } else {
+            textView.setVisibility(View.GONE);
+            webView.setVisibility(View.VISIBLE);
+            LatexRenderer.renderOption(webView, formattedRawText, imagePath);
+
+            // ========================================================
+            // FIX: WebView এ ক্লিক করলে যেন মূল LinearLayout এর ক্লিক কাজ করে
+            // ========================================================
+            webView.setOnClickListener(v -> {
+                View parentLayout = (View) webView.getParent().getParent(); // FrameLayout -> LinearLayout
+                if (parentLayout != null) {
+                    parentLayout.performClick();
+                }
+            });
+
+            final long[] pressTime = {0};
+            webView.setOnTouchListener((v, event) -> {
+                if (event.getAction() == android.view.MotionEvent.ACTION_DOWN) {
+                    pressTime[0] = System.currentTimeMillis();
+                } else if (event.getAction() == android.view.MotionEvent.ACTION_UP) {
+                    if (System.currentTimeMillis() - pressTime[0] < 200) {
+                        View parentLayout = (View) webView.getParent().getParent();
+                        if (parentLayout != null) {
+                            parentLayout.performClick();
+                        }
+                    }
+                }
+                return false;
+            });
         }
     }
 
@@ -994,20 +1023,19 @@ public class PracticeQuestionActivity extends AppCompatActivity {
         // EXPLANATION
         // ========================================================
 
-        if (showExplanation &&
-                question.getExplanation() != null &&
-                !question.getExplanation()
-                        .trim()
-                        .isEmpty()) {
+        if (showExplanation && question.getExplanation() != null && !question.getExplanation().trim().isEmpty()) {
+            String rawExp = question.getExplanation();
+            String expImg = question.getExplanationImage();
 
-            binding.explanationText.setText(
-                    question.getExplanation()
+            LatexRenderer.renderExplanation(
+                    binding.explanationWebView, // XML e explanationWebView thakte hobe
+                    rawExp,
+                    expImg
             );
+            binding.explanationText.setVisibility(View.GONE);
+            binding.explanationWebView.setVisibility(View.VISIBLE);
 
-
-            binding.explanationLayout.setVisibility(
-                    View.VISIBLE
-            );
+            binding.explanationLayout.setVisibility(View.VISIBLE);
         }
 
 
@@ -2110,6 +2138,32 @@ public class PracticeQuestionActivity extends AppCompatActivity {
                     "No email app found",
                     Toast.LENGTH_LONG
             ).show();
+        }
+    }
+
+
+    private void bindContent(android.widget.TextView textView, android.webkit.WebView webView, String rawText, String mode) {
+        if (rawText == null) {
+            rawText = "";
+        }
+        String cleanText = LatexRenderer.getCleanText(rawText);
+
+        // চেক করা হচ্ছে লেটেক্স, এইচটিএমএল বা ট্যাগ আছে কি না
+        if (LatexRenderer.containsLaTeXOrHtml(cleanText)) {
+            textView.setVisibility(View.GONE);
+            webView.setVisibility(View.VISIBLE);
+
+            if (mode.equals("question")) {
+                LatexRenderer.renderQuestion(webView, cleanText);
+            } else if (mode.equals("option")) {
+                LatexRenderer.renderOption(webView, cleanText);
+            } else if (mode.equals("explanation")) {
+                LatexRenderer.renderExplanation(webView, cleanText);
+            }
+        } else {
+            webView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
+            textView.setText(cleanText);
         }
     }
 

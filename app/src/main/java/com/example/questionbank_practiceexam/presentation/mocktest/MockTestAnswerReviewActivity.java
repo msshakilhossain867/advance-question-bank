@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.databinding.ActivityMockTestAnswerReviewBinding;
 import com.example.questionbank_practiceexam.databinding.ItemAnswerReviewBinding;
+import com.example.questionbank_practiceexam.helpers.LatexRenderer;
 import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONArray;
@@ -237,6 +238,12 @@ public class MockTestAnswerReviewActivity
                                 "explanation",
                                 ""
                         );
+
+
+                // readReviewData() এর ভেতরের লूप-এ এগুলো যুক্ত করে নিবেন:
+                question.questionImage = object.optString("question_image", "");
+                question.optionImages = object.optString("option_images", "");
+                question.explanationImage = object.optString("explanation_image", "");
 
 
                 allQuestions.add(
@@ -663,6 +670,10 @@ public class MockTestAnswerReviewActivity
     // REVIEW MODEL
     // ============================================================
 
+    // ============================================================
+// REVIEW MODEL
+// ============================================================
+
     private static class ReviewQuestion {
 
         int originalPosition = 0;
@@ -671,7 +682,11 @@ public class MockTestAnswerReviewActivity
 
         String question = "";
 
+        String questionImage = ""; // প্রশ্নের ইমেজ থাকলে তার পাথ বা URL
+
         String options = "";
+
+        String optionImages = ""; // অপশনের ইমেজগুলোর JSON বা পাথ
 
         String selectedAnswer = "";
 
@@ -680,12 +695,18 @@ public class MockTestAnswerReviewActivity
         boolean skipped = false;
 
         String explanation = "";
+
+        String explanationImage = ""; // ব্যাখ্যার ইমেজ থাকলে তার পাথ বা URL
     }
 
 
     // ============================================================
     // ADAPTER
     // ============================================================
+
+    // ============================================================
+// ADAPTER
+// ============================================================
 
     private class AnswerReviewAdapter
             extends RecyclerView.Adapter<
@@ -741,12 +762,23 @@ public class MockTestAnswerReviewActivity
 
 
             // ====================================================
-            // QUESTION
+            // QUESTION (TextView vs WebView Check with Image Support)
             // ====================================================
 
-            holder.binding.questionText.setText(
-                    item.question
-            );
+            String rawQText = item.question;
+            String cleanQText = LatexRenderer.getCleanText(rawQText);
+            String qImg = item.questionImage; // ReviewQuestion মডেলে questionImage ফিল্ড থাকতে হবে
+            boolean hasQImage = (qImg != null && !qImg.trim().isEmpty());
+
+            if (!hasQImage && !LatexRenderer.containsLaTeXOrHtml(rawQText)) {
+                holder.binding.questionWebView.setVisibility(View.GONE);
+                holder.binding.questionText.setVisibility(View.VISIBLE);
+                holder.binding.questionText.setText(cleanQText);
+            } else {
+                holder.binding.questionText.setVisibility(View.GONE);
+                holder.binding.questionWebView.setVisibility(View.VISIBLE);
+                LatexRenderer.renderQuestion(holder.binding.questionWebView, rawQText, qImg);
+            }
 
 
             // ====================================================
@@ -766,7 +798,7 @@ public class MockTestAnswerReviewActivity
             if (isUnanswered(item)) {
 
                 holder.binding.resultStatus.setText(
-                        "উত্তর দেওয়া হয়নি"
+                        "উত্তর দেওয়া হয়নি"
                 );
 
 
@@ -812,10 +844,10 @@ public class MockTestAnswerReviewActivity
 
 
             // ====================================================
-            // WRONG
+           // -- WRONG
             // ====================================================
 
-            else {
+        else {
 
                 holder.binding.resultStatus.setText(
                         "ভুল উত্তর ✕"
@@ -865,7 +897,7 @@ public class MockTestAnswerReviewActivity
 
 
             // ====================================================
-            // EXPLANATION
+            // EXPLANATION (TextView vs WebView Check)
             // ====================================================
 
             if (item.explanation != null &&
@@ -878,10 +910,20 @@ public class MockTestAnswerReviewActivity
                                 View.VISIBLE
                         );
 
+                String rawExp = item.explanation;
+                String cleanExp = LatexRenderer.getCleanText(rawExp);
+                String expImg = item.explanationImage; // অপশনাল
+                boolean hasExpImg = (expImg != null && !expImg.trim().isEmpty());
 
-                holder.binding.explanationText.setText(
-                        item.explanation
-                );
+                if (!hasExpImg && !LatexRenderer.containsLaTeXOrHtml(rawExp)) {
+                    holder.binding.explanationWebView.setVisibility(View.GONE);
+                    holder.binding.explanationText.setVisibility(View.VISIBLE);
+                    holder.binding.explanationText.setText(cleanExp);
+                } else {
+                    holder.binding.explanationText.setVisibility(View.GONE);
+                    holder.binding.explanationWebView.setVisibility(View.VISIBLE);
+                    LatexRenderer.renderExplanation(holder.binding.explanationWebView, rawExp, expImg);
+                }
 
             } else {
 
@@ -909,6 +951,21 @@ public class MockTestAnswerReviewActivity
                                 question.options
                         );
 
+                String optImgJson = question.optionImages; // ReviewQuestion এ থাকতে হবে
+                JSONObject optionImages = null;
+                String singleOptImage = null;
+
+                if (optImgJson != null && !optImgJson.trim().isEmpty()) {
+                    optImgJson = optImgJson.trim();
+                    if (optImgJson.startsWith("{")) {
+                        try {
+                            optionImages = new JSONObject(optImgJson);
+                        } catch (Exception ignored) {}
+                    } else {
+                        singleOptImage = optImgJson;
+                    }
+                }
+
 
                 String selected =
                         question.selectedAnswer == null
@@ -930,65 +987,53 @@ public class MockTestAnswerReviewActivity
                                 );
 
 
+                String optA = LatexRenderer.getCleanText(options.optString("a", ""));
+                String optB = LatexRenderer.getCleanText(options.optString("b", ""));
+                String optC = LatexRenderer.getCleanText(options.optString("c", ""));
+                String optD = LatexRenderer.getCleanText(options.optString("d", ""));
+
+
+                // Option A
+                bindSingleOption(
+                        itemBinding.optionAWebView, itemBinding.optionAText,
+                        optA, options.optString("a", ""),
+                        optionImages != null ? optionImages.optString("a", null) : singleOptImage,
+                        "A. "
+                );
+
+                // Option B
+                bindSingleOption(
+                        itemBinding.optionBWebView, itemBinding.optionBText,
+                        optB, options.optString("b", ""),
+                        optionImages != null ? optionImages.optString("b", null) : null,
+                        "B. "
+                );
+
+                // Option C
+                bindSingleOption(
+                        itemBinding.optionCWebView, itemBinding.optionCText,
+                        optC, options.optString("c", ""),
+                        optionImages != null ? optionImages.optString("c", null) : null,
+                        "C. "
+                );
+
+                // Option D
+                bindSingleOption(
+                        itemBinding.optionDWebView, itemBinding.optionDText,
+                        optD, options.optString("d", ""),
+                        optionImages != null ? optionImages.optString("d", null) : null,
+                        "D. "
+                );
+
+
                 // =================================================
-                // OPTION TEXT
+                // RESET STYLES
                 // =================================================
 
-                itemBinding.optionAText.setText(
-                        "A. " +
-                                options.optString(
-                                        "a",
-                                        ""
-                                )
-                );
-
-
-                itemBinding.optionBText.setText(
-                        "B. " +
-                                options.optString(
-                                        "b",
-                                        ""
-                                )
-                );
-
-
-                itemBinding.optionCText.setText(
-                        "C. " +
-                                options.optString(
-                                        "c",
-                                        ""
-                                )
-                );
-
-
-                itemBinding.optionDText.setText(
-                        "D. " +
-                                options.optString(
-                                        "d",
-                                        ""
-                                )
-                );
-
-
-                // =================================================
-                // RESET
-                // =================================================
-
-                resetOptionStyle(
-                        itemBinding.optionAText
-                );
-
-                resetOptionStyle(
-                        itemBinding.optionBText
-                );
-
-                resetOptionStyle(
-                        itemBinding.optionCText
-                );
-
-                resetOptionStyle(
-                        itemBinding.optionDText
-                );
+                resetOptionStyle(itemBinding.optionAWebView, itemBinding.optionAText);
+                resetOptionStyle(itemBinding.optionBWebView, itemBinding.optionBText);
+                resetOptionStyle(itemBinding.optionCWebView, itemBinding.optionCText);
+                resetOptionStyle(itemBinding.optionDWebView, itemBinding.optionDText);
 
 
                 // =================================================
@@ -996,42 +1041,18 @@ public class MockTestAnswerReviewActivity
                 // =================================================
 
                 if (!correct.isEmpty()) {
-
                     switch (correct) {
-
                         case "a":
-
-                            setCorrectOption(
-                                    itemBinding.optionAText
-                            );
-
+                            setCorrectOption(itemBinding.optionAWebView, itemBinding.optionAText);
                             break;
-
-
                         case "b":
-
-                            setCorrectOption(
-                                    itemBinding.optionBText
-                            );
-
+                            setCorrectOption(itemBinding.optionBWebView, itemBinding.optionBText);
                             break;
-
-
                         case "c":
-
-                            setCorrectOption(
-                                    itemBinding.optionCText
-                            );
-
+                            setCorrectOption(itemBinding.optionCWebView, itemBinding.optionCText);
                             break;
-
-
                         case "d":
-
-                            setCorrectOption(
-                                    itemBinding.optionDText
-                            );
-
+                            setCorrectOption(itemBinding.optionDWebView, itemBinding.optionDText);
                             break;
                     }
                 }
@@ -1041,68 +1062,72 @@ public class MockTestAnswerReviewActivity
                 // WRONG USER OPTION = RED
                 // =================================================
 
-                if (!selected.isEmpty() &&
-                        !selected.equals(correct)) {
-
+                if (!selected.isEmpty() && !selected.equals(correct)) {
                     switch (selected) {
-
                         case "a":
-
-                            setWrongOption(
-                                    itemBinding.optionAText
-                            );
-
+                            setWrongOption(itemBinding.optionAWebView, itemBinding.optionAText);
                             break;
-
-
                         case "b":
-
-                            setWrongOption(
-                                    itemBinding.optionBText
-                            );
-
+                            setWrongOption(itemBinding.optionBWebView, itemBinding.optionBText);
                             break;
-
-
                         case "c":
-
-                            setWrongOption(
-                                    itemBinding.optionCText
-                            );
-
+                            setWrongOption(itemBinding.optionCWebView, itemBinding.optionCText);
                             break;
-
-
                         case "d":
-
-                            setWrongOption(
-                                    itemBinding.optionDText
-                            );
-
+                            setWrongOption(itemBinding.optionDWebView, itemBinding.optionDText);
                             break;
                     }
                 }
 
             } catch (Exception e) {
-
-                itemBinding.optionAText.setText(
-                        "A."
-                );
-
-
-                itemBinding.optionBText.setText(
-                        "B."
-                );
+                itemBinding.optionAText.setText("A.");
+                itemBinding.optionBText.setText("B.");
+                itemBinding.optionCText.setText("C.");
+                itemBinding.optionDText.setText("D.");
+            }
+        }
 
 
-                itemBinding.optionCText.setText(
-                        "C."
-                );
+        // ========================================================
+        // BIND SINGLE OPTION
+        // ========================================================
 
+        private void bindSingleOption(android.webkit.WebView webView, android.widget.TextView textView, String cleanText, String rawText, String imagePath, String prefix) {
+            boolean hasImg = (imagePath != null && !imagePath.trim().isEmpty());
+            boolean hasLatex = LatexRenderer.containsLaTeXOrHtml(rawText);
+            String formattedCleanText = prefix + cleanText;
+            String formattedRawText = prefix + rawText;
 
-                itemBinding.optionDText.setText(
-                        "D."
-                );
+            if (!hasImg && !hasLatex) {
+                webView.setVisibility(View.GONE);
+                textView.setVisibility(View.VISIBLE);
+                textView.setText(formattedCleanText);
+            } else {
+                textView.setVisibility(View.GONE);
+                webView.setVisibility(View.VISIBLE);
+                LatexRenderer.renderOption(webView, formattedRawText, imagePath);
+
+                webView.setOnClickListener(v -> {
+                    View parentLayout = (View) webView.getParent().getParent();
+                    if (parentLayout != null) {
+                        parentLayout.performClick();
+                    }
+                });
+
+                final long[] pressTime = {0};
+                webView.setOnTouchListener((v, event) -> {
+                    if (event.getAction() == android.view.MotionEvent.ACTION_DOWN) {
+                        pressTime[0] = System.currentTimeMillis();
+                    } else if (event.getAction() == android.view.MotionEvent.ACTION_UP) {
+                        if (System.currentTimeMillis() - pressTime[0] < 200) {
+                            View parentLayout = (View) webView.getParent().getParent();
+                            if (parentLayout != null) {
+                                parentLayout.performClick();
+                            }
+                        }
+                    }
+                    return false;
+                });
             }
         }
 
@@ -1111,18 +1136,13 @@ public class MockTestAnswerReviewActivity
         // CORRECT OPTION
         // ========================================================
 
-        private void setCorrectOption(
-                View view
-        ) {
-
-            view.setBackgroundResource(
-                    R.drawable.bg_answer_review_correct
-            );
-
-
-            view.setAlpha(
-                    1f
-            );
+        private void setCorrectOption(View webView, View textView) {
+            if (webView.getVisibility() == View.VISIBLE) {
+                webView.setBackgroundResource(R.drawable.bg_answer_review_correct);
+            }
+            if (textView.getVisibility() == View.VISIBLE) {
+                textView.setBackgroundResource(R.drawable.bg_answer_review_correct);
+            }
         }
 
 
@@ -1130,18 +1150,13 @@ public class MockTestAnswerReviewActivity
         // WRONG OPTION
         // ========================================================
 
-        private void setWrongOption(
-                View view
-        ) {
-
-            view.setBackgroundResource(
-                    R.drawable.bg_answer_review_wrong
-            );
-
-
-            view.setAlpha(
-                    1f
-            );
+        private void setWrongOption(View webView, View textView) {
+            if (webView.getVisibility() == View.VISIBLE) {
+                webView.setBackgroundResource(R.drawable.bg_answer_review_wrong);
+            }
+            if (textView.getVisibility() == View.VISIBLE) {
+                textView.setBackgroundResource(R.drawable.bg_answer_review_wrong);
+            }
         }
 
 
@@ -1149,53 +1164,28 @@ public class MockTestAnswerReviewActivity
         // RESET OPTION
         // ========================================================
 
-        private void resetOptionStyle(
-                View view
-        ) {
-
-            view.setBackgroundResource(
-                    R.drawable.bg_answer_review_option
-            );
-
-
-            view.setAlpha(
-                    1f
-            );
+        private void resetOptionStyle(View webView, View textView) {
+            if (webView.getVisibility() == View.VISIBLE) {
+                webView.setBackgroundResource(R.drawable.bg_answer_review_option);
+            }
+            if (textView.getVisibility() == View.VISIBLE) {
+                textView.setBackgroundResource(R.drawable.bg_answer_review_option);
+            }
         }
 
 
-        // ========================================================
-        // ITEM COUNT
-        // ========================================================
-
         @Override
         public int getItemCount() {
-
             return filteredQuestions.size();
         }
 
 
-        // ========================================================
-        // VIEW HOLDER
-        // ========================================================
-
-        class ViewHolder
-                extends RecyclerView.ViewHolder {
-
+        class ViewHolder extends RecyclerView.ViewHolder {
             ItemAnswerReviewBinding binding;
 
-
-            ViewHolder(
-                    ItemAnswerReviewBinding binding
-            ) {
-
-                super(
-                        binding.getRoot()
-                );
-
-
-                this.binding =
-                        binding;
+            ViewHolder(ItemAnswerReviewBinding binding) {
+                super(binding.getRoot());
+                this.binding = binding;
             }
         }
     }

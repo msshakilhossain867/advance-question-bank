@@ -25,4 +25,5 @@
     <color name="home_card_subtitle">#94A3B8</color>
     <color name="card_background">#1E293B</color> <!-- Lighter Navy Surface -->
     <color name="card_stroke_color">#334155</color>
+    <color name="card_selected_color">#334155</color>
 </resources>

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,7 +16,6 @@
         android:padding="16dp">
 
         <!-- Question Number -->
-
         <TextView
             android:id="@+id/questionNumber"
             android:layout_width="wrap_content"
@@ -27,10 +25,16 @@
             android:textSize="13sp"
             android:textColor="#6254E8"/>
 
-
-        <!-- Question -->
+        <!-- Question WebView (TextView এর বদলে WebView) -->
+        <WebView
+            android:id="@+id/questionWebView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"/>
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/questionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,12 +45,21 @@
             android:textColor="#20242C"/>
 
 
-        <!-- A -->
+
+        <!-- Option A WebView -->
+        <WebView
+            android:id="@+id/optionAWebView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:padding="4dp"
+            android:background="#F4F5F8"/>
 
         <TextView
             android:id="@+id/optionAText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_marginTop="14dp"
             android:text="A. Option"
             android:textSize="14sp"
@@ -54,8 +67,14 @@
             android:padding="10dp"
             android:background="#F4F5F8"/>
 
-
-        <!-- B -->
+        <!-- Option B WebView -->
+        <WebView
+            android:id="@+id/optionBWebView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:padding="4dp"
+            android:background="#F4F5F8"/>
 
         <TextView
             android:id="@+id/optionBText"
@@ -63,13 +82,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="B. Option"
+            android:visibility="gone"
             android:textSize="14sp"
             android:textColor="#454A55"
             android:padding="10dp"
             android:background="#F4F5F8"/>
 
-
-        <!-- C -->
+        <!-- Option C WebView -->
+        <WebView
+            android:id="@+id/optionCWebView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:padding="4dp"
+            android:background="#F4F5F8"/>
 
         <TextView
             android:id="@+id/optionCText"
@@ -79,11 +105,18 @@
             android:text="C. Option"
             android:textSize="14sp"
             android:textColor="#454A55"
+            android:visibility="gone"
             android:padding="10dp"
             android:background="#F4F5F8"/>
 
-
-        <!-- D -->
+        <!-- Option D WebView -->
+        <WebView
+            android:id="@+id/optionDWebView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:padding="4dp"
+            android:background="#F4F5F8"/>
 
         <TextView
             android:id="@+id/optionDText"
@@ -92,13 +125,12 @@
             android:layout_marginTop="6dp"
             android:text="D. Option"
             android:textSize="14sp"
+            android:visibility="gone"
             android:textColor="#454A55"
             android:padding="10dp"
             android:background="#F4F5F8"/>
 
-
         <!-- Status -->
-
         <TextView
             android:id="@+id/resultStatus"
             android:layout_width="wrap_content"
@@ -108,9 +140,7 @@
             android:textStyle="bold"
             android:textSize="14sp"/>
 
-
         <!-- User Answer -->
-
         <TextView
             android:id="@+id/selectedAnswerText"
             android:layout_width="match_parent"
@@ -120,9 +150,7 @@
             android:textSize="14sp"
             android:textColor="#454A55"/>
 
-
         <!-- Correct Answer -->
-
         <TextView
             android:id="@+id/correctAnswerText"
             android:layout_width="match_parent"
@@ -133,9 +161,7 @@
             android:textStyle="bold"
             android:textColor="#1B9A52"/>
 
-
         <!-- Explanation -->
-
         <LinearLayout
             android:id="@+id/explanationLayout"
             android:layout_width="match_parent"
@@ -152,6 +178,15 @@
                 android:textStyle="bold"
                 android:textSize="14sp"
                 android:textColor="#6254E8"/>
+
+            <!-- Explanation WebView -->
+            <WebView
+                android:id="@+id/explanationWebView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"/>
+
 
             <TextView
                 android:id="@+id/explanationText"

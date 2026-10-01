@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" width="100%" height="100%" style="background-color: #ffffff; font-family: 'Times New Roman', Times, serif;">
+  <style>
+    .bold-text { font-weight: bold; fill: #000000; }
+    .normal-text { font-weight: normal; fill: #000000; }
+    .subscript { font-size: 13px; }
+    .locant { font-size: 16px; font-weight: normal; fill: #000000; }
+    .bond { stroke: #000000; stroke-width: 1.5; stroke-linecap: round; }
+  </style>
+
+  <!-- Title / Solution Header -->
+  <text x="30" y="35" class="bold-text" font-size="20">Sol:</text>
+  <text x="75" y="35" class="normal-text" font-size="20">(3-Bromo-2-Chloro-5-methylheptane)</text>
+
+  <!-- Carbon Chain Main Line (Row y=82) -->
+
+  <!-- CH3 (left unnumbered) -->
+  <text x="30" y="82" class="bold-text" font-size="20">CH<tspan baseline-shift="sub" class="subscript">3</tspan></text>
+
+  <!-- Bond 0-1 -->
+  <line x1="75" y1="76" x2="87" y2="76" class="bond" />
+
+  <!-- C5: CH -->
+  <text x="100" y="50" class="locant">5</text>
+  <text x="95" y="82" class="bold-text" font-size="20">CH</text>
+
+  <!-- Bond 5-4 -->
+  <line x1="128" y1="76" x2="140" y2="76" class="bond" />
+
+  <!-- C4: CH2 -->
+  <text x="155" y="50" class="locant">4</text>
+  <text x="148" y="82" class="bold-text" font-size="20">CH<tspan baseline-shift="sub" class="subscript">2</tspan></text>
+
+  <!-- Bond 4-3 -->
+  <text x="211" y="79" class="normal-text" font-size="20">-</text>
+
+  <!-- C3: CH -->
+  <text x="238" y="50" class="locant">3</text>
+  <text x="233" y="82" class="bold-text" font-size="20">CH</text>
+
+  <!-- Bond 3-2 -->
+  <line x1="266" y1="76" x2="278" y2="76" class="bond" />
+
+  <!-- C2: CH -->
+  <text x="293" y="50" class="locant">2</text>
+  <text x="288" y="82" class="bold-text" font-size="20">CH</text>
+
+  <!-- Bond 2-1 -->
+  <line x1="321" y1="76" x2="333" y2="76" class="bond" />
+
+  <!-- C1: CH3 -->
+  <text x="348" y="50" class="locant">1</text>
+  <text x="341" y="82" class="bold-text" font-size="20">CH<tspan baseline-shift="sub" class="subscript">3</tspan></text>
+
+  <!-- Branch at C5 (going down) -->
+  <line x1="110" y1="90" x2="110" y2="105" class="bond" />
+  <text x="85" y="125" class="locant">6</text>
+  <text x="100" y="132" class="bold-text" font-size="20">CH<tspan baseline-shift="sub" class="subscript">2</tspan></text>
+
+  <line x1="110" y1="140" x2="110" y2="155" class="bond" />
+  <text x="85" y="175" class="locant">7</text>
+  <text x="100" y="182" class="bold-text" font-size="20">CH<tspan baseline-shift="sub" class="subscript">3</tspan></text>
+
+  <!-- Branch at C3 (Br going down) -->
+  <line x1="248" y1="90" x2="248" y2="110" class="bond" />
+  <text x="238" y="132" class="bold-text" font-size="20">Br</text>
+
+  <!-- Branch at C2 (Cl going down) -->
+  <line x1="303" y1="90" x2="303" y2="110" class="bond" />
+  <text x="295" y="132" class="bold-text" font-size="20">Cl</text>
+
+  <!-- Bottom Name Text -->
+  <text x="30" y="235" class="bold-text" font-size="21">3-Bromo-2-Chloro-5-methylheptane</text>
+</svg>

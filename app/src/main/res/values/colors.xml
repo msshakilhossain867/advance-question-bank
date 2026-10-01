@@ -26,4 +26,5 @@
     <color name="home_card_subtitle">#7A869A</color>
     <color name="card_background">#FFFFFF</color>
     <color name="card_stroke_color">#F0F0F0</color>
+    <color name="card_selected_color">#F0F4FE</color>
 </resources>
