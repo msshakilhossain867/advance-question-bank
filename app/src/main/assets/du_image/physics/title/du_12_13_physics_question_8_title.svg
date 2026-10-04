@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 340" width="100%" height="100%">
+  <style>
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', 'Times New Roman', serif; font-size: 19px; fill: #000000; }
+    .label-text { font-family: 'Times New Roman', serif; font-size: 20px; fill: #000000; }
+    .title-text { font-family: 'Times New Roman', serif; font-size: 21px; fill: #000000; }
+    .grid-outer { stroke: #000000; stroke-width: 1.8; fill: none; }
+    .grid-v { stroke: #000000; stroke-width: 1.2; fill: none; }
+    .grid-h { stroke: #000000; stroke-width: 1.2; stroke-dasharray: 2 2; fill: none; }
+    .graph-line { stroke: #000000; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+  </style>
+
+  <!-- Bangla Text Questions -->
+  <text x="20" y="32" class="bengali-text">
+    নিচের গ্রাফটিতে <tspan class="label-text">50 s</tspan> সময়কালে একটি গাড়ির বেগের পরিবর্তন দেখানো
+  </text>
+  <text x="20" y="60" class="bengali-text">
+    হয়েছে। এই সময়কালে গাড়িটি কত দূরত্ব অতিক্রম করেছে?
+  </text>
+
+  <!-- Graph Section -->
+  <g transform="translate(80, 90)">
+    
+    <!-- Y-axis Labels -->
+    <text x="-12" y="10" class="label-text" text-anchor="end">10</text>
+    <text x="-12" y="55" class="label-text" text-anchor="end">7.5</text>
+    <text x="-12" y="100" class="label-text" text-anchor="end">5</text>
+    <text x="-12" y="145" class="label-text" text-anchor="end">2.5</text>
+    <text x="-12" y="190" class="label-text" text-anchor="end">0</text>
+
+    <!-- Horizontal Grid Lines (Dotted) -->
+    <line x1="0" y1="48" x2="350" y2="48" class="grid-h" />
+    <line x1="0" y1="94" x2="350" y2="94" class="grid-h" />
+    <line x1="0" y1="139" x2="350" y2="139" class="grid-h" />
+
+    <!-- Vertical Grid Lines -->
+    <line x1="70" y1="0" x2="70" y2="185" class="grid-v" />
+    <line x1="140" y1="0" x2="140" y2="185" class="grid-v" />
+    <line x1="210" y1="0" x2="210" y2="185" class="grid-v" />
+    <line x1="280" y1="0" x2="280" y2="185" class="grid-v" />
+
+    <!-- Graph Boundary (Outer Box) -->
+    <rect x="0" y="0" width="350" height="185" class="grid-outer" />
+
+    <!-- Graph Plot Lines -->
+    <!-- 0 to 20s: 0 to 10 m/s -->
+    <line x1="0" y1="185" x2="140" y2="0" class="graph-line" />
+    <!-- 20 to 40s: Constant at 10 m/s -->
+    <line x1="140" y1="0" x2="280" y2="0" class="graph-line" />
+    <!-- 40 to 50s: 10 to 0 m/s -->
+    <line x1="280" y1="0" x2="350" y2="185" class="graph-line" />
+
+    <!-- X-axis Labels -->
+    <text x="0" y="215" class="label-text" text-anchor="middle">0</text>
+    <text x="70" y="215" class="label-text" text-anchor="middle">10</text>
+    <text x="140" y="215" class="label-text" text-anchor="middle">20</text>
+    <text x="210" y="215" class="label-text" text-anchor="middle">30</text>
+    <text x="280" y="215" class="label-text" text-anchor="middle">40</text>
+    <text x="350" y="215" class="label-text" text-anchor="middle">50</text>
+
+    <!-- X-axis Title -->
+    <text x="175" y="248" class="title-text" text-anchor="middle">Time in second</text>
+  </g>
+</svg>

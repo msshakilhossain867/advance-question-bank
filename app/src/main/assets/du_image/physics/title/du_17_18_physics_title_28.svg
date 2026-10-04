@@ -46,7 +46,7 @@
       <text x="80" y="45" class="label-text" text-anchor="middle">20Ω</text>
 
       <!-- Arrow after 20 Ohm -->
-      <line x1="110" y1="20" x2="160" y2="20" class="wire" />
+      <line x1="10" y1="20" x2="160" y2="20" class="wire" />
       <polygon points="135,15 150,20 135,25" class="arrow-head" />
 
       <!-- Top Parallel Junction -->

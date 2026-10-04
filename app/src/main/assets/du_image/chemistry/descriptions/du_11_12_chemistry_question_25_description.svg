@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%" style="background-color: #ffffff; font-family: 'SolaimanLipi', 'Kalpurush', 'Noto Sans Bengali', Arial, sans-serif;">
+
+  <!-- Header Text (Bengali) -->
+  <text x="50" y="45" font-size="24" fill="#000000" font-weight="bold">
+    এসিড ক্লোরাইডের সাথে অ্যামোনিয়া বা প্রাইমারী অ্যামিনের
+  </text>
+  <text x="50" y="80" font-size="24" fill="#000000" font-weight="bold">
+    বিক্রিয়া-
+  </text>
+
+  <!-- Reaction 1: Acetyl Chloride + Ammonia -> Acetamide + HCl -->
+  <g transform="translate(50, 110)">
+    <!-- CH3 - C(=O) - Cl -->
+    <text x="50" y="70" font-size="22" font-weight="bold" fill="#000">CH<tspan baseline-shift="sub" font-size="16">3</tspan></text>
+    <line x1="100" y1="62" x2="120" y2="62" stroke="#000" stroke-width="2" />
+    <text x="125" y="70" font-size="22" font-weight="bold" fill="#000">C</text>
+    
+    <!-- Double bond to O -->
+    <line x1="128" y1="48" x2="128" y2="28" stroke="#000" stroke-width="2" />
+    <line x1="134" y1="48" x2="134" y2="28" stroke="#000" stroke-width="2" />
+    <text x="125" y="20" font-size="22" font-weight="bold" fill="#000">O</text>
+    
+    <line x1="145" y1="62" x2="165" y2="62" stroke="#000" stroke-width="2" />
+    <text x="170" y="70" font-size="22" font-weight="bold" fill="#000">Cl</text>
+
+    <!-- + NH3 -->
+    <text x="200" y="70" font-size="22" font-weight="bold" fill="#000">+NH<tspan baseline-shift="sub" font-size="16">3</tspan></text>
+
+    <!-- Arrow 1 -->
+    <line x1="265" y1="62" x2="340" y2="62" stroke="#000" stroke-width="2.5" />
+    <polygon points="340,56 352,62 340,68" fill="#000" />
+
+    <!-- CH3 - C(=O) - NH2 + HCl -->
+    <text x="370" y="70" font-size="22" font-weight="bold" fill="#000">CH<tspan baseline-shift="sub" font-size="16">3</tspan></text>
+    <line x1="420" y1="62" x2="440" y2="62" stroke="#000" stroke-width="2" />
+    <text x="445" y="70" font-size="22" font-weight="bold" fill="#000">C</text>
+    
+    <!-- Double bond to O -->
+    <line x1="448" y1="48" x2="448" y2="28" stroke="#000" stroke-width="2" />
+    <line x1="454" y1="48" x2="454" y2="28" stroke="#000" stroke-width="2" />
+    <text x="445" y="20" font-size="22" font-weight="bold" fill="#000">O</text>
+    
+    <line x1="465" y1="62" x2="485" y2="62" stroke="#000" stroke-width="2" />
+    <text x="490" y="70" font-size="22" font-weight="bold" fill="#000">NH<tspan baseline-shift="sub" font-size="16">2</tspan> + HCl</text>
+  </g>
+
+  <!-- Reaction 2: Acetyl Chloride + Methylamine -> N-Methylacetamide + HCl -->
+  <g transform="translate(50, 270)">
+    <!-- CH3 - C(=O) - Cl -->
+    <text x="50" y="70" font-size="22" font-weight="bold" fill="#000">CH<tspan baseline-shift="sub" font-size="16">3</tspan></text>
+    <line x1="100" y1="62" x2="120" y2="62" stroke="#000" stroke-width="2" />
+    <text x="125" y="70" font-size="22" font-weight="bold" fill="#000">C</text>
+    
+    <!-- Double bond to O -->
+    <line x1="128" y1="48" x2="128" y2="28" stroke="#000" stroke-width="2" />
+    <line x1="134" y1="48" x2="134" y2="28" stroke="#000" stroke-width="2" />
+    <text x="125" y="20" font-size="22" font-weight="bold" fill="#000">O</text>
+    
+    <line x1="145" y1="62" x2="165" y2="62" stroke="#000" stroke-width="2" />
+    <text x="170" y="70" font-size="22" font-weight="bold" fill="#000">Cl</text>
+
+    <!-- + CH3-NH2 -->
+    <text x="195" y="70" font-size="22" font-weight="bold" fill="#000">+ CH<tspan baseline-shift="sub" font-size="16">3</tspan>-NH<tspan baseline-shift="sub" font-size="16">2</tspan></text>
+
+    <!-- Arrow 2 -->
+    <line x1="315" y1="62" x2="380" y2="62" stroke="#000" stroke-width="2.5" />
+    <polygon points="380,56 392,62 380,68" fill="#000" />
+
+    <!-- CH3 - C(=O) - NH - CH3 + HCl -->
+    <text x="400" y="70" font-size="22" font-weight="bold" fill="#000">CH<tspan baseline-shift="sub" font-size="16">3</tspan></text>
+    <line x1="450" y1="62" x2="470" y2="62" stroke="#000" stroke-width="2" />
+    <text x="475" y="70" font-size="22" font-weight="bold" fill="#000">C</text>
+    
+    <!-- Double bond to O -->
+    <line x1="478" y1="48" x2="478" y2="28" stroke="#000" stroke-width="2" />
+    <line x1="484" y1="48" x2="484" y2="28" stroke="#000" stroke-width="2" />
+    <text x="475" y="20" font-size="22" font-weight="bold" fill="#000">O</text>
+    
+    <line x1="495" y1="62" x2="515" y2="62" stroke="#000" stroke-width="2" />
+    <text x="520" y="70" font-size="22" font-weight="bold" fill="#000">NH</text>
+    <line x1="565" y1="62" x2="585" y2="62" stroke="#000" stroke-width="2" />
+    <text x="590" y="70" font-size="22" font-weight="bold" fill="#000">CH<tspan baseline-shift="sub" font-size="16">3</tspan> +HCl</text>
+  </g>
+
+</svg>
