@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 450" width="100%" height="100%" style="background-color: #ffffff; font-family: 'Times New Roman', Times, serif;">
+
+  <!-- SOLUTION TITLE -->
+  <text x="50" y="45" font-size="24" font-weight="bold" fill="#000000">
+    Sol: <tspan font-weight="normal">(3-Bromo-2-Chloro-5-methylheptane)</tspan>
+  </text>
+
+  <!-- CHEMICAL STRUCTURE WITH CARBON NUMBERS -->
+  <g transform="translate(50, 100)">
+
+    <!-- Main Chain Atoms & Numbers -->
+    <!-- C7 -->
+    <text x="60" y="270" font-size="20" fill="#000000">7</text>
+    <text x="65" y="295" font-size="24" fill="#000000">CH<tspan font-size="16" dy="4">3</tspan></text>
+    <line x1="85" y1="240" x2="85" y2="265" stroke="#000000" stroke-width="2"/>
+
+    <!-- C6 -->
+    <text x="60" y="190" font-size="20" fill="#000000">6</text>
+    <text x="65" y="215" font-size="24" fill="#000000">CH<tspan font-size="16" dy="4">2</tspan></text>
+    <line x1="85" y1="140" x2="85" y2="185" stroke="#000000" stroke-width="2"/>
+
+    <!-- Left CH3 Branch at C5 -->
+    <text x="15" y="125" font-size="24" fill="#000000">CH<tspan font-size="16" dy="4">3</tspan></text>
+    <line x1="68" y1="118" x2="90" y2="118" stroke="#000000" stroke-width="2"/>
+
+    <!-- C5 -->
+    <text x="105" y="100" font-size="20" fill="#000000">5</text>
+    <text x="95" y="125" font-size="24" fill="#000000">CH</text>
+    <line x1="142" y1="118" x2="175" y2="118" stroke="#000000" stroke-width="2"/>
+
+    <!-- C4 -->
+    <text x="200" y="100" font-size="20" fill="#000000">4</text>
+    <text x="180" y="125" font-size="24" fill="#000000">CH<tspan font-size="16" dy="4">2</tspan></text>
+    <line x1="238" y1="118" x2="270" y2="118" stroke="#000000" stroke-width="2"/>
+
+    <!-- C3 -->
+    <text x="295" y="100" font-size="20" fill="#000000">3</text>
+    <text x="280" y="125" font-size="24" fill="#000000">CH</text>
+    <!-- Br Branch -->
+    <line x1="300" y1="135" x2="300" y2="165" stroke="#000000" stroke-width="2"/>
+    <text x="288" y="195" font-size="24" fill="#000000">Br</text>
+    <line x1="327" y1="118" x2="355" y2="118" stroke="#000000" stroke-width="2"/>
+
+    <!-- C2 -->
+    <text x="378" y="100" font-size="20" fill="#000000">2</text>
+    <text x="365" y="125" font-size="24" fill="#000000">CH</text>
+    <!-- Cl Branch -->
+    <line x1="385" y1="135" x2="385" y2="165" stroke="#000000" stroke-width="2"/>
+    <text x="372" y="195" font-size="24" fill="#000000">Cl</text>
+    <line x1="412" y1="118" x2="440" y2="118" stroke="#000000" stroke-width="2"/>
+
+    <!-- C1 -->
+    <text x="465" y="100" font-size="20" fill="#000000">1</text>
+    <text x="448" y="125" font-size="24" fill="#000000">CH<tspan font-size="16" dy="4">3</tspan></text>
+
+  </g>
+
+  <!-- IUPAC NAME BOTTOM -->
+  <text x="50" y="420" font-size="24" font-weight="bold" fill="#000000">
+    3-Bromo-2-Chloro-5-methylheptane
+  </text>
+
+</svg>

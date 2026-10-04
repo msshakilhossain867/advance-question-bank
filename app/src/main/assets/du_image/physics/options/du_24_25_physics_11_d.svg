@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <!-- Arrowhead Marker (mid-line pointing upwards along string toward pivot) -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="black" />
+    </marker>
+  </defs>
+
+  <!-- Common Pivot Point at Top Center (80, 10) -->
+
+  <!-- Line e -->
+  <line x1="25" y1="78" x2="80" y2="10" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="25" y1="78" x2="52.5" y2="44" stroke="black" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <circle cx="25" cy="78" r="4" fill="black"/>
+  <text x="12" y="86" font-family="Times New Roman, serif" font-size="16" font-style="italic" text-anchor="middle" fill="black">e</text>
+
+  <!-- Line d -->
+  <line x1="48" y1="114" x2="80" y2="10" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="48" y1="114" x2="64" y2="62" stroke="black" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <circle cx="48" cy="114" r="4" fill="black"/>
+  <text x="34" y="138" font-family="Times New Roman, serif" font-size="16" font-style="italic" text-anchor="middle" fill="black">d</text>
+
+  <!-- Line c -->
+  <line x1="80" y1="128" x2="80" y2="10" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="80" y1="128" x2="80" y2="69" stroke="black" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <circle cx="80" cy="128" r="4" fill="black"/>
+  <text x="80" y="152" font-family="Times New Roman, serif" font-size="16" font-style="italic" text-anchor="middle" fill="black">c</text>
+
+  <!-- Line b -->
+  <line x1="112" y1="120" x2="80" y2="10" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="112" y1="120" x2="96" y2="65" stroke="black" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <circle cx="112" cy="120" r="4" fill="black"/>
+  <text x="126" y="142" font-family="Times New Roman, serif" font-size="16" font-style="italic" text-anchor="middle" fill="black">b</text>
+
+  <!-- Line a -->
+  <line x1="138" y1="105" x2="80" y2="10" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="138" y1="105" x2="109" y2="57.5" stroke="black" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <circle cx="138" cy="105" r="4" fill="black"/>
+  <text x="151" y="118" font-family="Times New Roman, serif" font-size="16" font-style="italic" text-anchor="middle" fill="black">a</text>
+</svg>

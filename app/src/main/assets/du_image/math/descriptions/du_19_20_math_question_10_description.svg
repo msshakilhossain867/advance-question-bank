@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 650" width="100%" height="100%" style="background-color: #ffffff; font-family: 'Times New Roman', 'Kalpurush', serif;">
+  <defs>
+    <!-- Arrow Markers -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#000000" />
+    </marker>
+    <!-- Hatch Pattern for Bounded Area -->
+    <pattern id="hatch" width="10" height="8" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="4" x2="10" y2="4" stroke="#000000" stroke-width="1.2" />
+    </pattern>
+  </defs>
+
+  <!-- TEXT SECTION (TEXT & FORMULAS) -->
+  <g transform="translate(40, 40)" font-size="20" fill="#000000">
+    <text x="0" y="0">
+      <tspan font-style="italic">y</tspan> = 0 হলে, 0 = <tspan font-style="italic">x</tspan> - 1
+      <tspan x="280">-∞</tspan>
+      <tspan x="340">0</tspan>
+      <tspan x="380">1</tspan>
+      <tspan x="420">2</tspan>
+      <tspan x="460">∞</tspan>
+    </text>
+
+    <text x="0" y="40">
+      অর্থাৎ, <tspan font-style="italic">x</tspan> = 1 বিন্দুতে ব্যবধি দুইভাগে বিভক্ত হয়।
+    </text>
+
+    <text x="0" y="90">
+      ∴ ক্ষেত্রফল = 2 
+      <tspan font-size="28" font-style="normal" dy="5">∫</tspan>
+      <tspan font-size="12" dy="-18" dx="-8">1</tspan>
+      <tspan font-size="12" dy="18" dx="-8">0</tspan>
+      <tspan font-size="20" dy="-5" dx="5">(<tspan font-style="italic">x</tspan> - 1)<tspan font-style="italic">dx</tspan></tspan>
+    </text>
+  </g>
+
+  <!-- DIAGRAM SECTION -->
+  <g transform="translate(100, 200)">
+    
+    <!-- Shaded Regions (Areas) -->
+    <!-- Lower Triangle Area: bounded by x=0, y=0, and y=x-1 -->
+    <polygon points="120,240 120,300 180,240" fill="url(#hatch)" stroke="none"/>
+    
+    <!-- Upper Triangle Area: bounded by x=1 to x=2, y=0, and y=x-1 -->
+    <polygon points="180,240 240,240 240,180" fill="url(#hatch)" stroke="none"/>
+
+    <!-- Coordinate Axes -->
+    <!-- X-Axis -->
+    <line x1="40" y1="240" x2="320" y2="240" stroke="#000000" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <text x="250" y="265" font-size="18" font-style="italic">y = 0</text>
+    <text x="105" y="258" font-size="18">O</text>
+
+    <!-- Y-Axis (x=0) -->
+    <line x1="120" y1="360" x2="120" y2="80" stroke="#000000" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+    <!-- Vertical Line x=2 -->
+    <line x1="240" y1="350" x2="240" y2="90" stroke="#000000" stroke-width="1.8"/>
+
+    <!-- Line y = x - 1 -->
+    <line x1="80" y1="340" x2="280" y2="140" stroke="#000000" stroke-width="2.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <text x="250" y="130" font-size="22" font-style="italic">y = x - 1</text>
+
+    <!-- Key Coordinates & Labels -->
+    <!-- Point (0, -1) -->
+    <circle cx="120" cy="300" r="3" fill="#000000"/>
+    <text x="50" y="305" font-size="18">(0, -1)</text>
+
+    <!-- Point (1, 0) -->
+    <circle cx="180" cy="240" r="3" fill="#000000"/>
+    <text x="170" y="265" font-size="18">(1, 0)</text>
+
+    <!-- Point (2, 1) -->
+    <circle cx="240" cy="180" r="3" fill="#000000"/>
+    <text x="195" y="170" font-size="18">(2, 1)</text>
+
+  </g>
+</svg>

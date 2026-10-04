@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="100%">
+  <defs>
+    <style>
+      .chem-text {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 26px;
+        fill: #000000;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .hybrid-text {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 22px;
+        fill: #000000;
+        text-anchor: middle;
+      }
+      .bengali-text {
+        font-family: 'Siyam Rupali', 'Kalpurush', 'Noto Serif Bengali', 'Times New Roman', serif;
+        font-size: 22px;
+        fill: #000000;
+        dominant-baseline: alphabetic;
+      }
+      .bond-line {
+        stroke: #000000;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- SECTION 1: TOP HYBRIDIZATION (sp2 labels) -->
+  <text x="140" y="32" class="hybrid-text">sp<tspan dy="-8" font-size="15">2</tspan></text>
+  <text x="230" y="32" class="hybrid-text">sp<tspan dy="-8" font-size="15">2</tspan></text>
+  <text x="320" y="32" class="hybrid-text">sp<tspan dy="-8" font-size="15">2</tspan></text>
+  <text x="410" y="32" class="hybrid-text">sp<tspan dy="-8" font-size="15">2</tspan></text>
+
+  <!-- SECTION 2: EXPANDED CHEMICAL STRUCTURE -->
+  <!-- Top Row Hydrogens and Bonds -->
+  <text x="50" y="70" class="chem-text">H</text>
+  <line x1="68" y1="70" x2="122" y2="70" class="bond-line" />
+  
+  <text x="140" y="70" class="chem-text">C</text>
+  <line x1="158" y1="66" x2="212" y2="66" class="bond-line" />
+  <line x1="158" y1="74" x2="212" y2="74" class="bond-line" />
+  
+  <text x="230" y="70" class="chem-text">C</text>
+  <line x1="248" y1="70" x2="302" y2="70" class="bond-line" />
+  
+  <text x="320" y="70" class="chem-text">C</text>
+  <line x1="338" y1="66" x2="392" y2="66" class="bond-line" />
+  <line x1="338" y1="74" x2="392" y2="74" class="bond-line" />
+  
+  <text x="410" y="70" class="chem-text">C</text>
+  <line x1="428" y1="70" x2="482" y2="70" class="bond-line" />
+  
+  <text x="500" y="70" class="chem-text">H</text>
+
+  <!-- Vertical Carbon-Hydrogen Bonds -->
+  <line x1="140" y1="86" x2="140" y2="114" class="bond-line" />
+  <line x1="230" y1="86" x2="230" y2="114" class="bond-line" />
+  <line x1="320" y1="86" x2="320" y2="114" class="bond-line" />
+  <line x1="410" y1="86" x2="410" y2="114" class="bond-line" />
+
+  <!-- Bottom Row Hydrogens -->
+  <text x="140" y="132" class="chem-text">H</text>
+  <text x="230" y="132" class="chem-text">H</text>
+  <text x="320" y="132" class="chem-text">H</text>
+  <text x="410" y="132" class="chem-text">H</text>
+
+  <!-- SECTION 3: CONDENSED FORMULA LINE -->
+  <text x="20" y="195" class="bengali-text">অর্থাৎ,</text>
+
+  <!-- Condensed Chemical Equation: CH2 = CH - CH = CH2 -->
+  <text x="110" y="195" class="chem-text" text-anchor="start">CH<tspan dy="6" font-size="17">2</tspan></text>
+  
+  <!-- Double Bond = -->
+  <line x1="168" y1="187" x2="192" y2="187" class="bond-line" />
+  <line x1="168" y1="195" x2="192" y2="195" class="bond-line" />
+  
+  <text x="202" y="189" class="chem-text" text-anchor="start">CH</text>
+  
+  <!-- Single Bond - -->
+  <line x1="248" y1="191" x2="272" y2="191" class="bond-line" />
+  
+  <text x="282" y="189" class="chem-text" text-anchor="start">CH</text>
+  
+  <!-- Double Bond = -->
+  <line x1="328" y1="187" x2="352" y2="187" class="bond-line" />
+  <line x1="328" y1="195" x2="352" y2="195" class="bond-line" />
+  
+  <text x="362" y="189" class="chem-text" text-anchor="start">CH<tspan dy="6" font-size="17">2</tspan></text>
+
+  <text x="430" y="195" class="bengali-text">এর সকল কার্বন</text>
+
+  <!-- SECTION 4: CONCLUSION LINE -->
+  <text x="20" y="245" class="bengali-text">পরমাণুসমূহ</text>
+  <text x="160" y="239" class="chem-text" text-anchor="start">sp<tspan dy="-10" font-size="17">2</tspan></text>
+  <text x="205" y="245" class="bengali-text">সংকরায়িত।</text>
+</svg>

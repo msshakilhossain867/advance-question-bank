@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 480" width="100%" height="100%">
+  <defs>
+    <style>
+      .header-box {
+        fill: #000000;
+      }
+      .header-text {
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 24px;
+        fill: #ffffff;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .header-text-black {
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 24px;
+        fill: #000000;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .box-label {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 24px;
+        fill: #000000;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .math-text {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 24px;
+        fill: #000000;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .bengali-text {
+        font-family: 'Siyam Rupali', 'Kalpurush', 'Noto Serif Bengali', 'Times New Roman', serif;
+        font-size: 21px;
+        fill: #000000;
+        dominant-baseline: alphabetic;
+      }
+      .box-outline {
+        stroke: #000000;
+        stroke-width: 2;
+        fill: none;
+      }
+      .diagram-line {
+        stroke: #000000;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+      }
+      .arrow-head {
+        fill: #000000;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- ==================== HEADER SECTION ==================== -->
+  <g transform="translate(30, 25)">
+    <!-- "Ans" Box -->
+    <rect x="0" y="0" width="70" height="32" class="box-outline" />
+    <text x="35" y="16" class="header-text-black">Ans</text>
+
+    <!-- "c" Black Filled Box -->
+    <rect x="80" y="0" width="38" height="32" class="header-box" />
+    <text x="99" y="16" class="header-text">c</text>
+
+    <!-- "Sol:" Box -->
+    <rect x="128" y="0" width="75" height="32" class="box-outline" />
+    <text x="165" y="16" class="header-text-black">Sol:</text>
+  </g>
+
+  <!-- ==================== DIAGRAM SECTION ==================== -->
+  <g transform="translate(250, 0)">
+    <!-- Room Box -->
+    <rect x="60" y="25" width="100" height="36" class="box-outline" />
+    <text x="110" y="43" class="box-label">Room</text>
+
+    <!-- Upper Vertical Line (from Circle to Room) -->
+    <line x1="110" y1="115" x2="110" y2="61" class="diagram-line" />
+    <!-- Upper Arrow (pointing UP) -->
+    <polygon points="110,70 104,85 116,85" class="arrow-head" />
+    <!-- Label Q2 -->
+    <text x="135" y="90" class="math-text">Q<tspan dy="6" font-size="16">2</tspan></text>
+
+    <!-- Central Engine / Refrigerator Circle -->
+    <circle cx="110" cy="145" r="30" class="box-outline" stroke-width="2.2" />
+
+    <!-- Work Input W Line (Horizontal from right) -->
+    <line x1="210" y1="145" x2="140" y2="145" class="diagram-line" />
+    <!-- Work Arrow (pointing LEFT into circle) -->
+    <polygon points="140,145 155,139 155,151" class="arrow-head" />
+    <!-- Label W -->
+    <text x="225" y="145" class="math-text">W</text>
+
+    <!-- Lower Vertical Line (from Refrigerator box to Circle) -->
+    <line x1="110" y1="230" x2="110" y2="175" class="diagram-line" />
+    <!-- Lower Arrow (pointing UP) -->
+    <polygon points="110,185 104,200 116,200" class="arrow-head" />
+    <!-- Label Q1 -->
+    <text x="135" y="205" class="math-text">Q<tspan dy="6" font-size="16">1</tspan></text>
+
+    <!-- Refrigerator Box -->
+    <rect x="30" y="230" width="160" height="36" class="box-outline" />
+    <text x="110" y="248" class="box-label">Refrigeraton</text>
+  </g>
+
+  <!-- ==================== EXPLANATION TEXT SECTION ==================== -->
+  <g transform="translate(30, 310)">
+    <!-- Line 1: Bengali Explanation -->
+    <text x="0" y="0" class="bengali-text">ফ্রিজ কাজের মাধ্যমে গরম বস্তু হতে তাপ শোষণ করে তা</text>
+    
+    <!-- Line 2: Bengali Explanation -->
+    <text x="0" y="35" class="bengali-text">পরিবেশে ছেড়ে দেয় যার ফলে ফ্রিজের বস্তু ঠান্ডা হয়।</text>
+
+    <!-- Line 3: Mathematical Equation -->
+    <text x="0" y="80" class="bengali-text">অর্থাৎ</text>
+    <text x="65" y="77" class="math-text" text-anchor="start">Q<tspan dy="5" font-size="16">2</tspan><tspan dy="-5"> = W + Q</tspan><tspan dy="5" font-size="16">1</tspan> <tspan dy="-5">[Q</tspan><tspan dy="5" font-size="16">1</tspan> <tspan dy="-5">&lt; Q</tspan><tspan dy="5" font-size="16">2</tspan><tspan dy="-5">]</tspan></text>
+
+    <!-- Line 4: Bengali Conclusion part 1 -->
+    <text x="0" y="120" class="bengali-text">যেহেতু ফ্রিজ তাপ পরিবেশে ছেড়ে দিচ্ছে, তাই রান্নাঘরের</text>
+
+    <!-- Line 5: Bengali Conclusion part 2 -->
+    <text x="0" y="152" class="bengali-text">তাপমাত্রা বৃদ্ধি পাবে।</text>
+  </g>
+</svg>

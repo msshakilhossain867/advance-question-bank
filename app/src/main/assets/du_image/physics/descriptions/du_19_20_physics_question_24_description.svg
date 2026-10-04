@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%" style="background-color: #ffffff; font-family: 'Times New Roman', Times, serif;">
+
+  <!-- TEXT & CALCULATION SECTION -->
+  <g transform="translate(30, 40)" font-size="20" fill="#000000">
+    <text x="0" y="0">
+      পরপর দুটি নিস্পন্দ বিন্দুর মধ্যবর্তী দূরত্ব = 
+      <tspan font-style="italic">λ</tspan>/2 
+      ∴ <tspan font-style="italic">λ</tspan>/2 = 1 m
+    </text>
+
+    <text x="50" y="45">
+      বা, <tspan font-style="italic">λ</tspan> = 2 m = 200 cm
+    </text>
+  </g>
+
+  <!-- DIAGRAM SECTION -->
+  <g transform="translate(0, 100)">
+    <!-- Central Axis Line -->
+    <line x1="50" y1="180" x2="550" y2="180" stroke="#000000" stroke-width="2"/>
+
+    <!-- Wave Upper Envelope (Two Loops) -->
+    <path d="M 100 180 Q 200 120 300 180 Q 400 120 500 180" fill="none" stroke="#000000" stroke-width="2.5"/>
+    <path d="M 50 150 Q 75 165 100 180" fill="none" stroke="#000000" stroke-width="2"/>
+    <path d="M 500 180 Q 525 195 550 210" fill="none" stroke="#000000" stroke-width="2"/>
+
+    <!-- Wave Lower Envelope (Two Loops) -->
+    <path d="M 100 180 Q 200 240 300 180 Q 400 240 500 180" fill="none" stroke="#000000" stroke-width="2.5"/>
+    <path d="M 50 210 Q 75 195 100 180" fill="none" stroke="#000000" stroke-width="2"/>
+    <path d="M 500 180 Q 525 165 550 150" fill="none" stroke="#000000" stroke-width="2"/>
+
+    <!-- Top Dimension Bracket (100 cm / Half Wavelength) -->
+    <line x1="100" y1="100" x2="100" y2="180" stroke="#000000" stroke-width="1.5"/>
+    <line x1="300" y1="100" x2="300" y2="180" stroke="#000000" stroke-width="1.5"/>
+    <line x1="100" y1="100" x2="300" y2="100" stroke="#000000" stroke-width="1.5"/>
+    <text x="200" y="90" font-size="20" text-anchor="middle">100 cm</text>
+
+    <!-- Bottom Dimension Bracket (λ / Full Wavelength) -->
+    <line x1="100" y1="180" x2="100" y2="280" stroke="#000000" stroke-width="1.5"/>
+    <line x1="500" y1="180" x2="500" y2="280" stroke="#000000" stroke-width="1.5"/>
+    <line x1="100" y1="260" x2="230" y2="260" stroke="#000000" stroke-width="1.5"/>
+    <line x1="370" y1="260" x2="500" y2="260" stroke="#000000" stroke-width="1.5"/>
+    <text x="300" y="267" font-size="24" font-style="italic" text-anchor="middle">λ</text>
+
+    <!-- Final Result Below Diagram -->
+    <text x="100" y="320" font-size="22">
+      ∴ <tspan font-style="italic">λ</tspan> = 200 cm
+    </text>
+  </g>
+</svg>

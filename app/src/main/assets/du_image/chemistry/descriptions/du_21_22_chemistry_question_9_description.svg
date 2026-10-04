@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 260" width="100%" height="100%">
+  <defs>
+    <style>
+      .chem-text {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 24px;
+        fill: #000000;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .bengali-text {
+        font-family: 'Siyam Rupali', 'Kalpurush', 'Noto Serif Bengali', 'Times New Roman', serif;
+        font-size: 21px;
+        fill: #000000;
+        text-anchor: middle;
+        dominant-baseline: alphabetic;
+      }
+      .ring-line {
+        stroke: #000000;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+      .bond-line {
+        stroke: #000000;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+      }
+      .arrow-line {
+        stroke: #000000;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- ==================== REACTANTS ==================== -->
+  <!-- Benzene Ring -->
+  <g transform="translate(80, 90)">
+    <polygon points="0,-35 30,-17 30,17 0,35 -30,17 -30,-17" class="ring-line" />
+    <circle cx="0" cy="0" r="19" class="ring-line" />
+  </g>
+
+  <!-- Plus Sign -->
+  <text x="138" y="90" class="chem-text">+</text>
+
+  <!-- CH3COCl -->
+  <g transform="translate(225, 90)">
+    <text x="0" y="0" class="chem-text">CH<tspan dy="6" font-size="16">3</tspan><tspan dy="-6">COCl</tspan></text>
+  </g>
+
+  <!-- Bengali Subtitle for Acetyl Chloride -->
+  <g transform="translate(225, 145)">
+    <text x="0" y="0" class="bengali-text">অ্যাসিটাইল</text>
+    <text x="0" y="30" class="bengali-text">ক্লোরাইড</text>
+  </g>
+
+  <!-- ==================== REACTION ARROW ==================== -->
+  <g transform="translate(305, 90)">
+    <!-- Dry AlCl3 Catalyst -->
+    <text x="80" y="-18" class="chem-text">Dry AlCl<tspan dy="5" font-size="16">3</tspan></text>
+
+    <!-- Arrow Body -->
+    <line x1="0" y1="0" x2="160" y2="0" class="arrow-line" />
+    <!-- Arrow Head -->
+    <polygon points="150,-6 165,0 150,6" fill="#000000" />
+  </g>
+
+  <!-- ==================== PRODUCTS ==================== -->
+  <!-- Acetophenone -->
+  <g transform="translate(530, 95)">
+    <!-- COCH3 Substituent -->
+    <text x="0" y="-55" class="chem-text">COCH<tspan dy="6" font-size="16">3</tspan></text>
+
+    <!-- Bond connecting ring to substituent -->
+    <line x1="0" y1="-42" x2="0" y2="-20" class="bond-line" />
+
+    <!-- Benzene Ring -->
+    <polygon points="0,-20 30,-2 30,32 0,50 -30,32 -30,-2" class="ring-line" />
+    <circle cx="0" cy="15" r="19" class="ring-line" />
+  </g>
+
+  <!-- Bengali Subtitle for Acetophenone -->
+  <g transform="translate(530, 175)">
+    <text x="0" y="0" class="bengali-text">অ্যাসিটোফেনোন</text>
+    <text x="0" y="30" class="bengali-text">বা মিথাইল ফিনাইল</text>
+    <text x="0" y="60" class="bengali-text">কিটোন</text>
+  </g>
+
+  <!-- Plus HCl -->
+  <g transform="translate(595, 90)">
+    <text x="0" y="0" class="chem-text">+</text>
+  </g>
+  <g transform="translate(635, 90)">
+    <text x="0" y="0" class="chem-text">HCl</text>
+  </g>
+</svg>

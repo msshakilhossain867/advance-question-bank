@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 380" width="100%" height="100%">
+  <style>
+    .bengali-text {
+      font-family: 'SolaimanLipi', 'Kalpurush', 'Siyam Rupali', 'FreeSerif', 'Arial', sans-serif;
+      font-size: 26px;
+      fill: #000000;
+      font-weight: bold;
+      dominant-baseline: central;
+    }
+    .label-text {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 24px;
+      font-weight: bold;
+      fill: #000000;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+    .wire {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .resistor-box {
+      stroke: #000000;
+      stroke-width: 2.5;
+      fill: #ffffff;
+    }
+    .arrow-head {
+      fill: #000000;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- Question Text Section -->
+  <text x="20" y="35" class="bengali-text">
+    প্রদত্ত বর্তনীতে রোধ <tspan class="label-text" font-size="28px">R</tspan> কত?
+  </text>
+
+  <!-- Circuit Diagram Group -->
+  <g transform="translate(20, 60)">
+    <!-- Top Wire (Left to 5.0 Ohm Resistor Box) -->
+    <line x1="60" y1="40" x2="160" y2="40" class="wire" />
+
+    <!-- 5.0 Ohm Resistor Box -->
+    <rect x="160" y="15" width="90" height="50" class="resistor-box" />
+    <text x="205" y="40" class="label-text">5.0Ω</text>
+
+    <!-- Wire from 5.0 Ohm to First Parallel Node with Arrow -->
+    <line x1="250" y1="40" x2="330" y2="40" class="wire" />
+    <!-- Current Direction Arrow (0.6A) -->
+    <polygon points="295,33 310,40 295,47" class="arrow-head" />
+    <text x="260" y="65" class="label-text">0.6A</text>
+
+    <!-- Top Wire Extension to Second Parallel Branch -->
+    <line x1="330" y1="40" x2="450" y2="40" class="wire" />
+
+    <!-- First Parallel Branch (Resistor R) -->
+    <line x1="330" y1="40" x2="330" y2="120" class="wire" />
+    <rect x="305" y="120" width="50" height="60" class="resistor-box" />
+    <text x="330" y="150" class="label-text">R</text>
+    <line x1="330" y1="180" x2="330" y2="260" class="wire" />
+
+    <!-- Second Parallel Branch (Resistor 30 Ohm) -->
+    <line x1="450" y1="40" x2="450" y2="120" class="wire" />
+    <rect x="420" y="120" width="60" height="60" class="resistor-box" />
+    <text x="450" y="150" class="label-text">30Ω</text>
+    <line x1="450" y1="180" x2="450" y2="260" class="wire" />
+
+    <!-- Bottom Wire (Connecting Branches Back to DC Source) -->
+    <line x1="60" y1="260" x2="450" y2="260" class="wire" />
+
+    <!-- Left Vertical Wire with Voltage Source (9.0V) -->
+    <line x1="60" y1="40" x2="60" y2="135" class="wire" />
+    <!-- Positive Terminal (Top Long Line) -->
+    <line x1="40" y1="135" x2="80" y2="135" class="wire" />
+    <!-- Negative Terminal (Bottom Short Line) -->
+    <line x1="48" y1="150" x2="72" y2="150" stroke="#000000" stroke-width="3.5" />
+    <line x1="60" y1="150" x2="60" y2="260" class="wire" />
+    <!-- Battery Voltage Label -->
+    <text x="115" y="142" class="label-text">9.0V</text>
+  </g>
+</svg>

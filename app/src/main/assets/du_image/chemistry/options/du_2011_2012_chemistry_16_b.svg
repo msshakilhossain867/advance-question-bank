@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <style>
+    .label { font-family: 'Times New Roman', serif; font-size: 38px; font-style: italic; fill: black; }
+    .label-non-italic { font-family: 'Times New Roman', serif; font-size: 38px; fill: black; }
+    .border { stroke: black; stroke-width: 4; fill: none; }
+    .line { stroke: black; stroke-width: 5; fill: none; stroke-linecap: round; }
+  </style>
+
+  <!-- Left axis label P -->
+  <text x="30" y="125" class="label">P</text>
+
+  <!-- Outer bounding rectangle box -->
+  <rect x="110" y="30" width="250" height="170" class="border" />
+
+  <!-- Positively sloped linear line starting from the bottom-left corner -->
+  <line x1="110" y1="200" x2="310" y2="70" class="line" />
+
+  <!-- Bottom axis label 1/V -->
+  <text x="205" y="245" class="label-non-italic">1<tspan font-style="italic">/V</tspan></text>
+</svg>

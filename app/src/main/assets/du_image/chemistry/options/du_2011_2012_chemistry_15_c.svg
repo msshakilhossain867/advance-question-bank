@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <style>
+    .text { font-family: 'Times New Roman', serif; font-size: 38px; fill: black; }
+    .label { font-family: 'Times New Roman', serif; font-size: 34px; fill: black; }
+    .border { stroke: black; stroke-width: 4; fill: none; }
+    .line { stroke: black; stroke-width: 5; fill: none; stroke-linecap: round; }
+    .fraction-line { stroke: black; stroke-width: 3; }
+  </style>
+
+  <!-- Left axis label -d[A]/dt -->
+  <!-- Minus sign -->
+  <text x="25" y="95" class="text">-</text>
+
+  <!-- Fraction numerator d[A] -->
+  <text x="48" y="70" class="text">d[A]</text>
+
+  <!-- Fraction horizontal bar -->
+  <line x1="45" y1="83" x2="148" y2="83" class="fraction-line" />
+
+  <!-- Fraction denominator dt -->
+  <text x="75" y="125" class="text">dt</text>
+
+  <!-- Outer bounding rectangle box -->
+  <rect x="170" y="30" width="200" height="170" class="border" opacity="0.95" />
+
+  <!-- Positively sloped linear line starting from the bottom-left corner -->
+  <line x1="170" y1="200" x2="310" y2="80" class="line" />
+
+  <!-- Bottom axis label [A] -->
+  <text x="235" y="245" class="label">[A]</text>
+</svg>

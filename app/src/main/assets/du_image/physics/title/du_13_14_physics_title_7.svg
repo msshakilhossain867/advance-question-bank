@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420" width="100%" height="100%">
+  <style>
+    .bengali-text {
+      font-family: 'SolaimanLipi', 'Kalpurush', 'Siyam Rupali', 'FreeSerif', 'Arial', sans-serif;
+      font-size: 20px;
+      fill: #000000;
+      font-weight: 500;
+    }
+    .label-text {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 24px;
+      fill: #000000;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+    .axis {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .curve {
+      stroke: #000000;
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+    }
+    .arrow-head {
+      fill: #000000;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- Bengali Text (Top) -->
+  <text x="20" y="35" class="bengali-text">লেখচিত্রে <tspan font-family="Times New Roman, Times, serif" font-weight="bold">X</tspan> দ্বারা একটি গ্যাসের প্রাথমিক অবস্থা দেখানো হচ্ছে।</text>
+  <text x="20" y="70" class="bengali-text">লেখচিত্রে কোন রেখাটি একটি প্রক্রিয়ায় গ্যাসটি দ্বারা বা গ্যাসের</text>
+  <text x="20" y="105" class="bengali-text">উপর কোন কাজ করা হচ্ছে না নির্দেশ করে?</text>
+
+  <!-- P-V Graph Area -->
+  <g transform="translate(30, 20)">
+    <!-- Y-axis (Pressure P) -->
+    <line x1="80" y1="130" x2="80" y2="330" class="axis" />
+    <text x="65" y="155" class="label-text">P</text>
+
+    <!-- X-axis (Volume V) with Arrow -->
+    <line x1="80" y1="330" x2="330" y2="330" class="axis" />
+    <polygon points="330,324 345,330 330,336" class="arrow-head" />
+    <text x="360" y="330" class="label-text">V</text>
+
+    <!-- Vertical Curve (B-X-D or line passing through X vertically) -->
+    <!-- From B down through X to D -->
+    <path d="M 195,180 C 195,200 195,230 195,240 C 195,270 215,310 260,315" class="curve" />
+
+    <!-- U-shaped / Concave Curve (A-X-C) -->
+    <!-- From A through X to C -->
+    <path d="M 115,210 C 130,235 165,242 195,240 C 225,238 250,230 270,210" class="curve" />
+
+    <!-- Labels -->
+    <!-- A -->
+    <text x="100" y="215" class="label-text">A</text>
+    
+    <!-- B -->
+    <text x="180" y="175" class="label-text">B</text>
+
+    <!-- C -->
+    <text x="280" y="200" class="label-text">C</text>
+
+    <!-- X (Center Point) -->
+    <text x="180" y="260" class="label-text">X</text>
+
+    <!-- D -->
+    <text x="280" y="300" class="label-text">D</text>
+  </g>
+</svg>

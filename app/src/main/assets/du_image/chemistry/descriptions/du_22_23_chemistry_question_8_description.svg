@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%" style="background-color: #ffffff;">
+  <style>
+    .header-box { fill: #000000; }
+    .header-text-white { font-family: Arial, sans-serif; font-size: 22px; font-weight: bold; fill: #ffffff; }
+    .header-text-black { font-family: Arial, sans-serif; font-size: 22px; font-weight: bold; fill: #000000; }
+    
+    .bengali-text { font-family: 'Siyam Rupali', 'Kalpurush', 'Vrinda', 'FreeSerif', serif; font-size: 22px; fill: #000000; }
+    .bengali-label { font-family: 'Siyam Rupali', 'Kalpurush', 'Vrinda', 'FreeSerif', serif; font-size: 22px; fill: #000000; text-anchor: middle; }
+    .math-text { font-family: 'Times New Roman', Times, serif; font-size: 24px; fill: #000000; }
+    .chem-text { font-family: 'Times New Roman', Times, serif; font-size: 28px; font-weight: bold; fill: #000000; text-anchor: middle; }
+    
+    .bond { stroke: #000000; stroke-width: 2.5; stroke-linecap: round; }
+  </style>
+
+  <!-- Answer Header: Ans b Sol: -->
+  <g transform="translate(100, 20)">
+    <!-- Ans Box -->
+    <rect x="0" y="0" width="75" height="36" fill="none" stroke="#000000" stroke-width="2"/>
+    <text x="8" y="26" class="header-text-black">Ans</text>
+    
+    <!-- 'b' black box -->
+    <rect x="75" y="0" width="35" height="36" class="header-box"/>
+    <text x="86" y="26" class="header-text-white">b</text>
+    
+    <!-- Sol: Box -->
+    <rect x="110" y="0" width="70" height="36" fill="none" stroke="#000000" stroke-width="2"/>
+    <text x="118" y="26" class="header-text-black">Sol:</text>
+
+    <!-- Header Text -->
+    <text x="190" y="26" class="bengali-text">সিস-ট্রান্স সমাণু গঠনের জন্য সাধারণত</text>
+  </g>
+
+  <!-- Formula conditions line 1 -->
+  <g transform="translate(170, 95)">
+    <text x="0" y="0" class="math-text">abC = Cab  বা  abC = Cbc  অথবা</text>
+  </g>
+
+  <!-- Formula conditions line 2 -->
+  <g transform="translate(170, 135)">
+    <text x="0" y="0" class="math-text">abC = Ccd  গঠনের প্রয়োজন হয়।</text>
+  </g>
+
+  <!-- ==================== CIS ISOMER ==================== -->
+  <g transform="translate(130, 180)">
+    <!-- C=C Double Bond -->
+    <line x1="100" y1="105" x2="160" y2="105" class="plate" style="stroke:#000; stroke-width:2.5;"/>
+    <line x1="100" y1="115" x2="160" y2="115" style="stroke:#000; stroke-width:2.5;"/>
+
+    <!-- Left Carbon Bonds -->
+    <line x1="100" y1="102" x2="55" y2="60" class="bond"/>
+    <line x1="100" y1="118" x2="55" y2="160" class="bond"/>
+
+    <!-- Right Carbon Bonds -->
+    <line x1="160" y1="102" x2="205" y2="60" class="bond"/>
+    <line x1="160" y1="118" x2="205" y2="160" class="bond"/>
+
+    <!-- Atoms -->
+    <text x="92" y="118" class="chem-text">C</text>
+    <text x="168" y="118" class="chem-text">C</text>
+    
+    <text x="45" y="55" class="chem-text">Cl</text>
+    <text x="45" y="175" class="chem-text">H</text>
+
+    <text x="215" y="55" class="chem-text">Cl</text>
+    <text x="215" y="175" class="chem-text">H</text>
+
+    <!-- Label -->
+    <text x="130" y="225" class="bengali-label"><tspan font-family="Times New Roman">Cis-</tspan>সমাণু</text>
+  </g>
+
+  <!-- ==================== TRANS ISOMER ==================== -->
+  <g transform="translate(480, 180)">
+    <!-- C=C Double Bond -->
+    <line x1="100" y1="105" x2="160" y2="105" style="stroke:#000; stroke-width:2.5;"/>
+    <line x1="100" y1="115" x2="160" y2="115" style="stroke:#000; stroke-width:2.5;"/>
+
+    <!-- Left Carbon Bonds -->
+    <line x1="100" y1="102" x2="55" y2="60" class="bond"/>
+    <line x1="100" y1="118" x2="55" y2="160" class="bond"/>
+
+    <!-- Right Carbon Bonds -->
+    <line x1="160" y1="102" x2="205" y2="60" class="bond"/>
+    <line x1="160" y1="118" x2="205" y2="160" class="bond"/>
+
+    <!-- Atoms -->
+    <text x="92" y="118" class="chem-text">C</text>
+    <text x="168" y="118" class="chem-text">C</text>
+    
+    <text x="45" y="55" class="chem-text">Cl</text>
+    <text x="45" y="175" class="chem-text">H</text>
+
+    <text x="215" y="55" class="chem-text">H</text>
+    <text x="215" y="175" class="chem-text">Cl</text>
+
+    <!-- Label -->
+    <text x="130" y="225" class="bengali-label"><tspan font-family="Times New Roman">Trans-</tspan>সমাণু</text>
+  </g>
+</svg>

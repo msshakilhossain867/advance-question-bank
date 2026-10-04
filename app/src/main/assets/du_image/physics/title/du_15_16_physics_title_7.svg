@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 380" width="100%" height="100%">
+  <style>
+    .bengali-text {
+      font-family: 'SolaimanLipi', 'Kalpurush', 'Siyam Rupali', 'FreeSerif', 'Arial', sans-serif;
+      font-size: 24px;
+      fill: #000000;
+      font-weight: bold;
+      dominant-baseline: central;
+    }
+    .label-text {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 24px;
+      font-weight: bold;
+      fill: #000000;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+    .wire {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .resistor {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- Question Text Section -->
+  <text x="20" y="35" class="bengali-text">
+    প্রদত্ত বর্তনীতে <tspan class="label-text" font-size="26px">R<tspan font-size="18px" dy="5">3</tspan></tspan> <tspan dy="-5">রোধে তড়িৎপ্রবাহ কত?</tspan>
+  </text>
+
+  <!-- Circuit Diagram Group -->
+  <g transform="translate(20, 60)">
+    <!-- Top Wire to R1 -->
+    <line x1="80" y1="40" x2="200" y2="40" class="wire" />
+    
+    <!-- R1 Resistor (Horizontal Top) -->
+    <path d="M 200,40 L 205,30 L 215,50 L 225,30 L 235,50 L 245,30 L 255,50 L 260,40" class="resistor" />
+    <text x="180" y="70" class="label-text">R<tspan font-size="18px" dy="4">1</tspan><tspan dy="-4"> = 1 </tspan>Ω</text>
+
+    <!-- Top Wire from R1 to Right Junction -->
+    <line x1="260" y1="40" x2="420" y2="40" class="wire" />
+
+    <!-- Bottom Wire -->
+    <line x1="80" y1="260" x2="420" y2="260" class="wire" />
+
+    <!-- Right Vertical Branch with R3 -->
+    <line x1="420" y1="40" x2="420" y2="120" class="wire" />
+    <path d="M 420,120 L 410,125 L 430,135 L 410,145 L 430,155 L 410,165 L 430,175 L 420,180" class="resistor" />
+    <text x="345" y="150" class="label-text">R<tspan font-size="18px" dy="4">3</tspan><tspan dy="-4"> = 2 </tspan>Ω</text>
+    <line x1="420" y1="180" x2="420" y2="260" class="wire" />
+
+    <!-- Left Vertical Branch with DC Source (2V) -->
+    <line x1="80" y1="40" x2="80" y2="135" class="wire" />
+    <!-- Positive Terminal -->
+    <line x1="60" y1="135" x2="100" y2="135" class="wire" />
+    <!-- Negative Terminal -->
+    <line x1="68" y1="150" x2="92" y2="150" stroke="#000000" stroke-width="3.5" />
+    <line x1="80" y1="150" x2="80" y2="260" class="wire" />
+    <text x="25" y="142" class="label-text">2V</text>
+
+    <!-- Diagonal Branch with R2 -->
+    <line x1="80" y1="260" x2="220" y2="170" class="wire" />
+    <path d="M 220,170 L 221,158 L 235,173 L 239,158 L 253,173 L 257,158 L 271,173 L 273,165" class="resistor" />
+    <line x1="273" y1="165" x2="420" y2="40" class="wire" />
+    <text x="180" y="150" class="label-text">R<tspan font-size="18px" dy="4">2</tspan><tspan dy="-4"> = 2 </tspan>Ω</text>
+  </g>
+</svg>

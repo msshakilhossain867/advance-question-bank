@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 260" width="100%" height="100%">
+  <style>
+    .bengali-text {
+      font-family: 'SolaimanLipi', 'Kalpurush', 'Siyam Rupali', 'FreeSerif', 'Arial', sans-serif;
+      font-size: 24px;
+      fill: #000000;
+      font-weight: bold;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+    .chem-text {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 24px;
+      font-weight: bold;
+      fill: #000000;
+      dominant-baseline: central;
+    }
+    .bond {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .ring {
+      stroke: #000000;
+      stroke-width: 2.5;
+      fill: none;
+    }
+    .arrow-head {
+      fill: #000000;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- Row 1: Reactants & Arrow -->
+  <g transform="translate(20, 20)">
+    <!-- Benzene Ring Horizontal Orientated -->
+    <polygon points="50,60 75,17 125,17 150,60 125,103 75,103" class="bond" />
+    <circle cx="100" cy="60" r="28" class="ring" />
+
+    <!-- Bond and Amide Group -->
+    <line x1="150" y1="60" x2="185" y2="60" class="bond" />
+    <text x="190" y="60" class="chem-text" text-anchor="start">CO-NH<tspan font-size="16px" dy="5">2</tspan></text>
+
+    <!-- Reaction (+ Br2 + NaOH ->) -->
+    <text x="300" y="60" class="chem-text" text-anchor="start">+ Br<tspan font-size="16px" dy="5">2</tspan><tspan font-size="24px" dy="-5"> + NaOH</tspan></text>
+
+    <!-- Arrow Line -->
+    <line x1="435" y1="60" x2="495" y2="60" class="bond" />
+    <polygon points="490,53 505,60 490,67" class="arrow-head" />
+  </g>
+
+  <!-- Row 2: Products & Label -->
+  <g transform="translate(20, 130)">
+    <!-- Benzene Ring -->
+    <polygon points="50,60 75,17 125,17 150,60 125,103 75,103" class="bond" />
+    <circle cx="100" cy="60" r="28" class="ring" />
+
+    <!-- Bond and Amino Group -->
+    <line x1="150" y1="60" x2="185" y2="60" class="bond" />
+    <text x="190" y="60" class="chem-text" text-anchor="start">NH<tspan font-size="16px" dy="5">2</tspan></text>
+
+    <!-- Inorganic Byproducts -->
+    <text x="250" y="60" class="chem-text" text-anchor="start">+ NaBr + Na<tspan font-size="16px" dy="5">2</tspan><tspan font-size="24px" dy="-5">CO</tspan><tspan font-size="16px" dy="5">3</tspan><tspan font-size="24px" dy="-5"> + H</tspan><tspan font-size="16px" dy="5">2</tspan><tspan font-size="24px" dy="-5">O</tspan></text>
+
+    <!-- Bengali Label: Aniline -->
+    <text x="100" y="120" class="bengali-text">অ্যানিলিন</text>
+  </g>
+</svg>

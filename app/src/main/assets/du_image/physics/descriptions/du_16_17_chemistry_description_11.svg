@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" width="100%" height="100%">
+  <style>
+    .bengali-text {
+      font-family: 'SolaimanLipi', 'Kalpurush', 'Siyam Rupali', 'FreeSerif', 'Arial', sans-serif;
+      font-size: 22px;
+      fill: #000000;
+      font-weight: bold;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+    .chem-text {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 24px;
+      font-weight: bold;
+      fill: #000000;
+      dominant-baseline: central;
+    }
+    .bond {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      fill: none;
+    }
+    .arrow-head {
+      fill: #000000;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- Reactant: Vinyl Chloride (CH2=CH-Cl) -->
+  <g transform="translate(20, 20)">
+    <!-- Chlorine Atom Top -->
+    <text x="88" y="25" class="chem-text" text-anchor="middle">Cl</text>
+    <!-- Single Bond to CH -->
+    <line x1="88" y1="35" x2="88" y2="60" class="bond" />
+    <!-- Monomer Molecule -->
+    <text x="15" y="80" class="chem-text">CH<tspan font-size="16px" dy="5">2</tspan><tspan font-size="24px" dy="-5">=</tspan>CH</text>
+  </g>
+
+  <!-- Reaction Arrow & Condition -->
+  <g transform="translate(160, 20)">
+    <!-- Reaction Condition Text -->
+    <text x="65" y="45" class="bengali-text">পলিমারকরণ</text>
+    <!-- Arrow Line -->
+    <line x1="10" y1="70" x2="120" y2="70" class="bond" />
+    <!-- Arrow Head -->
+    <polygon points="115,63 130,70 115,77" class="arrow-head" />
+  </g>
+
+  <!-- Product: Polyvinyl Chloride (PVC) -->
+  <g transform="translate(310, 20)">
+    <!-- Chlorine Atom Top -->
+    <text x="96" y="25" class="chem-text" text-anchor="middle">Cl</text>
+    <!-- Single Bond to CH2 -->
+    <line x1="96" y1="35" x2="96" y2="60" class="bond" />
+    <!-- Polymer Repeat Unit -->
+    <text x="10" y="80" class="chem-text">[-CH<tspan font-size="16px" dy="5">2</tspan><tspan font-size="24px" dy="-5">-CH</tspan><tspan font-size="16px" dy="5">2</tspan><tspan font-size="24px" dy="-5">-]</tspan><tspan font-size="18px" dy="8">n</tspan></text>
+    <!-- Label PVC -->
+    <text x="110" y="130" class="chem-text">PVC</text>
+  </g>
+</svg>

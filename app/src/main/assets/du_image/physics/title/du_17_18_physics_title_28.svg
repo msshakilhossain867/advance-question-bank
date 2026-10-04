@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 320" width="100%" height="100%">
+  <style>
+    .bengali-text {
+      font-family: 'SolaimanLipi', 'Kalpurush', 'Siyam Rupali', 'FreeSerif', 'Arial', sans-serif;
+      font-size: 20px;
+      fill: #000000;
+      font-weight: bold;
+      dominant-baseline: central;
+    }
+    .label-text {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 22px;
+      font-weight: bold;
+      fill: #000000;
+      dominant-baseline: central;
+    }
+    .wire {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .arrow-head {
+      fill: #000000;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- Main Grid Container -->
+  <g transform="translate(20, 20)">
+    
+    <!-- Title Text -->
+    <text x="0" y="25" class="bengali-text">চিত্রে প্রদর্শিত বর্তনীতে</text>
+
+    <!-- Circuit Diagram -->
+    <g transform="translate(60, 40)">
+      
+      <!-- Top Wire with Resistor 20 Ohm -->
+      <line x1="20" y1="20" x2="50" y2="20" class="wire" />
+      
+      <!-- 20 Ohm Resistor (Zigzag) -->
+      <path d="M 50,20 L 55,10 L 65,30 L 75,10 L 85,30 L 95,10 L 105,30 L 110,20" class="wire" />
+      <text x="80" y="45" class="label-text" text-anchor="middle">20Ω</text>
+
+      <!-- Arrow after 20 Ohm -->
+      <line x1="110" y1="20" x2="160" y2="20" class="wire" />
+      <polygon points="135,15 150,20 135,25" class="arrow-head" />
+
+      <!-- Top Parallel Junction -->
+      <line x1="160" y1="20" x2="160" y2="50" class="wire" />
+      <line x1="120" y1="50" x2="200" y2="50" class="wire" />
+
+      <!-- Parallel Branch 1 (Left: 12 Ohm, I2) -->
+      <line x1="120" y1="50" x2="120" y2="80" class="wire" />
+      <!-- Arrow I2 -->
+      <polygon points="115,65 120,80 125,65" class="arrow-head" />
+      <text x="100" y="70" class="label-text">I<tspan font-size="16px" dy="4">2</tspan></text>
+      
+      <!-- 12 Ohm Resistor -->
+      <path d="M 120,80 L 110,85 L 130,95 L 110,105 L 130,115 L 110,125 L 130,135 L 120,140" class="wire" stroke-width="2.2" />
+      <text x="80" y="110" class="label-text">12Ω</text>
+      <line x1="120" y1="140" x2="120" y2="180" class="wire" />
+
+      <!-- Parallel Branch 2 (Right: 10 Ohm, I1) -->
+      <line x1="200" y1="50" x2="200" y2="80" class="wire" />
+      <!-- Arrow I1 -->
+      <polygon points="195,65 200,80 205,65" class="arrow-head" />
+      <text x="210" y="70" class="label-text">I<tspan font-size="16px" dy="4">1</tspan></text>
+
+      <!-- 10 Ohm Resistor -->
+      <path d="M 200,80 L 190,85 L 210,95 L 190,105 L 210,115 L 190,125 L 210,135 L 200,140" class="wire" stroke-width="2.2" />
+      <text x="215" y="110" class="label-text">10Ω</text>
+      <line x1="200" y1="140" x2="200" y2="180" class="wire" />
+
+      <!-- Bottom Parallel Junction -->
+      <line x1="120" y1="180" x2="200" y2="180" class="wire" />
+      <polygon points="135,175 120,180 135,185" class="arrow-head" />
+      <polygon points="185,175 200,180 185,185" class="arrow-head" />
+
+      <line x1="160" y1="180" x2="160" y2="210" class="wire" />
+      <line x1="160" y1="210" x2="20" y2="210" class="wire" />
+
+      <!-- Bottom Main Current Arrow (I) -->
+      <polygon points="90,205 70,210 90,215" class="arrow-head" />
+      <text x="80" y="190" class="label-text">I</text>
+
+      <!-- Left Wire with Battery -->
+      <line x1="20" y1="210" x2="20" y2="120" class="wire" />
+      
+      <!-- Battery 9V -->
+      <!-- Long line (+) -->
+      <line x1="5" y1="120" x2="35" y2="120" class="wire" stroke-width="3" />
+      <!-- Short line (-) -->
+      <line x1="10" y1="105" x2="30" y2="105" class="wire" stroke-width="4.5" />
+      
+      <text x="-15" y="112" class="label-text" transform="rotate(-90, -15, 112)">9V</text>
+
+      <line x1="20" y1="105" x2="20" y2="20" class="wire" />
+
+    </g>
+
+    <!-- Question Text Right -->
+    <g transform="translate(330, 140)">
+      <text x="0" y="0" class="bengali-text">প্রবাহমাত্রা <tspan class="label-text">I<tspan font-size="16px" dy="4">2</tspan></tspan><tspan dy="-4"> কত হবে?</tspan></text>
+    </g>
+
+  </g>
+</svg>

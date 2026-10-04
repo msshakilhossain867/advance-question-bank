@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <style>
+    .label { font-family: 'Times New Roman', serif; font-size: 38px; font-style: italic; fill: black; }
+    .border { stroke: black; stroke-width: 4; fill: none; }
+    .curve { stroke: black; stroke-width: 5; fill: none; stroke-linecap: round; }
+  </style>
+
+  <!-- Left axis label P -->
+  <text x="50" y="130" class="label">P</text>
+
+  <!-- Outer bounding rectangle box -->
+  <rect x="120" y="30" width="240" height="170" class="border" />
+
+  <!-- Inverse hyperbolic curve (Boyle's Law P vs V) -->
+  <path d="M 140, 60 Q 185, 150 320, 165" class="curve" />
+
+  <!-- Bottom axis label V -->
+  <text x="180" y="245" class="label">V</text>
+</svg>

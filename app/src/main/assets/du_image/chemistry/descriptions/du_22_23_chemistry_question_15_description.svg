@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 250" width="100%" height="100%">
+  <defs>
+    <style>
+      .chem-text {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 24px;
+        fill: #000000;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .label-text {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 26px;
+        fill: #000000;
+        text-anchor: middle;
+        dominant-baseline: alphabetic;
+      }
+      .ring-line {
+        stroke: #000000;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+      .bond-line {
+        stroke: #000000;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+      }
+      .arrow-line {
+        stroke: #000000;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- ==================== REACTANT: ETHYL BENZENE ==================== -->
+  <g transform="translate(130, 0)">
+    <!-- Substituent: CH2-CH3 -->
+    <text x="0" y="30" class="chem-text">CH<tspan dy="6" font-size="16">2</tspan><tspan dy="-6">-CH</tspan><tspan dy="6" font-size="16">3</tspan></text>
+    
+    <!-- Bond from ring to substituent -->
+    <line x1="0" y1="42" x2="0" y2="68" class="bond-line" />
+
+    <!-- Benzene Ring -->
+    <polygon points="0,68 35,88 35,128 0,148 -35,128 -35,88" class="ring-line" />
+    <!-- Inner Aromatic Circle -->
+    <circle cx="0" cy="108" r="21" class="ring-line" />
+
+    <!-- Compound Name -->
+    <text x="0" y="195" class="label-text">Ethyl Benzene</text>
+  </g>
+
+  <!-- ==================== REACTION ARROW & CONDITIONS ==================== -->
+  <g transform="translate(240, 108)">
+    <!-- Reagent: KMnO4 -->
+    <text x="75" y="-18" class="chem-text">KMnO<tspan dy="5" font-size="16">4</tspan></text>
+
+    <!-- Reaction Arrow -->
+    <line x1="0" y1="0" x2="140" y2="0" class="arrow-line" />
+    <path d="M 130 -6 L 145 0 L 130 6" fill="#000000" />
+
+    <!-- Heat Symbol (Delta Triangle) -->
+    <polygon points="75,15 67,29 83,29" class="ring-line" fill="none" />
+  </g>
+
+  <!-- ==================== PRODUCT: BENZOIC ACID ==================== -->
+  <g transform="translate(510, 0)">
+    <!-- Substituent: COOH -->
+    <text x="0" y="30" class="chem-text">COOH</text>
+
+    <!-- Bond from ring to substituent -->
+    <line x1="0" y1="42" x2="0" y2="68" class="bond-line" />
+
+    <!-- Benzene Ring -->
+    <polygon points="0,68 35,88 35,128 0,148 -35,128 -35,88" class="ring-line" />
+    <!-- Inner Aromatic Circle -->
+    <circle cx="0" cy="108" r="21" class="ring-line" />
+
+    <!-- Compound Name -->
+    <text x="0" y="195" class="label-text">Benzoic Acid</text>
+  </g>
+</svg>

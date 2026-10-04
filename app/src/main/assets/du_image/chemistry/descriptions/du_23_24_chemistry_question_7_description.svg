@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 320" width="100%" height="100%" style="background-color: #ffffff; font-family: 'Times New Roman', 'Kalpurush', serif;">
+  <defs>
+    <!-- Arrowhead Marker for Coordinate Coordinate Bonds -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#000000" />
+    </marker>
+  </defs>
+
+  <!-- CHEMICAL STRUCTURE SECTION -->
+  <g transform="translate(40, 20)">
+
+    <!-- Left Aluminium Atom (Al) -->
+    <text x="140" y="145" font-size="28" font-weight="bold">Al</text>
+
+    <!-- Right Aluminium Atom (Al) -->
+    <text x="320" y="145" font-size="28" font-weight="bold">Al</text>
+
+    <!-- Terminal Chlorine Atoms (Left Side) -->
+    <!-- Top Left Cl -->
+    <text x="50" y="65" font-size="26">Cl</text>
+    <line x1="78" y1="68" x2="135" y2="122" stroke="#000000" stroke-width="2.5" />
+
+    <!-- Bottom Left Cl -->
+    <text x="50" y="225" font-size="26">Cl</text>
+    <line x1="78" y1="212" x2="135" y2="158" stroke="#000000" stroke-width="2.5" />
+
+    <!-- Terminal Chlorine Atoms (Right Side) -->
+    <!-- Top Right Cl -->
+    <text x="410" y="65" font-size="26">Cl</text>
+    <line x1="355" y1="122" x2="408" y2="68" stroke="#000000" stroke-width="2.5" />
+
+    <!-- Bottom Right Cl -->
+    <text x="410" y="225" font-size="26">Cl</text>
+    <line x1="355" y1="158" x2="408" y2="212" stroke="#000000" stroke-width="2.5" />
+
+    <!-- Bridging Chlorine Atoms (Middle) -->
+    <!-- Top Middle Cl -->
+    <text x="230" y="65" font-size="26">Cl</text>
+
+    <!-- Covalent Bond: Left Al - Top Cl -->
+    <line x1="175" y1="122" x2="228" y2="68" stroke="#000000" stroke-width="2.5" />
+
+    <!-- Coordinate Bond: Top Cl -> Right Al -->
+    <line x1="258" y1="68" x2="315" y2="122" stroke="#000000" stroke-width="2.5" marker-end="url(#arrow)" />
+
+    <!-- Bottom Middle Cl -->
+    <text x="230" y="225" font-size="26">Cl</text>
+
+    <!-- Covalent Bond: Right Al - Bottom Cl -->
+    <line x1="315" y1="158" x2="258" y2="212" stroke="#000000" stroke-width="2.5" />
+
+    <!-- Coordinate Bond: Bottom Cl -> Left Al -->
+    <line x1="228" y1="212" x2="175" y2="158" stroke="#000000" stroke-width="2.5" marker-end="url(#arrow)" />
+
+  </g>
+
+  <!-- TEXT & BOND COUNT SECTION -->
+  <g transform="translate(450, 115)" font-size="22" fill="#000000">
+    <text x="0" y="0">
+      সমযোজী বন্ধন = 6
+    </text>
+    <text x="0" y="45">
+      সন্ননিবেশ বন্ধন = 2
+    </text>
+  </g>
+</svg>

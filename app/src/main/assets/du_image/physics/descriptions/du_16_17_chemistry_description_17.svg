@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 250" width="100%" height="100%">
+  <style>
+    .chem-text {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 28px;
+      font-style: italic;
+      fill: #000000;
+      dominant-baseline: central;
+    }
+    .chem-main {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 32px;
+      font-style: normal;
+      fill: #000000;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+    .charge-text {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 26px;
+      font-style: normal;
+      fill: #000000;
+      dominant-baseline: central;
+    }
+    .bracket {
+      stroke: #000000;
+      stroke-width: 3;
+      fill: none;
+    }
+    .arrow {
+      stroke: #000000;
+      stroke-width: 2.5;
+      fill: none;
+    }
+    .arrow-head {
+      fill: #000000;
+    }
+    .dots {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 24px;
+      font-weight: bold;
+      fill: #000000;
+      dominant-baseline: central;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <g transform="translate(30, 20)">
+    <!-- Left Bracket -->
+    <path d="M 50,20 L 20,20 L 20,190 L 50,190" class="bracket" />
+
+    <!-- Right Bracket -->
+    <path d="M 340,20 L 370,20 L 370,190 L 340,190" class="bracket" />
+
+    <!-- Charge 2+ -->
+    <text x="375" y="30" class="charge-text">2+</text>
+
+    <!-- Central Atom Cu -->
+    <text x="195" y="105" class="chem-main">Cu</text>
+
+    <!-- Top-Left Ligand: H3N: -->
+    <text x="50" y="55" class="chem-text" text-anchor="start">H<tspan font-size="18px" font-style="normal" dy="6">3</tspan><tspan font-size="28px" font-style="italic" dy="-6">N</tspan></text>
+    <text x="122" y="55" class="dots">:</text>
+    <!-- Arrow Top-Left to Cu -->
+    <line x1="133" y1="62" x2="168" y2="85" class="arrow" />
+    <polygon points="160,88 174,89 168,76" class="arrow-head" />
+
+    <!-- Bottom-Left Ligand: H3N: -->
+    <text x="50" y="155" class="chem-text" text-anchor="start">H<tspan font-size="18px" font-style="normal" dy="6">3</tspan><tspan font-size="28px" font-style="italic" dy="-6">N</tspan></text>
+    <text x="122" y="155" class="dots">:</text>
+    <!-- Arrow Bottom-Left to Cu -->
+    <line x1="133" y1="148" x2="168" y2="125" class="arrow" />
+    <polygon points="168,134 174,121 160,122" class="arrow-head" />
+
+    <!-- Top-Right Ligand: :NH3 -->
+    <text x="260" y="55" class="dots">:</text>
+    <text x="272" y="55" class="chem-text" text-anchor="start">NH<tspan font-size="18px" font-style="normal" dy="6">3</tspan></text>
+    <!-- Arrow Top-Right to Cu -->
+    <line x1="257" y1="62" x2="222" y2="85" class="arrow" />
+    <polygon points="222,76 216,89 230,88" class="arrow-head" />
+
+    <!-- Bottom-Right Ligand: :NH3 -->
+    <text x="260" y="155" class="dots">:</text>
+    <text x="272" y="155" class="chem-text" text-anchor="start">NH<tspan font-size="18px" font-style="normal" dy="6">3</tspan></text>
+    <!-- Arrow Bottom-Right to Cu -->
+    <line x1="257" y1="148" x2="222" y2="125" class="arrow" />
+    <polygon points="230,122 216,121 222,134" class="arrow-head" />
+  </g>
+</svg>
