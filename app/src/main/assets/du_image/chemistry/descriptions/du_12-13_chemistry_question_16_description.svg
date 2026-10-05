@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 220" width="100%" height="100%">
+  <defs>
+    <style>
+      .chem-text {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 24px;
+        fill: #000000;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .bengali-text {
+        font-family: 'Siyam Rupali', 'Kalpurush', 'Noto Serif Bengali', 'Times New Roman', serif;
+        font-size: 21px;
+        fill: #000000;
+        text-anchor: start;
+        dominant-baseline: middle;
+      }
+      .title-text {
+        font-family: 'Siyam Rupali', 'Kalpurush', 'Noto Serif Bengali', 'Times New Roman', serif;
+        font-size: 22px;
+        fill: #000000;
+        text-anchor: start;
+        dominant-baseline: middle;
+      }
+      .bond-line {
+        stroke: #000000;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- Title Line: CH3CN এর গাঠনিক সংকেত: -->
+  <g transform="translate(30, 30)">
+    <text x="0" y="0" class="chem-text" text-anchor="start">CH<tspan dy="6" font-size="16">3</tspan><tspan dy="-6">CN</tspan></text>
+    <text x="95" y="0" class="title-text">এর গাঠনিক সংকেত:</text>
+  </g>
+
+  <!-- Chemical Structural Formula -->
+  <g transform="translate(110, 120)">
+    <!-- Central Carbon 1 (Methyl) -->
+    <text x="0" y="0" class="chem-text">C</text>
+
+    <!-- Top Hydrogen -->
+    <line x1="0" y1="-14" x2="0" y2="-36" class="bond-line" />
+    <text x="0" y="-50" class="chem-text">H</text>
+
+    <!-- Bottom Hydrogen -->
+    <line x1="0" y1="14" x2="0" y2="36" class="bond-line" />
+    <text x="0" y="50" class="chem-text">H</text>
+
+    <!-- Left Hydrogen -->
+    <line x1="-14" y1="0" x2="-36" y2="0" class="bond-line" />
+    <text x="-50" y="0" class="chem-text">H</text>
+
+    <!-- C - C Single Bond -->
+    <line x1="14" y1="0" x2="36" y2="0" class="bond-line" />
+
+    <!-- Central Carbon 2 (Nitrile) -->
+    <text x="50" y="0" class="chem-text">C</text>
+
+    <!-- C ≡ N Triple Bond -->
+    <line x1="64" y1="-6" x2="86" y2="-6" class="bond-line" />
+    <line x1="64" y1="0" x2="86" y2="0" class="bond-line" />
+    <line x1="64" y1="6" x2="86" y2="6" class="bond-line" />
+
+    <!-- Nitrogen -->
+    <text x="100" y="0" class="chem-text">N</text>
+  </g>
+
+  <!-- Side Text: এর σ-বন্ধন 5টি, π-বন্ধন 2টি। -->
+  <g transform="translate(230, 120)">
+    <text x="0" y="0" class="bengali-text">এর σ-বন্ধন 5টি, π-বন্ধন 2টি।</text>
+  </g>
+
+  <!-- Subtitle Label: (Acetonitrile) -->
+  <g transform="translate(260, 185)">
+    <text x="0" y="0" class="chem-text">(Acetonitrile)</text>
+  </g>
+</svg>
