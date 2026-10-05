@@ -37,7 +37,7 @@
   </defs>
 
   <!-- Background -->
-  <rect width="100%" height="100%" fill="#ffffff" />
+  <rect width="100%" height="100%" fill="none" />
 
   <!-- ==================== COLUMN (a) ==================== -->
   <text x="90" y="45" class="label-text">(a)</text>

@@ -36,7 +36,7 @@
   </defs>
 
   <!-- Background -->
-  <rect width="100%" height="100%" fill="#ffffff" />
+  <rect width="100%" height="100%" fill="none" />
 
   <!-- ==================== REACTANT: ETHYL BENZENE ==================== -->
   <g transform="translate(130, 0)">

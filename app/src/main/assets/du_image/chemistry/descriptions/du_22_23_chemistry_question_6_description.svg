@@ -29,7 +29,7 @@
   </defs>
 
   <!-- Background -->
-  <rect width="100%" height="100%" fill="#ffffff" />
+  <rect width="100%" height="100%" fill="none" />
 
   <!-- SECTION 1: TOP HYBRIDIZATION (sp2 labels) -->
   <text x="140" y="32" class="hybrid-text">sp<tspan dy="-8" font-size="15">2</tspan></text>

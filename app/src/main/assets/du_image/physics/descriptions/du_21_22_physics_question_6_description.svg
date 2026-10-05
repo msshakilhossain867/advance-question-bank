@@ -57,7 +57,7 @@
   </defs>
 
   <!-- Background -->
-  <rect width="100%" height="100%" fill="#ffffff" />
+  <rect width="100%" height="100%" fill="none" />
 
   <!-- ==================== HEADER SECTION ==================== -->
   <g transform="translate(30, 25)">

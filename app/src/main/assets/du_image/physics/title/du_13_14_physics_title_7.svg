@@ -32,7 +32,7 @@
   </style>
 
   <!-- Background -->
-  <rect width="100%" height="100%" fill="#ffffff" />
+  <rect width="100%" height="100%" fill="none" />
 
   <!-- Bengali Text (Top) -->
   <text x="20" y="35" class="bengali-text">লেখচিত্রে <tspan font-family="Times New Roman, Times, serif" font-weight="bold">X</tspan> দ্বারা একটি গ্যাসের প্রাথমিক অবস্থা দেখানো হচ্ছে।</text>

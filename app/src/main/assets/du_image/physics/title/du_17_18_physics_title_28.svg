@@ -27,7 +27,7 @@
   </style>
 
   <!-- Background -->
-  <rect width="100%" height="100%" fill="#ffffff" />
+  <rect width="100%" height="100%" fill="none" />
 
   <!-- Main Grid Container -->
   <g transform="translate(20, 20)">
