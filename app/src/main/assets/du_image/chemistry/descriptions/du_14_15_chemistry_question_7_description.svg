@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 480" width="100%" height="100%">
+  <defs>
+    <style>
+      .chem-text { font-family: 'Times New Roman', serif; font-size: 26px; fill: #000; }
+      .chem-sub { font-size: 18px; baseline-shift: sub; }
+      .chem-super { font-size: 18px; baseline-shift: super; }
+      .bengali-text { font-family: 'Siyam Rupali', 'Kalpurush', 'Vrinda', sans-serif; fill: #000; }
+      .label-text { font-size: 22px; font-weight: bold; }
+      .body-text { font-size: 21px; line-height: 1.6; }
+      .bond { stroke: #000; stroke-width: 2.5; stroke-linecap: round; }
+      .arrow { stroke: #000; stroke-width: 2; fill: none; }
+      .arrow-head { fill: #000; }
+      .dot { fill: #000; }
+    </style>
+    
+    <!-- Equilibrium Arrow Definition -->
+    <g id="eq-arrow">
+      <path d="M 0 0 L 80 0" stroke="#000" stroke-width="2" />
+      <path d="M 65 -7 L 80 0 L 65 0" fill="#000" />
+      <path d="M 0 12 L 80 12" stroke="#000" stroke-width="2" />
+      <path d="M 15 12 L 0 12 L 15 19" fill="#000" />
+    </g>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <!-- LEFT MOLECULE: Alpha-Amino Acid -->
+  <g transform="translate(10, 0)">
+    <!-- R - CH -->
+    <text x="30" y="100" class="chem-text">R</text>
+    <line x1="55" y1="92" x2="75" y2="92" class="bond" />
+    <text x="80" y="100" class="chem-text">CH</text>
+    
+    <!-- CH - C -->
+    <line x1="125" y1="92" x2="145" y2="92" class="bond" />
+    <text x="150" y="100" class="chem-text">C</text>
+    
+    <!-- C = O -->
+    <line x1="156" y1="73" x2="156" y2="53" class="bond" />
+    <line x1="164" y1="73" x2="164" y2="53" class="bond" />
+    <text x="154" y="45" class="chem-text">O</text>
+    
+    <!-- C - O -->
+    <line x1="170" y1="92" x2="190" y2="92" class="bond" />
+    <text x="195" y="100" class="chem-text">O</text>
+    
+    <!-- Lone pairs on C-O oxygen -->
+    <circle cx="200" cy="110" r="2" class="dot" />
+    <circle cx="208" cy="110" r="2" class="dot" />
+    <circle cx="200" cy="74" r="2" class="dot" />
+    <circle cx="208" cy="74" r="2" class="dot" />
+    
+    <!-- O - H -->
+    <line x1="220" y1="92" x2="245" y2="92" class="bond" />
+    <text x="250" y="100" class="chem-text">H<tspan class="chem-super">&delta;+</tspan></text>
+    
+    <!-- CH - H2N -->
+    <line x1="97" y1="108" x2="97" y2="135" class="bond" />
+    <text x="65" y="160" class="chem-text">H<tspan class="chem-sub">2</tspan>N</text>
+    <!-- Lone pair on Nitrogen -->
+    <circle cx="120" cy="148" r="2" class="dot" />
+    <circle cx="120" cy="155" r="2" class="dot" />
+
+    <!-- Electron Movement Curved Arrows -->
+    <!-- Nitrogen lone pair attacking Hydrogen -->
+    <path d="M 125 160 C 170 230, 275 210, 262 110" class="arrow" stroke-dasharray="none" />
+    <path d="M 266 122 L 262 110 L 256 120" class="arrow-head" />
+
+    <!-- O-H bond electrons moving to Oxygen -->
+    <path d="M 240 80 C 235 60, 215 60, 210 70" class="arrow" />
+    <path d="M 215 72 L 210 70 L 210 77" class="arrow-head" />
+  </g>
+
+  <!-- REACTION EQUILIBRIUM ARROW -->
+  <g transform="translate(325, 80)">
+    <use href="#eq-arrow" />
+    <text x="40" y="-12" text-anchor="middle" class="bengali-text" font-size="20">জলীয় দ্রবণ</text>
+  </g>
+
+  <!-- RIGHT MOLECULE: Zwitterion -->
+  <g transform="translate(430, 0)">
+    <!-- R - CH -->
+    <text x="30" y="100" class="chem-text">R</text>
+    <line x1="55" y1="92" x2="75" y2="92" class="bond" />
+    <text x="80" y="100" class="chem-text">CH</text>
+    
+    <!-- CH - C -->
+    <line x1="125" y1="92" x2="145" y2="92" class="bond" />
+    <text x="150" y="100" class="chem-text">C</text>
+    
+    <!-- C = O -->
+    <line x1="156" y1="73" x2="156" y2="53" class="bond" />
+    <line x1="164" y1="73" x2="164" y2="53" class="bond" />
+    <text x="154" y="45" class="chem-text">O</text>
+    
+    <!-- C - O^- -->
+    <line x1="170" y1="92" x2="190" y2="92" class="bond" />
+    <text x="195" y="100" class="chem-text">O</text>
+    <text x="217" y="100" class="chem-text">-</text>
+    
+    <!-- Lone pairs on Negative Oxygen (6 dots) -->
+    <circle cx="200" cy="110" r="2" class="dot" />
+    <circle cx="208" cy="110" r="2" class="dot" />
+    <circle cx="200" cy="74" r="2" class="dot" />
+    <circle cx="208" cy="74" r="2" class="dot" />
+    <circle cx="222" cy="88" r="2" class="dot" />
+    <circle cx="222" cy="96" r="2" class="dot" />
+    
+    <!-- CH - NH3+ -->
+    <line x1="97" y1="108" x2="97" y2="135" class="bond" />
+    <text x="60" y="160" class="chem-text"><tspan class="chem-super">+</tspan>NH<tspan class="chem-sub">3</tspan></text>
+  </g>
+
+  <!-- LABELS -->
+  <text x="120" y="240" class="bengali-text label-text">&#x03B1; অ্যাঅ্যামাইনো এসিড</text>
+  <text x="530" y="240" class="bengali-text label-text">জুইটার আয়ন</text>
+
+  <!-- EXPLANATORY TEXT -->
+  <g transform="translate(10, 290)">
+    <text x="0" y="0" class="bengali-text body-text">
+      একটি নির্দিষ্ট <tspan font-family="Times New Roman" font-style="italic">pH</tspan> মান পর্যন্ত জুইটার আয়ন কোনরূপ চার্জ বহন
+    </text>
+    <text x="0" y="35" class="bengali-text body-text">
+      করে না এবং বৈদ্যুতিক প্রবাহে নিষ্ক্রিয় থাকে। অ্যামাইনো এসিড
+    </text>
+    <text x="0" y="70" class="bengali-text body-text">
+      দ্রবণের এ সুনির্দিষ্ট <tspan font-family="Times New Roman" font-style="italic">pH</tspan> মানকে <tspan font-weight="bold">আইসোইলেকট্রিক <tspan font-family="Times New Roman">pH</tspan></tspan> বলে।
+    </text>
+  </g>
+</svg>

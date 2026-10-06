@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 320" width="100%" height="100%">
+  <defs>
+    <!-- Arrow marker for axes and transitions -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#000" />
+    </marker>
+    <!-- Arrow marker for angle indicator -->
+    <marker id="arrow-double" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8 z" fill="#000" />
+    </marker>
+  </defs>
+
+  <style>
+    .label { font-family: 'Times New Roman', 'Kalpurush', 'Siyam Rupali', serif; font-size: 22px; fill: #000; text-anchor: middle; }
+    .label-large { font-family: 'Times New Roman', 'Kalpurush', 'Siyam Rupali', serif; font-size: 24px; fill: #000; text-anchor: middle; }
+    .axis { stroke: #000; stroke-width: 1.8; stroke-linecap: round; }
+    .outline { stroke: #000; stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+    .shaded { fill: #c8c8c8; stroke: #000; stroke-width: 2; }
+    .white-fill { fill: #ffffff; stroke: #000; stroke-width: 2; }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <!-- ================= LEFT DIAGRAM: s & p orbital ================= -->
+  <g id="left-diagram">
+    <!-- Top label 'M' -->
+    <text x="135" y="45" class="label-large">M</text>
+
+    <!-- Shaded p-orbital (horizontal dumbbell) -->
+    <!-- Left lobe -->
+    <path d="M 135 130 C 90 80 40 85 40 130 C 40 175 90 180 135 130 Z" class="shaded" />
+    <!-- Right lobe -->
+    <path d="M 135 130 C 180 80 230 85 230 130 C 230 175 180 180 135 130 Z" class="shaded" />
+
+    <!-- Central s-orbital (circle) -->
+    <circle cx="135" cy="130" r="28" class="white-fill" />
+
+    <!-- Vertical Y-axis -->
+    <line x1="135" y1="200" x2="135" y2="55" class="axis" marker-end="url(#arrow)" />
+
+    <!-- Horizontal X-axis line -->
+    <line x1="30" y1="130" x2="240" y2="130" class="axis" />
+
+    <!-- Bottom label -->
+    <text x="135" y="260" class="label-large">s ও p orbital</text>
+  </g>
+
+  <!-- ================= MIDDLE TRANSITION ARROW ================= -->
+  <g id="transition">
+    <line x1="265" y1="130" x2="395" y2="130" class="axis" stroke-width="2.2" marker-end="url(#arrow)" />
+    <text x="330" y="115" class="label">sp সংকরণ</text>
+  </g>
+
+  <!-- ================= RIGHT DIAGRAM: sp hybridized orbital ================= -->
+  <g id="right-diagram">
+    <!-- Vertical Y-axis -->
+    <line x1="565" y1="230" x2="565" y2="35" class="axis" marker-end="url(#arrow)" />
+
+    <!-- Horizontal X-axis -->
+    <line x1="455" y1="130" x2="660" y2="130" class="axis" />
+
+    <!-- Hybrid Lobes (sp hybridized pair) -->
+    <!-- Left major lobe (tilted slightly upward-left) -->
+    <path d="M 565 130 C 510 50 455 70 455 110 C 455 140 520 150 565 130 Z" class="shaded" />
+    <path d="M 565 130 C 530 85 480 80 470 108" class="outline" />
+
+    <!-- Right major lobe (tilted slightly upward-right) -->
+    <path d="M 565 130 C 620 50 675 70 675 110 C 675 140 610 150 565 130 Z" class="shaded" />
+    <path d="M 565 130 C 600 85 650 80 660 108" class="outline" />
+
+    <!-- Small back lobes overlapping in center -->
+    <path d="M 565 130 C 575 140 585 135 580 125 C 575 120 568 125 565 130 Z" class="shaded" />
+    <path d="M 565 130 C 555 140 545 135 550 125 C 555 120 562 125 565 130 Z" class="shaded" />
+
+    <!-- Angle Arc showing 180° / directional relation -->
+    <path d="M 505 152 A 75 60 0 0 0 625 152" fill="none" stroke="#000" stroke-width="1.8" marker-start="url(#arrow-double)" marker-end="url(#arrow-double)" />
+
+    <!-- Bottom label -->
+    <text x="565" y="285" class="label-large">sp সংকরণ অরবিট্যাল</text>
+  </g>
+</svg>

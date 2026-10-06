@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 250" width="100%" height="100%">
+  <style>
+    .chem-text { font-family: 'Times New Roman', serif; font-size: 26px; fill: #000; }
+    .sub-text { font-size: 18px; }
+    .label-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', 'Times New Roman', serif; font-size: 24px; font-weight: bold; fill: #000; }
+    .bond { fill: none; stroke: #000; stroke-width: 2.5; stroke-linecap: round; }
+  </style>
+
+  <!-- Cis-Isomer Group (Left) -->
+  <g transform="translate(40, 20)">
+    <!-- Central C=C Double Bond -->
+    <line x1="100" y1="80" x2="160" y2="80" class="bond" />
+    <line x1="100" y1="88" x2="160" y2="88" class="bond" />
+
+    <!-- Carbon C (Left) and Carbon C (Right) -->
+    <text x="82" y="92" class="chem-text">C</text>
+    <text x="165" y="92" class="chem-text">C</text>
+
+    <!-- Top Left Bond and H3C Group -->
+    <line x1="82" y1="70" x2="48" y2="35" class="bond" />
+    <text x="0" y="32" class="chem-text">H<tspan baseline-shift="sub" class="sub-text">3</tspan>C</text>
+
+    <!-- Bottom Left Bond and H Atom -->
+    <line x1="82" y1="98" x2="48" y2="132" class="bond" />
+    <text x="32" y="148" class="chem-text">H</text>
+
+    <!-- Top Right Bond and CH3 Group -->
+    <line x1="178" y1="70" x2="212" y2="35" class="bond" />
+    <text x="215" y="32" class="chem-text">CH<tspan baseline-shift="sub" class="sub-text">3</tspan></text>
+
+    <!-- Bottom Right Bond and H Atom -->
+    <line x1="178" y1="98" x2="212" y2="132" class="bond" />
+    <text x="215" y="148" class="chem-text">H</text>
+
+    <!-- Label: Cis -সমাণু -->
+    <text x="130" y="200" class="label-text" text-anchor="middle">Cis -সমাণু</text>
+  </g>
+
+  <!-- Trans-Isomer Group (Right) -->
+  <g transform="translate(360, 20)">
+    <!-- Central C=C Double Bond -->
+    <line x1="100" y1="80" x2="160" y2="80" class="bond" />
+    <line x1="100" y1="88" x2="160" y2="88" class="bond" />
+
+    <!-- Carbon C (Left) and Carbon C (Right) -->
+    <text x="82" y="92" class="chem-text">C</text>
+    <text x="165" y="92" class="chem-text">C</text>
+
+    <!-- Top Left Bond and H3C Group -->
+    <line x1="82" y1="70" x2="48" y2="35" class="bond" />
+    <text x="0" y="32" class="chem-text">H<tspan baseline-shift="sub" class="sub-text">3</tspan>C</text>
+
+    <!-- Bottom Left Bond and H Atom -->
+    <line x1="82" y1="98" x2="48" y2="132" class="bond" />
+    <text x="32" y="148" class="chem-text">H</text>
+
+    <!-- Top Right Bond and H Atom -->
+    <line x1="178" y1="70" x2="212" y2="35" class="bond" />
+    <text x="218" y="32" class="chem-text">H</text>
+
+    <!-- Bottom Right Bond and CH3 Group -->
+    <line x1="178" y1="98" x2="212" y2="132" class="bond" />
+    <text x="215" y="148" class="chem-text">CH<tspan baseline-shift="sub" class="sub-text">3</tspan></text>
+
+    <!-- Label: trans- সমাণু -->
+    <text x="130" y="200" class="label-text" text-anchor="middle">trans- সমাণু</text>
+  </g>
+</svg>

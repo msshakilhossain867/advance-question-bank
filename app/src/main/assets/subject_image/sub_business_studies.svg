@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#1E88E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Chart Bars -->
+  <path d="M3 20h18"/>
+  <path d="M6 20v-4"/>
+  <path d="M12 20v-8"/>
+  <path d="M18 20V6"/>
+  <!-- Growth Arrow -->
+  <path d="M4 13l6-6 4 4 6-6"/>
+  <path d="M16 5h4v4"/>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 260" width="100%" height="100%">
+  <defs>
+    <!-- Arrowhead Marker for Lines and Vectors -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#000000"/>
+    </marker>
+  </defs>
+
+  <style>
+    .question-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 24px; font-weight: bold; fill: #000; }
+    .box-text { font-family: 'Times New Roman', serif; font-size: 32px; font-weight: bold; fill: #000; }
+    .vector-text { font-family: 'Times New Roman', serif; font-size: 30px; font-style: italic; font-weight: bold; fill: #000; }
+    .line-style { fill: none; stroke: #000; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .box-style { fill: none; stroke: #000; stroke-width: 3; }
+  </style>
+
+  <!-- Bengali Question Text Line 1 -->
+  <text x="10" y="35" class="question-text">সমান ভর বিশিষ্ট তিনটি খণ্ড A, B, C দড়ির দ্বারা চিত্রে প্রদর্শিত</text>
+
+  <!-- Bengali Question Text Line 2: with F vector arrow overhead -->
+  <g transform="translate(10, 75)">
+    <text x="0" y="0" class="question-text">রূপে সংযুক্ত। খণ্ড C,</text>
+    
+    <!-- Vector F inside text line -->
+    <g transform="translate(235, -22)">
+      <text x="0" y="20" font-family="'Times New Roman', serif" font-size="26" font-style="italic" font-weight="bold">F</text>
+      <path d="M 0,-5 L 18,-5 M 12,-9 L 18,-5 L 12,-1" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+
+    <text x="260" y="0" class="question-text">বল দ্বারা টানা হলে সম্পূর্ণ ব্যবস্থাটি</text>
+  </g>
+
+  <!-- Bengali Question Text Line 3 -->
+  <text x="10" y="115" class="question-text">ত্বরিত হয়। ঘর্ষণ উপেক্ষা করলে খণ্ড B এর উপর মোট বল হলো-</text>
+
+  <!-- Diagram Group -->
+  <g transform="translate(40, 140)">
+    <!-- Ground Line with Arrow -->
+    <line x1="20" y1="90" x2="520" y2="90" class="line-style" stroke-width="2.5" marker-end="url(#arrow)" />
+
+    <!-- Box A -->
+    <rect x="50" y="20" width="70" height="70" class="box-style" />
+    <text x="85" y="65" class="box-text" text-anchor="middle">A</text>
+
+    <!-- Rope between A and B -->
+    <line x1="120" y1="55" x2="200" y2="55" class="line-style" />
+
+    <!-- Box B -->
+    <rect x="200" y="20" width="70" height="70" class="box-style" />
+    <text x="235" y="65" class="box-text" text-anchor="middle">B</text>
+
+    <!-- Rope between B and C -->
+    <line x1="270" y1="55" x2="350" y2="55" class="line-style" />
+
+    <!-- Box C -->
+    <rect x="350" y="20" width="70" height="70" class="box-style" />
+    <text x="385" y="65" class="box-text" text-anchor="middle">C</text>
+
+    <!-- Force Vector F with Arrow -->
+    <line x1="420" y1="55" x2="510" y2="55" class="line-style" marker-end="url(#arrow)" />
+    
+    <!-- F Vector Label in Diagram with Overhead Arrow -->
+    <g transform="translate(450, 10)">
+      <text x="0" y="20" class="vector-text">F</text>
+      <path d="M 0,-5 L 18,-5 M 12,-9 L 18,-5 L 12,-1" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+  </g>
+</svg>

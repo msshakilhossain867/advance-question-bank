@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 200" width="100%" height="100%">
+  <style>
+    .chem-text { font-family: 'Times New Roman', serif; font-size: 32px; fill: #000; }
+    .sub-text { font-size: 22px; }
+    .sup-text { font-size: 22px; }
+    .bond { fill: none; stroke: #000; stroke-width: 2.5; stroke-linecap: round; }
+  </style>
+
+  <!-- Main Horizontal Structure: H3N+ - CH - COO- -->
+  <g transform="translate(30, 80)">
+    <!-- H3N+ -->
+    <text x="0" y="0" class="chem-text">H<tspan baseline-shift="sub" class="sub-text">3</tspan>N<tspan baseline-shift="super" class="sup-text">+</tspan></text>
+    
+    <!-- Bond between H3N+ and CH -->
+    <line x1="90" y1="-10" x2="125" y2="-10" class="bond" />
+
+    <!-- CH -->
+    <text x="135" y="0" class="chem-text">CH</text>
+
+    <!-- Bond between CH and COO- -->
+    <line x1="185" y1="-10" x2="220" y2="-10" class="bond" />
+
+    <!-- COO- -->
+    <text x="230" y="0" class="chem-text">COO<tspan baseline-shift="super" class="sup-text">-</tspan></text>
+
+    <!-- Vertical Bond to R -->
+    <line x1="160" y1="12" x2="160" y2="45" class="bond" />
+
+    <!-- R Group -->
+    <text x="150" y="80" class="chem-text">R</text>
+  </g>
+</svg>
