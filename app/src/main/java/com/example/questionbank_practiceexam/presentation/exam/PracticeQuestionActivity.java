@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.data.local.entity.Question;
@@ -162,6 +165,13 @@ public class PracticeQuestionActivity extends AppCompatActivity {
         setContentView(
                 binding.getRoot()
         );
+
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
 
         // ========================================================
@@ -646,163 +656,59 @@ public class PracticeQuestionActivity extends AppCompatActivity {
 
     private void resetOptions() {
 
+        // রিসোর্স থেকে থিম অনুযায়ী কালার নেওয়া (যা লাইট ও নাইট মোডে অটো পরিবর্তিত হবে)
+        int normalTextColor = androidx.core.content.ContextCompat.getColor(this, R.color.home_card_title);
+        int labelColor = androidx.core.content.ContextCompat.getColor(this, R.color.home_card_subtitle);
+
         // ========================================================
-        // A
+        // A, B, C, D OPTIONS BACKGROUND & LABEL
         // ========================================================
 
-        binding.optionA.setBackgroundResource(
-                R.drawable.bg_option_normal
-        );
-
+        binding.optionA.setBackgroundResource(R.drawable.bg_option_normal);
         binding.optionALabel.setText("A");
+        binding.optionALabel.setTextColor(labelColor);
 
-        binding.optionALabel.setTextColor(
-                Color.rgb(
-                        123,
-                        132,
-                        146
-                )
-        );
-
-
-        // ========================================================
-        // B
-        // ========================================================
-
-        binding.optionB.setBackgroundResource(
-                R.drawable.bg_option_normal
-        );
-
+        binding.optionB.setBackgroundResource(R.drawable.bg_option_normal);
         binding.optionBLabel.setText("B");
+        binding.optionBLabel.setTextColor(labelColor);
 
-        binding.optionBLabel.setTextColor(
-                Color.rgb(
-                        123,
-                        132,
-                        146
-                )
-        );
-
-
-        // ========================================================
-        // C
-        // ========================================================
-
-        binding.optionC.setBackgroundResource(
-                R.drawable.bg_option_normal
-        );
-
+        binding.optionC.setBackgroundResource(R.drawable.bg_option_normal);
         binding.optionCLabel.setText("C");
+        binding.optionCLabel.setTextColor(labelColor);
 
-        binding.optionCLabel.setTextColor(
-                Color.rgb(
-                        123,
-                        132,
-                        146
-                )
-        );
-
-
-        // ========================================================
-        // D
-        // ========================================================
-
-        binding.optionD.setBackgroundResource(
-                R.drawable.bg_option_normal
-        );
-
+        binding.optionD.setBackgroundResource(R.drawable.bg_option_normal);
         binding.optionDLabel.setText("D");
-
-        binding.optionDLabel.setTextColor(
-                Color.rgb(
-                        123,
-                        132,
-                        146
-                )
-        );
+        binding.optionDLabel.setTextColor(labelColor);
 
 
         // ========================================================
-        // TEXT COLOR
+        // TEXT COLOR (ಥিম অনুযায়ী ডাইনামিক)
         // ========================================================
 
-        binding.optionAText.setTextColor(
-                Color.rgb(
-                        51,
-                        51,
-                        51
-                )
-        );
-
-        binding.optionBText.setTextColor(
-                Color.rgb(
-                        51,
-                        51,
-                        51
-                )
-        );
-
-        binding.optionCText.setTextColor(
-                Color.rgb(
-                        51,
-                        51,
-                        51
-                )
-        );
-
-        binding.optionDText.setTextColor(
-                Color.rgb(
-                        51,
-                        51,
-                        51
-                )
-        );
+        binding.optionAText.setTextColor(normalTextColor);
+        binding.optionBText.setTextColor(normalTextColor);
+        binding.optionCText.setTextColor(normalTextColor);
+        binding.optionDText.setTextColor(normalTextColor);
 
 
         // ========================================================
         // TYPEFACE
         // ========================================================
 
-        binding.optionAText.setTypeface(
-                null,
-                Typeface.NORMAL
-        );
-
-        binding.optionBText.setTypeface(
-                null,
-                Typeface.NORMAL
-        );
-
-        binding.optionCText.setTypeface(
-                null,
-                Typeface.NORMAL
-        );
-
-        binding.optionDText.setTypeface(
-                null,
-                Typeface.NORMAL
-        );
+        binding.optionAText.setTypeface(null, Typeface.NORMAL);
+        binding.optionBText.setTypeface(null, Typeface.NORMAL);
+        binding.optionCText.setTypeface(null, Typeface.NORMAL);
+        binding.optionDText.setTypeface(null, Typeface.NORMAL);
 
 
         // ========================================================
         // LABEL BACKGROUND
         // ========================================================
 
-        binding.optionALabel.setBackgroundResource(
-                R.drawable.bg_option_letter
-        );
-
-        binding.optionBLabel.setBackgroundResource(
-                R.drawable.bg_option_letter
-        );
-
-        binding.optionCLabel.setBackgroundResource(
-                R.drawable.bg_option_letter
-        );
-
-        binding.optionDLabel.setBackgroundResource(
-                R.drawable.bg_option_letter
-        );
+        binding.optionALabel.setBackgroundResource(R.drawable.bg_option_letter);
+        binding.optionBLabel.setBackgroundResource(R.drawable.bg_option_letter);
+        binding.optionCLabel.setBackgroundResource(R.drawable.bg_option_letter);
+        binding.optionDLabel.setBackgroundResource(R.drawable.bg_option_letter);
     }
 
 

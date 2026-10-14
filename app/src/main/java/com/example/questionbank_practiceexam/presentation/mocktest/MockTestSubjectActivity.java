@@ -9,9 +9,13 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.data.local.entity.Subject;
 import com.example.questionbank_practiceexam.data.local.repository.SubjectRepository;
 import com.example.questionbank_practiceexam.databinding.ActivityMockTestSubjectBinding;
@@ -130,6 +134,12 @@ public class MockTestSubjectActivity
         setContentView(
                 binding.getRoot()
         );
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
 
         // ========================================================
@@ -498,7 +508,7 @@ public class MockTestSubjectActivity
 
             groupTitle.setTextColor(
                     Color.parseColor(
-                            "#222222"
+                            "#1858A8"
                     )
             );
 

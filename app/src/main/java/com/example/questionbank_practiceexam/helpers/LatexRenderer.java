@@ -99,6 +99,17 @@ public class LatexRenderer {
         String safeColor = textColor == null ? "#222222" : textColor;
         String fontWeight = bold ? "700" : "400";
 
+// ডার্ক মোড চেক এবং কালার অ্যাডজাস্টমেন্ট
+        boolean isDarkModeOn = (webView.getContext().getResources().getConfiguration().uiMode
+                & android.content.res.Configuration.UI_MODE_NIGHT_MASK)
+                == android.content.res.Configuration.UI_MODE_NIGHT_YES;
+
+        if (safeColor.equals("#222222") || safeColor.equals("#151515") || safeColor.equals("#444444")) {
+            safeColor = isDarkModeOn ? "#E2E8F0" : safeColor;
+        }
+
+
+
         // যদি অপশন স্টাইল হয় এবং ইমেজ না থাকে, তবে টেক্সট ভার্টিক্যালি সেন্টারে থাকবে
         String contentStyle;
         if (optionStyle && !hasImage) {
@@ -161,6 +172,7 @@ public class LatexRenderer {
                 ".katex-display { margin: 4px 0 !important; overflow-x: auto; overflow-y: hidden; }" +
                 "img { max-width: 100%; max-height: 160px; height: auto; width: auto; display: block; margin: 0 auto; object-fit: contain; }" +
                 "table { max-width:100%; border-collapse:collapse; }" +
+                "@media (prefers-color-scheme: dark) { body { color: " + safeColor + "; } }" +
                 "</style>" +
                 "</head>" +
                 "<body>" +

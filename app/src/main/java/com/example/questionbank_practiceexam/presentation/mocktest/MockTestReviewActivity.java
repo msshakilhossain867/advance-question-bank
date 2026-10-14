@@ -52,15 +52,6 @@ public class MockTestReviewActivity extends AppCompatActivity {
     // MOCK TEST SETTINGS
     // ============================================================
 
-    /*
-     * আপাতত তোমার XML অনুযায়ী:
-     *
-     * 60 Questions
-     * 60 Minutes
-     * 1 mark per question
-     * 0.25 negative marking
-     */
-
     private int questionCount = 60;
 
     private int testTimeMinutes = 60;
@@ -215,19 +206,10 @@ public class MockTestReviewActivity extends AppCompatActivity {
 
     private void getIntentData() {
 
-        // --------------------------------------------------------
-        // SUBJECT IDS
-        // --------------------------------------------------------
-
         subjectIds =
                 getIntent().getIntArrayExtra(
                         "subject_ids"
                 );
-
-
-        // --------------------------------------------------------
-        // UNIT
-        // --------------------------------------------------------
 
         unitId =
                 getIntent().getIntExtra(
@@ -235,23 +217,16 @@ public class MockTestReviewActivity extends AppCompatActivity {
                         -1
                 );
 
-
         unitName =
                 getIntent().getStringExtra(
                         "unit_name"
                 );
-
-
-        // --------------------------------------------------------
-        // YEAR
-        // --------------------------------------------------------
 
         yearId =
                 getIntent().getIntExtra(
                         "year_id",
                         -1
                 );
-
 
         yearTitle =
                 getIntent().getStringExtra(
@@ -313,10 +288,6 @@ public class MockTestReviewActivity extends AppCompatActivity {
 
     private void loadReviewData() {
 
-        // ========================================================
-        // UNIVERSITY
-        // ========================================================
-
         String universityName =
                 getUniversityName();
 
@@ -333,10 +304,6 @@ public class MockTestReviewActivity extends AppCompatActivity {
                 universityName
         );
 
-
-        // ========================================================
-        // TEST NAME
-        // ========================================================
 
         String testName;
 
@@ -361,23 +328,14 @@ public class MockTestReviewActivity extends AppCompatActivity {
 
 
         // ========================================================
-        // QUESTION COUNT
+        // QUESTION COUNT (যতগুলো প্রশ্ন সিলেক্টেড সাবজেক্ট থেকে পাওয়া যাবে)
         // ========================================================
 
         int availableQuestions =
                 getAvailableQuestionCount();
 
-
-        /*
-         * যদি available question 60-এর কম হয়,
-         * তাহলে available সংখ্যাই নেওয়া হবে।
-         */
-
-        if (availableQuestions > 0 &&
-                availableQuestions < questionCount) {
-
-            questionCount =
-                    availableQuestions;
+        if (availableQuestions > 0) {
+            questionCount = availableQuestions;
         }
 
 
@@ -390,12 +348,8 @@ public class MockTestReviewActivity extends AppCompatActivity {
 
 
         // ========================================================
-        // TIME
+        // TIME (যতগুলো প্রশ্ন, ঠিক তত মিনিট সেট হবে)
         // ========================================================
-
-        /*
-         * আপাতত 1 question = 1 minute
-         */
 
         testTimeMinutes =
                 questionCount;
@@ -436,27 +390,15 @@ public class MockTestReviewActivity extends AppCompatActivity {
         );
 
 
-        // ========================================================
-        // QUESTION TYPE
-        // ========================================================
-
         binding.questionType.setText(
                 "MCQ"
         );
 
 
-        // ========================================================
-        // SYLLABUS
-        // ========================================================
-
         binding.syllabusText.setText(
                 "Question Bank"
         );
 
-
-        // ========================================================
-        // INSTRUCTION
-        // ========================================================
 
         String instruction =
                 "• সময় শেষ হলে পরীক্ষা স্বয়ংক্রিয়ভাবে জমা হবে।\n"
@@ -488,15 +430,6 @@ public class MockTestReviewActivity extends AppCompatActivity {
 
 
         String universityName = null;
-
-
-        /*
-         * year_id
-         *     ↓
-         * years.university_id
-         *     ↓
-         * universities.name
-         */
 
         Cursor cursor = null;
 
@@ -594,6 +527,7 @@ public class MockTestReviewActivity extends AppCompatActivity {
         if (subjectIds == null ||
                 subjectIds.length == 0) {
 
+
             Toast.makeText(
                     this,
                     "No subject selected",
@@ -603,10 +537,6 @@ public class MockTestReviewActivity extends AppCompatActivity {
             return;
         }
 
-
-        // ========================================================
-        // CHECK QUESTIONS
-        // ========================================================
 
         int availableQuestions =
                 getAvailableQuestionCount();
@@ -624,10 +554,6 @@ public class MockTestReviewActivity extends AppCompatActivity {
         }
 
 
-        // ========================================================
-        // START QUESTION ACTIVITY
-        // ========================================================
-
         Intent intent =
                 new Intent(
                         MockTestReviewActivity.this,
@@ -635,19 +561,11 @@ public class MockTestReviewActivity extends AppCompatActivity {
                 );
 
 
-        // ========================================================
-        // SUBJECT IDS
-        // ========================================================
-
         intent.putExtra(
                 "subject_ids",
                 subjectIds
         );
 
-
-        // ========================================================
-        // UNIT
-        // ========================================================
 
         intent.putExtra(
                 "unit_id",
@@ -661,10 +579,6 @@ public class MockTestReviewActivity extends AppCompatActivity {
         );
 
 
-        // ========================================================
-        // YEAR
-        // ========================================================
-
         intent.putExtra(
                 "year_id",
                 yearId
@@ -676,10 +590,6 @@ public class MockTestReviewActivity extends AppCompatActivity {
                 yearTitle
         );
 
-
-        // ========================================================
-        // QUESTION SETTINGS
-        // ========================================================
 
         intent.putExtra(
                 "question_count",
@@ -704,10 +614,6 @@ public class MockTestReviewActivity extends AppCompatActivity {
                 negativeMark
         );
 
-
-        // ========================================================
-        // START
-        // ========================================================
 
         startActivity(
                 intent

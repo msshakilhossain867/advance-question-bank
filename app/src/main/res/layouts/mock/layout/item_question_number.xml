@@ -1,34 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     android:id="@+id/questionNumberCard"
-
-    android:layout_width="28dp"
-    android:layout_height="28dp"
-
-    android:layout_margin="3dp"
-
+    android:layout_width="@dimen/_28sdp"
+    android:layout_height="@dimen/_28sdp"
+    android:layout_margin="@dimen/_3sdp"
     app:cardCornerRadius="50dp"
     app:cardElevation="0dp"
-
-    app:strokeWidth="0dp"
-    app:cardBackgroundColor="#F2F3F6">
-
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/home_card_border"
+    app:cardBackgroundColor="@color/home_card_background">
 
     <TextView
         android:id="@+id/questionNumberText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:gravity="center"
-
         android:text="1"
-
-        android:textColor="#454A55"
-        android:textSize="8sp"
+        android:textColor="@color/home_card_title"
+        android:textSize="@dimen/_8ssp"
         android:textStyle="bold" />
 
 </com.google.android.material.card.MaterialCardView>

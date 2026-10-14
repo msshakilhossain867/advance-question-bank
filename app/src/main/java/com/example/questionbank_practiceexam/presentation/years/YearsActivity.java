@@ -49,6 +49,8 @@ public class YearsActivity extends AppCompatActivity {
 
         setContentView(binding.getRoot());
 
+
+
         // ============================================================
         // WINDOW INSETS
         // ============================================================

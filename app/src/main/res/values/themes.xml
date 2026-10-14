@@ -3,6 +3,7 @@
     <style name="Base.Theme.QuestionBankPracticeExam" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="actionOverflowButtonStyle">@style/CustomOverflowButtonStyle</item>
     </style>
 
 
@@ -23,6 +24,13 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
     </style>-->
+
+    <style name="CustomOverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/back_arrow_color</item>
+    </style>
+
+
+
 
 
 

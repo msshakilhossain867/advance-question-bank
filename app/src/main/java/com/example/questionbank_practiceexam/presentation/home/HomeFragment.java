@@ -517,6 +517,13 @@ setupDailyMissionNotification() ;
             showNotificationDialog();
         });
 
+        binding.txtStartPractice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(requireContext(), UniversityListActivity.class));
+            }
+        });
+
 
         // ========================================================
         // READ QUESTIONS

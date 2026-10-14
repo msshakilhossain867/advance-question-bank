@@ -8,6 +8,7 @@ material = "1.14.0"
 activity = "1.13.0"
 constraintlayout = "2.2.1"
 activityKtx = "1.8.0"
+navigationRuntime = "2.10.2"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -18,6 +19,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
+navigation-runtime = { group = "androidx.navigation", name = "navigation-runtime", version.ref = "navigationRuntime" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

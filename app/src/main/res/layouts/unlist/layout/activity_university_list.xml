@@ -5,23 +5,21 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/screen_background"
     tools:context=".presentation.unlist.UniversityListActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:orientation="vertical"
-        android:background="#FAFBFD"
-
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:paddingStart="@dimen/_16sdp"
+        android:paddingEnd="@dimen/_16sdp">
 
 
         <!-- Toolbar -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-
+            android:layout_height="@dimen/_60sdp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -29,14 +27,11 @@
             <!-- Back Button -->
             <ImageView
                 android:id="@+id/backButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-
-                android:padding="9dp"
-
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:padding="@dimen/_9sdp"
                 android:src="@drawable/ic_arrow_back"
-                app:tint="#1858A8"
-
+                app:tint="@color/back_arrow_color"
                 android:contentDescription="Back" />
 
 
@@ -44,15 +39,11 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
                 android:layout_weight="1"
-
-                android:layout_marginStart="8dp"
-
+                android:layout_marginStart="@dimen/_8sdp"
                 android:text="Choose University"
-                android:textColor="#164F9B"
-
-                android:textSize="18sp"
+                android:textColor="@color/tittle_card"
+                android:textSize="@dimen/_16ssp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -61,35 +52,29 @@
         <!-- Search -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="10dp"
-
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="9dp"
+            android:layout_height="@dimen/_44sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:cardBackgroundColor="@color/home_card_background"
+            app:cardCornerRadius="@dimen/_9sdp"
             app:cardElevation="1dp"
-            app:strokeColor="#E8EBEF"
+            app:strokeColor="@color/home_card_border"
             app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp">
+                android:paddingStart="@dimen/_12sdp"
+                android:paddingEnd="@dimen/_12sdp">
 
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
                     android:src="@drawable/ic_search"
-                    app:tint="#7A8491"
-
+                    app:tint="@color/home_card_subtitle"
                     android:contentDescription="@null" />
 
 
@@ -97,19 +82,13 @@
                     android:id="@+id/searchEditText"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-
                     android:layout_weight="1"
-
-                    android:layout_marginStart="8dp"
-
+                    android:layout_marginStart="@dimen/_8sdp"
                     android:background="@null"
-
                     android:hint="Search university..."
-                    android:textColor="#222222"
-                    android:textColorHint="#8A929D"
-
-                    android:textSize="12sp"
-
+                    android:textColor="@color/home_card_title"
+                    android:textColorHint="@color/home_card_subtitle"
+                    android:textSize="@dimen/_12ssp"
                     android:singleLine="true"
                     android:inputType="text"
                     android:padding="0dp" />
@@ -122,17 +101,26 @@
         <!-- University List -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/universityRecyclerView"
-
             android:layout_width="match_parent"
             android:layout_height="0dp"
-
             android:layout_weight="1"
-
             android:clipToPadding="false"
-
-            android:paddingBottom="16dp"
-
+            android:paddingBottom="@dimen/_16sdp"
             android:overScrollMode="never" />
+
+
+        <!-- সার্চ রেজাল্ট না পেলে এই টেক্সট ভিউটি দেখাবে -->
+        <TextView
+            android:id="@+id/noResultTextView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="No university found!"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/home_card_subtitle"
+            android:visibility="gone" />
 
     </LinearLayout>
 

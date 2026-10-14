@@ -1,5 +1,6 @@
 package com.example.questionbank_practiceexam.presentation.adapters;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.data.local.entity.Subject;
 import com.example.questionbank_practiceexam.databinding.ItemSubjectBinding;
 
@@ -70,6 +72,7 @@ public class SubjectAdapter
     ) {
 
         Subject subject = subjectList.get(position);
+        Context context = holder.itemView.getContext();
 
         // ========================================================
         // SUBJECT NAME
@@ -86,6 +89,12 @@ public class SubjectAdapter
         holder.binding.subjectSubtitle.setText(
                 "Start Learning"
         );
+
+        // ========================================================
+        // SUBJECT ICON (DYNAMIC)
+        // ========================================================
+
+        setSubjectIcon(context, holder, subject.getName());
 
         // ========================================================
         // DIFFERENT COLORS
@@ -120,6 +129,44 @@ public class SubjectAdapter
             }
 
         });
+    }
+
+    // ============================================================
+    // SET SUBJECT ICON METHOD
+    // ============================================================
+
+    private void setSubjectIcon(
+            Context context,
+            SubjectViewHolder holder,
+            String subjectName
+    ) {
+        if (subjectName == null) return;
+
+        String drawableName =
+                subjectName
+                        .trim()
+                        .toLowerCase()
+                        .replace(" ", "_")
+                        .replace("-", "_")
+                        + "_sub_icon";
+
+        int resourceId =
+                context.getResources().getIdentifier(
+                        drawableName,
+                        "drawable",
+                        context.getPackageName()
+                );
+
+        if (resourceId != 0) {
+            holder.binding.subjectIcon.setImageResource(
+                    resourceId
+            );
+        } else {
+            // Default icon if specific icon not found
+            holder.binding.subjectIcon.setImageResource(
+                    R.drawable.biology_sub_icon
+            );
+        }
     }
 
     // ============================================================

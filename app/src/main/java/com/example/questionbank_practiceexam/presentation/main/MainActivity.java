@@ -1,7 +1,5 @@
 package com.example.questionbank_practiceexam.presentation.main;
 
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -13,10 +11,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
-import com.example.questionbank_practiceexam.Activity.DailyMissionFragment;
-import com.example.questionbank_practiceexam.Activity.SettingsFragment;
-import com.example.questionbank_practiceexam.domain.DailyMissionNotificationScheduler;
-import com.example.questionbank_practiceexam.presentation.report.ProgressFragment;
+import com.example.questionbank_practiceexam.presentation.fragments.DailyMissionFragment;
+import com.example.questionbank_practiceexam.presentation.fragments.SettingsFragment;
+import com.example.questionbank_practiceexam.presentation.fragments.ProgressFragment;
 import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.data.local.db.DatabaseHelper;
 import com.example.questionbank_practiceexam.databinding.ActivityMainBinding;
@@ -29,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     DatabaseHelper dbHelper;
+    private long backPressedTime = 0;
 
 
     @Override
@@ -89,6 +87,38 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
+        // আধুনিক OnBackPressedDispatcher ব্যবহার করে ব্যাক প্রেস হ্যান্ডেল করা
+        getOnBackPressedDispatcher().addCallback(this, new androidx.activity.OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+
+                // যদি ইউজার ইতিমধ্যে HomeFragment-এ না থাকে, তবে আগে HomeFragment-এ নিয়ে যাবো
+                if (!(currentFragment instanceof HomeFragment)) {
+                    loadFragment(new HomeFragment());
+
+                    // বটম নেভিগেশন বারকে Home আইকনে সিলেক্ট করে দেওয়া
+                    if (binding != null && binding.bottomNavigation != null) {
+                        binding.bottomNavigation.setSelectedItemId(R.id.nav_home);
+                    }
+                } else {
+                    // যদি ইউজার ইতিমধ্যে HomeFragment-েই থাকে, তবে কলার রিমুভ করে সিস্টেমের ডিফল্ট ব্যাক অ্যাকশন (অ্যাপ বন্ধ হওয়া) ঘটাবে
+                    // ইউজার যদি ইতিমধ্যে HomeFragment-েই থাকে, তবে ডাবল প্রেস চেক করব
+                    if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                        // ২ সেকেন্ডের মধ্যে দ্বিতীয়বার প্রেস করলে অ্যাপ বন্ধ হবে
+                        setEnabled(false);
+                        onBackPressed();
+                    } else {
+                        // প্রথমবার প্রেস করলে টোস্ট দেখাবে
+                        android.widget.Toast.makeText(MainActivity.this, "Press again to exit", android.widget.Toast.LENGTH_SHORT).show();
+                    }
+                    backPressedTime = System.currentTimeMillis();
+                }
+                }
+
+        });
     }
 
     // Fragment replace করার হেল্পার মেথড
@@ -98,5 +128,11 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.fragment_container, fragment)
                 .commit();
 
+    }
+
+    public void setSelectedBottomNavigationItem(int menuItemId) {
+        if (binding != null && binding.bottomNavigation != null) {
+            binding.bottomNavigation.setSelectedItemId(menuItemId);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.questionbank_practiceexam.Activity;
+package com.example.questionbank_practiceexam.presentation.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,14 +13,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.work.WorkManager;
 
 import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.databinding.FragmentSettingsBinding;
 import com.example.questionbank_practiceexam.domain.DailyMissionNotificationScheduler;
-import com.example.questionbank_practiceexam.presentation.report.ProgressFragment;
+import com.example.questionbank_practiceexam.presentation.main.MainActivity;
 
 public class SettingsFragment extends Fragment {
 
@@ -157,32 +156,14 @@ public class SettingsFragment extends Fragment {
         // SOUND
         // ========================================================
 
-        boolean sound =
-                preferences.getBoolean(
-                        KEY_SOUND,
-                        true
-                );
 
-
-        binding.soundSwitch.setChecked(
-                sound
-        );
 
 
         // ========================================================
         // VIBRATION
         // ========================================================
 
-        boolean vibration =
-                preferences.getBoolean(
-                        KEY_VIBRATION,
-                        true
-                );
 
-
-        binding.vibrationSwitch.setChecked(
-                vibration
-        );
     }
 
 
@@ -256,30 +237,7 @@ public class SettingsFragment extends Fragment {
         // SOUND
         // ========================================================
 
-        binding.soundSwitch.setOnCheckedChangeListener(
-                (buttonView, isChecked) -> {
 
-                    saveBoolean(
-                            KEY_SOUND,
-                            isChecked
-                    );
-                }
-        );
-
-
-        // ========================================================
-        // VIBRATION
-        // ========================================================
-
-        binding.vibrationSwitch.setOnCheckedChangeListener(
-                (buttonView, isChecked) -> {
-
-                    saveBoolean(
-                            KEY_VIBRATION,
-                            isChecked
-                    );
-                }
-        );
 
 
         // ========================================================
@@ -406,16 +364,30 @@ public class SettingsFragment extends Fragment {
     // OPEN PROGRESS
     // ============================================================
 
+    // ============================================================
+    // OPEN PROGRESS
+    // ============================================================
+
+// ============================================================
+    // OPEN PROGRESS
+    // ============================================================
+
+// ============================================================
+    // OPEN PROGRESS
+    // ============================================================
+
+    // ============================================================
+    // OPEN PROGRESS
+    // ============================================================
+
     private void openProgress() {
+        // ১. MainActivity-র মাধ্যমে বটম নেভিগেশনের আইকন সিলেক্ট করা
+        if (requireActivity() instanceof MainActivity) {
+            ((MainActivity) requireActivity())
+                    .setSelectedBottomNavigationItem(R.id.nav_graph);
+        }
 
-        /*
-         * যদি ProgressFragment একই Activity-এর
-         * navigation system-এর মাধ্যমে open করো,
-         * তাহলে এখানে তোমার NavController / Fragment
-         * transaction ব্যবহার করবে।
-         */
-
-
+        // ২. ফ্রেগমেন্ট লোড করা (এখানে .addToBackStack(null) বাদ দেওয়া হয়েছে)
         requireActivity()
                 .getSupportFragmentManager()
                 .beginTransaction()
@@ -423,10 +395,8 @@ public class SettingsFragment extends Fragment {
                         R.id.fragment_container,
                         new ProgressFragment()
                 )
-                .addToBackStack(null)
                 .commit();
     }
-
 
     // ============================================================
     // CLEAR PROGRESS DIALOG

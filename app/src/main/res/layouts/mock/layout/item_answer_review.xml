@@ -4,16 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    app:cardCornerRadius="16dp"
+    android:layout_marginBottom="@dimen/_12sdp"
+    app:cardCornerRadius="@dimen/_16sdp"
     app:cardElevation="1dp"
-    app:cardBackgroundColor="@android:color/white">
+    app:strokeColor="@color/home_card_border"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/home_card_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/_16sdp">
 
         <!-- Question Number -->
         <TextView
@@ -22,15 +24,15 @@
             android:layout_height="wrap_content"
             android:text="প্রশ্ন ১"
             android:textStyle="bold"
-            android:textSize="13sp"
+            android:textSize="@dimen/_13ssp"
             android:textColor="#6254E8"/>
 
-        <!-- Question WebView (TextView এর বদলে WebView) -->
+        <!-- Question WebView -->
         <WebView
             android:id="@+id/questionWebView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:background="@android:color/transparent"/>
 
         <TextView
@@ -38,126 +40,124 @@
             android:id="@+id/questionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:text="Question"
-            android:textSize="16sp"
+            android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
-            android:textColor="#20242C"/>
-
-
+            android:textColor="@color/home_card_title"/>
 
         <!-- Option A WebView -->
         <WebView
             android:id="@+id/optionAWebView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:padding="4dp"
-            android:background="#F4F5F8"/>
+            android:layout_marginTop="@dimen/_14sdp"
+            android:padding="@dimen/_4sdp"
+            android:background="@color/screen_background"/>
 
         <TextView
             android:id="@+id/optionAText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="@dimen/_14sdp"
             android:text="A. Option"
-            android:textSize="14sp"
-            android:textColor="#454A55"
-            android:padding="10dp"
-            android:background="#F4F5F8"/>
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/home_card_title"
+            android:padding="@dimen/_10sdp"
+            android:background="@color/screen_background"/>
 
         <!-- Option B WebView -->
         <WebView
             android:id="@+id/optionBWebView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:padding="4dp"
-            android:background="#F4F5F8"/>
+            android:layout_marginTop="@dimen/_6sdp"
+            android:padding="@dimen/_4sdp"
+            android:background="@color/screen_background"/>
 
         <TextView
             android:id="@+id/optionBText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="@dimen/_6sdp"
             android:text="B. Option"
             android:visibility="gone"
-            android:textSize="14sp"
-            android:textColor="#454A55"
-            android:padding="10dp"
-            android:background="#F4F5F8"/>
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/home_card_title"
+            android:padding="@dimen/_10sdp"
+            android:background="@color/screen_background"/>
 
         <!-- Option C WebView -->
         <WebView
             android:id="@+id/optionCWebView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:padding="4dp"
-            android:background="#F4F5F8"/>
+            android:layout_marginTop="@dimen/_6sdp"
+            android:padding="@dimen/_4sdp"
+            android:background="@color/screen_background"/>
 
         <TextView
             android:id="@+id/optionCText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="@dimen/_6sdp"
             android:text="C. Option"
-            android:textSize="14sp"
-            android:textColor="#454A55"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/home_card_title"
             android:visibility="gone"
-            android:padding="10dp"
-            android:background="#F4F5F8"/>
+            android:padding="@dimen/_10sdp"
+            android:background="@color/screen_background"/>
 
         <!-- Option D WebView -->
         <WebView
             android:id="@+id/optionDWebView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:padding="4dp"
-            android:background="#F4F5F8"/>
+            android:layout_marginTop="@dimen/_6sdp"
+            android:padding="@dimen/_4sdp"
+            android:background="@color/screen_background"/>
 
         <TextView
             android:id="@+id/optionDText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="@dimen/_6sdp"
             android:text="D. Option"
-            android:textSize="14sp"
+            android:textSize="@dimen/_14ssp"
             android:visibility="gone"
-            android:textColor="#454A55"
-            android:padding="10dp"
-            android:background="#F4F5F8"/>
+            android:textColor="@color/home_card_title"
+            android:padding="@dimen/_10sdp"
+            android:background="@color/screen_background"/>
 
         <!-- Status -->
         <TextView
             android:id="@+id/resultStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="@dimen/_14sdp"
             android:text="সঠিক উত্তর ✓"
             android:textStyle="bold"
-            android:textSize="14sp"/>
+            android:textSize="@dimen/_14ssp"/>
 
         <!-- User Answer -->
         <TextView
             android:id="@+id/selectedAnswerText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="@dimen/_6sdp"
             android:text="আপনার উত্তর: A"
-            android:textSize="14sp"
-            android:textColor="#454A55"/>
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/home_card_subtitle"/>
 
         <!-- Correct Answer -->
         <TextView
             android:id="@+id/correctAnswerText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:text="সঠিক উত্তর: B"
-            android:textSize="14sp"
+            android:textSize="@dimen/_14ssp"
             android:textStyle="bold"
             android:textColor="#1B9A52"/>
 
@@ -166,17 +166,17 @@
             android:id="@+id/explanationLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/_12sdp"
             android:orientation="vertical"
-            android:padding="12dp"
-            android:background="#F4F1FF">
+            android:padding="@dimen/_12sdp"
+            android:background="@color/screen_background">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ব্যাখ্যা"
                 android:textStyle="bold"
-                android:textSize="14sp"
+                android:textSize="@dimen/_14ssp"
                 android:textColor="#6254E8"/>
 
             <!-- Explanation WebView -->
@@ -184,17 +184,16 @@
                 android:id="@+id/explanationWebView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:background="@android:color/transparent"/>
-
 
             <TextView
                 android:id="@+id/explanationText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textSize="14sp"
-                android:textColor="#454A55"/>
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textSize="@dimen/_14ssp"
+                android:textColor="@color/home_card_subtitle"/>
 
         </LinearLayout>
 

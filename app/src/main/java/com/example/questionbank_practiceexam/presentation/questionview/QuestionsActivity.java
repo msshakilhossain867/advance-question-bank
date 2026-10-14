@@ -1,5 +1,6 @@
 package com.example.questionbank_practiceexam.presentation.questionview;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -709,6 +710,7 @@ public class QuestionsActivity extends AppCompatActivity {
                     } else {
 
                         saveReadingStudyTime();
+                        backHomeRead();
 
 
                         Toast.makeText(
@@ -719,6 +721,7 @@ public class QuestionsActivity extends AppCompatActivity {
                     }
                 }
         );
+
 
 
         // ========================================================
@@ -777,6 +780,56 @@ public class QuestionsActivity extends AppCompatActivity {
                     }
                 }
         );
+    }
+
+
+    private void backHomeRead(){
+        // ============================================================
+// ALL QUESTIONS COMPLETED DIALOG
+// ============================================================
+
+        saveReadingStudyTime();
+
+// কাস্টম স্মার্ট অ্যালার্ট ডায়ালগ তৈরি
+        android.app.Dialog completionDialog = new android.app.Dialog(this);
+        completionDialog.setContentView(R.layout.dialog_completion); // নিচে লেআউট দেওয়া আছে, অথবা কোডের মাধ্যমেও করতে পারেন
+
+// যদি কাস্টম লেআউট ফাইল ব্যবহার না করে সরাসরি কোড দিয়ে ডায়ালগ বানাতে চান:
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+        android.view.View dialogView = getLayoutInflater().inflate(R.layout.dialog_completion, null);
+        builder.setView(dialogView);
+
+        androidx.appcompat.app.AlertDialog dialog = builder.create();
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+        }
+
+// ডায়ালগের ভেতরে ভিউগুলো ইনিশিয়ালাইজ করা (ধরে নিচ্ছি লেআউটে buttonHome এবং buttonReadAgain আছে)
+        android.widget.Button btnHome = dialogView.findViewById(R.id.btnHome);
+        android.widget.Button btnReadAgain = dialogView.findViewById(R.id.btnReadAgain);
+
+// ১. Back Home অপশন
+        btnHome.setOnClickListener(v -> {
+            dialog.dismiss();
+
+            // মেইন অ্যাক্টিভিটিতে ব্যাক করে হোম ফ্রেগমেন্টে পাঠানো বা অ্যাক্টিভিটি বন্ধ করা
+            Intent intent = new Intent(this, com.example.questionbank_practiceexam.presentation.main.MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish();
+        });
+
+// ২. Read Again অপশন (পুনরায় রিড অ্যাক্টিভিটিতে পাঠানো বা রিফ্রেশ করা)
+        btnReadAgain.setOnClickListener(v -> {
+            dialog.dismiss();
+
+            // বর্তমান অ্যাক্টিভিটি রিস্টার্ট বা রিফ্রেশ করার জন্য
+            finish();
+            startActivity(getIntent());
+        });
+
+        dialog.setCancelable(false);
+        dialog.show();
     }
 
 
