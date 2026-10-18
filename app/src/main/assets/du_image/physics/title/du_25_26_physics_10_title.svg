@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 220" width="100%" height="100%">
+  <style>
+    .text-title { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 20px; font-weight: bold; fill: #000; }
+    .label-text { font-family: 'Times New Roman', serif; font-size: 22px; fill: #000; }
+    .circuit-line { stroke: #000; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .diode-body { stroke: #000; stroke-width: 2; fill: #ffffff; }
+    .node-dot { fill: #000000; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(15, 15)">
+
+    <!-- TITLE QUESTION TEXT -->
+    <text x="0" y="22" class="text-title">নিচের কোন লজিক গেটটি ডানদিকে প্রদর্শিত সার্কিটের সমতুল্য?</text>
+
+    <!-- CIRCUIT DIAGRAM GROUP -->
+    <g transform="translate(30, 50)">
+
+      <!-- INPUT A TERMINAL -->
+      <circle cx="20" cy="30" r="4" class="circuit-line" />
+      <text x="20" y="62" class="label-text" text-anchor="middle">A</text>
+      <line x1="24" y1="30" x2="70" y2="30" class="circuit-line" />
+
+      <!-- DIODE 1 (Top) -->
+      <g transform="translate(70, 30)">
+        <polygon points="0,-12 0,12 18,0" class="diode-body" />
+        <line x1="18" y1="-12" x2="18" y2="12" class="circuit-line" />
+        <line x1="18" y1="0" x2="50" y2="0" class="circuit-line" />
+      </g>
+
+      <!-- INPUT B TERMINAL -->
+      <circle cx="20" cy="100" r="4" class="circuit-line" />
+      <text x="20" y="132" class="label-text" text-anchor="middle">B</text>
+      <line x1="24" y1="100" x2="70" y2="100" class="circuit-line" />
+
+      <!-- DIODE 2 (Bottom) -->
+      <g transform="translate(70, 100)">
+        <polygon points="0,-12 0,12 18,0" class="diode-body" />
+        <line x1="18" y1="-12" x2="18" y2="12" class="circuit-line" />
+        <line x1="18" y1="0" x2="50" y2="0" class="circuit-line" />
+      </g>
+
+      <!-- JUNCTION / CONNECTION LINE -->
+      <line x1="120" y1="100" x2="120" y2="30" class="circuit-line" />
+      <line x1="120" y1="30" x2="210" y2="30" class="circuit-line" />
+
+      <!-- JUNCTION NODES -->
+      <circle cx="120" cy="30" r="4.5" class="node-dot" />
+      <circle cx="170" cy="30" r="4.5" class="node-dot" />
+
+      <!-- RESISTOR (Grounded) -->
+      <g transform="translate(170, 30)">
+        <line x1="0" y1="0" x2="0" y2="15" class="circuit-line" />
+        <path d="M 0,15 L -8,20 L 8,26 L -8,32 L 8,38 L -8,44 L 8,50 L 0,55" class="circuit-line" />
+        <line x1="0" y1="55" x2="0" y2="70" class="circuit-line" />
+        
+        <!-- Ground Symbol -->
+        <g transform="translate(0, 70)">
+          <line x1="-15" y1="0" x2="15" y2="0" class="circuit-line" />
+          <line x1="-10" y1="5" x2="10" y2="5" class="circuit-line" />
+          <line x1="-5" y1="10" x2="5" y2="10" class="circuit-line" />
+        </g>
+      </g>
+
+      <!-- OUTPUT C TERMINAL -->
+      <circle cx="210" cy="30" r="4" class="circuit-line" />
+      <text x="210" y="62" class="label-text" text-anchor="middle">C</text>
+
+    </g>
+
+  </g>
+</svg>

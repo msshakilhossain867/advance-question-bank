@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="100%" height="100%">
+  <style>
+    .line {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .ray-line {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      fill: none;
+    }
+    .normal-line {
+      stroke: #000000;
+      stroke-width: 2;
+      stroke-linecap: round;
+      fill: none;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 22px;
+      font-weight: bold;
+      fill: #000000;
+    }
+    .title-text {
+      font-family: 'SolaimanLipi', Arial, sans-serif;
+      font-size: 19px;
+      font-weight: bold;
+      fill: #000000;
+    }
+    .arrow-head {
+      fill: #000000;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <!-- Title Text -->
+  <text x="20" y="35" class="title-text">ঘন থেকে হালকা মাধ্যমে গেলে আলোক রশ্মি অভিলম্ব থেকে</text>
+  <text x="20" y="65" class="title-text">দূরে সরে যায় এবং হালকা মাধ্যমে আলোর বেগ বেশী।</text>
+
+  <g transform="translate(10, 40)">
+    <!-- Interface Lines (Horizontal Separators) -->
+    <line x1="120" y1="110" x2="330" y2="110" class="line" />
+    <line x1="120" y1="200" x2="330" y2="200" class="line" />
+
+    <!-- Light Ray Path -->
+    <line x1="175" y1="30" x2="205" y2="110" class="ray-line" />
+    <line x1="205" y1="110" x2="218" y2="200" class="ray-line" />
+    <line x1="218" y1="200" x2="285" y2="310" class="ray-line" />
+
+    <!-- Normals (Vertical Dashed/Solid lines at interfaces) -->
+    <line x1="205" y1="90" x2="205" y2="130" class="normal-line" />
+    <line x1="218" y1="180" x2="218" y2="220" class="normal-line" />
+
+    <!-- Arrow 1 (in Medium 1) -->
+    <g transform="translate(190, 70) rotate(70)">
+      <polygon points="-6,-6 6,0 -6,6" class="arrow-head" />
+    </g>
+
+    <!-- Arrow 2 (in Medium 2) -->
+    <g transform="translate(212, 155) rotate(82)">
+      <polygon points="-6,-6 6,0 -6,6" class="arrow-head" />
+    </g>
+
+    <!-- Arrow 3 (in Medium 3) -->
+    <g transform="translate(251, 255) rotate(58)">
+      <polygon points="-6,-6 6,0 -6,6" class="arrow-head" />
+    </g>
+
+    <!-- Medium Labels (Left Side) -->
+    <text x="25" y="70" class="title-text">হালকা মাধ্যম</text>
+    <text x="25" y="160" class="title-text">ঘন মাধ্যম</text>
+    <text x="25" y="250" class="title-text">অধিকতর হালকা মাধ্যম</text>
+
+    <!-- Velocity Labels (Right Side) -->
+    <text x="290" y="70" class="text">v<tspan font-size="16" dy="5">1</tspan></text>
+    <text x="290" y="160" class="text">v<tspan font-size="16" dy="5">2</tspan></text>
+    <text x="340" y="275" class="text">v<tspan font-size="16" dy="5">3</tspan></text>
+  </g>
+</svg>

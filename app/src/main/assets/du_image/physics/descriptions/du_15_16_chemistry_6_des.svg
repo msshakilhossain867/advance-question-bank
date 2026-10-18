@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 380" width="100%" height="100%">
+  <defs>
+    <!-- Arrowhead Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#000000" />
+    </marker>
+  </defs>
+
+  <style>
+    .math-text { font-family: 'Times New Roman', serif; font-size: 22px; fill: #000; }
+    .node-text { font-family: 'Times New Roman', serif; font-size: 22px; font-weight: bold; fill: #000; }
+    .sub-text { font-size: 14px; }
+    .sup-text { font-size: 14px; }
+    .node-circle { fill: #ffffff; stroke: #000000; stroke-width: 2; }
+    .flow-arrow { stroke: #000000; stroke-width: 2; stroke-linecap: round; }
+    .table-box { fill: none; stroke: #000000; stroke-width: 2; }
+    .table-divider { stroke: #000000; stroke-width: 2; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(15, 15)">
+
+    <!-- TOP SECTION: HESS'S LAW CYCLE DIAGRAM -->
+    <g transform="translate(30, 10)">
+
+      <!-- Node 1: C (Top Left) -->
+      <g transform="translate(60, 40)">
+        <ellipse cx="0" cy="0" rx="30" ry="25" class="node-circle" />
+        <text x="0" y="7" class="node-text" text-anchor="middle">C</text>
+      </g>
+
+      <!-- Node 2: CO (Top Right) -->
+      <g transform="translate(210, 40)">
+        <ellipse cx="0" cy="0" rx="30" ry="25" class="node-circle" />
+        <text x="0" y="7" class="node-text" text-anchor="middle">CO</text>
+      </g>
+
+      <!-- Node 3: CO2 (Bottom Left) -->
+      <g transform="translate(60, 175)">
+        <ellipse cx="0" cy="0" rx="35" ry="25" class="node-circle" />
+        <text x="0" y="7" class="node-text" text-anchor="middle">CO<tspan class="sub-text">2</tspan></text>
+      </g>
+
+      <!-- Arrow C -> CO (Top Horizontal: ΔH2) -->
+      <line x1="92" y1="40" x2="172" y2="40" class="flow-arrow" marker-end="url(#arrow)" />
+      <text x="132" y="32" class="math-text" text-anchor="middle">ΔH<tspan class="sub-text">2</tspan></text>
+
+      <!-- Arrow C -> CO2 (Left Vertical: ΔH1) -->
+      <line x1="60" y1="67" x2="60" y2="142" class="flow-arrow" marker-end="url(#arrow)" />
+      <text x="35" y="110" class="math-text" text-anchor="middle">ΔH<tspan class="sub-text" font-style="normal">1</tspan></text>
+
+      <!-- Arrow CO -> CO2 (Diagonal: ΔH3) -->
+      <line x1="188" y1="60" x2="92" y2="155" class="flow-arrow" marker-end="url(#arrow)" />
+      <text x="165" y="125" class="math-text" text-anchor="start">ΔH<tspan class="sub-text">3</tspan></text>
+
+    </g>
+
+    <!-- BOTTOM SECTION: CALCULATION TABLE -->
+    <g transform="translate(10, 220)">
+      <!-- Outer Border -->
+      <rect x="0" y="0" width="490" height="130" class="table-box" />
+      
+      <!-- Middle Vertical Divider Line -->
+      <line x1="195" y1="0" x2="195" y2="130" class="table-divider" />
+
+      <!-- Left Column: Calculation -->
+      <g transform="translate(12, 10)">
+        <!-- Line 1: ΔH1 = ΔH2 + -->
+        <text x="0" y="22" class="math-text">ΔH<tspan class="sub-text">1</tspan> = ΔH<tspan class="sub-text">2</tspan> +</text>
+
+        <!-- Line 2: ΔH3 -->
+        <text x="0" y="52" class="math-text">ΔH<tspan class="sub-text">3</tspan></text>
+
+        <!-- Line 3: = - 111 - 283 -->
+        <text x="0" y="82" class="math-text">= – 111 – 283</text>
+
+        <!-- Line 4: = - 394 kJ mol⁻¹ -->
+        <text x="0" y="110" class="math-text">= – 394 kJ mol<tspan class="sup-text">–1</tspan></text>
+      </g>
+
+      <!-- Right Column: Given Values -->
+      <g transform="translate(210, 10)">
+        <!-- Line 1: Here, -->
+        <text x="0" y="22" class="math-text">Here,</text>
+
+        <!-- Line 2: ΔH1 = ? -->
+        <text x="0" y="52" class="math-text">ΔH<tspan class="sub-text">1</tspan> = ?</text>
+
+        <!-- Line 3: ΔH2 = - 111.0 kJ mol⁻¹ -->
+        <text x="0" y="82" class="math-text">ΔH<tspan class="sub-text">2</tspan> = – 111.0 kJ mol<tspan class="sup-text">–1</tspan></text>
+
+        <!-- Line 4: ΔH3 = - 283.00 mol⁻¹ -->
+        <text x="0" y="110" class="math-text">ΔH<tspan class="sub-text">3</tspan> = – 283.00 mol<tspan class="sup-text">–1</tspan></text>
+      </g>
+    </g>
+
+  </g>
+</svg>

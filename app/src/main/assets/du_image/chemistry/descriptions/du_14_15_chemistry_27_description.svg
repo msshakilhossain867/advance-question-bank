@@ -13,7 +13,7 @@
   </defs>
 
   <!-- Background -->
-  <rect width="100%" height="100%" fill="#ffffff" />
+  <rect width="100%" height="100%" fill="none" />
 
   <!-- Text Section -->
   <text x="30" y="40" class="text-title">টলুইন অ্যালিফেটিক ও অ্যারোমেটিক উভয় ধর্ম প্রদর্শন করে।</text>

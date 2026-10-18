@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 320" width="100%" height="100%">
+  <style>
+    .math-text { font-family: 'Times New Roman', serif; font-size: 26px; fill: #000; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 24px; font-weight: bold; fill: #000; }
+    .sub-text { font-size: 18px; }
+    .sup-text { font-size: 18px; }
+    .frac-line { stroke: #000; stroke-width: 1.8; stroke-linecap: round; }
+    .root-line { stroke: #000; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(20, 35)">
+    <!-- LINE 1: শর্তমতে, 4 - x² > 0 ⟹ x² < 4 -->
+    <g transform="translate(0, 0)">
+      <text x="0" y="24" class="bengali-text">শর্তমতে,</text>
+      <text x="95" y="24" class="math-text">4 – x<tspan baseline-shift="super" class="sup-text">2</tspan> &gt; 0 &#x21D2; x<tspan baseline-shift="super" class="sup-text">2</tspan> &lt; 4</text>
+    </g>
+
+    <!-- LINE 2: ∴ ডোমেইন: -2 < x < 2 -->
+    <g transform="translate(10, 50)">
+      <text x="0" y="24" class="bengali-text">&#x2234; ডোমেইন:</text>
+      <text x="140" y="24" class="math-text">–2 &lt; x &lt; 2</text>
+    </g>
+
+    <!-- LINE 3: আবার, y = 1 / √(4 - x²) ⟹ x = √((4y² - 1)/y²) = √(4y² - 1) / y -->
+    <g transform="translate(0, 110)">
+      <text x="0" y="45" class="bengali-text">আবার,</text>
+      <text x="80" y="45" class="math-text">y =</text>
+
+      <!-- Fraction 1: 1 / √(4 - x²) -->
+      <g transform="translate(130, 0)">
+        <text x="38" y="25" class="math-text">1</text>
+        <line x1="10" y1="35" x2="80" y2="35" class="frac-line" />
+        <!-- Square Root Symbol & Line for √(4-x²) -->
+        <path d="M 12 60 L 18 68 L 26 44 L 80 44" class="root-line" />
+        <text x="30" y="65" class="math-text">4–x<tspan baseline-shift="super" class="sup-text">2</tspan></text>
+      </g>
+
+      <!-- Implies Symbol: ⟹ x = -->
+      <text x="225" y="45" class="math-text">&#x21D2; x =</text>
+
+      <!-- Big Square Root Expression: √((4y² - 1) / y²) -->
+      <g transform="translate(290, -10)">
+        <!-- Outer Root Symbol -->
+        <path d="M 0 60 L 8 75 L 18 10 L 115 10" class="root-line" stroke-width="2" />
+        
+        <!-- Inner Fraction: (4y² - 1) / y² -->
+        <g transform="translate(25, 10)">
+          <text x="5" y="32" class="math-text">4y<tspan baseline-shift="super" class="sup-text">2</tspan>–1</text>
+          <line x1="0" y1="42" x2="80" y2="42" class="frac-line" />
+          <text x="28" y="72" class="math-text">y<tspan baseline-shift="super" class="sup-text">2</tspan></text>
+        </g>
+      </g>
+
+      <!-- Equals Symbol: = -->
+      <text x="420" y="45" class="math-text">=</text>
+
+      <!-- Final Fraction: √(4y² - 1) / y -->
+      <g transform="translate(445, 0)">
+        <!-- Root Symbol for Numerator -->
+        <path d="M 0 22 L 5 28 L 12 5 L 80 5" class="root-line" />
+        <text x="16" y="25" class="math-text">4y<tspan baseline-shift="super" class="sup-text">2</tspan>–1</text>
+        
+        <line x1="0" y1="35" x2="82" y2="35" class="frac-line" />
+        <text x="34" y="65" class="math-text">y</text>
+      </g>
+    </g>
+
+    <!-- LINE 4: ∴ রেঞ্জ : 4y² - 1 ≥ 0 ⟹ y ≥ 1/2 -->
+    <g transform="translate(10, 220)">
+      <text x="0" y="30" class="bengali-text">&#x2234; রেঞ্জ :</text>
+      <text x="110" y="30" class="math-text">4y<tspan baseline-shift="super" class="sup-text">2</tspan> – 1 &#x2265; 0 &#x21D2; y &#x2265;</text>
+      
+      <!-- Fraction 1/2 -->
+      <g transform="translate(325, -15)">
+        <text x="6" y="25" class="math-text">1</text>
+        <line x1="0" y1="33" x2="22" y2="33" class="frac-line" />
+        <text x="6" y="58" class="math-text">2</text>
+      </g>
+    </g>
+
+  </g>
+</svg>

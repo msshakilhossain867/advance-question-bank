@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 300" width="100%" height="100%">
+  <style>
+    .math-text { font-family: 'Times New Roman', serif; font-size: 26px; fill: #000; }
+    .math-italic { font-family: 'Times New Roman', serif; font-size: 26px; font-style: italic; fill: #000; }
+    .sub-text { font-size: 16px; }
+    .sup-text { font-size: 16px; }
+    .frac-line { stroke: #000; stroke-width: 1.8; stroke-linecap: round; }
+    .separator-line { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+    .bracket { stroke: #000; stroke-width: 2; fill: none; stroke-linecap: round; }
+    .table-border { stroke: #000; stroke-width: 1.5; fill: none; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(15, 20)">
+    
+    <!-- LEFT COLUMN: INTEGRAL SOLUTION -->
+    <g transform="translate(0, 0)">
+      
+      <!-- LINE 1: Integral_0^1 ( ln(1+x) / (x+1) ) dx -->
+      <g transform="translate(15, 10)">
+        <!-- Integral Symbol with Limits -->
+        <text x="0" y="45" font-family="'Times New Roman', serif" font-size="52" fill="#000">∫</text>
+        <text x="12" y="10" class="math-text sub-text">1</text>
+        <text x="10" y="62" class="math-text sub-text">0</text>
+
+        <!-- Fraction: ln(1+x) / (x+1) -->
+        <g transform="translate(30, 0)">
+          <text x="5" y="25" class="math-italic">ln<tspan font-style="normal">(1 + </tspan>x<tspan font-style="normal">)</tspan></text>
+          <line x1="0" y1="35" x2="105" y2="35" class="frac-line" />
+          <text x="18" y="60" class="math-italic">x <tspan font-style="normal">+ 1</tspan></text>
+        </g>
+
+        <!-- dx -->
+        <text x="142" y="42" class="math-italic">dx</text>
+      </g>
+
+      <!-- LINE 2: = Integral_0^(ln2) z dz -->
+      <g transform="translate(0, 95)">
+        <text x="0" y="42" class="math-text">=</text>
+        
+        <!-- Integral Symbol with Limits -->
+        <text x="25" y="45" font-family="'Times New Roman', serif" font-size="52" fill="#000">∫</text>
+        <text x="36" y="10" class="math-italic sub-text">ln<tspan font-style="normal">2</tspan></text>
+        <text x="34" y="62" class="math-text sub-text">0</text>
+
+        <!-- z dz -->
+        <text x="62" y="42" class="math-italic">z dz</text>
+      </g>
+
+      <!-- LINE 3: = [ z² / 2 ]_0^(ln2) = 1/2 (ln2)² -->
+      <g transform="translate(0, 180)">
+        <text x="0" y="45" class="math-text">=</text>
+
+        <!-- Square Bracket [ z² / 2 ] -->
+        <g transform="translate(25, 0)">
+          <!-- Left Bracket -->
+          <path d="M 8 0 L 0 0 L 0 80 L 8 80" class="bracket" stroke-width="2" />
+
+          <!-- Fraction z² / 2 -->
+          <g transform="translate(12, 10)">
+            <text x="12" y="24" class="math-italic">z<tspan baseline-shift="super" class="sup-text" font-style="normal">2</tspan></text>
+            <line x1="0" y1="34" x2="42" y2="34" class="frac-line" />
+            <text x="15" y="60" class="math-text">2</text>
+          </g>
+
+          <!-- Right Bracket -->
+          <path d="M 58 0 L 66 0 L 66 80 L 58 80" class="bracket" stroke-width="2" />
+
+          <!-- Limits: Upper ln2, Lower 0 -->
+          <text x="70" y="12" class="math-italic sub-text">ln<tspan font-style="normal">2</tspan></text>
+          <text x="70" y="80" class="math-text sub-text">0</text>
+        </g>
+
+        <!-- = 1/2 (ln2)² -->
+        <g transform="translate(130, 0)">
+          <text x="0" y="45" class="math-text">=</text>
+
+          <!-- Fraction 1/2 -->
+          <g transform="translate(22, 10)">
+            <text x="4" y="22" class="math-text">1</text>
+            <line x1="0" y1="30" x2="20" y2="30" class="frac-line" />
+            <text x="4" y="54" class="math-text">2</text>
+          </g>
+
+          <text x="50" y="45" class="math-italic">(ln<tspan font-style="normal">2)</tspan><tspan baseline-shift="super" class="sup-text" font-style="normal">2</tspan></text>
+        </g>
+      </g>
+
+    </g>
+
+    <!-- VERTICAL SEPARATOR LINE -->
+    <line x1="265" y1="5" x2="265" y2="265" class="separator-line" />
+
+    <!-- RIGHT COLUMN: SUBSTITUTION & LIMIT TABLE -->
+    <g transform="translate(280, 0)">
+      
+      <!-- Substitution equations -->
+      <g transform="translate(0, 10)">
+        <text x="0" y="24" class="math-italic">let, <tspan font-style="italic">ln</tspan><tspan font-style="normal">(1 + </tspan>x<tspan font-style="normal">) = </tspan>z</text>
+        
+        <!-- ∴ dx / (1+x) = dz -->
+        <g transform="translate(0, 42)">
+          <text x="0" y="28" class="math-text">&#x2234;</text>
+          
+          <!-- Fraction dx / (1+x) -->
+          <g transform="translate(25, 0)">
+            <text x="20" y="18" class="math-italic">dx</text>
+            <line x1="0" y1="26" x2="72" y2="26" class="frac-line" />
+            <text x="5" y="50" class="math-italic">1 <tspan font-style="normal">+ </tspan>x</text>
+          </g>
+
+          <text x="105" y="28" class="math-italic">= dz</text>
+        </g>
+      </g>
+
+      <!-- LIMIT CHANGE TABLE -->
+      <g transform="translate(0, 105)">
+        <!-- Outer Box -->
+        <rect x="0" y="0" width="230" height="70" class="table-border" />
+        
+        <!-- Horizontal Divider -->
+        <line x1="0" y1="35" x2="230" y2="35" class="table-border" />
+        
+        <!-- Vertical Dividers -->
+        <line x1="75" y1="0" x2="75" y2="70" class="table-border" />
+        <line x1="152" y1="0" x2="152" y2="70" class="table-border" />
+
+        <!-- Row 1 Contents: x | 1 | 0 -->
+        <text x="32" y="25" class="math-italic">x</text>
+        <text x="108" y="25" class="math-text">1</text>
+        <text x="185" y="25" class="math-text">0</text>
+
+        <!-- Row 2 Contents: z | ln2 | 0 -->
+        <text x="32" y="60" class="math-italic">z</text>
+        <text x="92" y="60" class="math-italic">ln<tspan font-style="normal">2</tspan></text>
+        <text x="185" y="60" class="math-text">0</text>
+      </g>
+
+    </g>
+
+  </g>
+</svg>

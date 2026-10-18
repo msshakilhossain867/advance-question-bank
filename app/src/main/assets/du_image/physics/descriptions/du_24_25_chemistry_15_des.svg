@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 680" width="100%" height="100%">
+  <defs>
+    <!-- Arrowhead Marker for Force Vectors -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#000000"/>
+    </marker>
+  </defs>
+
+  <style>
+    .math-text { font-family: 'Times New Roman', serif; font-size: 24px; fill: #000; }
+    .math-italic { font-family: 'Times New Roman', serif; font-size: 24px; font-style: italic; fill: #000; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 22px; font-weight: bold; fill: #000; }
+    .sub-text { font-size: 15px; }
+    .sup-text { font-size: 15px; }
+    .frac-line { stroke: #000; stroke-width: 1.8; stroke-linecap: round; }
+    .radical { stroke: #000; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .square-line { stroke: #000; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .vector-line { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+    .vector-arrow { stroke: #000; stroke-width: 1.5; stroke-linecap: round; fill: none; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(20, 20)">
+
+    <!-- TOP SECTION: DIAGRAM OF CHARGES AND FORCES -->
+    <g transform="translate(40, 20)">
+      <!-- Square Corners: (0,120) to (120,120) to (120,0) to (0,0) -->
+      <!-- Square Outline -->
+      <rect x="0" y="0" width="120" height="120" class="square-line" />
+
+      <!-- Diagonal line from Q(bottom-left) to Q(top-right) -->
+      <line x1="0" y1="120" x2="120" y2="0" class="vector-line" />
+
+      <!-- Side length labels -->
+      <text x="60" y="-8" class="math-italic" text-anchor="middle">a</text>
+      <text x="60" y="138" class="math-italic" text-anchor="middle">a</text>
+      <text x="-12" y="68" class="math-italic" text-anchor="end">a</text>
+      <text x="132" y="68" class="math-italic" text-anchor="start">a</text>
+
+      <!-- Diagonal label √2 a -->
+      <text x="10" y="45" class="math-italic"><tspan font-style="normal">√2</tspan>a</text>
+
+      <!-- Corner Charge Labels -->
+      <text x="-15" y="-5" class="math-italic">q</text>
+      <text x="-18" y="130" class="math-italic">Q</text>
+      <text x="108" y="-8" class="math-italic">Q</text>
+      <text x="128" y="130" class="math-italic">q</text>
+
+      <!-- Force Vectors from Top-Right Charge Q (120, 0) -->
+      <!-- F1 Horizontal Right -->
+      <line x1="120" y1="0" x2="190" y2="0" class="vector-line" marker-end="url(#arrow)" />
+      <text x="195" y="6" class="math-italic">F<tspan baseline-shift="sub" class="sub-text" font-style="normal">1</tspan></text>
+
+      <!-- F2 Vertical Up -->
+      <line x1="120" y1="0" x2="120" y2="-70" class="vector-line" marker-end="url(#arrow)" />
+      <text x="120" y="-76" class="math-italic" text-anchor="middle">F<tspan baseline-shift="sub" class="sub-text" font-style="normal">2</tspan></text>
+
+      <!-- F12 Diagonal Extension -->
+      <line x1="120" y1="0" x2="175" y2="-55" class="vector-line" marker-end="url(#arrow)" />
+      <text x="180" y="-58" class="math-italic">F<tspan baseline-shift="sub" class="sub-text" font-style="normal">12</tspan></text>
+
+      <!-- F3 Diagonal Extension -->
+      <line x1="120" y1="0" x2="155" y2="-35" class="vector-line" marker-end="url(#arrow)" />
+      <text x="160" y="-30" class="math-italic">F<tspan baseline-shift="sub" class="sub-text" font-style="normal">3</tspan></text>
+    </g>
+
+    <!-- CALCULATION & MATHEMATICAL PROOF SECTION -->
+    <g transform="translate(20, 230)">
+
+      <!-- LINE 1: F1 = k (qQ / a²) = F2 -->
+      <g transform="translate(20, 0)">
+        <text x="0" y="24" class="math-italic">F<tspan baseline-shift="sub" class="sub-text" font-style="normal">1</tspan> <tspan font-style="normal">=</tspan> k</text>
+
+        <!-- Fraction qQ / a² -->
+        <g transform="translate(55, -2)">
+          <text x="4" y="18" class="math-italic">qQ</text>
+          <line x1="0" y1="24" x2="32" y2="24" class="frac-line" />
+          <text x="9" y="46" class="math-italic">a<tspan baseline-shift="super" class="sup-text" font-style="normal">2</tspan></text>
+        </g>
+
+        <text x="95" y="24" class="math-italic"><tspan font-style="normal">=</tspan> F<tspan baseline-shift="sub" class="sub-text" font-style="normal">2</tspan></text>
+      </g>
+
+      <!-- LINE 2: F1 ও F2 এর লব্ধি বল -->
+      <g transform="translate(20, 65)">
+        <text x="0" y="0" class="math-italic">F<tspan baseline-shift="sub" class="sub-text" font-style="normal">1</tspan></text>
+        <text x="25" y="0" class="bengali-text">ও</text>
+        <text x="48" y="0" class="math-italic">F<tspan baseline-shift="sub" class="sub-text" font-style="normal">2</tspan></text>
+        <text x="75" y="0" class="bengali-text">এর লব্ধি বল</text>
+      </g>
+
+      <!-- LINE 3: F12 = sqrt((F1)² + (F2)²) -->
+      <g transform="translate(20, 110)">
+        <text x="0" y="12" class="math-italic">F<tspan baseline-shift="sub" class="sub-text" font-style="normal">12</tspan> <tspan font-style="normal">=</tspan></text>
+
+        <!-- Radical Expression -->
+        <g transform="translate(48, -14)">
+          <path d="M 0 28 L 5 28 L 10 40 L 17 6 L 158 6" class="radical" />
+          <text x="22" y="32" class="math-italic">(F<tspan baseline-shift="sub" class="sub-text" font-style="normal">1</tspan>)<tspan baseline-shift="super" class="sup-text" font-style="normal">2</tspan> <tspan font-style="normal">+</tspan> (F<tspan baseline-shift="sub" class="sub-text" font-style="normal">2</tspan>)<tspan baseline-shift="super" class="sup-text" font-style="normal">2</tspan></text>
+        </g>
+      </g>
+
+      <!-- LINE 4: = sqrt(2 (k qQ/a²)²) = √2 k qQ/a² -->
+      <g transform="translate(55, 175)">
+        <text x="0" y="12" class="math-text">=</text>
+
+        <!-- Radical Expression -->
+        <g transform="translate(20, -18)">
+          <path d="M 0 32 L 5 32 L 10 44 L 17 6 L 125 6" class="radical" />
+          <text x="22" y="34" class="math-italic"><tspan font-style="normal">2</tspan> (k</text>
+          
+          <!-- Fraction qQ / a² -->
+          <g transform="translate(60, 8)">
+            <text x="3" y="14" class="math-italic">qQ</text>
+            <line x1="0" y1="20" x2="30" y2="20" class="frac-line" />
+            <text x="8" y="40" class="math-italic">a<tspan baseline-shift="super" class="sup-text" font-style="normal">2</tspan></text>
+          </g>
+
+          <text x="94" y="34" class="math-italic">)<tspan baseline-shift="super" class="sup-text" font-style="normal">2</tspan></text>
+        </g>
+
+        <text x="155" y="12" class="math-italic"><tspan font-style="normal">= √2 k</tspan> <tspan font-style="italic">qQ</tspan></text>
+        <line x1="202" y1="18" x2="232" y2="18" class="frac-line" />
+        <text x="210" y="40" class="math-italic">a<tspan baseline-shift="super" class="sup-text" font-style="normal">2</tspan></text>
+      </g>
+
+      <!-- LINE 5: F3 = k QxQ / (√2a)², লব্ধি বল F = F12 + F3 -->
+      <g transform="translate(20, 245)">
+        <text x="0" y="22" class="math-italic">F<tspan baseline-shift="sub" class="sub-text" font-style="normal">3</tspan> <tspan font-style="normal">=</tspan> k</text>
+
+        <!-- Fraction Q x Q / (√2a)² -->
+        <g transform="translate(52, -4)">
+          <text x="8" y="18" class="math-italic">Q &#x00D7; Q</text>
+          <line x1="0" y1="24" x2="72" y2="24" class="frac-line" />
+          <text x="3" y="46" class="math-italic">(<tspan font-style="normal">√2</tspan>a)<tspan baseline-shift="super" class="sup-text" font-style="normal">2</tspan></text>
+        </g>
+
+        <text x="130" y="22" class="bengali-text">, লব্ধি বল</text>
+
+        <!-- Vector F = Vector F12 + Vector F3 -->
+        <g transform="translate(222, 22)">
+          <!-- Vector F -->
+          <g transform="translate(0, 0)">
+            <text x="0" y="0" class="math-italic">F</text>
+            <line x1="0" y1="-20" x2="14" y2="-20" class="vector-line" />
+            <path d="M 10 -23 L 14 -20 L 10 -17" class="vector-arrow" />
+          </g>
+
+          <text x="20" y="0" class="math-text">=</text>
+
+          <!-- Vector F12 -->
+          <g transform="translate(42, 0)">
+            <text x="0" y="0" class="math-italic">F<tspan baseline-shift="sub" class="sub-text" font-style="normal">12</tspan></text>
+            <line x1="0" y1="-20" x2="22" y2="-20" class="vector-line" />
+            <path d="M 18 -23 L 22 -20 L 18 -17" class="vector-arrow" />
+          </g>
+
+          <text x="72" y="0" class="math-text">+</text>
+
+          <!-- Vector F3 -->
+          <g transform="translate(92, 0)">
+            <text x="0" y="0" class="math-italic">F<tspan baseline-shift="sub" class="sub-text" font-style="normal">3</tspan></text>
+            <line x1="0" y1="-20" x2="14" y2="-20" class="vector-line" />
+            <path d="M 10 -23 L 14 -20 L 10 -17" class="vector-arrow" />
+          </g>
+        </g>
+      </g>
+
+      <!-- LINE 6: 0 = √2 k qQ/a² + k QxQ / (√2a)² -->
+      <g transform="translate(20, 315)">
+        <text x="0" y="22" class="math-italic"><tspan font-style="normal">0 = √2 k</tspan> qQ</text>
+        <line x1="90" y1="28" x2="120" y2="28" class="frac-line" />
+        <text x="98" y="50" class="math-italic">a<tspan baseline-shift="super" class="sup-text" font-style="normal">2</tspan></text>
+
+        <text x="130" y="22" class="math-italic"><tspan font-style="normal">+</tspan> k</text>
+
+        <!-- Fraction Q x Q / (√2a)² -->
+        <g transform="translate(162, -4)">
+          <text x="8" y="18" class="math-italic">Q &#x00D7; Q</text>
+          <line x1="0" y1="24" x2="72" y2="24" class="frac-line" />
+          <text x="3" y="46" class="math-italic">(<tspan font-style="normal">√2</tspan>a)<tspan baseline-shift="super" class="sup-text" font-style="normal">2</tspan></text>
+        </g>
+      </g>
+
+      <!-- LINE 7: ⇒ -√2 q = Q / 2 -->
+      <g transform="translate(20, 385)">
+        <text x="0" y="22" class="math-italic">&#x21D2; <tspan font-style="normal">–√2</tspan> q =</text>
+
+        <!-- Fraction Q / 2 -->
+        <g transform="translate(90, -4)">
+          <text x="4" y="18" class="math-italic">Q</text>
+          <line x1="0" y1="24" x2="20" y2="24" class="frac-line" />
+          <text x="4" y="46" class="math-text">2</text>
+        </g>
+      </g>
+
+      <!-- LINE 8: ∴ Q / q = -2 √2 -->
+      <g transform="translate(20, 445)">
+        <text x="0" y="22" class="math-text">&#x2234;</text>
+
+        <!-- Fraction Q / q -->
+        <g transform="translate(20, -4)">
+          <text x="4" y="18" class="math-italic">Q</text>
+          <line x1="0" y1="24" x2="20" y2="24" class="frac-line" />
+          <text x="4" y="46" class="math-italic">q</text>
+        </g>
+
+        <text x="48" y="22" class="math-italic"><tspan font-style="normal">= –2</tspan> √2</text>
+      </g>
+
+    </g>
+
+  </g>
+</svg>

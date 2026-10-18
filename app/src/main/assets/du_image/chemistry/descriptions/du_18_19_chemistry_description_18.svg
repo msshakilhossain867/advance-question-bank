@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320" width="100%" height="100%">
+  <style>
+    .orbital {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      fill: #000000;
+    }
+    .title-text {
+      font-family: 'SolaimanLipi', Arial, sans-serif, 'Times New Roman';
+      font-size: 22px;
+      font-weight: bold;
+      fill: #000000;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- Title Text -->
+  <text x="25" y="45" class="title-text"><tspan font-family="Arial">sp</tspan><tspan font-size="15" dy="-8">3</tspan><tspan font-size="22" dy="8"> তে 4 টি অরবিটাল । একটি s এবং 3 টি p ।</tspan></text>
+
+  <g transform="translate(250, 185)">
+    <!-- Top Orbital -->
+    <path d="M 0,0 C -25,-40 -25,-90 0,-90 C 25,-90 25,-40 0,0 Z" class="orbital" />
+    <text x="32" y="-80" class="text">sp<tspan font-size="14" dy="-6">3</tspan></text>
+
+    <!-- Bottom Orbital -->
+    <path d="M 0,0 C -20,30 -20,65 0,65 C 20,65 20,30 0,0 Z" class="orbital" />
+    <text x="-5" y="88" class="text" text-anchor="middle">sp<tspan font-size="14" dy="-6">3</tspan></text>
+
+    <!-- Left-Down Orbital -->
+    <path d="M 0,0 C -35,-20 -95,10 -95,-15 C -95,-40 -35,-30 0,0 Z" class="orbital" opacity="0" /> 
+    <!-- Adjusting Left Orbital to match image precisely -->
+    <path d="M 0,0 C -40,-15 -100,5 -100,-15 C -100,-35 -40,-25 0,0 Z" class="orbital" />
+    <text x="-135" y="-10" class="text">sp<tspan font-size="14" dy="-6">3</tspan></text>
+
+    <!-- Right-Down Orbital -->
+    <path d="M 0,0 C 40,-15 100,5 100,-15 C 100,-35 40,-25 0,0 Z" class="orbital" />
+    <text x="110" y="-10" class="text">sp<tspan font-size="14" dy="-6">3</tspan></text>
+  </g>
+</svg>

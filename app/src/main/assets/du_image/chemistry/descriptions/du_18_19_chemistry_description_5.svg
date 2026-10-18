@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" width="100%" height="100%">
+  <style>
+    .chem-text {
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      fill: #000000;
+    }
+    .title-text {
+      font-family: 'SolaimanLipi', Arial, sans-serif;
+      font-size: 19px;
+      font-weight: bold;
+      fill: #000000;
+    }
+    .bond {
+      stroke: #000000;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .arrow {
+      stroke: #000000;
+      stroke-width: 2.2;
+      fill: none;
+    }
+    .arrow-head {
+      fill: #000000;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- Title Text -->
+  <text x="20" y="35" class="title-text">ফেনলকে গাঢ় HNO<tspan font-size="14" dy="4">3</tspan><tspan font-size="19" dy="-4"> ও H</tspan><tspan font-size="14" dy="4">2</tspan><tspan font-size="19" dy="-4">SO</tspan><tspan font-size="14" dy="4">4</tspan><tspan font-size="19" dy="-4"> সহ সরাসরি নাইট্রেশন</tspan></text>
+  <text x="20" y="65" class="title-text">করলে পিকরিক এসিড উৎপন্ন হয়।</text>
+
+  <g transform="translate(10, 50)">
+    <!-- Phenol Structure (Left) -->
+    <g transform="translate(45, 120)">
+      <!-- Benzene Ring -->
+      <polygon points="0,-30 26,-15 26,15 0,30 -26,15 -26,-15" class="bond" />
+      <circle cx="0" cy="0" r="15" class="bond" />
+      <!-- OH Bond -->
+      <line x1="0" y1="-30" x2="0" y2="-48" class="bond" />
+      <text x="0" y="-53" class="chem-text" text-anchor="middle">OH</text>
+    </g>
+
+    <!-- + HNO3 (Conc) -->
+    <text x="100" y="127" class="chem-text">+ HNO<tspan font-size="15" dy="4">3</tspan><tspan font-size="20" dy="-4"> (Conc)</tspan></text>
+
+    <!-- Reaction Arrow -->
+    <g transform="translate(225, 120)">
+      <line x1="0" y1="0" x2="100" y2="0" class="arrow" />
+      <polygon points="100,-5 110,0 100,5" class="arrow-head" />
+      <!-- Reagents on Arrow -->
+      <text x="50" y="-12" class="title-text" text-anchor="middle">গাঢ় H<tspan font-size="13" dy="3">2</tspan><tspan font-size="18" dy="-3">SO</tspan><tspan font-size="13" dy="3">4</tspan></text>
+      <text x="50" y="22" class="chem-text" text-anchor="middle">90°C</text>
+    </g>
+
+    <!-- Picric Acid Structure (Right) -->
+    <g transform="translate(415, 125)">
+      <!-- Benzene Ring -->
+      <polygon points="0,-30 26,-15 26,15 0,30 -26,15 -26,-15" class="bond" />
+      <circle cx="0" cy="0" r="15" class="bond" />
+      
+      <!-- OH Bond (Top) -->
+      <line x1="0" y1="-30" x2="0" y2="-45" class="bond" />
+      <text x="0" y="-50" class="chem-text" text-anchor="middle">OH</text>
+
+      <!-- NO2 Bond (Left / Ortho - 2) -->
+      <line x1="-22" y1="-18" x2="-38" y2="-27" class="bond" />
+      <text x="-42" y="-28" class="chem-text" text-anchor="end">NO<tspan font-size="15" dy="4">2</tspan></text>
+
+      <!-- NO2 Bond (Right / Ortho - 6) -->
+      <line x1="22" y1="-18" x2="38" y2="-27" class="bond" />
+      <text x="42" y="-28" class="chem-text" text-anchor="start">NO<tspan font-size="15" dy="4">2</tspan></text>
+
+      <!-- NO2 Bond (Bottom-Right / Para - 4) -->
+      <line x1="22" y1="18" x2="36" y2="28" class="bond" />
+      <text x="38" y="42" class="chem-text" text-anchor="start">NO<tspan font-size="15" dy="4">2</tspan></text>
+    </g>
+  </g>
+</svg>

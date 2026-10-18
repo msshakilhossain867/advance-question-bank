@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 440" width="100%" height="100%">
+  <style>
+    .math-text { font-family: 'Times New Roman', serif; font-size: 28px; fill: #000; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 24px; font-weight: bold; fill: #000; }
+    .sub-text { font-size: 18px; }
+    .sup-text { font-size: 18px; }
+    .frac-line { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+    .bracket { stroke: #000; stroke-width: 2; fill: none; stroke-linecap: round; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(25, 45)">
+    <!-- LINE 1: 5x² + 15x - 10y - 4 = 0 -->
+    <g transform="translate(0, 0)">
+      <text x="0" y="0" class="math-text">5x<tspan baseline-shift="super" class="sup-text">2</tspan> + 15x – 10y– 4 = 0</text>
+    </g>
+
+    <!-- LINE 2: ⇒ 5 ( x² + 2.x.(3/2) + 9/4 ) = 10y + 4 + 45/4 -->
+    <g transform="translate(0, 50)">
+      <text x="0" y="32" class="math-text">&#x21D2; 5</text>
+
+      <!-- Parentheses ( x² + 2.x 3/2 + 9/4 ) -->
+      <g transform="translate(48, 0)">
+        <!-- Left Parenthesis -->
+        <path d="M 12 0 C 2 -10 2 60 12 50" class="bracket" stroke-width="2.2" />
+        
+        <text x="18" y="32" class="math-text">x<tspan baseline-shift="super" class="sup-text">2</tspan> + 2.x</text>
+
+        <!-- Fraction 3/2 -->
+        <g transform="translate(105, 0)">
+          <text x="5" y="20" class="math-text">3</text>
+          <line x1="0" y1="28" x2="22" y2="28" class="frac-line" />
+          <text x="5" y="50" class="math-text">2</text>
+        </g>
+
+        <text x="135" y="32" class="math-text">+</text>
+
+        <!-- Fraction 9/4 -->
+        <g transform="translate(160, 0)">
+          <text x="5" y="20" class="math-text">9</text>
+          <line x1="0" y1="28" x2="22" y2="28" class="frac-line" />
+          <text x="5" y="50" class="math-text">4</text>
+        </g>
+
+        <!-- Right Parenthesis -->
+        <path d="M 190 0 C 200 -10 200 60 190 50" class="bracket" stroke-width="2.2" />
+      </g>
+
+      <!-- Right Side: = 10y + 4 + 45/4 -->
+      <g transform="translate(255, 0)">
+        <text x="0" y="32" class="math-text">= 10y + 4 +</text>
+
+        <!-- Fraction 45/4 -->
+        <g transform="translate(132, 0)">
+          <text x="5" y="20" class="math-text">45</text>
+          <line x1="0" y1="28" x2="35" y2="28" class="frac-line" />
+          <text x="11" y="50" class="math-text">4</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- LINE 3: ⇒ 5 ( x + 3/2 )² = 10 ( y + 61/40 ) -->
+    <g transform="translate(0, 130)">
+      <text x="0" y="38" class="math-text">&#x21D2; 5</text>
+
+      <!-- Term: ( x + 3/2 )² -->
+      <g transform="translate(50, 0)">
+        <!-- Left Bracket -->
+        <path d="M 12 0 C 2 -12 2 70 12 58" class="bracket" stroke-width="2.2" />
+        
+        <text x="20" y="38" class="math-text">x +</text>
+
+        <!-- Fraction 3/2 -->
+        <g transform="translate(68, 8)">
+          <text x="4" y="20" class="math-text">3</text>
+          <line x1="0" y1="28" x2="20" y2="28" class="frac-line" />
+          <text x="4" y="50" class="math-text">2</text>
+        </g>
+
+        <!-- Right Bracket -->
+        <path d="M 98 0 C 108 -12 108 70 98 58" class="bracket" stroke-width="2.2" />
+        <text x="108" y="10" class="math-text"><tspan baseline-shift="super" class="sup-text">2</tspan></text>
+      </g>
+
+      <text x="180" y="38" class="math-text">= 10</text>
+
+      <!-- Term: ( y + 61/40 ) -->
+      <g transform="translate(235, 0)">
+        <!-- Left Bracket -->
+        <path d="M 12 0 C 2 -12 2 70 12 58" class="bracket" stroke-width="2.2" />
+        
+        <text x="20" y="38" class="math-text">y +</text>
+
+        <!-- Fraction 61/40 -->
+        <g transform="translate(68, 8)">
+          <text x="5" y="20" class="math-text">61</text>
+          <line x1="0" y1="28" x2="35" y2="28" class="frac-line" />
+          <text x="5" y="50" class="math-text">40</text>
+        </g>
+
+        <!-- Right Bracket -->
+        <path d="M 112 0 C 122 -12 122 70 112 58" class="bracket" stroke-width="2.2" />
+      </g>
+    </g>
+
+    <!-- LINE 4: ⇒ ( x + 3/2 )² = 4 . 1/2 ( y + 61/40 ) -->
+    <g transform="translate(0, 220)">
+      <text x="0" y="38" class="math-text">&#x21D2;</text>
+
+      <!-- Term: ( x + 3/2 )² -->
+      <g transform="translate(25, 0)">
+        <!-- Left Bracket -->
+        <path d="M 12 0 C 2 -12 2 70 12 58" class="bracket" stroke-width="2.2" />
+        
+        <text x="20" y="38" class="math-text">x +</text>
+
+        <!-- Fraction 3/2 -->
+        <g transform="translate(68, 8)">
+          <text x="4" y="20" class="math-text">3</text>
+          <line x1="0" y1="28" x2="20" y2="28" class="frac-line" />
+          <text x="4" y="50" class="math-text">2</text>
+        </g>
+
+        <!-- Right Bracket -->
+        <path d="M 98 0 C 108 -12 108 70 98 58" class="bracket" stroke-width="2.2" />
+        <text x="108" y="10" class="math-text"><tspan baseline-shift="super" class="sup-text">2</tspan></text>
+      </g>
+
+      <text x="155" y="38" class="math-text">= 4 .</text>
+
+      <!-- Fraction 1/2 -->
+      <g transform="translate(198, 8)">
+        <text x="4" y="20" class="math-text">1</text>
+        <line x1="0" y1="28" x2="20" y2="28" class="frac-line" />
+        <text x="4" y="50" class="math-text">2</text>
+      </g>
+
+      <!-- Term: ( y + 61/40 ) -->
+      <g transform="translate(225, 0)">
+        <!-- Left Bracket -->
+        <path d="M 12 0 C 2 -12 2 70 12 58" class="bracket" stroke-width="2.2" />
+        
+        <text x="20" y="38" class="math-text">y +</text>
+
+        <!-- Fraction 61/40 -->
+        <g transform="translate(68, 8)">
+          <text x="5" y="20" class="math-text">61</text>
+          <line x1="0" y1="28" x2="35" y2="28" class="frac-line" />
+          <text x="5" y="50" class="math-text">40</text>
+        </g>
+
+        <!-- Right Bracket -->
+        <path d="M 112 0 C 122 -12 122 70 112 58" class="bracket" stroke-width="2.2" />
+      </g>
+    </g>
+
+    <!-- LINE 5: ∴ নিয়ামকের সমীকরণ, y + 61/40 = -1/2 -->
+    <g transform="translate(10, 305)">
+      <text x="0" y="32" class="bengali-text">&#x2234; নিয়ামকের সমীকরণ,</text>
+      <text x="200" y="32" class="math-text">y +</text>
+
+      <!-- Fraction 61/40 (In image it shows 61/40, written as 64/40 by mistake in original manuscript) -->
+      <g transform="translate(242, 2)">
+        <text x="5" y="20" class="math-text">61</text>
+        <line x1="0" y1="28" x2="35" y2="28" class="frac-line" />
+        <text x="5" y="50" class="math-text">40</text>
+      </g>
+
+      <text x="285" y="32" class="math-text">=</text>
+
+      <!-- Fraction -1/2 -->
+      <g transform="translate(310, 2)">
+        <text x="2" y="20" class="math-text">–1</text>
+        <line x1="0" y1="28" x2="25" y2="28" class="frac-line" />
+        <text x="6" y="50" class="math-text">2</text>
+      </g>
+    </g>
+
+    <!-- LINE 6: ⇒ 40y + 81 = 0 -->
+    <g transform="translate(0, 380)">
+      <text x="0" y="0" class="math-text">&#x21D2; 40y + 81 = 0</text>
+    </g>
+
+  </g>
+</svg>

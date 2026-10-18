@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 540" width="100%" height="100%">
+  <style>
+    .table-header-bg { fill: #a3a3a3; stroke: #000000; stroke-width: 1.5; }
+    .table-cell { fill: #ffffff; stroke: #000000; stroke-width: 1.5; }
+    .header-text { font-family: 'SolaimanLipi', Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #000000; text-anchor: middle; dominant-baseline: central; }
+    .cell-text { font-family: 'Times New Roman', Times, serif; font-size: 20px; fill: #000000; text-anchor: middle; dominant-baseline: central; }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <g transform="translate(20, 20)">
+    <!-- Table Header -->
+    <rect x="0" y="0" width="180" height="40" class="table-header-bg" />
+    <rect x="180" y="0" width="200" height="40" class="table-header-bg" />
+    <text x="90" y="20" class="header-text">ধাতব আয়ন</text>
+    <text x="280" y="20" class="header-text">ইলেকট্রন বিন্যাস</text>
+
+    <!-- Row 1: Sc3+ -->
+    <rect x="0" y="40" width="180" height="40" class="table-cell" />
+    <rect x="180" y="40" width="200" height="40" class="table-cell" />
+    <text x="90" y="60" class="cell-text">Sc<tspan font-size="14" dy="-8">3+</tspan></text>
+    <text x="280" y="60" class="cell-text">[Ar]</text>
+
+    <!-- Row 2: Ti3+ -->
+    <rect x="0" y="80" width="180" height="40" class="table-cell" />
+    <rect x="180" y="80" width="200" height="40" class="table-cell" />
+    <text x="90" y="100" class="cell-text">Ti<tspan font-size="14" dy="-8">3+</tspan></text>
+    <text x="280" y="100" class="cell-text">[Ar]3d<tspan font-size="14" dy="-8">1</tspan></text>
+
+    <!-- Row 3: V3+ -->
+    <rect x="0" y="120" width="180" height="40" class="table-cell" />
+    <rect x="180" y="120" width="200" height="40" class="table-cell" />
+    <text x="90" y="140" class="cell-text">V<tspan font-size="14" dy="-8">3+</tspan></text>
+    <text x="280" y="140" class="cell-text">[Ar]3d<tspan font-size="14" dy="-8">2</tspan></text>
+
+    <!-- Row 4: Cr3+ -->
+    <rect x="0" y="160" width="180" height="40" class="table-cell" />
+    <rect x="180" y="160" width="200" height="40" class="table-cell" />
+    <text x="90" y="180" class="cell-text">Cr<tspan font-size="14" dy="-8">3+</tspan></text>
+    <text x="280" y="180" class="cell-text">[Ar]3d<tspan font-size="14" dy="-8">3</tspan></text>
+
+    <!-- Row 5: Mn3+ -->
+    <rect x="0" y="200" width="180" height="40" class="table-cell" />
+    <rect x="180" y="200" width="200" height="40" class="table-cell" />
+    <text x="90" y="220" class="cell-text">Mn<tspan font-size="14" dy="-8">3+</tspan></text>
+    <text x="280" y="220" class="cell-text">[Ar]3d<tspan font-size="14" dy="-8">4</tspan></text>
+
+    <!-- Row 6: Fe2+ -->
+    <rect x="0" y="240" width="180" height="40" class="table-cell" />
+    <rect x="180" y="240" width="200" height="40" class="table-cell" />
+    <text x="90" y="260" class="cell-text">Fe<tspan font-size="14" dy="-8">2+</tspan></text>
+    <text x="280" y="260" class="cell-text">[Ar]3d<tspan font-size="14" dy="-8">6</tspan></text>
+
+    <!-- Row 7: Fe3+ -->
+    <rect x="0" y="280" width="180" height="40" class="table-cell" />
+    <rect x="180" y="280" width="200" height="40" class="table-cell" />
+    <text x="90" y="300" class="cell-text">Fe<tspan font-size="14" dy="-8">3+</tspan></text>
+    <text x="280" y="300" class="cell-text">[Ar]3d<tspan font-size="14" dy="-8">5</tspan></text>
+
+    <!-- Row 8: Co3+ -->
+    <rect x="0" y="320" width="180" height="40" class="table-cell" />
+    <rect x="180" y="320" width="200" height="40" class="table-cell" />
+    <text x="90" y="340" class="cell-text">Co<tspan font-size="14" dy="-8">3+</tspan></text>
+    <text x="280" y="340" class="cell-text">[Ar]3d<tspan font-size="14" dy="-8">7</tspan></text>
+
+    <!-- Row 9: Ni3+ -->
+    <rect x="0" y="360" width="180" height="40" class="table-cell" />
+    <rect x="180" y="360" width="200" height="40" class="table-cell" />
+    <text x="90" y="380" class="cell-text">Ni<tspan font-size="14" dy="-8">3+</tspan></text>
+    <text x="280" y="380" class="cell-text">[Ar]3d<tspan font-size="14" dy="-8">8</tspan></text>
+
+    <!-- Row 10: Cu2+ -->
+    <rect x="0" y="400" width="180" height="40" class="table-cell" />
+    <rect x="180" y="400" width="200" height="40" class="table-cell" />
+    <text x="90" y="420" class="cell-text">Cu<tspan font-size="14" dy="-8">2+</tspan></text>
+    <text x="280" y="420" class="cell-text">[Ar]3d<tspan font-size="14" dy="-8">9</tspan></text>
+
+    <!-- Row 11: Zn2+ -->
+    <rect x="0" y="440" width="180" height="40" class="table-cell" />
+    <rect x="180" y="440" width="200" height="40" class="table-cell" />
+    <text x="90" y="460" class="cell-text">Zn<tspan font-size="14" dy="-8">2+</tspan></text>
+    <text x="280" y="460" class="cell-text">[Ar]3d<tspan font-size="14" dy="-8">10</tspan></text>
+  </g>
+</svg>

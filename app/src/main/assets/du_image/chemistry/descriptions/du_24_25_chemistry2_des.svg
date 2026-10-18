@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 380" width="100%" height="100%">
+  <defs>
+    <!-- Background Box Gradient for Orbital Images -->
+    <linearGradient id="box-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b0b0b0" />
+      <stop offset="100%" stop-color="#8c8c8c" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .math-text { font-family: 'Times New Roman', serif; font-size: 22px; fill: #000; }
+    .math-bold { font-family: 'Times New Roman', serif; font-size: 22px; font-weight: bold; fill: #000; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 20px; font-weight: bold; fill: #000; }
+    .sub-text { font-size: 14px; }
+    .axis-line { stroke: #000000; stroke-width: 1.8; stroke-linecap: round; }
+    .orbital-lobe { fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .orbital-ring { fill: none; stroke: #000000; stroke-width: 2; }
+    .img-box { fill: url(#box-bg); stroke: #555555; stroke-width: 1; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(15, 15)">
+
+    <!-- TEXT SECTION -->
+    <g transform="translate(0, 0)">
+      <!-- Line 1: d উপশক্তিশস্তরে সর্বমোট পাঁচটি অরবিটাল রয়েছে। এদের মধ্যে -->
+      <text x="15" y="22" class="math-bold">d</text>
+      <text x="32" y="22" class="bengali-text">উপশক্তিস্তরে সর্বমোট পাঁচটি অরবিটাল রয়েছে। এদের মধ্যে</text>
+
+      <!-- Line 2: দুইটি অক্ষ বরাবর (d_z², d_x²-y²) এবং বাকি তিনটি X, Y এবং -->
+      <text x="0" y="54" class="bengali-text">দুইটি অক্ষ বরাবর (</text>
+      <text x="148" y="54" class="math-bold">d<tspan baseline-shift="sub" class="sub-text">z<tspan font-size="10px" baseline-shift="super">2</tspan></tspan></text>
+      <text x="175" y="54" class="bengali-text">,</text>
+      <text x="185" y="54" class="math-bold">d<tspan baseline-shift="sub" class="sub-text">x<tspan font-size="10px" baseline-shift="super">2</tspan>-y<tspan font-size="10px" baseline-shift="super">2</tspan></tspan></text>
+      <text x="245" y="54" class="bengali-text">) এবং বাকি তিনটি</text>
+      <text x="382" y="54" class="math-bold">X</text>
+      <text x="398" y="54" class="bengali-text">,</text>
+      <text x="410" y="54" class="math-bold">Y</text>
+      <text x="430" y="54" class="bengali-text">এবং</text>
+
+      <!-- Line 3: Z অক্ষের মাঝের তল বরাবর (d_xy, d_yz এবং d_zx) -->
+      <text x="0" y="86" class="math-bold">Z</text>
+      <text x="20" y="86" class="bengali-text">অক্ষের মাঝের তল বরাবর (</text>
+      <text x="220" y="86" class="math-bold">d<tspan baseline-shift="sub" class="sub-text">xy</tspan></text>
+      <text x="248" y="86" class="bengali-text">,</text>
+      <text x="258" y="86" class="math-bold">d<tspan baseline-shift="sub" class="sub-text">yz</tspan></text>
+      <text x="288" y="86" class="bengali-text">এবং</text>
+      <text x="328" y="86" class="math-bold">d<tspan baseline-shift="sub" class="sub-text">zx</tspan></text>
+      <text x="356" y="86" class="bengali-text">)</text>
+    </g>
+
+    <!-- ORBITAL DIAGRAMS SECTION -->
+    <g transform="translate(45, 115)">
+
+      <!-- LEFT DIAGRAM: dx²-y² Orbital -->
+      <g transform="translate(0, 0)">
+        <!-- Image Box Background -->
+        <rect x="0" y="0" width="160" height="190" class="img-box" />
+
+        <g transform="translate(80, 90)">
+          <!-- X and Y Axes -->
+          <line x1="-65" y1="0" x2="65" y2="0" class="axis-line" />
+          <line x1="0" y1="-70" x2="0" y2="70" class="axis-line" />
+
+          <!-- Axis Labels -->
+          <text x="70" y="5" class="math-bold">X</text>
+          <text x="-5" y="-74" class="math-bold">Y</text>
+
+          <!-- dx²-y² Lobes along X and Y axes -->
+          <!-- Top Lobe (Y axis) -->
+          <path d="M 0,0 C -18,-25 -18,-55 0,-58 C 18,-55 18,-25 0,0" class="orbital-lobe" />
+          <!-- Bottom Lobe (Y axis) -->
+          <path d="M 0,0 C -18,25 -18,55 0,58 C 18,55 18,25 0,0" class="orbital-lobe" />
+          <!-- Right Lobe (X axis) -->
+          <path d="M 0,0 C 25,-18 55,-18 58,0 C 55,18 25,18 0,0" class="orbital-lobe" />
+          <!-- Left Lobe (X axis) -->
+          <path d="M 0,0 C -25,-18 -55,-18 -58,0 C -55,18 -25,18 0,0" class="orbital-lobe" />
+        </g>
+
+        <!-- Orbital Label dx²-y² -->
+        <text x="80" y="180" class="math-bold" text-anchor="middle">d<tspan baseline-shift="sub" class="sub-text">x<tspan font-size="10px" baseline-shift="super">2</tspan>-y<tspan font-size="10px" baseline-shift="super">2</tspan></tspan></text>
+      </g>
+
+      <!-- RIGHT DIAGRAM: dz² Orbital -->
+      <g transform="translate(230, 0)">
+        <!-- Image Box Background -->
+        <rect x="0" y="0" width="160" height="190" class="img-box" />
+
+        <g transform="translate(80, 90)">
+          <!-- Horizontal Axis & Z Axis -->
+          <line x1="-60" y1="0" x2="60" y2="0" class="axis-line" />
+          <line x1="0" y1="-75" x2="0" y2="75" class="axis-line" />
+
+          <!-- Axis Label Z -->
+          <text x="-6" y="-78" class="math-bold">Z</text>
+
+          <!-- dz² Lobes along Z axis -->
+          <!-- Top Vertical Lobe -->
+          <path d="M 0,0 C -22,-25 -22,-62 0,-65 C 22,-62 22,-25 0,0" class="orbital-lobe" />
+          <!-- Bottom Vertical Lobe -->
+          <path d="M 0,0 C -22,25 -22,62 0,65 C 22,62 22,25 0,0" class="orbital-lobe" />
+
+          <!-- Doughnut Ring in xy-plane -->
+          <ellipse cx="0" cy="0" rx="25" ry="8" class="orbital-ring" />
+        </g>
+
+        <!-- Orbital Label dz² -->
+        <text x="80" y="180" class="math-bold" text-anchor="middle">d<tspan baseline-shift="sub" class="sub-text">z<tspan font-size="10px" baseline-shift="super">2</tspan></tspan></text>
+      </g>
+
+    </g>
+
+  </g>
+</svg>

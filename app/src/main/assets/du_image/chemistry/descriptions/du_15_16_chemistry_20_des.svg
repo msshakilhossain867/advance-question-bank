@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 220" width="100%" height="100%">
+  <defs>
+    <!-- Arrowhead Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#000000"/>
+    </marker>
+  </defs>
+
+  <style>
+    .chem-text { font-family: 'Times New Roman', serif; font-size: 20px; fill: #000; }
+    .sub-text { font-size: 13px; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 20px; font-weight: bold; fill: #000; }
+    .ring-line { stroke: #000; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .arrow-line { stroke: #000; stroke-width: 1.8; stroke-linecap: round; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(15, 15)">
+
+    <!-- REACTION SCHEME -->
+    <g transform="translate(0, 0)">
+
+      <!-- 1. ANILINE -->
+      <g transform="translate(45, 60)">
+        <!-- Benzene Ring -->
+        <polygon points="0,-22 22,-9 22,17 0,30 -22,17 -22,-9" class="ring-line" />
+        <circle cx="0" cy="4" r="13" class="ring-line" />
+        
+        <!-- Bond to NH2 -->
+        <line x1="0" y1="-22" x2="0" y2="-34" class="ring-line" />
+        <text x="0" y="-40" class="chem-text" text-anchor="middle">NH<tspan baseline-shift="sub" class="sub-text">2</tspan></text>
+      </g>
+
+      <!-- First Arrow (NaNO2, HCl / 0°-5°C) -->
+      <g transform="translate(85, 55)">
+        <text x="52" y="-12" class="chem-text" text-anchor="middle">NaNO<tspan baseline-shift="sub" class="sub-text">2</tspan>.HCl</text>
+        <line x1="0" y1="5" x2="105" y2="5" class="arrow-line" marker-end="url(#arrow)" />
+        <text x="52" y="24" class="chem-text" text-anchor="middle">0°-5°C</text>
+      </g>
+
+      <!-- 2. BENZENEDIAZONIUM CHLORIDE -->
+      <g transform="translate(265, 60)">
+        <!-- Benzene Ring -->
+        <polygon points="0,-22 22,-9 22,17 0,30 -22,17 -22,-9" class="ring-line" />
+        <circle cx="0" cy="4" r="13" class="ring-line" />
+        
+        <!-- Bond to N2Cl -->
+        <line x1="0" y1="-22" x2="0" y2="-34" class="ring-line" />
+        <text x="0" y="-40" class="chem-text" text-anchor="middle">N<tspan baseline-shift="sub" class="sub-text">2</tspan>Cl</text>
+      </g>
+
+      <!-- Second Arrow (H2O) -->
+      <g transform="translate(305, 55)">
+        <text x="37" y="-10" class="chem-text" text-anchor="middle">H<tspan baseline-shift="sub" class="sub-text">2</tspan>O</text>
+        <line x1="0" y1="5" x2="75" y2="5" class="arrow-line" marker-end="url(#arrow)" />
+      </g>
+
+      <!-- 3. PHENOL -->
+      <g transform="translate(435, 60)">
+        <!-- Benzene Ring -->
+        <polygon points="0,-22 22,-9 22,17 0,30 -22,17 -22,-9" class="ring-line" />
+        <circle cx="0" cy="4" r="13" class="ring-line" />
+        
+        <!-- Bond to OH -->
+        <line x1="0" y1="-22" x2="0" y2="-34" class="ring-line" />
+        <text x="0" y="-40" class="chem-text" text-anchor="middle">OH</text>
+      </g>
+
+    </g>
+
+    <!-- BENGALI & ENGLISH EXPLANATION TEXT -->
+    <g transform="translate(5, 145)">
+      <!-- Line 1: উৎপাদককে কক্ষ তাপমাত্রায় রেখে দিলে H2O এর সাথে বিক্রিয়া -->
+      <text x="0" y="0" class="bengali-text">উৎপাদককে কক্ষ তাপমাত্রায় রেখে দিলে </text>
+      <text x="310" y="0" class="chem-text">H<tspan baseline-shift="sub" class="sub-text">2</tspan>O</text>
+      <text x="350" y="0" class="bengali-text">এর সাথে বিক্রিয়া</text>
+
+      <!-- Line 2: করে Phenol উৎপন্ন হয়। -->
+      <text x="0" y="32" class="bengali-text">করে </text>
+      <text x="42" y="32" class="chem-text">Phenol</text>
+      <text x="108" y="32" class="bengali-text">উৎপন্ন হয়।</text>
+    </g>
+
+  </g>
+</svg>

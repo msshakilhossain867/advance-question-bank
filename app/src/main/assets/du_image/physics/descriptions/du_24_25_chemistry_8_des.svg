@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 240" width="100%" height="100%">
+  <defs>
+    <!-- Arrowhead Marker for Vertical Motion Lines -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#000000"/>
+    </marker>
+  </defs>
+
+  <style>
+    .math-text { font-family: 'Times New Roman', serif; font-size: 26px; fill: #000; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 22px; font-weight: bold; fill: #000; }
+    .arrow-line { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+    .separator-line { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+    .bullet { fill: #ffffff; stroke: #000; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(15, 15)">
+
+    <!-- LEFT SECTION: BULLET MOTION DIAGRAM -->
+    <g transform="translate(40, 10)">
+      
+      <!-- Upward Motion (5 sec) -->
+      <g transform="translate(80, 0)">
+        <text x="-70" y="85" class="math-text">5 sec</text>
+        <line x1="0" y1="140" x2="0" y2="10" class="arrow-line" marker-end="url(#arrow)" />
+        
+        <!-- Bullet Icon Upward -->
+        <g transform="translate(-10, 25)">
+          <path d="M 3,20 L 3,10 C 3,0 17,0 17,10 L 17,20 Z" class="bullet" />
+        </g>
+      </g>
+
+      <!-- Downward Motion (5 sec) -->
+      <g transform="translate(130, 0)">
+        <line x1="0" y1="10" x2="0" y2="140" class="arrow-line" marker-end="url(#arrow)" />
+        <text x="15" y="85" class="math-text">5 sec</text>
+        
+        <!-- Bullet Icon Downward -->
+        <g transform="translate(-10, 90)">
+          <path d="M 3,0 L 3,10 C 3,20 17,20 17,10 L 17,0 Z" class="bullet" />
+        </g>
+      </g>
+
+    </g>
+
+    <!-- VERTICAL SEPARATOR LINE -->
+    <line x1="285" y1="20" x2="285" y2="145" class="separator-line" />
+
+    <!-- RIGHT SECTION: KINEMATICS CALCULATION -->
+    <g transform="translate(305, 10)">
+      <!-- v = u + gt -->
+      <text x="0" y="35" class="math-text">v = u + gt</text>
+      
+      <!-- = 0 + 9.8 × 5 -->
+      <text x="18" y="75" class="math-text">= 0 + 9.8 × 5</text>
+      
+      <!-- = 49.0 m/s -->
+      <text x="18" y="115" class="math-text">= 49.0 m/s</text>
+    </g>
+
+    <!-- BENGALI CAPTION TEXT AT BOTTOM -->
+    <g transform="translate(20, 185)">
+      <text x="0" y="0" class="bengali-text">সর্বোচ্চ উচ্চতায় বুলেটের বেগ শূন্য।</text>
+    </g>
+
+  </g>
+</svg>

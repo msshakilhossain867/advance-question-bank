@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 320" width="100%" height="100%">
+  <style>
+    .line {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 22px;
+      font-weight: bold;
+      fill: #000000;
+    }
+    .title-text {
+      font-family: 'SolaimanLipi', Arial, sans-serif;
+      font-size: 22px;
+      font-weight: bold;
+      fill: #000000;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <!-- Title Text -->
+  <text x="20" y="40" class="title-text">চিত্রে প্রদর্শিত বর্তনীতে 4Ω রোধের মধ্যে তড়িৎপ্রবাহ কত?</text>
+
+  <g transform="translate(40, 50)">
+    <!-- Main Outer Circuit Line (Left side to battery) -->
+    <path d="M 100,100 L 50,100 L 50,200 L 105,200" class="line" />
+    <path d="M 125,200 L 330,200 L 330,165" class="line" />
+
+    <!-- Battery Symbol (5V) -->
+    <line x1="105" y1="180" x2="105" y2="220" class="line" />
+    <line x1="115" y1="188" x2="115" y2="212" class="line" stroke-width="2" />
+    <line x1="120" y1="180" x2="120" y2="220" class="line" />
+    <line x1="125" y1="188" x2="125" y2="212" class="line" stroke-width="2" />
+    <text x="135" y="222" class="text">5V</text>
+
+    <!-- Parallel Branch Connection Lines (Left) -->
+    <path d="M 100,100 L 100,60 L 140,60" class="line" />
+    <path d="M 100,100 L 100,140 L 140,140" class="line" />
+
+    <!-- Top Resistor (2 Ohm) -->
+    <path d="M 140,60 L 150,60 L 155,50 L 165,70 L 175,50 L 185,70 L 195,50 L 205,70 L 215,50 L 225,70 L 230,60 L 270,60" class="line" />
+    <text x="200" y="42" class="text" text-anchor="middle">2Ω</text>
+
+    <!-- Bottom Resistor (2 Ohm) -->
+    <path d="M 140,140 L 150,140 L 155,130 L 165,150 L 175,130 L 185,150 L 195,130 L 205,150 L 215,130 L 225,150 L 230,140 L 270,140" class="line" />
+    <text x="200" y="172" class="text" text-anchor="middle">2Ω</text>
+
+    <!-- Parallel Branch Connection Lines (Right) -->
+    <path d="M 270,60 L 270,100 L 330,100" class="line" />
+    <line x1="270" y1="140" x2="270" y2="100" class="line" />
+
+    <!-- Series Resistor (4 Ohm) -->
+    <path d="M 330,100 L 330,110 L 320,115 L 340,125 L 320,135 L 340,145 L 320,155 L 330,160" class="line" />
+    <text x="350" y="140" class="text">4Ω</text>
+  </g>
+</svg>

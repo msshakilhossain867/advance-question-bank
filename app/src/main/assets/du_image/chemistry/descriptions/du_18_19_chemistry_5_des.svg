@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 320" width="100%" height="100%">
+  <defs>
+    <!-- Arrowhead Marker for Reaction Arrow -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#000000" />
+    </marker>
+  </defs>
+
+  <style>
+    .chem-text { font-family: 'Times New Roman', serif; font-size: 22px; fill: #000; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 20px; font-weight: bold; fill: #000; }
+    .sub-text { font-size: 14px; }
+    .bond-line { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+    .reaction-arrow { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+    .benzene-ring { fill: none; stroke: #000; stroke-width: 2; stroke-linejoin: round; }
+    .benzene-circle { fill: none; stroke: #000; stroke-width: 2; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(15, 15)">
+
+    <!-- BENGALI CAPTION TEXT -->
+    <g transform="translate(0, 0)">
+      <!-- Line 1: ফেনলকে গাঢ় HNO3 ও H2SO4 সহ সরাসরি নাইট্রেশন -->
+      <text x="0" y="22" class="bengali-text">ফেনলকে গাঢ়</text>
+      <text x="110" y="22" class="chem-text">HNO<tspan class="sub-text">3</tspan></text>
+      <text x="175" y="22" class="bengali-text">ও</text>
+      <text x="198" y="22" class="chem-text">H<tspan class="sub-text">2</tspan>SO<tspan class="sub-text">4</tspan></text>
+      <text x="268" y="22" class="bengali-text">সহ সরাসরি নাইট্রেশন</text>
+
+      <!-- Line 2: করলে পিকরিক এসিড উৎপন্ন হয়। -->
+      <text x="0" y="54" class="bengali-text">করলে পিকরিক এসিড উৎপন্ন হয়।</text>
+    </g>
+
+    <!-- REACTION SCHEME -->
+    <g transform="translate(10, 110)">
+
+      <!-- PHENOL MOLECULE -->
+      <g transform="translate(20, 0)">
+        <!-- OH Group -->
+        <text x="25" y="15" class="chem-text" text-anchor="middle">OH</text>
+        <line x1="25" y1="20" x2="25" y2="38" class="bond-line" />
+
+        <!-- Benzene Ring Structure -->
+        <g transform="translate(25, 68)">
+          <!-- Hexagon Polygon -->
+          <polygon points="0,-30 24,-14 24,14 0,30 -24,14 -24,-14" class="benzene-ring" />
+          <!-- Inner Circle -->
+          <circle cx="0" cy="0" r="14" class="benzene-circle" />
+        </g>
+      </g>
+
+      <!-- + HNO3 (Conc) -->
+      <g transform="translate(85, 65)">
+        <text x="0" y="10" class="chem-text">+ HNO<tspan class="sub-text">3</tspan> (Conc)</text>
+      </g>
+
+      <!-- REACTION ARROW WITH CONDITIONS -->
+      <g transform="translate(225, 70)">
+        <!-- Reagents Above Arrow -->
+        <text x="50" y="-12" class="bengali-text" text-anchor="middle">গাঢ়</text>
+        <text x="75" y="-12" class="chem-text">H<tspan class="sub-text">2</tspan>SO<tspan class="sub-text">4</tspan></text>
+
+        <!-- Arrow Line -->
+        <line x1="0" y1="0" x2="105" y2="0" class="reaction-arrow" marker-end="url(#arrow)" />
+
+        <!-- Temperature Below Arrow -->
+        <text x="52" y="24" class="chem-text" text-anchor="middle">90°C</text>
+      </g>
+
+      <!-- PICRIC ACID (2,4,6-TRINITROPHENOL) MOLECULE -->
+      <g transform="translate(385, 0)">
+        <!-- Top OH Group -->
+        <text x="30" y="15" class="chem-text" text-anchor="middle">OH</text>
+        <line x1="30" y1="20" x2="30" y2="38" class="bond-line" />
+
+        <!-- Benzene Ring -->
+        <g transform="translate(30, 68)">
+          <polygon points="0,-30 24,-14 24,14 0,30 -24,14 -24,-14" class="benzene-ring" />
+          <circle cx="0" cy="0" r="14" class="benzene-circle" />
+
+          <!-- NO2 Group at C2 (Top Right - Ortho) -->
+          <line x1="18" y1="-20" x2="32" y2="-30" class="bond-line" />
+          <text x="35" y="-32" class="chem-text">NO<tspan class="sub-text">2</tspan></text>
+
+          <!-- NO2 Group at C6 (Top Left - Ortho) -->
+          <line x1="-18" y1="-20" x2="-32" y2="-30" class="bond-line" />
+          <text x="-75" y="-32" class="chem-text">NO<tspan class="sub-text">2</tspan></text>
+
+          <!-- NO2 Group at C4 (Bottom - Para) -->
+          <line x1="18" y1="20" x2="32" y2="30" class="bond-line" />
+          <text x="35" y="42" class="chem-text">NO<tspan class="sub-text">2</tspan></text>
+        </g>
+      </g>
+
+    </g>
+
+  </g>
+</svg>

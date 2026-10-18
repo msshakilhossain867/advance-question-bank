@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 380" width="100%" height="100%">
+  <style>
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 19px; font-weight: bold; fill: #000; }
+    .chem-text { font-family: 'Times New Roman', serif; font-size: 20px; fill: #000; }
+    .chem-large { font-family: 'Times New Roman', serif; font-size: 22px; fill: #000; }
+    .sub-text { font-size: 13px; }
+    .bond-line { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+    .hydrogen-bond { stroke: #000; stroke-width: 2; stroke-dasharray: 4,4; stroke-linecap: round; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(15, 20)">
+
+    <!-- TEXT SECTION -->
+    <g transform="translate(0, 0)">
+      <!-- Line 1: ইথানোয়িক এসিড (CH3COOH) আন্তঃআণবিক -->
+      <text x="120" y="22" class="bengali-text">ইথানোয়িক এসিড</text>
+      <text x="250" y="22" class="chem-text">(CH<tspan baseline-shift="sub" class="sub-text">3</tspan>COOH)</text>
+      <text x="365" y="22" class="bengali-text">আন্তঃআণবিক</text>
+
+      <!-- Line 2: (Intermolecular) H বন্ধন দ্বারা ডাইমার গঠন করে। এ অণুর -->
+      <text x="0" y="52" class="chem-text">(Intermolecular)</text>
+      <text x="145" y="52" class="chem-text">H</text>
+      <text x="165" y="52" class="bengali-text">বন্ধন দ্বারা ডাইমার গঠন করে। এ অণুর</text>
+
+      <!-- Line 3: ডাইমার গঠনে এক অণুর >C=O কার্বোনাইল (>C=O)মূলকের -->
+      <text x="0" y="82" class="bengali-text">ডাইমার গঠনে এক অণুর</text>
+      
+      <!-- Inline >C=O diagram -->
+      <g transform="translate(195, 76)">
+        <line x1="0" y1="-8" x2="12" y2="0" class="bond-line" />
+        <line x1="0" y1="8" x2="12" y2="0" class="bond-line" />
+        <text x="13" y="6" class="chem-text">C</text>
+        <line x1="28" y1="-2" x2="42" y2="-2" class="bond-line" />
+        <line x1="28" y1="4" x2="42" y2="4" class="bond-line" />
+        <text x="44" y="6" class="chem-text">O</text>
+      </g>
+
+      <text x="260" y="82" class="bengali-text">কার্বোনাইল</text>
+      <text x="350" y="82" class="chem-text">(&gt;C=O)</text>
+      <text x="418" y="82" class="bengali-text">মূলকের</text>
+
+      <!-- Line 4: সাথে অপর অণুর –OH মূলকের H বন্ধন ঘটে এবং এ H বন্ধন -->
+      <text x="0" y="112" class="bengali-text">সাথে অপর অণুর</text>
+      <text x="125" y="112" class="chem-text">–OH</text>
+      <text x="175" y="112" class="bengali-text">মূলকের</text>
+      <text x="238" y="112" class="chem-text">H</text>
+      <text x="258" y="112" class="bengali-text">বন্ধন ঘটে এবং এ</text>
+      <text x="388" y="112" class="chem-text">H</text>
+      <text x="408" y="112" class="bengali-text">বন্ধন</text>
+
+      <!-- Line 5: তুলনামূলকভাবে অন্যান্য অণুসমূহের আন্তঃআণবিক -->
+      <text x="0" y="142" class="bengali-text">তুলনামূলকভাবে অন্যান্য অণুসমূহের আন্তঃআণবিক</text>
+
+      <!-- Line 6: (Intermolecular) বন্ধন অপেক্ষা শক্তিশালী হয়। -->
+      <text x="0" y="172" class="chem-text">(Intermolecular)</text>
+      <text x="145" y="172" class="bengali-text">বন্ধন অপেক্ষা শক্তিশালী হয়।</text>
+    </g>
+
+    <!-- ETHANOIC ACID DIMER STRUCTURE -->
+    <g transform="translate(10, 190)">
+
+      <!-- Left Molecule: CH3-C -->
+      <text x="30" y="65" class="chem-large">CH<tspan baseline-shift="sub" class="sub-text">3</tspan>-C</text>
+
+      <!-- Double bond C=O (top-left) -->
+      <line x1="105" y1="48" x2="135" y2="28" class="bond-line" />
+      <line x1="110" y1="54" x2="140" y2="34" class="bond-line" />
+      <text x="142" y="26" class="chem-large">O</text>
+
+      <!-- Hydrogen bond O-H (top) -->
+      <line x1="162" y1="20" x2="225" y2="20" class="hydrogen-bond" />
+      <text x="232" y="26" class="chem-large">H</text>
+
+      <!-- Single bond H-O (top-right) -->
+      <line x1="252" y1="20" x2="282" y2="20" class="bond-line" />
+      <text x="288" y="26" class="chem-large">O</text>
+
+      <!-- Single bond O-C (top-right to right C) -->
+      <line x1="305" y1="32" x2="335" y2="60" class="bond-line" />
+
+      <!-- Right Molecule: C - CH3 -->
+      <text x="338" y="75" class="chem-large">C – CH<tspan baseline-shift="sub" class="sub-text">3</tspan></text>
+
+      <!-- Double bond C=O (bottom-right) -->
+      <line x1="332" y1="88" x2="302" y2="116" class="bond-line" />
+      <line x1="327" y1="82" x2="297" y2="110" class="bond-line" />
+      <text x="280" y="125" class="chem-large">O</text>
+
+      <!-- Hydrogen bond O-H (bottom) -->
+      <line x1="272" y1="120" x2="205" y2="120" class="hydrogen-bond" />
+      <text x="188" y="125" class="chem-large">H</text>
+
+      <!-- Single bond H-O (bottom-left to left C) -->
+      <!-- Left O-C single bond -->
+      <line x1="105" y1="72" x2="135" y2="105" class="bond-line" />
+      <text x="138" y="125" class="chem-large">O</text>
+      <!-- Single bond O-H -->
+      <line x1="158" y1="120" x2="182" y2="120" class="bond-line" />
+
+      <!-- Caption Below Diagram -->
+      <text x="30" y="165" class="bengali-text">ইথানোয়িক এসিডের ডাইমারে</text>
+      <text x="232" y="165" class="chem-large">H</text>
+      <text x="252" y="165" class="bengali-text">বন্ধন।</text>
+
+    </g>
+
+  </g>
+</svg>

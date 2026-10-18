@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 120" width="100%" height="100%">
+  <style>
+    .math-text { font-family: 'Times New Roman', serif; font-size: 26px; fill: #000; }
+    .math-italic { font-family: 'Times New Roman', serif; font-size: 26px; font-style: italic; fill: #000; }
+    .sub-text { font-size: 16px; }
+    .sup-text { font-size: 16px; }
+    .frac-line { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+    .paren { fill: none; stroke: #000; stroke-width: 2; stroke-linecap: round; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(15, 25)">
+
+    <!-- MAIN EQUATION LINE -->
+    <g transform="translate(10, 20)">
+
+      <!-- \bar{\upsilon} (nu bar) -->
+      <g transform="translate(0, 24)">
+        <text x="0" y="0" class="math-italic">υ</text>
+        <line x1="-2" y1="-22" x2="14" y2="-22" stroke="#000" stroke-width="2" />
+      </g>
+
+      <text x="25" y="24" class="math-text">=</text>
+      <text x="50" y="24" class="math-italic">R<tspan class="sub-text" font-style="normal">H</tspan></text>
+
+      <!-- First Term: (1/n1² - 1/n2²) -->
+      <g transform="translate(88, 0)">
+        <!-- Left Paren -->
+        <path d="M 8,-12 C -2,10 -2,42 8,64" class="paren" />
+
+        <!-- Fraction 1/n1² with proper subscript and superscript positioning -->
+        <g transform="translate(15, -4)">
+          <text x="7" y="18" class="math-text">1</text>
+          <line x1="0" y1="24" x2="28" y2="24" class="frac-line" />
+          <text x="2" y="48" class="math-italic">n<tspan font-style="normal" font-size="14px" dy="4">1</tspan><tspan font-style="normal" font-size="14px" dx="0" dy="-12">2</tspan></text>
+        </g>
+
+        <text x="50" y="24" class="math-text">–</text>
+
+        <!-- Fraction 1/n2² with proper subscript and superscript positioning -->
+        <g transform="translate(70, -4)">
+          <text x="7" y="18" class="math-text">1</text>
+          <line x1="0" y1="24" x2="28" y2="24" class="frac-line" />
+          <text x="2" y="48" class="math-italic">n<tspan font-style="normal" font-size="14px" dy="4">2</tspan><tspan font-style="normal" font-size="14px" dx="0" dy="-12">2</tspan></text>
+        </g>
+
+        <!-- Right Paren -->
+        <path d="M 104,-12 C 114,10 114,42 104,64" class="paren" />
+      </g>
+
+      <text x="210" y="24" class="math-text">=</text>
+      <text x="235" y="24" class="math-italic">R<tspan class="sub-text" font-style="normal">H</tspan></text>
+
+      <!-- Second Term: (1/2² - 1/3²) -->
+      <g transform="translate(273, 0)">
+        <!-- Left Paren -->
+        <path d="M 8,-12 C -2,10 -2,42 8,64" class="paren" />
+
+        <!-- Fraction 1/2² -->
+        <g transform="translate(15, -4)">
+          <text x="4" y="18" class="math-text">1</text>
+          <line x1="0" y1="24" x2="18" y2="24" class="frac-line" />
+          <text x="1" y="48" class="math-text">2<tspan class="sup-text">2</tspan></text>
+        </g>
+
+        <text x="40" y="24" class="math-text">–</text>
+
+        <!-- Fraction 1/3² -->
+        <g transform="translate(60, -4)">
+          <text x="4" y="18" class="math-text">1</text>
+          <line x1="0" y1="24" x2="18" y2="24" class="frac-line" />
+          <text x="1" y="48" class="math-text">3<tspan class="sup-text">2</tspan></text>
+        </g>
+
+        <!-- Right Paren -->
+        <path d="M 85,-12 C 95,10 95,42 85,64" class="paren" />
+      </g>
+
+      <text x="370" y="24" class="math-text">=</text>
+
+      <!-- Final Fraction Term: 5/36 R_H -->
+      <g transform="translate(393, -4)">
+        <text x="6" y="18" class="math-text">5</text>
+        <line x1="0" y1="24" x2="25" y2="24" class="frac-line" />
+        <text x="1" y="48" class="math-text">36</text>
+      </g>
+
+      <text x="426" y="24" class="math-italic">R<tspan class="sub-text" font-style="normal">H</tspan></text>
+
+    </g>
+
+  </g>
+</svg>

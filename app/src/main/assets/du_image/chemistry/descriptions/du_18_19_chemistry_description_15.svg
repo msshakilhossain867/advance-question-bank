@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" width="100%" height="100%">
+  <style>
+    .chem-text {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      fill: #000000;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+    .info-text {
+      font-family: 'SolaimanLipi', Arial, sans-serif;
+      font-size: 22px;
+      font-weight: bold;
+      fill: #000000;
+    }
+    .num-text {
+      font-family: Arial, sans-serif;
+      font-size: 22px;
+      font-weight: bold;
+      fill: #000000;
+    }
+    .bond {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      fill: none;
+    }
+    .arrow {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      fill: none;
+    }
+    .arrow-head {
+      fill: #000000;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(20, 20)">
+    <!-- Left Al Atom -->
+    <text x="110" y="120" class="chem-text">Al</text>
+    
+    <!-- Right Al Atom -->
+    <text x="290" y="120" class="chem-text">Al</text>
+
+    <!-- Outer Left Cl Atoms -->
+    <text x="35" y="35" class="chem-text">Cl</text>
+    <text x="35" y="205" class="chem-text">Cl</text>
+
+    <!-- Outer Right Cl Atoms -->
+    <text x="365" y="35" class="chem-text">Cl</text>
+    <text x="365" y="205" class="chem-text">Cl</text>
+
+    <!-- Bridging Cl Atoms -->
+    <text x="200" y="45" class="chem-text">Cl</text>
+    <text x="200" y="195" class="chem-text">Cl</text>
+
+    <!-- Bonds from Left Al -->
+    <!-- Top-Left Cl bond -->
+    <line x1="95" y1="105" x2="48" y2="50" class="bond" />
+    <!-- Bottom-Left Cl bond -->
+    <line x1="95" y1="135" x2="48" y2="190" class="bond" />
+    <!-- Top Bridging Cl Covalent bond -->
+    <line x1="125" y1="105" x2="187" y2="58" class="bond" />
+
+    <!-- Coordinate Bond from Bottom Cl to Left Al (Arrow Pointing Left-Up) -->
+    <line x1="187" y1="182" x2="135" y2="138" class="arrow" />
+    <g transform="translate(130, 134) rotate(220)">
+      <polygon points="-8,-5 6,0 -8,5" class="arrow-head" />
+    </g>
+
+    <!-- Bonds from Right Al -->
+    <!-- Top-Right Cl bond -->
+    <line x1="305" y1="105" x2="352" y2="50" class="bond" />
+    <!-- Bottom-Right Cl bond -->
+    <line x1="305" y1="135" x2="352" y2="190" class="bond" />
+    <!-- Bottom Bridging Cl Covalent bond -->
+    <line x1="275" y1="135" x2="213" y2="182" class="bond" />
+
+    <!-- Coordinate Bond from Top Cl to Right Al (Arrow Pointing Right-Down) -->
+    <line x1="213" y1="58" x2="265" y2="102" class="arrow" />
+    <g transform="translate(270, 106) rotate(40)">
+      <polygon points="-8,-5 6,0 -8,5" class="arrow-head" />
+    </g>
+
+    <!-- Info Text Section (Right Side) -->
+    <g transform="translate(390, 80)">
+      <!-- Covalent Bond Row -->
+      <text x="0" y="25" class="info-text">সমযোজী</text>
+      <line x1="75" y1="20" x2="115" y2="20" class="arrow" />
+      <polygon points="115,15 125,20 115,25" class="arrow-head" />
+      <text x="135" y="25" class="num-text">6</text>
+
+      <!-- Coordinate Bond Row -->
+      <text x="0" y="75" class="info-text">সন্নিবেশ</text>
+      <line x1="75" y1="70" x2="115" y2="70" class="arrow" />
+      <polygon points="115,65 125,70 115,75" class="arrow-head" />
+      <text x="135" y="75" class="num-text">2</text>
+    </g>
+  </g>
+</svg>

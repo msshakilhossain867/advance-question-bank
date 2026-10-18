@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100%" height="100%">
+  <!-- Outer Rectangular Frame -->
+  <rect x="15" y="15" width="70" height="90" rx="3" ry="3" 
+        fill="none" 
+        stroke="black" 
+        stroke-width="5" 
+        stroke-linejoin="round"/>
+
+  <!-- Top Horizontal Bar (-) -->
+  <line x1="25" y1="28" x2="75" y2="28" 
+        stroke="black" 
+        stroke-width="5" 
+        stroke-linecap="round"/>
+
+  <!-- Bottom Right Plus Sign (+): Horizontal Line -->
+  <line x1="60" y1="85" x2="76" y2="85" 
+        stroke="black" 
+        stroke-width="5" 
+        stroke-linecap="round"/>
+
+  <!-- Bottom Right Plus Sign (+): Vertical Line -->
+  <line x1="68" y1="77" x2="68" y2="93" 
+        stroke="black" 
+        stroke-width="5" 
+        stroke-linecap="round"/>
+</svg>

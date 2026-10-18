@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 320" width="100%" height="100%">
+  <style>
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 20px; font-weight: bold; fill: #000; }
+    .chem-text { font-family: 'Times New Roman', serif; font-size: 24px; fill: #000; }
+    .chem-large { font-family: 'Times New Roman', serif; font-size: 28px; fill: #000; }
+    .bond-line { stroke: #000; stroke-width: 2.2; stroke-linecap: round; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(15, 15)">
+
+    <!-- TEXT SECTION AT TOP -->
+    <g transform="translate(0, 0)">
+      <!-- Line 1: সিস-ট্রান্স সমাণু গঠনের জন্য সাধারণত -->
+      <text x="140" y="22" class="bengali-text">সিস-ট্রান্স সমাণু গঠনের জন্য সাধারণত</text>
+
+      <!-- Line 2: abC = Cab বা abC = Cbc অথবা -->
+      <text x="50" y="56" class="chem-text">abC = Cab</text>
+      <text x="170" y="56" class="bengali-text">বা</text>
+      <text x="195" y="56" class="chem-text">abC = Cbc</text>
+      <text x="315" y="56" class="bengali-text">অথবা</text>
+
+      <!-- Line 3: abC = Ccd গঠনের প্রয়োজন হয়। -->
+      <text x="50" y="90" class="chem-text">abC = Ccd</text>
+      <text x="175" y="90" class="bengali-text">গঠনের প্রয়োজন হয়।</text>
+    </g>
+
+    <!-- ISOMER STRUCTURES SECTION -->
+    <g transform="translate(10, 110)">
+
+      <!-- LEFT ISOMER: Cis-isomer (1,2-dichloroethene) -->
+      <g transform="translate(30, 10)">
+        <!-- Double bond C = C -->
+        <text x="65" y="72" class="chem-large">C</text>
+        <line x1="88" y1="58" x2="128" y2="58" class="bond-line" />
+        <line x1="88" y1="68" x2="128" y2="68" class="bond-line" />
+        <text x="135" y="72" class="chem-large">C</text>
+
+        <!-- Left C Bonds -->
+        <!-- Top-Left Cl -->
+        <line x1="60" y1="50" x2="38" y2="25" class="bond-line" />
+        <text x="12" y="22" class="chem-large">Cl</text>
+        <!-- Bottom-Left H -->
+        <line x1="60" y1="80" x2="38" y2="105" class="bond-line" />
+        <text x="18" y="118" class="chem-large">H</text>
+
+        <!-- Right C Bonds -->
+        <!-- Top-Right Cl -->
+        <line x1="155" y1="50" x2="178" y2="25" class="bond-line" />
+        <text x="182" y="22" class="chem-large">Cl</text>
+        <!-- Bottom-Right H -->
+        <line x1="155" y1="80" x2="178" y2="105" class="bond-line" />
+        <text x="182" y="118" class="chem-large">H</text>
+
+        <!-- Caption: Cis-সমাণু -->
+        <text x="45" y="160" class="chem-text">Cis-</text>
+        <text x="92" y="160" class="bengali-text">সমাণু</text>
+      </g>
+
+      <!-- RIGHT ISOMER: Trans-isomer (1,2-dichloroethene) -->
+      <g transform="translate(270, 10)">
+        <!-- Double bond C = C -->
+        <text x="65" y="72" class="chem-large">C</text>
+        <line x1="88" y1="58" x2="128" y2="58" class="bond-line" />
+        <line x1="88" y1="68" x2="128" y2="68" class="bond-line" />
+        <text x="135" y="72" class="chem-large">C</text>
+
+        <!-- Left C Bonds -->
+        <!-- Top-Left Cl -->
+        <line x1="60" y1="50" x2="38" y2="25" class="bond-line" />
+        <text x="12" y="22" class="chem-large">Cl</text>
+        <!-- Bottom-Left H -->
+        <line x1="60" y1="80" x2="38" y2="105" class="bond-line" />
+        <text x="18" y="118" class="chem-large">H</text>
+
+        <!-- Right C Bonds -->
+        <!-- Top-Right H -->
+        <line x1="155" y1="50" x2="178" y2="25" class="bond-line" />
+        <text x="182" y="22" class="chem-large">H</text>
+        <!-- Bottom-Right Cl -->
+        <line x1="155" y1="80" x2="178" y2="105" class="bond-line" />
+        <text x="182" y="118" class="chem-large">Cl</text>
+
+        <!-- Caption: Trans-সমাণু -->
+        <text x="38" y="160" class="chem-text">Trans-</text>
+        <text x="108" y="160" class="bengali-text">সমাণু</text>
+      </g>
+
+    </g>
+
+  </g>
+</svg>

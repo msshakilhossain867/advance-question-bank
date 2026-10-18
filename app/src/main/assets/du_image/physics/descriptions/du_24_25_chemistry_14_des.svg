@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 280" width="100%" height="100%">
+  <defs>
+    <!-- Arrowhead Marker for Transition Arrow -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#000000"/>
+    </marker>
+  </defs>
+
+  <style>
+    .math-text { font-family: 'Times New Roman', serif; font-size: 26px; fill: #000; }
+    .math-italic { font-family: 'Times New Roman', serif; font-size: 26px; font-style: italic; fill: #000; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 22px; font-weight: bold; fill: #000; }
+    .frac-line { stroke: #000; stroke-width: 1.8; stroke-linecap: round; }
+    .orbit-outer { fill: #808080; stroke: #000000; stroke-width: 2.5; }
+    .orbit-inner { fill: #656565; stroke: #000000; stroke-width: 2.5; }
+    .electron-dot { fill: #ffffff; stroke: #000000; stroke-width: 2; }
+    .transition-arrow { stroke: #000000; stroke-width: 2.5; stroke-linecap: round; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(15, 15)">
+
+    <!-- CENTER TOP: BOHR ATOM MODEL DIAGRAM -->
+    <g transform="translate(270, 80)">
+      <!-- Outer Orbit Circle -->
+      <circle cx="0" cy="0" r="65" class="orbit-outer" />
+      <!-- Inner Orbit Circle -->
+      <circle cx="0" cy="0" r="38" class="orbit-inner" />
+
+      <!-- Electron at Outer Orbit -->
+      <circle cx="37" cy="-53" r="5" class="electron-dot" />
+
+      <!-- Electron Transition Arrow pointing inwards -->
+      <line x1="33" y1="-47" x2="24" y2="-33" class="transition-arrow" marker-end="url(#arrow)" />
+
+      <!-- Electron at Inner Orbit -->
+      <circle cx="22" cy="-31" r="5" class="electron-dot" />
+    </g>
+
+    <!-- MIDDLE: PROPORTIONALITY EQUATIONS (Sufficient vertical gap from diagram) -->
+    <!-- E ∝ M এবং E ∝ 1/λ -->
+    <g transform="translate(145, 180)">
+      <text x="0" y="24" class="math-italic">E &#x221D; M</text>
+      <text x="80" y="24" class="bengali-text">এবং</text>
+      <text x="130" y="24" class="math-italic">E &#x221D;</text>
+
+      <!-- Fraction 1 / λ -->
+      <g transform="translate(165, -9)">
+        <text x="4" y="18" class="math-text">1</text>
+        <line x1="0" y1="26" x2="18" y2="26" class="frac-line" />
+        <text x="2" y="50" class="math-italic">&#x03BB;</text>
+      </g>
+    </g>
+
+    <!-- BOTTOM: EXPLANATION TEXT IN BENGALI (Sufficient vertical gap) -->
+    <!-- অর্থাৎ যার ভর বেশি তার তরঙ্গ দৈর্ঘ্য কম। -->
+    <g transform="translate(100, 245)">
+      <text x="0" y="0" class="bengali-text">অর্থাৎ যার ভর বেশি তার তরঙ্গ দৈর্ঘ্য কম।</text>
+    </g>
+
+  </g>
+</svg>

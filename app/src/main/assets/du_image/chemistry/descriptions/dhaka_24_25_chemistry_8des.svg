@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 320" width="100%" height="100%">
+  <style>
+    .chem-text { font-family: 'Times New Roman', serif; font-size: 22px; fill: #000; }
+    .chem-large { font-family: 'Times New Roman', serif; font-size: 26px; fill: #000; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 20px; font-weight: bold; fill: #000; }
+    .sub-text { font-size: 14px; }
+    .sup-text { font-size: 14px; }
+    .bond-line { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+    .lone-pair { fill: #000; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(15, 15)">
+
+    <!-- BENGALI EXPLANATION TEXT -->
+    <g transform="translate(0, 0)">
+      <!-- Line 1: N2H4 এর নাইট্রোজেন sp³ সংকরায়িত। তাই ∠HNH -->
+      <text x="0" y="22" class="chem-text">N<tspan baseline-shift="sub" class="sub-text">2</tspan>H<tspan baseline-shift="sub" class="sub-text">4</tspan></text>
+      <text x="50" y="22" class="bengali-text">এর নাইট্রোজেন</text>
+      <text x="175" y="22" class="chem-text">sp<tspan baseline-shift="super" class="sup-text">3</tspan></text>
+      <text x="205" y="22" class="bengali-text">হাইব্রিডাইজড্। তাই</text>
+      <text x="355" y="22" class="chem-text">&#x2220;HNH</text>
+
+      <!-- Line 2: এর বন্ধন কোণ 109.5° হওয়ার কথা। কিন্তু হাইব্রিডাইজড্ -->
+      <text x="0" y="52" class="bengali-text">এর বন্ধন কোণ</text>
+      <text x="110" y="52" class="chem-text">109.5°</text>
+      <text x="175" y="52" class="bengali-text">হওয়ার কথা। কিন্তু হাইব্রিডাইজড্</text>
+
+      <!-- Line 3: নাইট্রোজেনে উপস্থিত নিঃসঙ্গ ইলেকট্রন জোড়ের কারণে বন্ধন -->
+      <text x="0" y="82" class="bengali-text">নাইট্রোজেনে উপস্থিত নিঃসঙ্গ ইলেকট্রন জোড়ের কারণে বন্ধন</text>
+
+      <!-- Line 4: কোণ সংকুচিত হয়ে 107° হবে। -->
+      <text x="0" y="112" class="bengali-text">কোণ সংকুচিত হয়ে</text>
+      <text x="145" y="112" class="chem-text">107°</text>
+      <text x="190" y="112" class="bengali-text">হবে।</text>
+    </g>
+
+    <!-- VSEPR ORDER TEXT -->
+    <!-- LP-LP > LP - BP > BP - BP -->
+    <g transform="translate(110, 150)">
+      <text x="0" y="0" class="chem-text">LP-LP &gt; LP - BP &gt; BP - BP</text>
+    </g>
+
+    <!-- HYDRAZINE (N2H4) MOLECULAR STRUCTURE -->
+    <g transform="translate(40, 170)">
+
+      <!-- Left Nitrogen N -->
+      <text x="95" y="65" class="chem-large">N</text>
+      <!-- Left N Lone Pair (Left side of N) -->
+      <circle cx="80" cy="58" r="2.5" class="lone-pair" />
+      <circle cx="80" cy="68" r="2.5" class="lone-pair" />
+
+      <!-- N - N Single Bond -->
+      <line x1="118" y1="58" x2="152" y2="58" class="bond-line" />
+
+      <!-- Right Nitrogen N -->
+      <text x="155" y="65" class="chem-large">N</text>
+      <!-- Right N Lone Pair (Right side of N) -->
+      <circle cx="185" cy="58" r="2.5" class="lone-pair" />
+      <circle cx="185" cy="68" r="2.5" class="lone-pair" />
+
+      <!-- Left N - H Bonds -->
+      <!-- Top-Left H -->
+      <line x1="90" y1="42" x2="68" y2="20" class="bond-line" />
+      <text x="52" y="18" class="chem-large">H</text>
+
+      <!-- Bottom-Left H -->
+      <line x1="90" y1="72" x2="68" y2="94" class="bond-line" />
+      <text x="52" y="108" class="chem-large">H</text>
+
+      <!-- Right N - H Bonds -->
+      <!-- Top-Right H -->
+      <line x1="178" y1="42" x2="200" y2="20" class="bond-line" />
+      <text x="205" y="18" class="chem-large">H</text>
+
+      <!-- Bottom-Right H -->
+      <line x1="178" y1="72" x2="200" y2="94" class="bond-line" />
+      <text x="205" y="108" class="chem-large">H</text>
+
+    </g>
+
+  </g>
+</svg>

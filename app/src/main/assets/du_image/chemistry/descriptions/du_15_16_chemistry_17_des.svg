@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 320" width="100%" height="100%">
+  <style>
+    .chem-text { font-family: 'Times New Roman', serif; font-size: 28px; font-weight: normal; fill: #000; }
+    .greek-text { font-family: 'Times New Roman', serif; font-size: 24px; font-style: italic; fill: #000; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 24px; font-weight: bold; fill: #000; }
+    .math-text { font-family: 'Times New Roman', serif; font-size: 26px; fill: #000; }
+    .bond-line { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(20, 20)">
+
+    <!-- CHEMICAL STRUCTURE SECTION -->
+    <g transform="translate(10, 10)">
+
+      <!-- Top Hydrogens (H) -->
+      <text x="35" y="30" class="chem-text" text-anchor="middle">H</text>
+      <text x="205" y="30" class="chem-text" text-anchor="middle">H</text>
+
+      <!-- Top Vertical Bonds (σ) -->
+      <line x1="35" y1="38" x2="35" y2="72" class="bond-line" />
+      <text x="47" y="60" class="greek-text">σ</text>
+
+      <line x1="205" y1="38" x2="205" y2="72" class="bond-line" />
+      <text x="217" y="60" class="greek-text">σ</text>
+
+      <!-- Main Horizontal Chain (C = C - C - C = O) -->
+      <g transform="translate(0, 95)">
+        <!-- C1 -->
+        <text x="35" y="0" class="chem-text" text-anchor="middle">C</text>
+
+        <!-- Double Bond 1 (C = C) with σ and π -->
+        <g transform="translate(52, -18)">
+          <line x1="0" y1="8" x2="35" y2="8" class="bond-line" />
+          <line x1="0" y1="18" x2="35" y2="18" class="bond-line" />
+          <text x="17" y="-2" class="greek-text" text-anchor="middle">σ</text>
+          <text x="17" y="38" class="greek-text" text-anchor="middle">π</text>
+        </g>
+
+        <!-- C2 -->
+        <text x="120" y="0" class="chem-text" text-anchor="middle">C</text>
+
+        <!-- Single Bond 2 (C - C) with σ -->
+        <g transform="translate(137, -18)">
+          <line x1="0" y1="13" x2="35" y2="13" class="bond-line" />
+          <text x="17" y="3" class="greek-text" text-anchor="middle">σ</text>
+        </g>
+
+        <!-- C3 -->
+        <text x="205" y="0" class="chem-text" text-anchor="middle">C</text>
+
+        <!-- Single Bond 3 (C - C) with σ -->
+        <g transform="translate(222, -18)">
+          <line x1="0" y1="13" x2="35" y2="13" class="bond-line" />
+          <text x="17" y="3" class="greek-text" text-anchor="middle">σ</text>
+        </g>
+
+        <!-- C4 -->
+        <text x="290" y="0" class="chem-text" text-anchor="middle">C</text>
+
+        <!-- Double Bond 4 (C = O) with σ and π -->
+        <g transform="translate(307, -18)">
+          <line x1="0" y1="8" x2="35" y2="8" class="bond-line" />
+          <line x1="0" y1="18" x2="35" y2="18" class="bond-line" />
+          <text x="17" y="-2" class="greek-text" text-anchor="middle">σ</text>
+          <text x="17" y="38" class="greek-text" text-anchor="middle">π</text>
+        </g>
+
+        <!-- O -->
+        <text x="375" y="0" class="chem-text" text-anchor="middle">O</text>
+        <text x="400" y="0" class="math-text">;</text>
+      </g>
+
+      <!-- Bottom Vertical Bonds (σ) -->
+      <g transform="translate(0, 105)">
+        <line x1="35" y1="0" x2="35" y2="34" class="bond-line" />
+        <text x="47" y="22" class="greek-text">σ</text>
+
+        <line x1="120" y1="0" x2="120" y2="34" class="bond-line" />
+        <text x="132" y="22" class="greek-text">σ</text>
+
+        <line x1="205" y1="0" x2="205" y2="34" class="bond-line" />
+        <text x="217" y="22" class="greek-text">σ</text>
+
+        <line x1="290" y1="0" x2="290" y2="34" class="bond-line" />
+        <text x="302" y="22" class="greek-text">σ</text>
+      </g>
+
+      <!-- Bottom Hydrogens (H) -->
+      <text x="35" y="165" class="chem-text" text-anchor="middle">H</text>
+      <text x="120" y="165" class="chem-text" text-anchor="middle">H</text>
+      <text x="205" y="165" class="chem-text" text-anchor="middle">H</text>
+      <text x="290" y="165" class="chem-text" text-anchor="middle">H</text>
+
+    </g>
+
+    <!-- TEXT SUMMARY SECTION -->
+    <g transform="translate(10, 240)">
+      <text x="0" y="0" class="bengali-text">সুতরাং</text>
+      <text x="75" y="0" class="greek-text">σ</text>
+      <text x="95" y="0" class="bengali-text">বন্ধন</text>
+      <text x="145" y="0" class="math-text">10</text>
+      <text x="178" y="0" class="bengali-text">টি এবং</text>
+      <text x="245" y="0" class="greek-text">π</text>
+      <text x="262" y="0" class="bengali-text">বন্ধন</text>
+      <text x="312" y="0" class="math-text">2</text>
+      <text x="330" y="0" class="bengali-text">টি</text>
+    </g>
+
+  </g>
+</svg>

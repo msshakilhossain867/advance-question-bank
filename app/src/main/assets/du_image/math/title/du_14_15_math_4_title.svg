@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 180" width="100%" height="100%">
+  <style>
+    .math-text { font-family: 'Times New Roman', serif; font-size: 26px; font-style: italic; fill: #000; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 22px; font-weight: bold; fill: #000; }
+    .symbol-text { font-family: 'Times New Roman', serif; font-size: 26px; fill: #000; }
+    .bracket-line { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <!-- Main Container -->
+  <g transform="translate(15, 40)">
+    
+    <!-- Left Bengali Text: x এর সমাধান নির্ণয় কর: -->
+    <text x="0" y="62" class="math-text">x</text>
+    <text x="20" y="62" class="bengali-text">এর সমাধান নির্ণয় কর:</text>
+
+    <!-- DETERMINANT STRUCTURE -->
+    <g transform="translate(230, 0)">
+      
+      <!-- Left Vertical Bar -->
+      <line x1="0" y1="0" x2="0" y2="105" class="bracket-line" />
+
+      <!-- Row 1: a  a  x -->
+      <text x="15" y="30" class="math-text">a</text>
+      <text x="55" y="30" class="math-text">a</text>
+      <text x="95" y="30" class="math-text">x</text>
+
+      <!-- Row 2: m  m  m -->
+      <text x="12" y="62" class="math-text">m</text>
+      <text x="52" y="62" class="math-text">m</text>
+      <text x="92" y="62" class="math-text">m</text>
+
+      <!-- Row 3: b  x  b -->
+      <text x="15" y="94" class="math-text">b</text>
+      <text x="55" y="94" class="math-text">x</text>
+      <text x="95" y="94" class="math-text">b</text>
+
+      <!-- Right Vertical Bar -->
+      <line x1="115" y1="0" x2="115" y2="105" class="bracket-line" />
+
+      <!-- Equal Sign & Condition: = 0, (m ≠ 0) -->
+      <text x="128" y="62" class="symbol-text">=</text>
+      <text x="148" y="62" class="symbol-text">0</text>
+      <text x="160" y="62" class="symbol-text">,</text>
+      <text x="170" y="62" class="symbol-text">(</text>
+      <text x="178" y="62" class="math-text">m</text>
+      <text x="198" y="62" class="symbol-text">≠</text>
+      <text x="218" y="62" class="math-text">0</text>
+      <text x="230" y="62" class="symbol-text">)</text>
+    </g>
+
+  </g>
+</svg>

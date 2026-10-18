@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 320" width="100%" height="100%">
+  <style>
+    .math-text { font-family: 'Times New Roman', serif; font-size: 24px; fill: #000; }
+    .math-italic { font-family: 'Times New Roman', serif; font-size: 24px; font-style: italic; fill: #000; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 20px; font-weight: bold; fill: #000; }
+    .sub-text { font-size: 15px; }
+    .sup-text { font-size: 15px; }
+    .frac-line { stroke: #000; stroke-width: 1.8; stroke-linecap: round; }
+    .paren { fill: none; stroke: #000; stroke-width: 1.8; stroke-linecap: round; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(15, 15)">
+
+    <!-- LINE 1: তরঙ্গ সংখ্যা, \bar{\upsilon} = R_H (1/n_1^2 - 1/n_2^2) -->
+    <g transform="translate(20, 20)">
+      <text x="0" y="24" class="bengali-text">তরঙ্গ সংখ্যা,</text>
+
+      <!-- \bar{\upsilon} (nu bar) -->
+      <g transform="translate(100, 24)">
+        <text x="0" y="0" class="math-italic">υ</text>
+        <line x1="-2" y1="-20" x2="12" y2="-20" stroke="#000" stroke-width="1.8" />
+      </g>
+
+      <text x="125" y="24" class="math-text">=</text>
+      <text x="145" y="24" class="math-italic">R<tspan class="sub-text" font-style="normal">H</tspan></text>
+
+      <!-- Parentheses & Fraction (1/n1² - 1/n2²) -->
+      <g transform="translate(180, 0)">
+        <!-- Left Paren -->
+        <path d="M 8,-10 C -2,10 -2,40 8,60" class="paren" />
+
+        <!-- 1/n1² -->
+        <g transform="translate(15, -4)">
+          <text x="5" y="18" class="math-text">1</text>
+          <line x1="0" y1="24" x2="22" y2="24" class="frac-line" />
+          <text x="2" y="46" class="math-italic">n<tspan class="sub-text" font-style="normal">1</tspan><tspan class="sup-text" font-style="normal">2</tspan></text>
+        </g>
+
+        <text x="44" y="24" class="math-text">–</text>
+
+        <!-- 1/n2² -->
+        <g transform="translate(62, -4)">
+          <text x="5" y="18" class="math-text">1</text>
+          <line x1="0" y1="24" x2="22" y2="24" class="frac-line" />
+          <text x="2" y="46" class="math-italic">n<tspan class="sub-text" font-style="normal">2</tspan><tspan class="sup-text" font-style="normal">2</tspan></text>
+        </g>
+
+        <!-- Right Paren -->
+        <path d="M 90,-10 C 100,10 100,40 90,60" class="paren" />
+      </g>
+    </g>
+
+    <!-- LINE 2: বামার সিরিজে সর্বনিম্ন তরঙ্গ সংখ্যার জন্য, n_1 = 2, n_2 = 3 -->
+    <g transform="translate(20, 100)">
+      <text x="0" y="0" class="bengali-text">বামার সিরিজে সর্বনিম্ন তরঙ্গ সংখ্যার জন্য,</text>
+      <text x="290" y="0" class="math-italic">n<tspan class="sub-text" font-style="normal">1</tspan> <tspan font-style="normal">= 2,</tspan> n<tspan class="sub-text" font-style="normal">2</tspan> <tspan font-style="normal">= 3</tspan></text>
+    </g>
+
+    <!-- LINE 3: ∴ তরঙ্গ সংখ্যা, \bar{\upsilon} = R_H (1/2² - 1/3²) -->
+    <g transform="translate(20, 150)">
+      <text x="0" y="24" class="math-text">∴</text>
+      <text x="20" y="24" class="bengali-text">তরঙ্গ সংখ্যা,</text>
+
+      <!-- \bar{\upsilon} (nu bar) -->
+      <g transform="translate(120, 24)">
+        <text x="0" y="0" class="math-italic">υ</text>
+        <line x1="-2" y1="-20" x2="12" y2="-20" stroke="#000" stroke-width="1.8" />
+      </g>
+
+      <text x="145" y="24" class="math-text">=</text>
+      <text x="165" y="24" class="math-italic">R<tspan class="sub-text" font-style="normal">H</tspan></text>
+
+      <!-- Parentheses & Fraction (1/2² - 1/3²) -->
+      <g transform="translate(200, 0)">
+        <!-- Left Paren -->
+        <path d="M 8,-10 C -2,10 -2,40 8,60" class="paren" />
+
+        <!-- 1/2² -->
+        <g transform="translate(15, -4)">
+          <text x="4" y="18" class="math-text">1</text>
+          <line x1="0" y1="24" x2="18" y2="24" class="frac-line" />
+          <text x="1" y="46" class="math-text">2<tspan class="sup-text">2</tspan></text>
+        </g>
+
+        <text x="40" y="24" class="math-text">–</text>
+
+        <!-- 1/3² -->
+        <g transform="translate(58, -4)">
+          <text x="4" y="18" class="math-text">1</text>
+          <line x1="0" y1="24" x2="18" y2="24" class="frac-line" />
+          <text x="1" y="46" class="math-text">3<tspan class="sup-text">2</tspan></text>
+        </g>
+
+        <!-- Right Paren -->
+        <path d="M 82,-10 C 92,10 92,40 82,60" class="paren" />
+      </g>
+    </g>
+
+    <!-- LINE 4: = R_H (1/4 - 1/9) = R_H (9-4 / 36) = 5/36 R_H -->
+    <g transform="translate(25, 230)">
+      <text x="0" y="24" class="math-text">=</text>
+      <text x="20" y="24" class="math-italic">R<tspan class="sub-text" font-style="normal">H</tspan></text>
+
+      <!-- First Fraction (1/4 - 1/9) -->
+      <g transform="translate(50, 0)">
+        <path d="M 8,-10 C -2,10 -2,40 8,60" class="paren" />
+
+        <g transform="translate(15, -4)">
+          <text x="3" y="18" class="math-text">1</text>
+          <line x1="0" y1="24" x2="16" y2="24" class="frac-line" />
+          <text x="3" y="46" class="math-text">4</text>
+        </g>
+
+        <text x="38" y="24" class="math-text">–</text>
+
+        <g transform="translate(56, -4)">
+          <text x="3" y="18" class="math-text">1</text>
+          <line x1="0" y1="24" x2="16" y2="24" class="frac-line" />
+          <text x="3" y="46" class="math-text">9</text>
+        </g>
+
+        <path d="M 80,-10 C 90,10 90,40 80,60" class="paren" />
+      </g>
+
+      <text x="145" y="24" class="math-text">=</text>
+      <text x="165" y="24" class="math-italic">R<tspan class="sub-text" font-style="normal">H</tspan></text>
+
+      <!-- Second Fraction (9-4 / 36) -->
+      <g transform="translate(195, 0)">
+        <path d="M 8,-10 C -2,10 -2,40 8,60" class="paren" />
+
+        <g transform="translate(15, -4)">
+          <text x="2" y="18" class="math-text">9 – 4</text>
+          <line x1="0" y1="24" x2="48" y2="24" class="frac-line" />
+          <text x="12" y="46" class="math-text">36</text>
+        </g>
+
+        <path d="M 70,-10 C 80,10 80,40 70,60" class="paren" />
+      </g>
+
+      <text x="280" y="24" class="math-text">=</text>
+
+      <!-- Final Fraction 5/36 R_H -->
+      <g transform="translate(302, -4)">
+        <text x="6" y="18" class="math-text">5</text>
+        <line x1="0" y1="24" x2="24" y2="24" class="frac-line" />
+        <text x="1" y="46" class="math-text">36</text>
+      </g>
+
+      <text x="332" y="24" class="math-italic">R<tspan class="sub-text" font-style="normal">H</tspan></text>
+    </g>
+
+  </g>
+</svg>

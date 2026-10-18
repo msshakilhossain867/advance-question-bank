@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" width="100%" height="100%">
+  <style>
+    .math-text { font-family: 'Times New Roman', serif; font-size: 26px; fill: #000; }
+    .math-italic { font-family: 'Times New Roman', serif; font-size: 26px; font-style: italic; fill: #000; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 22px; font-weight: bold; fill: #000; }
+    .sup-text { font-size: 16px; }
+    .det-bar { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+    .radical { stroke: #000; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .vector-arrow { stroke: #000; stroke-width: 1.5; stroke-linecap: round; fill: none; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(20, 20)">
+
+    <!-- LINE 1: Vector Cross Product Determinant -->
+    <g transform="translate(0, 0)">
+      
+      <!-- P→ × Q→ = -->
+      <g transform="translate(0, 70)">
+        <!-- Vector P with Arrow -->
+        <g transform="translate(0, 0)">
+          <text x="0" y="0" class="math-italic">P</text>
+          <line x1="0" y1="-22" x2="15" y2="-22" class="vector-arrow" />
+          <path d="M 11 -25 L 15 -22 L 11 -19" class="vector-arrow" />
+        </g>
+
+        <text x="20" y="0" class="math-text">×</text>
+
+        <!-- Vector Q with Arrow -->
+        <g transform="translate(42, 0)">
+          <text x="0" y="0" class="math-italic">Q</text>
+          <line x1="1" y1="-22" x2="16" y2="-22" class="vector-arrow" />
+          <path d="M 12 -25 L 16 -22 L 12 -19" class="vector-arrow" />
+        </g>
+
+        <text x="68" y="0" class="math-text">=</text>
+      </g>
+
+      <!-- Determinant Matrix -->
+      <g transform="translate(100, 0)">
+        <!-- Vertical Bar Left -->
+        <line x1="0" y1="10" x2="0" y2="135" class="det-bar" />
+
+        <!-- Row 1: i^   j^   k^ -->
+        <g transform="translate(15, 35)">
+          <text x="5" y="0" class="math-italic">i&#x0302;</text>
+          <text x="55" y="0" class="math-italic">j&#x0302;</text>
+          <text x="105" y="0" class="math-italic">k&#x0302;</text>
+        </g>
+
+        <!-- Row 2: 1  -1   1 -->
+        <g transform="translate(15, 75)">
+          <text x="3" y="0" class="math-text">1</text>
+          <text x="42" y="0" class="math-text">–1</text>
+          <text x="105" y="0" class="math-text">1</text>
+        </g>
+
+        <!-- Row 3: 1   1  -1 -->
+        <g transform="translate(15, 115)">
+          <text x="3" y="0" class="math-text">1</text>
+          <text x="50" y="0" class="math-text">1</text>
+          <text x="97" y="0" class="math-text">–1</text>
+        </g>
+
+        <!-- Vertical Bar Right -->
+        <line x1="135" y1="10" x2="135" y2="135" class="det-bar" />
+      </g>
+
+      <!-- = 2j^ + 2k^ -->
+      <g transform="translate(245, 70)">
+        <text x="0" y="0" class="math-italic"><tspan font-style="normal">=</tspan> 2 j&#x0302; <tspan font-style="normal">+</tspan> 2 k&#x0302;</text>
+      </g>
+    </g>
+
+    <!-- LINE 2: ∴ সামান্তরিকের ক্ষেত্রফল = | P→ × Q→ | -->
+    <g transform="translate(0, 175)">
+      <text x="0" y="0" class="bengali-text">&#x2234; সামান্তরিকের ক্ষেত্রফল</text>
+      <text x="195" y="0" class="math-text">=</text>
+
+      <!-- Modulus | P→ × Q→ | -->
+      <g transform="translate(215, -22)">
+        <line x1="0" y1="0" x2="0" y2="32" class="det-bar" />
+        
+        <g transform="translate(10, 23)">
+          <!-- Vector P with Arrow -->
+          <g transform="translate(0, 0)">
+            <text x="0" y="0" class="math-italic">P</text>
+            <line x1="0" y1="-22" x2="15" y2="-22" class="vector-arrow" />
+            <path d="M 11 -25 L 15 -22 L 11 -19" class="vector-arrow" />
+          </g>
+
+          <text x="20" y="0" class="math-text">×</text>
+
+          <!-- Vector Q with Arrow -->
+          <g transform="translate(42, 0)">
+            <text x="0" y="0" class="math-italic">Q</text>
+            <line x1="1" y1="-22" x2="16" y2="-22" class="vector-arrow" />
+            <path d="M 12 -25 L 16 -22 L 12 -19" class="vector-arrow" />
+          </g>
+        </g>
+
+        <line x1="82" y1="0" x2="82" y2="32" class="det-bar" />
+      </g>
+    </g>
+
+    <!-- LINE 3: = sqrt((2)² + (2)²) = sqrt(8) = 2 sqrt(2) -->
+    <g transform="translate(0, 225)">
+      <text x="0" y="12" class="math-text">=</text>
+
+      <!-- Square Root expression: sqrt((2)² + (2)²) -->
+      <g transform="translate(20, -12)">
+        <path d="M 0 28 L 5 28 L 10 40 L 17 6 L 140 6" class="radical" />
+        <text x="22" y="32" class="math-text">(2)<tspan baseline-shift="super" class="sup-text">2</tspan> + (2)<tspan baseline-shift="super" class="sup-text">2</tspan></text>
+      </g>
+
+      <text x="168" y="12" class="math-text">=</text>
+
+      <!-- Square Root expression: sqrt(8) -->
+      <g transform="translate(188, -12)">
+        <path d="M 0 28 L 5 28 L 10 40 L 17 6 L 40 6" class="radical" />
+        <text x="22" y="32" class="math-text">8</text>
+      </g>
+
+      <text x="235" y="12" class="math-text">=</text>
+
+      <text x="258" y="12" class="math-text">2</text>
+
+      <!-- Square Root expression: sqrt(2) -->
+      <g transform="translate(275, -12)">
+        <path d="M 0 28 L 5 28 L 10 40 L 17 6 L 40 6" class="radical" />
+        <text x="22" y="32" class="math-text">2</text>
+      </g>
+    </g>
+
+  </g>
+</svg>

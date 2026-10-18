@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 250" width="100%" height="100%">
+  <style>
+    .label-text {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 26px;
+      font-style: italic;
+      fill: #000000;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+    .axis {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      fill: none;
+    }
+    .graph-line {
+      stroke: #000000;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(30, 20)">
+    <!-- Y-axis (x) -->
+    <line x1="30" y1="20" x2="30" y2="200" class="axis" />
+    <text x="12" y="35" class="label-text">x</text>
+
+    <!-- X-axis (t) -->
+    <line x1="30" y1="120" x2="240" y2="120" class="axis" />
+    <text x="225" y="140" class="label-text">t</text>
+
+    <!-- Triangular / Zigzag Wave Path -->
+    <polyline points="30,120 90,60 135,120 180,195 205,50" class="graph-line" />
+  </g>
+</svg>

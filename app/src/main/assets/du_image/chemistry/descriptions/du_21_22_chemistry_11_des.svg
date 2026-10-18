@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 300" width="100%" height="100%">
+  <defs>
+    <!-- Arrowhead Marker for Chemical Reaction Arrows -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#000000" />
+    </marker>
+  </defs>
+
+  <style>
+    .chem-text { font-family: 'Times New Roman', serif; font-size: 22px; fill: #000; }
+    .chem-bold { font-family: 'Times New Roman', serif; font-size: 22px; font-weight: bold; fill: #000; }
+    .bengali-text { font-family: 'Kalpurush', 'Siyam Rupali', 'Hind Siliguri', sans-serif; font-size: 22px; font-weight: bold; fill: #000; }
+    .sub-text { font-size: 14px; }
+    .charge-text { font-size: 15px; font-weight: bold; }
+    .bond-line { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+    .reaction-arrow { stroke: #000; stroke-width: 2; stroke-linecap: round; }
+  </style>
+
+  <!-- Background Canvas -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <g transform="translate(10, 15)">
+
+    <!-- FIRST STEP: REACTION OF CH3MgX WITH CH3CHO -->
+    <g transform="translate(0, 20)">
+
+      <!-- CH3MgX + -->
+      <text x="0" y="32" class="chem-text">CH<tspan class="sub-text">3</tspan>MgX +</text>
+
+      <!-- CH3 - C(H) = O -->
+      <g transform="translate(112, 0)">
+        <text x="0" y="32" class="chem-text">CH<tspan class="sub-text">3</tspan></text>
+        <!-- Single bond CH3 - C -->
+        <line x1="38" y1="24" x2="52" y2="24" class="bond-line" />
+        
+        <!-- Central Carbon C -->
+        <text x="56" y="32" class="chem-text">C</text>
+        
+        <!-- Single bond C - H (Top) -->
+        <line x1="64" y1="12" x2="64" y2="-2" class="bond-line" />
+        <text x="59" y="-6" class="chem-text">H</text>
+        
+        <!-- Double bond C = O (Right) -->
+        <line x1="74" y1="18" x2="90" y2="18" class="bond-line" />
+        <line x1="74" y1="28" x2="90" y2="28" class="bond-line" />
+        <text x="94" y="32" class="chem-text">O</text>
+      </g>
+
+      <!-- Horizontal Reaction Arrow (Dry Ether) -->
+      <g transform="translate(235, 24)">
+        <text x="25" y="-8" class="chem-text" text-anchor="middle">Dry Ether</text>
+        <line x1="0" y1="0" x2="70" y2="0" class="reaction-arrow" marker-end="url(#arrow)" />
+      </g>
+
+      <!-- Intermediate Addition Product: CH3 - C(H)(CH3) - O⁻ Mg⁺X -->
+      <g transform="translate(310, 0)">
+        <text x="0" y="32" class="chem-text">CH<tspan class="sub-text">3</tspan></text>
+        <!-- Single bond CH3 - C -->
+        <line x1="38" y1="24" x2="52" y2="24" class="bond-line" />
+
+        <!-- Central Carbon C -->
+        <text x="56" y="32" class="chem-text">C</text>
+
+        <!-- Single bond C - H (Top) -->
+        <line x1="64" y1="12" x2="64" y2="-2" class="bond-line" />
+        <text x="59" y="-6" class="chem-text">H</text>
+
+        <!-- Single bond C - CH3 (Bottom) -->
+        <line x1="64" y1="38" x2="64" y2="52" class="bond-line" />
+        <text x="45" y="72" class="chem-text">CH<tspan class="sub-text">3</tspan></text>
+
+        <!-- Single bond C - O⁻ Mg⁺X (Right) -->
+        <line x1="74" y1="24" x2="88" y2="24" class="bond-line" />
+        <text x="92" y="32" class="chem-text">O<tspan class="charge-text">−</tspan>Mg<tspan class="charge-text">+</tspan>X</text>
+      </g>
+
+    </g>
+
+    <!-- SECOND STEP: HYDROLYSIS (VERTICAL ARROW) -->
+    <g transform="translate(370, 120)">
+      <!-- Vertical Downward Arrow -->
+      <line x1="0" y1="0" x2="0" y2="35" class="reaction-arrow" marker-end="url(#arrow)" />
+      
+      <!-- Conditions: HCl(aq) | H2O, Δ -->
+      <text x="-72" y="16" class="chem-text">HCl(aq)</text>
+      <line x1="-8" y1="2" x2="-8" y2="20" class="bond-line" />
+      <text x="2" y="16" class="chem-text">H<tspan class="sub-text">2</tspan>O, Δ</text>
+    </g>
+
+    <!-- THIRD STEP: FINAL PRODUCTS (ISOPROPANOL + Mg(OH)X) -->
+    <g transform="translate(310, 180)">
+
+      <!-- CH3 - C(H)(CH3) - OH -->
+      <text x="0" y="32" class="chem-text">CH<tspan class="sub-text">3</tspan></text>
+      <!-- Single bond CH3 - C -->
+      <line x1="38" y1="24" x2="52" y2="24" class="bond-line" />
+
+      <!-- Central Carbon C -->
+      <text x="56" y="32" class="chem-text">C</text>
+
+      <!-- Single bond C - H (Top) -->
+      <line x1="64" y1="12" x2="64" y2="-2" class="bond-line" />
+      <text x="59" y="-6" class="chem-text">H</text>
+
+      <!-- Single bond C - CH3 (Bottom) -->
+      <line x1="64" y1="38" x2="64" y2="52" class="bond-line" />
+      <text x="45" y="72" class="chem-text">CH<tspan class="sub-text">3</tspan></text>
+
+      <!-- Single bond C - OH (Right) -->
+      <line x1="74" y1="24" x2="88" y2="24" class="bond-line" />
+      <text x="92" y="32" class="chem-text">OH + Mg(OH)X</text>
+
+      <!-- Bengali Product Name Label Below -->
+      <text x="22" y="102" class="bengali-text">আইসোপ্রোপানল</text>
+
+    </g>
+
+  </g>
+</svg>
