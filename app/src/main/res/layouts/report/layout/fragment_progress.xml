@@ -1,58 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.report.ProgressFragment"
+    android:background="@color/screen_background"
+    tools:context=".presentation.fragments.ProgressFragment"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/_11sdp">
 
         <!-- ================================================= -->
         <!-- TITLE -->
         <!-- ================================================= -->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Progress"
-            android:textSize="26sp"
+            android:textSize="@dimen/_20ssp"
             android:textStyle="bold"
-            android:textColor="#222222"/>
-
+            android:textColor="@color/home_text_primary"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:text="Overall progress • Last 7 days"
-            android:textSize="14sp"
-            android:textColor="#777777"/>
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/home_card_subtitle"/>
 
 
         <!-- ================================================= -->
         <!-- SUMMARY CARD -->
         <!-- ================================================= -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:orientation="horizontal">
 
             <!-- Reading -->
-
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/_100sdp"
                 android:layout_weight="1"
-                android:layout_marginEnd="6dp"
+                android:layout_marginEnd="@dimen/_6sdp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:background="@drawable/bg_progress_card">
@@ -62,26 +58,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
+                    android:textSize="@dimen/_20ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/home_card_title"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Reading"
-                    android:textSize="13sp"/>
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/home_card_subtitle"/>
 
             </LinearLayout>
 
-
             <!-- Practice -->
-
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/_100sdp"
                 android:layout_weight="1"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_marginEnd="@dimen/_3sdp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:background="@drawable/bg_progress_card">
@@ -91,25 +87,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
+                    android:textSize="@dimen/_20ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/home_card_title"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Practice"
-                    android:textSize="13sp"/>
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/home_card_subtitle"/>
 
             </LinearLayout>
 
-
             <!-- Mock -->
-
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/_100sdp"
                 android:layout_weight="1"
-                android:layout_marginStart="6dp"
+                android:layout_marginStart="@dimen/_6sdp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:background="@drawable/bg_progress_card">
@@ -119,14 +115,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
+                    android:textSize="@dimen/_20ssp"
+                    android:textStyle="bold"
+                    android:textColor="@color/home_card_title"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mock Test"
-                    android:textSize="13sp"/>
+                    android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/home_card_subtitle"/>
 
             </LinearLayout>
 
@@ -134,74 +132,77 @@
 
 
         <!-- ================================================= -->
-        <!-- ACTIVITY GRAPH -->
+        <!-- ACTIVITY HORIZONTAL BAR CHART -->
         <!-- ================================================= -->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="@dimen/_28sdp"
             android:text="Daily Activity"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            android:textColor="@color/home_text_primary"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Reading • Practice • Mock Test"
-            android:textSize="13sp"
-            android:textColor="#777777"/>
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/home_card_subtitle"/>
 
-
-        <com.github.mikephil.charting.charts.LineChart
+        <com.github.mikephil.charting.charts.HorizontalBarChart
             android:id="@+id/activityChart"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="@dimen/_280sdp"
+            android:layout_marginTop="@dimen/_10sdp"/>
 
 
         <!-- ================================================= -->
-        <!-- PERFORMANCE GRAPH -->
+        <!-- PERFORMANCE DONUT / PIE CHART -->
         <!-- ================================================= -->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="@dimen/_28sdp"
             android:text="Performance"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            android:textColor="@color/home_text_primary"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Correct • Wrong • Skipped"
-            android:textSize="13sp"
-            android:textColor="#777777"/>
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/home_card_subtitle"/>
 
-
-        <com.github.mikephil.charting.charts.LineChart
+        <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/performanceChart"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="@dimen/_280sdp"
+            android:layout_marginTop="@dimen/_10sdp"/>
 
 
         <!-- ================================================= -->
-        <!-- SUCCESS RATE -->
-        <!-- ================================================= -->
 
+        <!-- ================================================= -->
         <TextView
             android:id="@+id/overallSuccessText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:gravity="center"
             android:text="Overall Success Rate: 0%"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold"
+            android:textColor="@color/home_card_title"/>
+
+        <!-- সাফল্যের হারের জন্য ছোট এবং আকর্ষণীয় ডোনাট চার্ট -->
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/successRateChart"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_160sdp"
+            android:layout_marginTop="@dimen/_10sdp"/>
 
     </LinearLayout>
 

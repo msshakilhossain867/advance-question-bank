@@ -6,48 +6,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F8FAFC"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
-    android:paddingTop="20dp"
+    android:background="@color/screen_background"
+    android:paddingStart="@dimen/_16sdp"
+    android:paddingEnd="@dimen/_16sdp"
+    android:paddingTop="@dimen/_20sdp"
     tools:context=".presentation.years.YearsActivity">
 
 
 
-        <!-- Header -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Choose Your Year"
-            android:textColor="#102A72"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:fontFamily="sans-serif"
-            android:layout_marginTop="4dp"
-             />
+    <!-- Header -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose Your Year"
+        android:textColor="@color/tittle_card"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="@dimen/_4sdp"
+        />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select your current academic year\nto get started"
-            android:textColor="#30343B"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:lineSpacingExtra="2dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="16dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select your current academic year\nto get started"
+        android:textColor="@color/home_card_subtitle"
+        android:textSize="@dimen/_12ssp"
+        android:gravity="center"
+        android:lineSpacingExtra="@dimen/_2sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginBottom="@dimen/_16sdp" />
 
-        <!-- Year RecyclerView -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/yearRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:clipToPadding="false"
-            android:paddingTop="2dp"
-            android:paddingBottom="16dp"
-            android:overScrollMode="never" />
+    <!-- Year RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/yearRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/_2sdp"
+        android:paddingBottom="@dimen/_16sdp"
+        android:overScrollMode="never" />
 
-    </LinearLayout>
-
+</LinearLayout>

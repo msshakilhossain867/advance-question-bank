@@ -6,28 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FAFBFD"
-    android:paddingStart="22dp"
-    android:paddingEnd="22dp"
+    android:background="@color/screen_background"
+
     tools:context=".presentation.units.UnitsActivity">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/_13sdp"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/_13sdp">
 
         <!-- Toolbar -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="@dimen/_64sdp"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
             <!-- Back Button -->
             <ImageView
                 android:id="@+id/backButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="8dp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:padding="@dimen/_8sdp"
                 android:src="@drawable/ic_arrow_back"
                 android:contentDescription="Back"
-                android:tint="#1261B5" />
+                app:tint="@color/back_arrow_color" />
 
             <!-- University Name -->
             <TextView
@@ -35,10 +41,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:text="Dhaka University"
-                android:textColor="#1261B5"
-                android:textSize="20sp"
+                android:textColor="@color/tittle_card"
+                android:textSize="@dimen/_16ssp"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif" />
 
@@ -49,11 +55,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Choose Unit"
-            android:textColor="#151515"
-            android:textSize="20sp"
+            android:textColor="@color/home_card_title"
+            android:textSize="@dimen/_15ssp"
             android:textStyle="bold"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginTop="@dimen/_14sdp"
+            android:layout_marginBottom="@dimen/_16sdp" />
 
         <!-- Unit RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
@@ -62,8 +68,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:clipToPadding="false"
-            android:paddingBottom="20dp"
+            android:paddingBottom="@dimen/_20sdp"
             android:overScrollMode="never" />
-
     </LinearLayout>
 
+</LinearLayout>

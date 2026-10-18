@@ -7,6 +7,7 @@
         android:id="@+id/action_share"
         android:title="Share"
         android:icon="@drawable/ic_share"
+        android:iconTint="@color/tittle_card"
         app:showAsAction="always" />
 
 </menu>

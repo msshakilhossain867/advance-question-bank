@@ -76,8 +76,7 @@ public class UnitsActivity extends AppCompatActivity {
         yearTitle = getIntent().getStringExtra(
                 "year_title"
         );
-         mode = getIntent().getStringExtra("mode");
-
+        mode = getIntent().getStringExtra("mode");
 
 
         if (yearId == -1) {
@@ -106,6 +105,10 @@ public class UnitsActivity extends AppCompatActivity {
         // ============================================================
 
         loadUnits();
+
+        binding.backButton.setOnClickListener(view -> {
+            finish();
+        });
     }
 
     // ============================================================
@@ -142,25 +145,24 @@ public class UnitsActivity extends AppCompatActivity {
 
                     if ("practice".equals(mode)) {
 
-                    moveToNext(PracticeSetActivity.class,unitId,unitName);
+                        moveToNext(PracticeSetActivity.class, unitId, unitName);
 
                     } else if ("mock_test".equals(mode)) {
 
-                    moveToNext(MockTestSubjectActivity.class,unitId,unitName);
+                        moveToNext(MockTestSubjectActivity.class, unitId, unitName);
 
 
                     } else {
-                        moveToNext(SubjectsActivity.class,unitId,unitName);
+                        moveToNext(SubjectsActivity.class, unitId, unitName);
 
                     }
-
 
 
                 }
         );
 
         binding.unitRecyclerView.setLayoutManager(
-              new LinearLayoutManager(this)
+                new LinearLayoutManager(this)
         );
 
         binding.unitRecyclerView.setAdapter(
@@ -169,8 +171,7 @@ public class UnitsActivity extends AppCompatActivity {
     }
 
 
-
-    private void moveToNext(Class<?> activityClass, int unitId, String unitName){
+    private void moveToNext(Class<?> activityClass, int unitId, String unitName) {
 
         Intent intent =
                 new Intent(

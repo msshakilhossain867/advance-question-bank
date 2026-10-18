@@ -27,4 +27,24 @@
     <color name="card_background">#FFFFFF</color>
     <color name="card_stroke_color">#F0F0F0</color>
     <color name="card_selected_color">#F0F4FE</color>
+    <color name="home_card_background">#FFFFFF</color>
+    <color name="home_card_border">#E8EBEF</color>
+    <color name="tittle_card">#164F9B</color>
+    <color name="back_arrow_color">#1858A8</color>
+    <color name="img_round_color">#EEF5FF</color>
+
+
+    <color name="question_option_bg">#FFFFFF</color>
+    <color name="question_option_border">#E2E8F0</color>
+    <color name="explanation_bg">#F1F5F9</color>
+
+    <color name="success_background">#DDF5E5</color>
+    <color name="success_text_or_border">#39A95A</color>
+    <color name="wrong_color">#FFF0F0</color>
+    <color name="error_light_bg">#FDE9EA</color>
+    <color name="error_light_stroke">#E5484D</color>
+    <color name="option_text_color">#333333</color>
+
+
+
 </resources>

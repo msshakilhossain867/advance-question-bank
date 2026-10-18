@@ -124,6 +124,10 @@ public class SubjectsActivity extends AppCompatActivity {
         // ============================================================
 
         loadSubjects();
+
+        binding.backButton.setOnClickListener(view -> {
+            finish();
+        });
     }
 
     // ================================================================

@@ -6,28 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FAFBFD"
-    android:paddingStart="22dp"
-    android:paddingEnd="22dp"
+    android:background="@color/screen_background"
     tools:context=".presentation.subjects.SubjectsActivity">
 
-
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/_16sdp"
+        android:paddingEnd="@dimen/_16sdp"
+        android:orientation="vertical">
 
         <!-- Toolbar -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="@dimen/_64sdp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/backButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="8dp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:padding="@dimen/_8sdp"
                 android:src="@drawable/ic_arrow_back"
-                app:tint="#164E9B"
+                app:tint="@color/back_arrow_color"
                 android:contentDescription="Back" />
 
             <TextView
@@ -35,26 +37,24 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:text="A Unit (Science)"
-                android:textColor="#123F8A"
-                android:textSize="20sp"
+                android:textColor="@color/tittle_card"
+                android:textSize="@dimen/_16ssp"
                 android:textStyle="bold" />
 
         </LinearLayout>
-
 
         <!-- Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Choose Subject"
-            android:textColor="#151515"
-            android:textSize="20sp"
+            android:textColor="@color/home_card_title"
+            android:textSize="@dimen/_14ssp"
             android:textStyle="bold"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="16dp" />
-
+            android:layout_marginTop="@dimen/_11sdp"
+            android:layout_marginBottom="@dimen/_16sdp" />
 
         <!-- Subject RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
@@ -63,8 +63,11 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:clipToPadding="false"
-            android:paddingBottom="20dp"
+            android:paddingBottom="@dimen/_20sdp"
             android:overScrollMode="never" />
+
+    </LinearLayout>
+
 
 
 </LinearLayout>

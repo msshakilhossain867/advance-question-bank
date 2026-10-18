@@ -1,18 +1,21 @@
 package com.example.questionbank_practiceexam.presentation.adapters;
 
-
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import android.widget.TextView;
 
 import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.data.local.entity.Question;
 import com.example.questionbank_practiceexam.databinding.ItemBookmarkQuestionBinding;
+import com.example.questionbank_practiceexam.helpers.LatexRenderer;
+// আপনার প্রোজেক্ট অনুযায়ী সঠিক প্যাথ থেকে LatexRenderer ইম্পোর্ট করুন
+// import com.example.questionbank_practiceexam.utils.LatexRenderer;
 
 import org.json.JSONObject;
 
@@ -140,12 +143,23 @@ public class BookmarkAdapter
 
 
         // ========================================================
-        // QUESTION
+        // QUESTION (TextView vs WebView Check with Image Support)
         // ========================================================
 
-        holder.binding.questionText.setText(
-                question.getQuestionText()
-        );
+        String rawQText = question.getQuestionText();
+        String cleanQText = LatexRenderer.getCleanText(rawQText);
+        String qImg = question.getQuestionImage(); // Question এনটিতে এই মেথড থাকতে হবে
+        boolean hasQImage = (qImg != null && !qImg.trim().isEmpty());
+
+        if (!hasQImage && !LatexRenderer.containsLaTeXOrHtml(rawQText)) {
+            holder.binding.questionWebView.setVisibility(View.GONE);
+            holder.binding.questionText.setVisibility(View.VISIBLE);
+            holder.binding.questionText.setText(cleanQText);
+        } else {
+            holder.binding.questionText.setVisibility(View.GONE);
+            holder.binding.questionWebView.setVisibility(View.VISIBLE);
+            LatexRenderer.renderQuestion(holder.binding.questionWebView, rawQText, qImg);
+        }
 
 
         // ========================================================
@@ -169,23 +183,31 @@ public class BookmarkAdapter
 
 
         // ========================================================
-        // EXPLANATION
+        // EXPLANATION (TextView vs WebView Check)
         // ========================================================
 
-        String explanation =
-                question.getExplanation();
+        String rawExp = question.getExplanation();
 
-
-        if (explanation != null &&
-                !explanation.trim().isEmpty()) {
-
-            holder.binding.explanationText.setText(
-                    explanation
-            );
+        if (rawExp != null &&
+                !rawExp.trim().isEmpty()) {
 
             holder.binding.explanationLayout.setVisibility(
                     View.VISIBLE
             );
+
+            String cleanExp = LatexRenderer.getCleanText(rawExp);
+            String expImg = question.getExplanationImage(); // অপশনাল
+            boolean hasExpImg = (expImg != null && !expImg.trim().isEmpty());
+
+            if (!hasExpImg && !LatexRenderer.containsLaTeXOrHtml(rawExp)) {
+                holder.binding.explanationWebView.setVisibility(View.GONE);
+                holder.binding.explanationText.setVisibility(View.VISIBLE);
+                holder.binding.explanationText.setText(cleanExp);
+            } else {
+                holder.binding.explanationText.setVisibility(View.GONE);
+                holder.binding.explanationWebView.setVisibility(View.VISIBLE);
+                LatexRenderer.renderExplanation(holder.binding.explanationWebView, rawExp, expImg);
+            }
 
         } else {
 
@@ -231,60 +253,65 @@ public class BookmarkAdapter
                             question.getOptions()
                     );
 
+            String optImgJson = question.getOptionImages(); // অপশন ইমেজ JSON
+            JSONObject optionImages = null;
+            String singleOptImage = null;
 
-            String a =
-                    options.optString(
-                            "a",
-                            ""
-                    );
-
-
-            String b =
-                    options.optString(
-                            "b",
-                            ""
-                    );
-
-
-            String c =
-                    options.optString(
-                            "c",
-                            ""
-                    );
+            if (optImgJson != null && !optImgJson.trim().isEmpty()) {
+                optImgJson = optImgJson.trim();
+                if (optImgJson.startsWith("{")) {
+                    try {
+                        optionImages = new JSONObject(optImgJson);
+                    } catch (Exception ignored) {}
+                } else {
+                    singleOptImage = optImgJson;
+                }
+            }
 
 
-            String d =
-                    options.optString(
-                            "d",
-                            ""
-                    );
+            String optA = LatexRenderer.getCleanText(options.optString("a", ""));
+            String optB = LatexRenderer.getCleanText(options.optString("b", ""));
+            String optC = LatexRenderer.getCleanText(options.optString("c", ""));
+            String optD = LatexRenderer.getCleanText(options.optString("d", ""));
 
 
-            holder.binding.optionA.setText(
-                    "A. " + a
+            // Option A
+            bindSingleOption(
+                    holder.binding.optionAWebView, holder.binding.optionAText,
+                    optA, options.optString("a", ""),
+                    optionImages != null ? optionImages.optString("a", null) : singleOptImage,
+                    "A. "
             );
 
-
-            holder.binding.optionB.setText(
-                    "B. " + b
+            // Option B
+            bindSingleOption(
+                    holder.binding.optionBWebView, holder.binding.optionBText,
+                    optB, options.optString("b", ""),
+                    optionImages != null ? optionImages.optString("b", null) : null,
+                    "B. "
             );
 
-
-            holder.binding.optionC.setText(
-                    "C. " + c
+            // Option C
+            bindSingleOption(
+                    holder.binding.optionCWebView, holder.binding.optionCText,
+                    optC, options.optString("c", ""),
+                    optionImages != null ? optionImages.optString("c", null) : null,
+                    "C. "
             );
 
-
-            holder.binding.optionD.setText(
-                    "D. " + d
+            // Option D
+            bindSingleOption(
+                    holder.binding.optionDWebView, holder.binding.optionDText,
+                    optD, options.optString("d", ""),
+                    optionImages != null ? optionImages.optString("d", null) : null,
+                    "D. "
             );
 
         } catch (Exception e) {
-
-            holder.binding.optionA.setText("A.");
-            holder.binding.optionB.setText("B.");
-            holder.binding.optionC.setText("C.");
-            holder.binding.optionD.setText("D.");
+            holder.binding.optionAText.setText("A.");
+            holder.binding.optionBText.setText("B.");
+            holder.binding.optionCText.setText("C.");
+            holder.binding.optionDText.setText("D.");
         }
 
 
@@ -299,6 +326,28 @@ public class BookmarkAdapter
 
 
     // ============================================================
+    // BIND SINGLE OPTION
+    // ============================================================
+
+    private void bindSingleOption(WebView webView, TextView textView, String cleanText, String rawText, String imagePath, String prefix) {
+        boolean hasImg = (imagePath != null && !imagePath.trim().isEmpty());
+        boolean hasLatex = LatexRenderer.containsLaTeXOrHtml(rawText);
+        String formattedCleanText = prefix + cleanText;
+        String formattedRawText = prefix + rawText;
+
+        if (!hasImg && !hasLatex) {
+            webView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
+            textView.setText(formattedCleanText);
+        } else {
+            textView.setVisibility(View.GONE);
+            webView.setVisibility(View.VISIBLE);
+            LatexRenderer.renderOption(webView, formattedRawText, imagePath);
+        }
+    }
+
+
+    // ============================================================
     // RESET OPTION COLORS
     // ============================================================
 
@@ -306,38 +355,28 @@ public class BookmarkAdapter
             ViewHolder holder
     ) {
 
-        holder.binding.optionA.setBackgroundResource(
-                R.drawable.bg_bookmark_option
-        );
+        holder.binding.optionAText.setBackgroundResource(R.drawable.bg_bookmark_option);
+        holder.binding.optionAWebView.setBackgroundResource(R.drawable.bg_bookmark_option);
 
-        holder.binding.optionB.setBackgroundResource(
-                R.drawable.bg_bookmark_option
-        );
+        holder.binding.optionBText.setBackgroundResource(R.drawable.bg_bookmark_option);
+        holder.binding.optionBWebView.setBackgroundResource(R.drawable.bg_bookmark_option);
 
-        holder.binding.optionC.setBackgroundResource(
-                R.drawable.bg_bookmark_option
-        );
+        holder.binding.optionCText.setBackgroundResource(R.drawable.bg_bookmark_option);
+        holder.binding.optionCWebView.setBackgroundResource(R.drawable.bg_bookmark_option);
 
-        holder.binding.optionD.setBackgroundResource(
-                R.drawable.bg_bookmark_option
-        );
+        holder.binding.optionDText.setBackgroundResource(R.drawable.bg_bookmark_option);
+        holder.binding.optionDWebView.setBackgroundResource(R.drawable.bg_bookmark_option);
 
 
-        holder.binding.optionA.setTextColor(
-                Color.rgb(51, 51, 51)
+        int optionTextColor = androidx.core.content.ContextCompat.getColor(
+                holder.itemView.getContext(),
+                R.color.option_text_color
         );
 
-        holder.binding.optionB.setTextColor(
-                Color.rgb(51, 51, 51)
-        );
-
-        holder.binding.optionC.setTextColor(
-                Color.rgb(51, 51, 51)
-        );
-
-        holder.binding.optionD.setTextColor(
-                Color.rgb(51, 51, 51)
-        );
+        holder.binding.optionAText.setTextColor(optionTextColor);
+        holder.binding.optionBText.setTextColor(optionTextColor);
+        holder.binding.optionCText.setTextColor(optionTextColor);
+        holder.binding.optionDText.setTextColor(optionTextColor);
     }
 
 
@@ -364,38 +403,19 @@ public class BookmarkAdapter
         ) {
 
             case "a":
-
-                setCorrectStyle(
-                        holder.binding.optionA
-                );
-
+                setCorrectStyle(holder.binding.optionAText, holder.binding.optionAWebView);
                 break;
-
 
             case "b":
-
-                setCorrectStyle(
-                        holder.binding.optionB
-                );
-
+                setCorrectStyle(holder.binding.optionBText, holder.binding.optionBWebView);
                 break;
-
 
             case "c":
-
-                setCorrectStyle(
-                        holder.binding.optionC
-                );
-
+                setCorrectStyle(holder.binding.optionCText, holder.binding.optionCWebView);
                 break;
 
-
             case "d":
-
-                setCorrectStyle(
-                        holder.binding.optionD
-                );
-
+                setCorrectStyle(holder.binding.optionDText, holder.binding.optionDWebView);
                 break;
         }
     }
@@ -405,24 +425,23 @@ public class BookmarkAdapter
     // CORRECT STYLE
     // ============================================================
 
-    private void setCorrectStyle(TextView view) {
-
-        view.setBackgroundResource(
-                R.drawable.bg_bookmark_correct
-        );
-
-        view.setTextColor(
-                android.graphics.Color.rgb(
-                        35,
-                        131,
-                        71
-                )
-        );
+    private void setCorrectStyle(TextView textView, WebView webView) {
+        if (textView.getVisibility() == View.VISIBLE) {
+            textView.setBackgroundResource(R.drawable.bg_bookmark_correct);
+            textView.setTextColor(Color.rgb(35, 131, 71));
+        }
+        if (webView.getVisibility() == View.VISIBLE) {
+            webView.setBackgroundResource(R.drawable.bg_bookmark_correct);
+        }
     }
 
 
     // ============================================================
     // CORRECT ANSWER TEXT
+    // ============================================================
+
+    // ============================================================
+    // CORRECT ANSWER (TextView vs WebView Check with Image & LaTeX Support)
     // ============================================================
 
     private void setCorrectAnswer(
@@ -446,21 +465,73 @@ public class BookmarkAdapter
         }
 
 
-        String answerText =
-                getCorrectAnswerText(
-                        question
-                );
+        try {
+
+            JSONObject options =
+                    new JSONObject(
+                            question.getOptions()
+                    );
 
 
-        holder.binding.correctAnswerText.setText(
-                answerText
-        );
+            String optionText =
+                    options.optString(
+                            correct.trim().toLowerCase(Locale.ROOT),
+                            ""
+                    );
 
 
-        holder.binding.correctAnswerLayout
-                .setVisibility(
-                        View.VISIBLE
-                );
+            String letter =
+                    correct.trim().toUpperCase(
+                            Locale.ROOT
+                    );
+
+
+            String rawAnswerText = letter + ". " + optionText;
+            String cleanAnswerText = LatexRenderer.getCleanText(rawAnswerText);
+
+            // অপশনের ইমেজ থাকলে তা সঠিক উত্তরের সাথে দেখানোর জন্য (যদি প্রয়োজন হয়)
+            String optImgJson = question.getOptionImages();
+            String answerImage = null;
+            if (optImgJson != null && !optImgJson.trim().isEmpty()) {
+                optImgJson = optImgJson.trim();
+                if (optImgJson.startsWith("{")) {
+                    try {
+                        JSONObject optionImages = new JSONObject(optImgJson);
+                        answerImage = optionImages.optString(correct.trim().toLowerCase(Locale.ROOT), null);
+                    } catch (Exception ignored) {}
+                } else {
+                    answerImage = optImgJson;
+                }
+            }
+
+            boolean hasImg = (answerImage != null && !answerImage.trim().isEmpty());
+            boolean hasLatex = LatexRenderer.containsLaTeXOrHtml(rawAnswerText);
+
+            if (!hasImg && !hasLatex) {
+                holder.binding.correctAnswerWebView.setVisibility(View.GONE);
+                holder.binding.correctAnswerText.setVisibility(View.VISIBLE);
+                holder.binding.correctAnswerText.setText(cleanAnswerText);
+            } else {
+                holder.binding.correctAnswerText.setVisibility(View.GONE);
+                holder.binding.correctAnswerWebView.setVisibility(View.VISIBLE);
+                LatexRenderer.renderOption(holder.binding.correctAnswerWebView, rawAnswerText, answerImage);
+            }
+
+            holder.binding.correctAnswerLayout
+                    .setVisibility(
+                            View.VISIBLE
+                    );
+
+        } catch (Exception e) {
+            holder.binding.correctAnswerWebView.setVisibility(View.GONE);
+            holder.binding.correctAnswerText.setVisibility(View.VISIBLE);
+            holder.binding.correctAnswerText.setText(correct.toUpperCase(Locale.ROOT));
+
+            holder.binding.correctAnswerLayout
+                    .setVisibility(
+                            View.VISIBLE
+                    );
+        }
     }
 
 
@@ -586,5 +657,3 @@ public class BookmarkAdapter
         }
     }
 }
-
-

@@ -1,47 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     android:id="@+id/universityCard"
-
     android:layout_width="match_parent"
-    android:layout_height="64dp"
-
-    android:layout_marginBottom="5dp"
-
-    app:cardBackgroundColor="@android:color/white"
-    app:cardCornerRadius="9dp"
+    android:layout_height="@dimen/_64sdp"
+    android:layout_marginBottom="@dimen/_5sdp"
+    app:cardBackgroundColor="@color/home_card_background"
+    app:cardCornerRadius="@dimen/_9sdp"
     app:cardElevation="1dp"
-
-    app:strokeColor="#EEF0F3"
+    app:strokeColor="@color/home_card_border"
     app:strokeWidth="1dp">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:orientation="horizontal"
         android:gravity="center_vertical"
-
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp">
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_8sdp">
 
 
         <!-- University Logo -->
         <ImageView
             android:id="@+id/universityLogo"
-
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-
-            android:padding="3dp"
+            android:layout_width="@dimen/_42sdp"
+            android:layout_height="@dimen/_42sdp"
+            android:padding="@dimen/_3sdp"
             android:src="@drawable/du_icon"
-
             android:scaleType="centerInside"
-
             android:contentDescription="@null" />
 
 
@@ -49,41 +37,29 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
             android:layout_weight="1"
-
             android:orientation="vertical"
-
-            android:layout_marginStart="10dp">
+            android:layout_marginStart="@dimen/_10sdp">
 
 
             <TextView
                 android:id="@+id/universityName"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:text="Dhaka University"
-
-                android:textColor="#202020"
-
-                android:textSize="12sp"
+                android:textColor="@color/home_card_title"
+                android:textSize="@dimen/_12ssp"
                 android:textStyle="bold" />
 
 
             <TextView
                 android:id="@+id/universityUnits"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:layout_marginTop="2dp"
-
+                android:layout_marginTop="@dimen/_2sdp"
                 android:text="A Unit, B Unit, C Unit"
-
-                android:textColor="#6B7280"
-
-                android:textSize="9sp" />
+                android:textColor="@color/home_card_subtitle"
+                android:textSize="@dimen/_9ssp" />
 
         </LinearLayout>
 
@@ -91,16 +67,11 @@
         <!-- Arrow -->
         <ImageView
             android:id="@+id/arrowIcon"
-
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-
-            android:padding="7dp"
-
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:padding="@dimen/_7sdp"
             android:src="@drawable/ic_arrow_forward"
-
-            app:tint="#8A94A3"
-
+            app:tint="@color/home_card_subtitle"
             android:contentDescription="@null" />
 
     </LinearLayout>

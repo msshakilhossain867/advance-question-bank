@@ -26,4 +26,23 @@
     <color name="card_background">#1E293B</color> <!-- Lighter Navy Surface -->
     <color name="card_stroke_color">#334155</color>
     <color name="card_selected_color">#334155</color>
+
+    <color name="home_card_background">#1E293B</color> <!-- ডার্ক স্ল্যাটেট কালার -->
+    <color name="home_card_border">#334155</color>
+
+    <color name="tittle_card">#90CAF9</color>
+    <color name="back_arrow_color">#90CAF9</color>
+    <color name="img_round_color">#121824</color>
+
+
+    <color name="question_option_bg">#1E293B</color>
+    <color name="question_option_border">#334155</color>
+    <color name="explanation_bg">#0F172A</color>
+    <color name="success_background">#1B3B2B</color> <!-- ডার্ক মোডে চোখের জন্য আরামদায়ক ডিপ গ্রিন -->
+    <color name="success_text_or_border">#39A95A</color>
+    <color name="wrong_color">#2D1F1F</color>
+    <color name="error_light_bg">#5EFDE9EA</color>
+    <color name="error_light_stroke">#E5484D</color>
+    <color name="option_text_color">#E2E8F0</color>
+
 </resources>

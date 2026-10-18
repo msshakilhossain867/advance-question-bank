@@ -1,4 +1,4 @@
-package com.example.questionbank_practiceexam.Activity;
+package com.example.questionbank_practiceexam.presentation.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

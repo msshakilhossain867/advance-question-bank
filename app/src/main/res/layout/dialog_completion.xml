@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_progress_card"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- ট্রফি বা সাকসেস আইকন -->
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_check_circle" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Awesome Job!"
+        android:textColor="@color/home_card_title"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:text="You have successfully completed all questions in this session."
+        android:textColor="@color/home_card_subtitle"
+        android:textSize="13sp" />
+
+    <!-- বাটন লেআউট -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal">
+
+        <!-- Back Home Button -->
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/home_card_border"
+            android:text="Back Home"
+            android:textColor="@color/home_card_title" />
+
+        <!-- Read Again Button -->
+        <Button
+            android:id="@+id/btnReadAgain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/tittle_card"
+            android:text="Read Again"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

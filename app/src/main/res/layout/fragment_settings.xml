@@ -1,76 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.fragments.SettingsFragment"
     android:fillViewport="true"
-    android:background="#F6F8FB">
+    android:background="@color/screen_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/_16sdp">
 
         <!-- ================================================= -->
         <!-- HEADER -->
         <!-- ================================================= -->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Settings"
-            android:textColor="#172B4D"
-            android:textSize="27sp"
+            android:textColor="@color/home_text_primary"
+            android:textSize="@dimen/_20ssp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:text="Customize your practice experience"
-            android:textColor="#7A869A"
-            android:textSize="13sp" />
+            android:textColor="@color/home_card_subtitle"
+            android:textSize="@dimen/_11ssp" />
 
 
         <!-- ================================================= -->
         <!-- PREFERENCES -->
         <!-- ================================================= -->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="@dimen/_25sdp"
             android:text="PREFERENCES"
-            android:textColor="#196DD9"
-            android:textSize="12sp"
+            android:textColor="@color/home_card_title"
+            android:textSize="@dimen/_12ssp"
             android:textStyle="bold" />
 
 
         <!-- Dark Mode -->
-
         <LinearLayout
             android:id="@+id/darkModeSetting"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_card"
+            android:layout_height="@dimen/_64sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_progress_card"
             android:gravity="center_vertical"
-            android:paddingHorizontal="15dp">
+            android:paddingHorizontal="@dimen/_15sdp">
 
             <TextView
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
                 android:background="@drawable/bg_setting_icon"
                 android:gravity="center"
                 android:text="🌙"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_20ssp" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -78,17 +76,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dark Mode"
-                    android:textColor="#172B4D"
-                    android:textSize="15sp"
+                    android:textColor="@color/home_card_title"
+                    android:textSize="@dimen/_14ssp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:text="Use dark appearance"
-                    android:textColor="#7A869A"
-                    android:textSize="12sp" />
+                    android:textColor="@color/home_card_subtitle"
+                    android:textSize="@dimen/_11ssp" />
 
             </LinearLayout>
 
@@ -101,28 +99,27 @@
 
 
         <!-- Daily Mission Notification -->
-
         <LinearLayout
             android:id="@+id/missionNotificationSetting"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_card"
+            android:layout_height="@dimen/_64sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_progress_card"
             android:gravity="center_vertical"
-            android:paddingHorizontal="15dp">
+            android:paddingHorizontal="@dimen/_15sdp">
 
             <TextView
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
                 android:background="@drawable/bg_setting_icon"
                 android:gravity="center"
                 android:text="🔔"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_20ssp" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -130,18 +127,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Daily Mission"
-                    android:textColor="#172B4D"
-                    android:textSize="15sp"
+                    android:textColor="@color/home_card_title"
+                    android:textSize="@dimen/_11ssp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/missionNotificationStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:text="Mission reminder notifications"
-                    android:textColor="#7A869A"
-                    android:textSize="12sp" />
+                    android:textColor="@color/home_card_subtitle"
+                    android:textSize="@dimen/_12ssp" />
 
             </LinearLayout>
 
@@ -154,27 +151,26 @@
 
 
         <!-- Sound -->
-
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_card"
+            android:layout_height="@dimen/_64sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_progress_card"
             android:gravity="center_vertical"
-            android:paddingHorizontal="15dp">
+            android:paddingHorizontal="@dimen/_15sdp">
 
             <TextView
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
                 android:background="@drawable/bg_setting_icon"
                 android:gravity="center"
                 android:text="🔊"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_20ssp" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -182,17 +178,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sound"
-                    android:textColor="#172B4D"
-                    android:textSize="15sp"
+                    android:textColor="@color/home_card_title"
+                    android:textSize="@dimen/_11ssp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:text="Play sounds during practice"
-                    android:textColor="#7A869A"
-                    android:textSize="12sp" />
+                    android:textColor="@color/home_card_subtitle"
+                    android:textSize="@dimen/_12ssp" />
 
             </LinearLayout>
 
@@ -205,28 +201,27 @@
         </LinearLayout>
 
 
-        <!-- Vibration -->
-
+        &lt;!&ndash; Vibration &ndash;&gt;
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_card"
+            android:layout_height="@dimen/_64sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_progress_card"
             android:gravity="center_vertical"
-            android:paddingHorizontal="15dp">
+            android:paddingHorizontal="@dimen/_15sdp">
 
             <TextView
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
                 android:background="@drawable/bg_setting_icon"
                 android:gravity="center"
                 android:text="📳"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_20ssp" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -234,17 +229,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Vibration"
-                    android:textColor="#172B4D"
-                    android:textSize="15sp"
+                    android:textColor="@color/home_card_title"
+                    android:textSize="@dimen/_11ssp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:text="Vibrate on answer feedback"
-                    android:textColor="#7A869A"
-                    android:textSize="12sp" />
+                    android:textColor="@color/home_card_subtitle"
+                    android:textSize="@dimen/_12ssp" />
 
             </LinearLayout>
 
@@ -254,48 +249,47 @@
                 android:layout_height="wrap_content"
                 android:checked="true" />
 
-        </LinearLayout>
+        </LinearLayout>-->
 
 
         <!-- ================================================= -->
         <!-- PROGRESS -->
         <!-- ================================================= -->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="@dimen/_27sdp"
             android:text="PROGRESS"
-            android:textColor="#196DD9"
-            android:textSize="12sp"
+            android:textColor="@color/home_card_title"
+            android:textSize="@dimen/_12ssp"
             android:textStyle="bold" />
 
 
         <!-- Statistics -->
-
         <LinearLayout
             android:id="@+id/statisticsSetting"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_card"
+            android:layout_height="@dimen/_64sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_progress_card"
             android:gravity="center_vertical"
-            android:paddingHorizontal="15dp"
+            android:visibility="visible"
+            android:paddingHorizontal="@dimen/_15sdp"
             android:clickable="true"
             android:focusable="true">
 
             <TextView
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
                 android:background="@drawable/bg_setting_icon"
                 android:gravity="center"
                 android:text="📊"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_20ssp" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -303,17 +297,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Progress &amp; Statistics"
-                    android:textColor="#172B4D"
-                    android:textSize="15sp"
+                    android:textColor="@color/home_card_title"
+                    android:textSize="@dimen/_11ssp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:text="View your practice performance"
-                    android:textColor="#7A869A"
-                    android:textSize="12sp" />
+                    android:textColor="@color/home_card_subtitle"
+                    android:textSize="@dimen/_12ssp" />
 
             </LinearLayout>
 
@@ -321,37 +315,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="›"
-                android:textColor="#9AA6AC"
-                android:textSize="28sp" />
+                android:textColor="@color/home_card_subtitle"
+                android:textSize="@dimen/_28ssp" />
 
         </LinearLayout>
 
 
         <!-- Clear Progress -->
-
         <LinearLayout
             android:id="@+id/clearProgressSetting"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_card"
+            android:visibility="visible"
+            android:layout_height="@dimen/_64sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_progress_card"
             android:gravity="center_vertical"
-            android:paddingHorizontal="15dp"
+            android:paddingHorizontal="@dimen/_15sdp"
             android:clickable="true"
             android:focusable="true">
 
             <TextView
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
                 android:background="@drawable/bg_setting_icon"
                 android:gravity="center"
                 android:text="🗑️"
-                android:textSize="19sp" />
+                android:textSize="@dimen/_19ssp" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -360,16 +354,16 @@
                     android:layout_height="wrap_content"
                     android:text="Clear Progress"
                     android:textColor="#D32F2F"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/_11ssp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:text="Reset your practice statistics"
-                    android:textColor="#7A869A"
-                    android:textSize="12sp" />
+                    android:textColor="@color/home_card_subtitle"
+                    android:textSize="@dimen/_12ssp" />
 
             </LinearLayout>
 
@@ -377,8 +371,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="›"
-                android:textColor="#9AA6AC"
-                android:textSize="28sp" />
+                android:textColor="@color/home_card_subtitle"
+                android:textSize="@dimen/_28ssp" />
 
         </LinearLayout>
 
@@ -386,95 +380,170 @@
         <!-- ================================================= -->
         <!-- APP -->
         <!-- ================================================= -->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="@dimen/_27sdp"
             android:text="APP"
-            android:textColor="#196DD9"
-            android:textSize="12sp"
+            android:textColor="@color/home_card_title"
+            android:textSize="@dimen/_12ssp"
             android:textStyle="bold" />
 
 
         <!-- Rate App -->
-
         <LinearLayout
             android:id="@+id/rateAppSetting"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_card"
+            android:layout_height="@dimen/_64sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_progress_card"
             android:gravity="center_vertical"
-            android:paddingHorizontal="15dp"
+            android:paddingHorizontal="@dimen/_15sdp"
             android:clickable="true"
             android:focusable="true">
 
             <TextView
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
                 android:background="@drawable/bg_setting_icon"
                 android:gravity="center"
                 android:text="⭐"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_20ssp" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_weight="1"
-                android:text="Rate this App"
-                android:textColor="#172B4D"
-                android:textSize="15sp"
+                android:text="Rate Us"
+                android:textColor="@color/home_card_title"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="›"
-                android:textColor="#9AA6AC"
-                android:textSize="28sp" />
+                android:textColor="@color/home_card_subtitle"
+                android:textSize="@dimen/_28ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/shareAppSetting"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_64sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_progress_card"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
+                android:background="@drawable/bg_setting_icon"
+                android:padding="@dimen/_8sdp"
+                android:gravity="center"
+                android:src="@drawable/ic_share"
+                app:tint="#FBD735"
+                android:textSize="@dimen/_20ssp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_weight="1"
+                android:text="Share"
+                android:textColor="@color/home_card_title"
+                android:textSize="@dimen/_11ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="›"
+                android:textColor="@color/home_card_subtitle"
+                android:textSize="@dimen/_28ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/policyAppSetting"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_64sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_progress_card"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
+                android:background="@drawable/bg_setting_icon"
+                android:gravity="center"
+                android:text="🔐"
+                android:textSize="@dimen/_20ssp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_weight="1"
+                android:text="Privacy Policy"
+                android:textColor="@color/home_card_title"
+                android:textSize="@dimen/_11ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="›"
+                android:textColor="@color/home_card_subtitle"
+                android:textSize="@dimen/_28ssp" />
 
         </LinearLayout>
 
 
         <!-- About -->
-
         <LinearLayout
             android:id="@+id/aboutSetting"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_card"
+            android:layout_height="@dimen/_64sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_progress_card"
             android:gravity="center_vertical"
-            android:paddingHorizontal="15dp"
+            android:paddingHorizontal="@dimen/_15sdp"
             android:clickable="true"
             android:focusable="true">
 
             <TextView
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
                 android:background="@drawable/bg_setting_icon"
                 android:gravity="center"
                 android:text="ℹ️"
-                android:textSize="20sp" />
+                android:textSize="@dimen/_20ssp" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_weight="1"
                 android:text="About App"
-                android:textColor="#172B4D"
-                android:textSize="15sp"
+                android:textColor="@color/home_card_title"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="›"
-                android:textColor="#9AA6AC"
-                android:textSize="28sp" />
+                android:textColor="@color/home_card_subtitle"
+                android:textSize="@dimen/_28ssp" />
 
         </LinearLayout>
 
@@ -482,12 +551,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
             android:gravity="center"
             android:text="Question Bank Practice Exam\nVersion 1.0"
-            android:textColor="#9AA6AC"
-            android:textSize="11sp" />
+            android:textColor="@color/home_card_subtitle"
+            android:textSize="@dimen/_11ssp" />
 
     </LinearLayout>
 

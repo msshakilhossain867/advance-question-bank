@@ -1,4 +1,4 @@
-package com.example.questionbank_practiceexam.presentation.report;
+package com.example.questionbank_practiceexam.presentation.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,11 +13,16 @@ import androidx.fragment.app.Fragment;
 import com.example.questionbank_practiceexam.data.local.entity.SevenDayProgress;
 import com.example.questionbank_practiceexam.data.local.repository.ProgressDailyRepository;
 import com.example.questionbank_practiceexam.databinding.FragmentProgressBinding;
-import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import java.text.SimpleDateFormat;
@@ -152,6 +157,8 @@ public class ProgressFragment extends Fragment {
         binding.overallSuccessText.setText(
                 "7 Days Success Rate: 0.0%"
         );
+
+        setupSuccessRateChart(0.0);
     }
 
 
@@ -205,7 +212,7 @@ public class ProgressFragment extends Fragment {
 
 
     // ============================================================
-    // ACTIVITY GRAPH
+    // ACTIVITY HORIZONTAL BAR CHART
     // Reading / Practice / Mock
     // ============================================================
 
@@ -213,17 +220,8 @@ public class ProgressFragment extends Fragment {
             List<SevenDayProgress> data
     ) {
 
-        ArrayList<Entry> readingEntries =
+        ArrayList<BarEntry> entries =
                 new ArrayList<>();
-
-
-        ArrayList<Entry> practiceEntries =
-                new ArrayList<>();
-
-
-        ArrayList<Entry> mockEntries =
-                new ArrayList<>();
-
 
         ArrayList<String> labels =
                 new ArrayList<>();
@@ -238,27 +236,14 @@ public class ProgressFragment extends Fragment {
             SevenDayProgress item =
                     data.get(i);
 
-
-            readingEntries.add(
-                    new Entry(
+            entries.add(
+                    new BarEntry(
                             i,
-                            item.getReading()
-                    )
-            );
-
-
-            practiceEntries.add(
-                    new Entry(
-                            i,
-                            item.getPracticeTotal()
-                    )
-            );
-
-
-            mockEntries.add(
-                    new Entry(
-                            i,
-                            item.getMockTotal()
+                            new float[]{
+                                    (float) item.getReading(),
+                                    (float) item.getPracticeTotal(),
+                                    (float) item.getMockTotal()
+                            }
                     )
             );
 
@@ -271,59 +256,49 @@ public class ProgressFragment extends Fragment {
         }
 
 
-        LineDataSet readingSet =
-                new LineDataSet(
-                        readingEntries,
-                        "Reading"
+        BarDataSet dataSet =
+                new BarDataSet(
+                        entries,
+                        "Activity"
                 );
 
-
-        LineDataSet practiceSet =
-                new LineDataSet(
-                        practiceEntries,
-                        "Practice"
-                );
-
-
-        LineDataSet mockSet =
-                new LineDataSet(
-                        mockEntries,
-                        "Mock Test"
-                );
-
-
-        setupLine(
-                readingSet,
-                COLOR_READING
-        );
-
-
-        setupLine(
-                practiceSet,
-                COLOR_PRACTICE
-        );
-
-
-        setupLine(
-                mockSet,
+        dataSet.setColors(
+                COLOR_READING,
+                COLOR_PRACTICE,
                 COLOR_MOCK
         );
 
+        dataSet.setStackLabels(
+                new String[]{
+                        "Reading",
+                        "Practice",
+                        "Mock Test"
+                }
+        );
 
-        LineData lineData =
-                new LineData(
-                        readingSet,
-                        practiceSet,
-                        mockSet
-                );
-
-
-        binding.activityChart.setData(
-                lineData
+        dataSet.setDrawValues(true);
+        dataSet.setValueTextSize(9f);
+        dataSet.setValueTextColor(
+                isDarkMode() ? Color.parseColor("#E2E8F0") : Color.DKGRAY
         );
 
 
-        configureChart(
+        BarData barData =
+                new BarData(
+                        dataSet
+                );
+
+        barData.setBarWidth(0.5f);
+
+
+        binding.activityChart.setData(
+                barData
+        );
+
+        binding.activityChart.setFitBars(true);
+
+
+        configureHorizontalChart(
                 binding.activityChart,
                 labels
         );
@@ -334,7 +309,7 @@ public class ProgressFragment extends Fragment {
 
 
     // ============================================================
-    // PERFORMANCE GRAPH
+    // PERFORMANCE PIE / DONUT CHART
     // Correct / Wrong / Skipped
     // ============================================================
 
@@ -342,221 +317,62 @@ public class ProgressFragment extends Fragment {
             List<SevenDayProgress> data
     ) {
 
-        ArrayList<Entry> correctEntries =
-                new ArrayList<>();
+        int totalCorrect = 0;
+        int totalWrong = 0;
+        int totalSkipped = 0;
 
+        for (SevenDayProgress item : data) {
+            totalCorrect += (item.getPracticeCorrect() + item.getMockCorrect());
+            totalWrong += (item.getPracticeWrong() + item.getMockWrong());
+            totalSkipped += (item.getPracticeSkipped() + item.getMockSkipped());
+        }
 
-        ArrayList<Entry> wrongEntries =
-                new ArrayList<>();
+        ArrayList<PieEntry> entries = new ArrayList<>();
+        if (totalCorrect > 0) entries.add(new PieEntry(totalCorrect, "Correct"));
+        if (totalWrong > 0) entries.add(new PieEntry(totalWrong, "Wrong"));
+        if (totalSkipped > 0) entries.add(new PieEntry(totalSkipped, "Skipped"));
 
+        PieDataSet dataSet = new PieDataSet(entries, "Performance Summary");
+        dataSet.setColors(COLOR_CORRECT, COLOR_WRONG, COLOR_SKIPPED);
+        dataSet.setValueTextSize(11f);
+        dataSet.setValueTextColor(Color.WHITE);
 
-        ArrayList<Entry> skippedEntries =
-                new ArrayList<>();
+        PieData pieData = new PieData(dataSet);
 
+        PieChart chart = binding.performanceChart;
+        chart.setData(pieData);
+        chart.getDescription().setEnabled(false);
 
-        ArrayList<String> labels =
-                new ArrayList<>();
+        // ডোনাট চার্ট স্টাইল কনফিগারেশন
+        chart.setDrawHoleEnabled(true);
+        chart.setHoleRadius(50f);
+        chart.setTransparentCircleRadius(55f);
+        chart.setHoleColor(Color.TRANSPARENT);
 
+        chart.setCenterText("Performance");
+        chart.setCenterTextSize(13f);
+        chart.setCenterTextColor(isDarkMode() ? Color.parseColor("#E2E8F0") : Color.DKGRAY);
 
-        for (
-                int i = 0;
-                i < data.size();
-                i++
-        ) {
-
-            SevenDayProgress item =
-                    data.get(i);
-
-
-            int correct =
-                    item.getPracticeCorrect()
-                            + item.getMockCorrect();
-
-
-            int wrong =
-                    item.getPracticeWrong()
-                            + item.getMockWrong();
-
-
-            int skipped =
-                    item.getPracticeSkipped()
-                            + item.getMockSkipped();
-
-
-            correctEntries.add(
-                    new Entry(
-                            i,
-                            correct
-                    )
-            );
-
-
-            wrongEntries.add(
-                    new Entry(
-                            i,
-                            wrong
-                    )
-            );
-
-
-            skippedEntries.add(
-                    new Entry(
-                            i,
-                            skipped
-                    )
-            );
-
-
-            labels.add(
-                    getDayLabel(
-                            item.getDate()
-                    )
+        // লেজেন্ড কনফিগারেশন
+        if (chart.getLegend() != null) {
+            chart.getLegend().setEnabled(true);
+            chart.getLegend().setTextSize(12f);
+            chart.getLegend().setTextColor(
+                    isDarkMode() ? Color.parseColor("#94A3B8") : Color.parseColor("#64748B")
             );
         }
 
-
-        LineDataSet correctSet =
-                new LineDataSet(
-                        correctEntries,
-                        "Correct"
-                );
-
-
-        LineDataSet wrongSet =
-                new LineDataSet(
-                        wrongEntries,
-                        "Wrong"
-                );
-
-
-        LineDataSet skippedSet =
-                new LineDataSet(
-                        skippedEntries,
-                        "Skipped"
-                );
-
-
-        setupLine(
-                correctSet,
-                COLOR_CORRECT
-        );
-
-
-        setupLine(
-                wrongSet,
-                COLOR_WRONG
-        );
-
-
-        setupLine(
-                skippedSet,
-                COLOR_SKIPPED
-        );
-
-
-        LineData lineData =
-                new LineData(
-                        correctSet,
-                        wrongSet,
-                        skippedSet
-                );
-
-
-        binding.performanceChart.setData(
-                lineData
-        );
-
-
-        configureChart(
-                binding.performanceChart,
-                labels
-        );
-
-
-        binding.performanceChart.invalidate();
+        chart.animateY(800);
+        chart.invalidate();
     }
 
 
     // ============================================================
-    // LINE STYLE
+    // HORIZONTAL CHART CONFIG
     // ============================================================
 
-    private void setupLine(
-            LineDataSet set,
-            int color
-    ) {
-
-        set.setColor(color);
-
-        set.setCircleColor(color);
-
-        set.setCircleHoleColor(
-                Color.WHITE
-        );
-
-
-        set.setLineWidth(
-                2.5f
-        );
-
-
-        set.setCircleRadius(
-                4f
-        );
-
-
-        set.setCircleHoleRadius(
-                2f
-        );
-
-
-        set.setDrawValues(
-                true
-        );
-
-
-        set.setValueTextSize(
-                9f
-        );
-
-
-        set.setValueTextColor(
-                Color.DKGRAY
-        );
-
-
-        set.setMode(
-                LineDataSet.Mode.CUBIC_BEZIER
-        );
-
-
-        set.setDrawFilled(
-                false
-        );
-
-
-        set.setHighlightEnabled(
-                true
-        );
-
-
-        set.setDrawHighlightIndicators(
-                true
-        );
-
-
-        set.setHighlightLineWidth(
-                1.5f
-        );
-    }
-
-
-    // ============================================================
-    // CHART CONFIG
-    // ============================================================
-
-    private void configureChart(
-            LineChart chart,
+    private void configureHorizontalChart(
+            HorizontalBarChart chart,
             ArrayList<String> labels
     ) {
 
@@ -595,7 +411,7 @@ public class ProgressFragment extends Fragment {
 
 
         // --------------------------------------------------------
-        // RIGHT AXIS
+        // RIGHT AXIS (Horizontal-এর ক্ষেত্রে এটি নিষ্ক্রিয় রাখা হয়)
         // --------------------------------------------------------
 
         chart.getAxisRight()
@@ -603,23 +419,17 @@ public class ProgressFragment extends Fragment {
 
 
         // --------------------------------------------------------
-        // LEFT AXIS
+        // LEFT AXIS (Horizontal বার চার্টে এটি নিচে বা মূল অক্ষ হিসেবে কাজ করে)
         // --------------------------------------------------------
 
-        chart.getAxisLeft()
-                .setGranularity(1f);
-
-
-        chart.getAxisLeft()
-                .setAxisMinimum(0f);
-
-
-        chart.getAxisLeft()
-                .setTextSize(10f);
+        YAxis leftAxis = chart.getAxisLeft();
+        leftAxis.setGranularity(1f);
+        leftAxis.setAxisMinimum(0f);
+        leftAxis.setTextSize(10f);
 
 
         // --------------------------------------------------------
-        // X AXIS
+        // X AXIS (Horizontal বার চার্টে এটি বাম পাশের দিনগুলোর লেবেল দেখায়)
         // --------------------------------------------------------
 
         XAxis xAxis =
@@ -658,11 +468,6 @@ public class ProgressFragment extends Fragment {
         );
 
 
-        xAxis.setLabelRotationAngle(
-                0
-        );
-
-
         xAxis.setAvoidFirstLastClipping(
                 true
         );
@@ -672,9 +477,11 @@ public class ProgressFragment extends Fragment {
         // ANIMATION
         // --------------------------------------------------------
 
-        chart.animateX(
+        chart.animateY(
                 700
         );
+
+        applyHorizontalChartTheme(chart);
 
 
         chart.invalidate();
@@ -735,10 +542,6 @@ public class ProgressFragment extends Fragment {
                 : data
         ) {
 
-            // ----------------------------------------------------
-            // PRACTICE
-            // ----------------------------------------------------
-
             correct +=
                     item.getPracticeCorrect();
 
@@ -746,10 +549,6 @@ public class ProgressFragment extends Fragment {
             total +=
                     item.getPracticeTotal();
 
-
-            // ----------------------------------------------------
-            // MOCK
-            // ----------------------------------------------------
 
             correct +=
                     item.getMockCorrect();
@@ -778,6 +577,76 @@ public class ProgressFragment extends Fragment {
                         success
                 )
         );
+
+        setupSuccessRateChart(success);
+    }
+
+    private void setupSuccessRateChart(double successRate) {
+        ArrayList<PieEntry> entries = new ArrayList<>();
+
+        float successFloat = (float) successRate;
+        float remainingFloat = 100f - successFloat;
+        if (remainingFloat < 0) remainingFloat = 0f;
+
+        entries.add(new PieEntry(successFloat, "")); // Success এর জন্য ফাঁকা লেবেল
+        entries.add(new PieEntry(remainingFloat, "")); // Remaining এর জন্য ফাঁকা লেবেল (কোনো টেক্সট দেখাবে না)
+
+        PieDataSet dataSet = new PieDataSet(entries, "");
+        dataSet.setColors(
+                Color.rgb(46, 125, 50),
+                isDarkMode() ? Color.parseColor("#334155") : Color.parseColor("#E2E8F0")
+        );
+        dataSet.setDrawValues(false);
+
+        PieData pieData = new PieData(dataSet);
+        PieChart chart = binding.successRateChart;
+
+        chart.setData(pieData);
+        chart.getDescription().setEnabled(false);
+        chart.getLegend().setEnabled(false);
+
+        chart.setDrawHoleEnabled(true);
+        chart.setHoleRadius(65f);
+        chart.setTransparentCircleRadius(70f);
+        chart.setHoleColor(Color.TRANSPARENT);
+
+        chart.setCenterText(String.format(Locale.getDefault(), "%.1f%%", successRate));
+        chart.setCenterTextSize(16f);
+        chart.setCenterTextColor(isDarkMode() ? Color.parseColor("#E2E8F0") : Color.parseColor("#1E293B"));
+
+        chart.setTouchEnabled(false);
+        chart.animateY(1000);
+        chart.invalidate();
+    }
+
+    // ============================================================
+    // DYNAMIC CHART THEME (Light / Dark Mode Support)
+    // ============================================================
+
+    private boolean isDarkMode() {
+        int nightModeFlags = requireContext().getResources().getConfiguration().uiMode
+                & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
+        return nightModeFlags == android.content.res.Configuration.UI_MODE_NIGHT_YES;
+    }
+
+    private void applyHorizontalChartTheme(HorizontalBarChart chart) {
+        boolean isDark = isDarkMode();
+        int textColor = isDark ? Color.parseColor("#94A3B8") : Color.parseColor("#64748B");
+        int gridColor = isDark ? Color.parseColor("#334155") : Color.parseColor("#E2E8F0");
+
+        if (chart.getLegend() != null) {
+            chart.getLegend().setTextColor(textColor);
+        }
+
+        if (chart.getXAxis() != null) {
+            chart.getXAxis().setTextColor(textColor);
+            chart.getXAxis().setGridColor(gridColor);
+        }
+
+        if (chart.getAxisLeft() != null) {
+            chart.getAxisLeft().setTextColor(textColor);
+            chart.getAxisLeft().setGridColor(gridColor);
+        }
     }
 
 
@@ -799,6 +668,11 @@ public class ProgressFragment extends Fragment {
             if (binding.performanceChart != null) {
 
                 binding.performanceChart.clear();
+            }
+
+            if (binding.successRateChart != null) {
+
+                binding.successRateChart.clear();
             }
         }
 

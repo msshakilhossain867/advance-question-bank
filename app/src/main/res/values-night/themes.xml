@@ -2,6 +2,18 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.QuestionBankPracticeExam" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="actionOverflowButtonStyle">@style/CustomOverflowButtonStyle</item>
+
+
+
+        <!-- যদি মেনুতে টেক্সট বা আইটেম থাকে তার কালার -->
+        <item name="actionMenuTextColor">@color/back_arrow_color</item>
     </style>
+
+    <style name="CustomOverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/back_arrow_color</item>
+    </style>
+
+
+
 </resources>

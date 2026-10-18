@@ -1,111 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
-    android:layout_marginBottom="10dp"
-
+    android:layout_marginBottom="@dimen/_10sdp"
     android:orientation="horizontal"
-
     android:gravity="center_vertical"
-
-    android:padding="15dp"
-
+    android:padding="@dimen/_15sdp"
     android:background="@drawable/bg_progress_card">
-
 
     <!-- ================================================= -->
     <!-- ICON -->
     <!-- ================================================= -->
-
     <TextView
         android:id="@+id/missionIcon"
-
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-
+        android:layout_width="@dimen/_48sdp"
+        android:layout_height="@dimen/_48sdp"
         android:gravity="center"
-
         android:text="📖"
-
-        android:textSize="25sp"/>
+        android:textSize="@dimen/_25ssp"/>
 
 
     <!-- ================================================= -->
     <!-- CONTENT -->
     <!-- ================================================= -->
-
     <LinearLayout
-
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:layout_weight="1"
-
-        android:layout_marginStart="10dp"
-
+        android:layout_marginStart="@dimen/_10sdp"
         android:orientation="vertical">
-
 
         <TextView
             android:id="@+id/missionTitle"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:text="Reading"
-
-            android:textSize="16sp"
-
-            android:textStyle="bold"/>
-
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            android:textColor="@color/home_card_title"/>
 
         <TextView
             android:id="@+id/missionDescription"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_marginTop="3dp"
-
+            android:layout_marginTop="@dimen/_3sdp"
             android:text="Read 20 questions today"
-
-            android:textSize="13sp"
-
-            android:textColor="#777777"/>
-
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/home_card_subtitle"/>
 
         <ProgressBar
             android:id="@+id/missionProgressBar"
-
             style="?android:attr/progressBarStyleHorizontal"
-
             android:layout_width="match_parent"
-            android:layout_height="6dp"
-
-            android:layout_marginTop="9dp"
-
+            android:layout_height="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_9sdp"
             android:max="100"
-
             android:progress="0"/>
-
 
         <TextView
             android:id="@+id/missionProgressText"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:layout_marginTop="3dp"
-
+            android:layout_marginTop="@dimen/_3sdp"
             android:text="0 / 20"
-
-            android:textSize="11sp"
-
-            android:textColor="#777777"/>
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/home_card_subtitle"/>
 
     </LinearLayout>
 
@@ -113,27 +73,17 @@
     <!-- ================================================= -->
     <!-- COMPLETED -->
     <!-- ================================================= -->
-
     <TextView
         android:id="@+id/completedText"
-
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-
-        android:layout_marginStart="10dp"
-
+        android:layout_width="@dimen/_38sdp"
+        android:layout_height="@dimen/_38sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:gravity="center"
-
         android:text="✓"
-
-        android:textSize="22sp"
-
+        android:textSize="@dimen/_22ssp"
         android:textStyle="bold"
-
         android:textColor="#FFFFFF"
-
         android:visibility="gone"
-
         android:background="@drawable/bg_completed_circle"/>
 
 </LinearLayout>

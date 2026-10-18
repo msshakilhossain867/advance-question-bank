@@ -2,9 +2,13 @@ package com.example.questionbank_practiceexam.presentation.exam;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.questionbank_practiceexam.R;
@@ -62,6 +66,12 @@ public class PracticeResultActivity extends AppCompatActivity {
         setContentView(
                 binding.getRoot()
         );
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         // ========================================================
         // GET RESULT
@@ -582,61 +592,96 @@ public class PracticeResultActivity extends AppCompatActivity {
         int percentage = 0;
 
         if (totalQuestions > 0) {
-
-            percentage =
-                    Math.round(
-                            (correctCount * 100f)
-                                    / totalQuestions
-                    );
+            percentage = Math.round(
+                    (correctCount * 100f) / totalQuestions
+            );
         }
 
+        // ========================================================
+        // ১. রেজাল্ট কার্ডের ভিউ থেকে বিটম্যাপ তৈরি করা
+        // ========================================================
+        View view = binding.resultCard;
 
-        String shareText =
-                "Practice Result\n\n"
-                        + "Score: "
-                        + correctCount
-                        + " / "
-                        + totalQuestions
-                        + "\n"
-                        + "Percentage: "
-                        + percentage
-                        + "%\n"
-                        + "Correct: "
-                        + correctCount
-                        + "\n"
-                        + "Wrong: "
-                        + wrongCount
-                        + "\n"
-                        + "Skipped: "
-                        + skippedCount;
+        view.setDrawingCacheEnabled(true);
+        view.buildDrawingCache();
+        android.graphics.Bitmap originalBitmap = android.graphics.Bitmap.createBitmap(view.getDrawingCache());
+        view.setDrawingCacheEnabled(false);
 
+        try {
+            // ========================================================
+            // ২. ওয়াটারমার্ক সহ নতুন একটি বিটম্যাপ তৈরি করা (Canvas ব্যবহার করে)
+            // ========================================================
+            int width = originalBitmap.getWidth();
+            int height = originalBitmap.getHeight();
 
-        Intent intent =
-                new Intent(
-                        Intent.ACTION_SEND
-                );
+            // ওয়াটারমার্কের জায়গার জন্য নিচে কিছুটা এক্সট্রা হাইট (যেমন: ৬০ পিক্সেল) যোগ করা হলো
+            int extraPadding = 60;
+            android.graphics.Bitmap watermarkedBitmap = android.graphics.Bitmap.createBitmap(width, height + extraPadding, android.graphics.Bitmap.Config.ARGB_8888);
 
+            android.graphics.Canvas canvas = new android.graphics.Canvas(watermarkedBitmap);
 
-        intent.setType(
-                "text/plain"
-        );
+            // কার্ডের ব্যাকগ্রাউন্ড কালার বা হোয়াইট কালার দিয়ে পুরো ক্যানভাস ফিল করা
+            canvas.drawColor(android.graphics.Color.parseColor("#121824")); // আপনার অ্যাপের ডার্ক ব্যাকগ্রাউন্ড কালার দিতে পারেন
 
+            // মূল রেজাল্ট কার্ডটি ক্যানভাসে আঁকা
+            canvas.drawBitmap(originalBitmap, 0, 0, null);
 
-        intent.putExtra(
-                Intent.EXTRA_TEXT,
-                shareText
-        );
+            // ========================================================
+            // ৩. ওয়াটারমার্ক টেক্সট ডিজাইন ও ড্র করা
+            // ========================================================
+            android.graphics.Paint paint = new android.graphics.Paint();
+            paint.setColor(android.graphics.Color.parseColor("#94A3B8")); // ওয়াটারমার্কের টেক্সট কালার (সফট গ্রে)
+            paint.setTextSize(28f); // ফন্ট সাইজ
+            paint.setAntiAlias(true);
+            paint.setTypeface(android.graphics.Typeface.DEFAULT_BOLD);
 
+            String watermarkText = "Powered by Question Bank App";
 
-        startActivity(
-                Intent.createChooser(
-                        intent,
-                        "Share Result"
-                )
-        );
+            // টেক্সট মাঝখানে পজিশন করার হিসাব
+            android.graphics.Rect bounds = new android.graphics.Rect();
+            paint.getTextBounds(watermarkText, 0, watermarkText.length(), bounds);
+
+            float x = (width - bounds.width()) / 2f;
+            float y = height + (extraPadding + bounds.height()) / 2f;
+
+            // ক্যানভাসে ওয়াটারমার্ক টেক্সট বসানো
+            canvas.drawText(watermarkText, x, y, paint);
+
+            // ========================================================
+            // ৪. ক্যাশ ফোল্ডারে নতুন ওয়াটারমার্কযুক্ত ইমেজটি সেভ করা
+            // ========================================================
+            java.io.File cachePath = new java.io.File(getCacheDir(), "images");
+            cachePath.mkdirs();
+            java.io.File file = new java.io.File(cachePath, "practice_result.png");
+            java.io.FileOutputStream stream = new java.io.FileOutputStream(file);
+            watermarkedBitmap.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream);
+            stream.close();
+
+            // ========================================================
+            // ৫. FileProvider দিয়ে শেয়ার ইন্টেন্ট তৈরি করা
+            // ========================================================
+            android.net.Uri imageUri = androidx.core.content.FileProvider.getUriForFile(
+                    this,
+                    getPackageName() + ".fileprovider",
+                    file
+            );
+
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("image/png");
+            intent.putExtra(Intent.EXTRA_STREAM, imageUri);
+
+            String shareText = "My Practice Result - Score: " + correctCount + "/" + totalQuestions + " (" + percentage + "%)";
+            intent.putExtra(Intent.EXTRA_TEXT, shareText);
+
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+            startActivity(Intent.createChooser(intent, "Share Result Image"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            android.widget.Toast.makeText(this, "Failed to share image", android.widget.Toast.LENGTH_SHORT).show();
+        }
     }
-
-
     // ============================================================
     // DESTROY
     // ============================================================

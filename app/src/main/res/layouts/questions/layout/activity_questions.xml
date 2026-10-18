@@ -6,29 +6,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FAFBFD"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
+    android:background="@color/screen_background"
     tools:context=".presentation.questionview.QuestionsActivity">
 
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_11sdp"
+        android:orientation="vertical">
 
         <!-- Top Bar -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="@dimen/_58sdp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/backButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="9dp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:padding="@dimen/_9sdp"
                 android:src="@drawable/ic_arrow_back"
                 android:contentDescription="Back"
-                app:tint="#1858A8" />
+                app:tint="@color/back_arrow_color" />
 
             <TextView
                 android:id="@+id/questionNumber"
@@ -37,18 +39,18 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="12 / 45"
-                android:textColor="#202020"
-                android:textSize="14sp"
+                android:textColor="@color/home_card_title"
+                android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/bookmarkButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="9dp"
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
+                android:padding="@dimen/_9sdp"
                 android:src="@drawable/ic_bookmark_border"
                 android:contentDescription="Bookmark"
-                app:tint="#1858A8" />
+                app:tint="@color/back_arrow_color" />
 
         </LinearLayout>
 
@@ -59,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="10dp"
+            android:padding="@dimen/_10sdp"
             android:fillViewport="true"
             android:overScrollMode="never">
 
@@ -67,8 +69,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingTop="4dp"
-                android:paddingBottom="20dp">
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingBottom="@dimen/_20sdp"
+                tools:ignore="WebViewLayout">
 
                 <!-- Subject -->
                 <TextView
@@ -76,8 +79,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Physics"
-                    android:textColor="#161616"
-                    android:textSize="15sp"
+                    android:textColor="@color/home_card_title"
+                    android:textSize="@dimen/_15ssp"
                     android:textStyle="bold" />
 
                 <!-- Topic -->
@@ -86,16 +89,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Keep reading"
-                    android:textColor="#666666"
-                    android:textSize="11sp"
-                    android:layout_marginTop="2dp" />
-
-
-
-
-
-
-
+                    android:textColor="@color/home_card_subtitle"
+                    android:textSize="@dimen/_11ssp"
+                    android:layout_marginTop="@dimen/_2sdp" />
 
 
                 <!-- Question -->
@@ -103,22 +99,22 @@
                     android:id="@+id/questionText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="14dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_14sdp"
                     android:background="@android:color/transparent"
                     android:overScrollMode="never"
                     android:scrollbars="none"
                     android:visibility="gone" />
 
-                <!-- সাধারণ প্রশ্নের জন্য TextView (সুপার ফাস্ট!) -->
+                <!-- সাধারণ প্রশ্নের জন্য TextView -->
                 <TextView
                     android:id="@+id/questionTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="14dp"
-                    android:textColor="#151515"
-                    android:textSize="15sp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_14sdp"
+                    android:textColor="@color/home_card_title"
+                    android:textSize="@dimen/_15ssp"
                     android:textStyle="bold"
                     android:visibility="gone" />
 
@@ -127,8 +123,8 @@
                 <WebView
                     android:id="@+id/option1"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_height="@dimen/_48sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:background="@drawable/bg_option_normal"
                     android:overScrollMode="never"
                     android:scrollbars="none" />
@@ -137,27 +133,23 @@
                     android:id="@+id/option1Tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="48dp"
+                    android:minHeight="@dimen/_48sdp"
                     android:gravity="center_vertical"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:layout_marginBottom="8dp"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:paddingEnd="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:background="@drawable/bg_option_normal"
-                    android:textColor="#222222"
-                    android:textSize="14sp"
+                    android:textColor="@color/home_card_title"
+                    android:textSize="@dimen/_14ssp"
                     android:visibility="gone" />
-
-
-                <!-- Option 1 -->
-
 
 
                 <!-- Option 2 -->
                 <WebView
                     android:id="@+id/option2"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_height="@dimen/_48sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:background="@drawable/bg_option_normal"
                     android:overScrollMode="never"
                     android:scrollbars="none" />
@@ -166,23 +158,23 @@
                     android:id="@+id/option2Tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="48dp"
+                    android:minHeight="@dimen/_48sdp"
                     android:gravity="center_vertical"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:layout_marginBottom="8dp"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:paddingEnd="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:background="@drawable/bg_option_normal"
-                    android:textColor="#222222"
-                    android:textSize="14sp"
+                    android:textColor="@color/home_card_title"
+                    android:textSize="@dimen/_14ssp"
                     android:visibility="gone" />
 
 
-                <!-- Correct Option -->
+                <!-- Option 3 -->
                 <WebView
                     android:id="@+id/option3"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_height="@dimen/_48sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:background="@drawable/bg_option_correct"
                     android:overScrollMode="never"
                     android:scrollbars="none" />
@@ -191,14 +183,14 @@
                     android:id="@+id/option3Tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="48dp"
+                    android:minHeight="@dimen/_48sdp"
                     android:gravity="center_vertical"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:layout_marginBottom="8dp"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:paddingEnd="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:background="@drawable/bg_option_normal"
-                    android:textColor="#222222"
-                    android:textSize="14sp"
+                    android:textColor="@color/home_card_title"
+                    android:textSize="@dimen/_14ssp"
                     android:visibility="gone" />
 
 
@@ -206,8 +198,8 @@
                 <WebView
                     android:id="@+id/option4"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginBottom="18dp"
+                    android:layout_height="@dimen/_48sdp"
+                    android:layout_marginBottom="@dimen/_18sdp"
                     android:background="@drawable/bg_option_normal"
                     android:overScrollMode="never"
                     android:scrollbars="none" />
@@ -216,14 +208,14 @@
                     android:id="@+id/option4Tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="48dp"
+                    android:minHeight="@dimen/_48sdp"
                     android:gravity="center_vertical"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:layout_marginBottom="8dp"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:paddingEnd="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:background="@drawable/bg_option_normal"
-                    android:textColor="#222222"
-                    android:textSize="14sp"
+                    android:textColor="@color/home_card_title"
+                    android:textSize="@dimen/_14ssp"
                     android:visibility="gone" />
 
 
@@ -233,7 +225,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="14dp"
+                    android:padding="@dimen/_14sdp"
                     android:background="@drawable/ic_ex"
                     tools:ignore="WebViewLayout">
 
@@ -241,8 +233,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Explanation"
-                        android:textColor="#1858A8"
-                        android:textSize="14sp"
+                        android:textColor="@color/home_card_title"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -250,15 +242,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="সঠিক উত্তর"
-                        android:textColor="#1858A8"
-                        android:textSize="14sp"
+                        android:textColor="@color/home_card_title"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <WebView
                         android:id="@+id/explanationText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="@dimen/_6sdp"
                         android:background="@android:color/transparent"
                         android:overScrollMode="never"
                         android:scrollbars="none" />
@@ -273,49 +265,51 @@
         <!-- Bottom Navigation -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
+            android:layout_height="@dimen/_68sdp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingTop="8dp"
-            android:paddingBottom="10dp">
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_10sdp">
 
             <!-- Previous -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/previousButton"
                 android:layout_width="0dp"
-                android:layout_height="46dp"
+                android:layout_height="@dimen/_46sdp"
                 android:layout_weight="1"
                 android:text="Previous"
-                android:textSize="13sp"
+                android:textSize="@dimen/_13ssp"
                 android:textStyle="bold"
-                android:textColor="#1858A8"
+                android:textColor="@color/home_card_title"
                 android:textAllCaps="false"
-                android:backgroundTint="@android:color/white"
-                app:cornerRadius="8dp"
-                app:strokeColor="#72A7E2"
+                android:backgroundTint="@color/home_card_background"
+                app:cornerRadius="@dimen/_8sdp"
+                app:strokeColor="@color/home_card_border"
                 app:strokeWidth="1dp" />
 
             <Space
-                android:layout_width="10dp"
-                android:layout_height="1dp" />
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_1sdp" />
 
             <!-- Next -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/nextButton"
                 android:layout_width="0dp"
-                android:layout_height="46dp"
+                android:layout_height="@dimen/_46sdp"
                 android:layout_weight="1"
                 android:text="Next"
-                android:textSize="13sp"
+                android:textSize="@dimen/_13ssp"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:textAllCaps="false"
                 android:backgroundTint="#1764BD"
-                app:cornerRadius="8dp" />
+                app:cornerRadius="@dimen/_8sdp" />
 
         </LinearLayout>
+
+    </LinearLayout>
 
 
 

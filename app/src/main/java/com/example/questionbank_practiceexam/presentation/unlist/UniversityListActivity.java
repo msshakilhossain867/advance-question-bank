@@ -4,12 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.questionbank_practiceexam.R;
 import com.example.questionbank_practiceexam.data.local.entity.University;
 import com.example.questionbank_practiceexam.data.local.repository.UniversityRepository;
 import com.example.questionbank_practiceexam.databinding.ActivityUniversityListBinding;
@@ -43,6 +48,12 @@ public class UniversityListActivity extends AppCompatActivity {
         );
 
         setContentView(binding.getRoot());
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
 
          mode = getIntent().getStringExtra("mode");
@@ -113,7 +124,20 @@ public class UniversityListActivity extends AppCompatActivity {
     // SETUP ADAPTER
     // ================================================================
 
+// ================================================================
+    // SETUP ADAPTER
+    // ================================================================
+
     private void setupAdapter(List<University> list) {
+
+        // লিস্ট খালি থাকলে নো-রেজাল্ট টেক্সট দেখাবে এবং রিসাইকলার ভিউ হাইড করবে
+        if (list == null || list.isEmpty()) {
+            binding.universityRecyclerView.setVisibility(View.GONE);
+            binding.noResultTextView.setVisibility(View.VISIBLE);
+        } else {
+            binding.universityRecyclerView.setVisibility(View.VISIBLE);
+            binding.noResultTextView.setVisibility(View.GONE);
+        }
 
         universityAdapter = new UniversityAdapter(
                 list,
